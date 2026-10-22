@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: GTM OS documentation
+    url: https://ay-automate.github.io/gtmos-releases/
+    about: Questions about GTM OS itself (install, engines, operations).

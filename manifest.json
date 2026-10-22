@@ -1,0 +1,1798 @@
+{
+  "name": "gtmos-skills",
+  "version": "0.1.0",
+  "repository": "https://github.com/ay-automate/gtmos-skills",
+  "skills": 94,
+  "files": [
+    {
+      "path": "THIRD-PARTY-NOTICES.md",
+      "sha256": "e412734ffef3acad3a93899b7b629c53a370e89e4b34fef3f68eaa5e7fd930b8",
+      "bytes": 22981
+    },
+    {
+      "path": "licenses/Apache-2.0-HubSpot-agent-cli-skills.txt",
+      "sha256": "35adb5f9d70f172c4965d43c13dac2254d9b295bcdbb786466cc60bda416e253",
+      "bytes": 11910
+    },
+    {
+      "path": "licenses/Apache-2.0-HubSpot-hubspot-mcp-plugins.txt",
+      "sha256": "394dae3874ef37c3708e081eb7cfd19beadac3375f7b79c4daac3cf13b35a047",
+      "bytes": 10726
+    },
+    {
+      "path": "licenses/Apache-2.0-salesforce-salesforce-skills.txt",
+      "sha256": "7f32b32434490332df34d81b4b91f310f5885920ecb9890774b38b772f08c660",
+      "bytes": 11444
+    },
+    {
+      "path": "licenses/Apache-2.0-semrush-skills.txt",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "path": "licenses/MIT-AgriciDaniel-claude-seo.txt",
+      "sha256": "a42b3b0253cecea9af810c5207a67b0be8c9a0cfbf52b9302c3d26b063e7a86b",
+      "bytes": 1069
+    },
+    {
+      "path": "licenses/MIT-Instantly-ai-instantly-skills.txt",
+      "sha256": "2b8c09f01fed9eff9e5e31b2d64b47ba32b2376eafe8fd49a7282275cf92a13d",
+      "bytes": 1069
+    },
+    {
+      "path": "licenses/MIT-apolloio-apollo-mcp-plugin.txt",
+      "sha256": "32d2293a7c5f76c3a8b1bd1e9a5a26cc7a472c0b462b8cec5ee81daed2896752",
+      "bytes": 1066
+    },
+    {
+      "path": "licenses/MIT-clay-run-clay-skill-creator.txt",
+      "sha256": "bf98452006290ec09e67ab9f13a604af25b4bcb0a1ffde848d09be21c5340890",
+      "bytes": 1061
+    },
+    {
+      "path": "licenses/MIT-coreyhaines31-marketingskills.txt",
+      "sha256": "b70d71e24e40fce5da8f4b6f9cd862096a048e433db7f3c8cac5e348e6d34591",
+      "bytes": 1069
+    },
+    {
+      "path": "licenses/MIT-loootai-looot-skills.txt",
+      "sha256": "637743a3de36b3866e0269291c7f929b1d8b3313aa6c6abeeeda6711ea3639d1",
+      "bytes": 1062
+    },
+    {
+      "path": "licenses/MIT-resend-resend-skills.txt",
+      "sha256": "f71cc2b0a8199ff748415642e1006c760f017d8defbc29237ce43ae1e8fa8197",
+      "bytes": 1063
+    },
+    {
+      "path": "licenses/MIT-seranking-seo-skills.txt",
+      "sha256": "be37f39e84329222181a6d75c84b73a514e691d52da9741db864e057ce8e3eee",
+      "bytes": 1067
+    },
+    {
+      "path": "licenses/MIT-zapier-gtm-cheat-codes.txt",
+      "sha256": "7339502a38a5059549354774299b04142ca9a8a434d053d5a7394e980ae6b797",
+      "bytes": 1064
+    },
+    {
+      "path": "licenses/NOTICE-clay-run-clay-skill-creator.txt",
+      "sha256": "27b3296e0e64934fbdf2c657684fade194a3edc0aab9532ac98432009e353aa0",
+      "bytes": 431
+    },
+    {
+      "path": "licenses/NOTICE-semrush-skills.txt",
+      "sha256": "249a01c2247557ac703d559c06a85e427897a13c18d6e0927bdbc3eb28ec5e05",
+      "bytes": 102
+    },
+    {
+      "path": "skills/ads/SKILL.md",
+      "sha256": "e5ded9ae620848d773b446a5f008c79e48488a67d26461fc6ca80b6a9e438ca4",
+      "bytes": 4591
+    },
+    {
+      "path": "skills/cal-com/SKILL.md",
+      "sha256": "ad96135658111405b67dafd9e08a50592ac251d089d996d82470ac660c41c413",
+      "bytes": 4283
+    },
+    {
+      "path": "skills/composio/SKILL.md",
+      "sha256": "b2d2f33b833d1bbd4887f50a529701b46933925d627228d40048ce2ab7fa21b5",
+      "bytes": 16939
+    },
+    {
+      "path": "skills/ga4/SKILL.md",
+      "sha256": "0c73cd216c0612899e9c745e503650345040acf4701e91b6563fc7d69df5e335",
+      "bytes": 4401
+    },
+    {
+      "path": "skills/gmail/SKILL.md",
+      "sha256": "266a85dba2eff5013497df9cdfad3358f0596f55e60bf1cef46bc2666cea2f35",
+      "bytes": 4720
+    },
+    {
+      "path": "skills/google-calendar/SKILL.md",
+      "sha256": "577bf127c013a47d7514bd145e34192f685f82caeda2830f8ecca02efe924f61",
+      "bytes": 4452
+    },
+    {
+      "path": "skills/gsc/SKILL.md",
+      "sha256": "bf865890b9c09b121cdbeb035c98b76c2d456cc085c7236d189183c44db22ded",
+      "bytes": 4315
+    },
+    {
+      "path": "skills/gtmos-ads-campaigns/SKILL.md",
+      "sha256": "db4322fa59554a47f71c44484b8a4d354b7825d57821faa90e884b8234af089d",
+      "bytes": 31774
+    },
+    {
+      "path": "skills/gtmos-ads-campaigns/references/abm-playbook.md",
+      "sha256": "acb5c89ced4497674d012d015504a5c8e17c619bd2fc1f0191d833a9957eb44a",
+      "bytes": 8100
+    },
+    {
+      "path": "skills/gtmos-ads-campaigns/references/ad-copy-templates.md",
+      "sha256": "853ab37e23b75aa3355bdbed9a1357948e635dbdf737be5a1a7aa0126d701206",
+      "bytes": 4821
+    },
+    {
+      "path": "skills/gtmos-ads-campaigns/references/audience-targeting.md",
+      "sha256": "21ed7c99fb1124ca38635d6f313cc2f3ca49a192f390cd55293b7bd5a028e1b1",
+      "bytes": 6067
+    },
+    {
+      "path": "skills/gtmos-ads-campaigns/references/audit-guardrails.md",
+      "sha256": "ffcbbda4cabd919bce93c11699fac49059dde7d96c64dbf34f77c482420e6667",
+      "bytes": 8136
+    },
+    {
+      "path": "skills/gtmos-ads-campaigns/references/b2b-paid-playbook.md",
+      "sha256": "21dc1125905f8d985763996afb24a2bf54539330535b7b2b45c052901c5b2006",
+      "bytes": 7951
+    },
+    {
+      "path": "skills/gtmos-ads-campaigns/references/creative-research-automation.md",
+      "sha256": "9f855af6415357d379909c7c1a5f6e5470dc869e57a3991f95048ed51e04b32f",
+      "bytes": 8562
+    },
+    {
+      "path": "skills/gtmos-ads-campaigns/references/google-ads-audit-checklist.md",
+      "sha256": "8496e766b6726164f4fbb58ab007aad3d36f822762dba8756741882e1c31fad3",
+      "bytes": 12928
+    },
+    {
+      "path": "skills/gtmos-ads-campaigns/references/google-search-playbook.md",
+      "sha256": "5771d6c876ddd2b3cbaa28190884eebd698112febcf0ea83aeb0c8016e04e097",
+      "bytes": 10348
+    },
+    {
+      "path": "skills/gtmos-ads-campaigns/references/linkedin-b2b-playbook.md",
+      "sha256": "8f38aadbf24c1a554fbaa47bf2f24bac0c4773fa16f65d34c1c600e5e3d8a6ee",
+      "bytes": 9222
+    },
+    {
+      "path": "skills/gtmos-ads-campaigns/references/meta-andromeda-playbook.md",
+      "sha256": "8da58633c3866b9a4aa07b234a9a7e96eeb19a9497bb85bae09f1aac36e27268",
+      "bytes": 6365
+    },
+    {
+      "path": "skills/gtmos-ads-campaigns/references/meta-decision-system.md",
+      "sha256": "9cb8a6f4fcc0c57f486b5caeaa8d27f25237d95d5c1f98516ed2a3277415034f",
+      "bytes": 15670
+    },
+    {
+      "path": "skills/gtmos-ads-campaigns/references/operating-check.md",
+      "sha256": "0039550a0867dc5f80595b824f8d6a6a298c5777ef2d0e54d225c1405f900de3",
+      "bytes": 5894
+    },
+    {
+      "path": "skills/gtmos-ads-campaigns/references/payback-period.md",
+      "sha256": "77b0f35b65b35cdee53881105a16498e3e4538b657923a176b99a19b807daba1",
+      "bytes": 6920
+    },
+    {
+      "path": "skills/gtmos-ads-campaigns/references/platform-setup-checklists.md",
+      "sha256": "b86e206f8c7233c235d7d385a69e17fac16ac001ab130242b7700fe650752f69",
+      "bytes": 7613
+    },
+    {
+      "path": "skills/gtmos-ads-campaigns/references/reading-google-ads-data.md",
+      "sha256": "e5bb10f5bd81eabaae63c005a9be8c3f70d63df60e192dcd37faf3718ff0fd09",
+      "bytes": 8750
+    },
+    {
+      "path": "skills/gtmos-ads-campaigns/references/rsa-output-spec.md",
+      "sha256": "285fec5c1671c9cc1a4cdfbcf06d8a54a022cbad52693941457d90e1f2c5f503",
+      "bytes": 3689
+    },
+    {
+      "path": "skills/gtmos-ads-creative/SKILL.md",
+      "sha256": "911de32aa7f63cf16773de5b41204e0f5b07bf38fd99c8fcbe650545c07ced43",
+      "bytes": 26705
+    },
+    {
+      "path": "skills/gtmos-ads-creative/references/awareness-headlines.md",
+      "sha256": "0f9b2408e402ad03956ff84bf31e5c594371dd3e2974c5390c42af4e3c60ed4d",
+      "bytes": 6765
+    },
+    {
+      "path": "skills/gtmos-ads-creative/references/creative-review-page.md",
+      "sha256": "d4ee187dd5e446b64c1526f2b0507e522171ac14046f617686624a0611e73881",
+      "bytes": 9713
+    },
+    {
+      "path": "skills/gtmos-ads-creative/references/creative-roadmap.md",
+      "sha256": "a0be737841d8a73f0cf02094c9ed1e3f7c050e1c6f867794b1fa8b64dbf3b50e",
+      "bytes": 9010
+    },
+    {
+      "path": "skills/gtmos-ads-creative/references/generative-tools.md",
+      "sha256": "f4dc366913c5d20d45442d7df91cfbfedd746946d2a51d20977db7e938ab652f",
+      "bytes": 23286
+    },
+    {
+      "path": "skills/gtmos-ads-creative/references/hook-system.md",
+      "sha256": "2967ecbf32423bbb70ca9587b0af8d257466c852106fe909f6447bbab9a18002",
+      "bytes": 10030
+    },
+    {
+      "path": "skills/gtmos-ads-creative/references/imessage-video-ads.md",
+      "sha256": "8b798cc2249188a4c1679eea33a2bd7736b2eb02fe5de41e3fc8eb6fa2de16f4",
+      "bytes": 19899
+    },
+    {
+      "path": "skills/gtmos-ads-creative/references/meta-creative-formats.md",
+      "sha256": "c59b524b1741c15ca6bfc3dd28ddbb2dd0ec2f6c1f05f845ef5f19b320a6a645",
+      "bytes": 10702
+    },
+    {
+      "path": "skills/gtmos-ads-creative/references/motion-video-ads.md",
+      "sha256": "c64e83199f0316e12e7811667f09a6475a34044c8eec2e3ba549faf9c33fc28c",
+      "bytes": 11801
+    },
+    {
+      "path": "skills/gtmos-ads-creative/references/platform-specs.md",
+      "sha256": "de69753161071a8d3e4d244280562810a6c4d6ae2696c5a21940f983abd0aa8e",
+      "bytes": 6525
+    },
+    {
+      "path": "skills/gtmos-ads-creative/references/short-form-video-specs.md",
+      "sha256": "87ba865ea04dbff870b3af9cfcfd5eefc1b281232ac690d70be20c419658025d",
+      "bytes": 19405
+    },
+    {
+      "path": "skills/gtmos-ads-creative/references/static-ad-templates.md",
+      "sha256": "fc93d3f5fa6b3442cc1c6785eda05979da0d299c640d5f0a277033209d68e651",
+      "bytes": 23710
+    },
+    {
+      "path": "skills/gtmos-analytics-attribution/SKILL.md",
+      "sha256": "8f2984e930705923e8ec9645a6fd6a7b1fc01fe1221fd6f1c2df01fa6e2eeccc",
+      "bytes": 27113
+    },
+    {
+      "path": "skills/gtmos-analytics-attribution/references/attribution-models.md",
+      "sha256": "503c61bf2f38d54755398fc5b1bb0d190e989c59494b097407652ae65bf474af",
+      "bytes": 6783
+    },
+    {
+      "path": "skills/gtmos-analytics-attribution/references/by-business-type.md",
+      "sha256": "d74511db9d9fcd5bfcf5e2d17f13b48bb38677df9f28fa72f01c94becd299718",
+      "bytes": 7873
+    },
+    {
+      "path": "skills/gtmos-analytics-attribution/references/first-party-tracking.md",
+      "sha256": "1f2348ab818526e40a4d7cffaf5042cacfaeb43fd42c4f0afc9a24adbdeb3729",
+      "bytes": 19883
+    },
+    {
+      "path": "skills/gtmos-analytics-attribution/references/measurement-paradigms.md",
+      "sha256": "5efca610abaa3a80a31cd6be5e835e4449d54462c5314e97b055b86413dee5b2",
+      "bytes": 10598
+    },
+    {
+      "path": "skills/gtmos-analytics-experiments/SKILL.md",
+      "sha256": "d77716bd4d176515a3bca25c4aaa3781e3c9d4ce8c3f533f5ff6e721b50f8916",
+      "bytes": 14247
+    },
+    {
+      "path": "skills/gtmos-analytics-experiments/references/sample-size-guide.md",
+      "sha256": "8288381cc11f9e4821c0a6a5ec3eec73506832a189af45207dcc583c371f3e7b",
+      "bytes": 9050
+    },
+    {
+      "path": "skills/gtmos-analytics-experiments/references/test-templates.md",
+      "sha256": "761a40b9de8d16f18fa7f60b59e77aa749607ac8014af43e0b022f47fa87c812",
+      "bytes": 6473
+    },
+    {
+      "path": "skills/gtmos-analytics-gtm-report/SKILL.md",
+      "sha256": "37110daa4b2cace72535d2c20b2058cc506b23b97182a6f333586f9235719ff6",
+      "bytes": 11041
+    },
+    {
+      "path": "skills/gtmos-analytics-gtm-report/references/zapier-campaign-postmortem.md",
+      "sha256": "d66624d0b8bfe808d25945bcdade7dc5fa9bab7c4fd7ca2e825a9a6ca7404558",
+      "bytes": 2095
+    },
+    {
+      "path": "skills/gtmos-analytics-tracking/SKILL.md",
+      "sha256": "b9a5bdb4751f28406849b2614d39c271865f16c89f770befdda8e7e4bf96379e",
+      "bytes": 19129
+    },
+    {
+      "path": "skills/gtmos-analytics-tracking/references/corey-conversion-tracking.md",
+      "sha256": "1e90c1acd7b287666ab3687f8393d33245391d93c99bd7082ff697e422dd7631",
+      "bytes": 31263
+    },
+    {
+      "path": "skills/gtmos-analytics-tracking/references/corey-conversion-tracking/audit-playbook.md",
+      "sha256": "224c0aad4934755758d7e0eb505515ec350a2a5d9d00ecb308b8f69fb5eb5ffb",
+      "bytes": 13744
+    },
+    {
+      "path": "skills/gtmos-analytics-tracking/references/corey-conversion-tracking/browser-side.md",
+      "sha256": "9accc3fb2693520d906235255a7dd2b1638a324950d04caf387cdf54d3356fcb",
+      "bytes": 23911
+    },
+    {
+      "path": "skills/gtmos-analytics-tracking/references/corey-conversion-tracking/conversion-moments.md",
+      "sha256": "569f4855bfb246d0e83e8bc20004dbb806053ad24671dd060e4a27854787d771",
+      "bytes": 32892
+    },
+    {
+      "path": "skills/gtmos-analytics-tracking/references/corey-conversion-tracking/discrepancies.md",
+      "sha256": "ad85f70371f2aebf2ab7624969a93a759b0dccc6b4ae046f8c7451e81dca2078",
+      "bytes": 13767
+    },
+    {
+      "path": "skills/gtmos-analytics-tracking/references/corey-conversion-tracking/ecommerce-platforms.md",
+      "sha256": "b7dca043096fa4c9b502c42e1a74ca00231c6c7948d4b8b925c130998f72d36e",
+      "bytes": 10127
+    },
+    {
+      "path": "skills/gtmos-analytics-tracking/references/corey-conversion-tracking/google-ads.md",
+      "sha256": "f6acfa548c78c732ca59dbc3349349c816149de7d8b344e5915265a39c9ef65c",
+      "bytes": 31176
+    },
+    {
+      "path": "skills/gtmos-analytics-tracking/references/corey-conversion-tracking/meta.md",
+      "sha256": "46a8779670c27742f7c889f61cfd0d9d666af0db8857a73a6328fa19f55150d6",
+      "bytes": 19131
+    },
+    {
+      "path": "skills/gtmos-analytics-tracking/references/corey-conversion-tracking/other-platforms.md",
+      "sha256": "4799c16265ce2963c42655fa6ba7122372e624bd98a81ad173f0121cb1d5d709",
+      "bytes": 20886
+    },
+    {
+      "path": "skills/gtmos-analytics-tracking/references/corey-conversion-tracking/server-side.md",
+      "sha256": "d47f28a68fa677c9899a771334318989c313d41e1a29fd1d6682fb0195cc851b",
+      "bytes": 31914
+    },
+    {
+      "path": "skills/gtmos-analytics-tracking/references/event-library.md",
+      "sha256": "c60e3e145e6b06258570350b614913ed9150143b4494a71396abaef479502b05",
+      "bytes": 8654
+    },
+    {
+      "path": "skills/gtmos-analytics-tracking/references/ga4-implementation.md",
+      "sha256": "b0232fc2ee873ffa5e6cbdf0ae712a5d74b18263372139d8ae72f9dcf48a8db4",
+      "bytes": 7084
+    },
+    {
+      "path": "skills/gtmos-analytics-tracking/references/gtm-implementation.md",
+      "sha256": "0b161102de710c978cc2ac52c78c79f32e184bc028aa946eba18e777d7a60d64",
+      "bytes": 8413
+    },
+    {
+      "path": "skills/gtmos-content-brand-voice/SKILL.md",
+      "sha256": "292f42b059629d84decd7abe98263d9d6e55979026e6cbf78c6cd1bc22d49f6f",
+      "bytes": 3521
+    },
+    {
+      "path": "skills/gtmos-content-copywriting/SKILL.md",
+      "sha256": "7c472f19fba0ff9281038d99f6c594e5adcb859a41a29fa679844d093f8bfb7e",
+      "bytes": 17414
+    },
+    {
+      "path": "skills/gtmos-content-copywriting/references/ai-tells.md",
+      "sha256": "7c54a353666e843e4decd670d68720e63d303bbfc18e11051ede8e3049fd6dc0",
+      "bytes": 20810
+    },
+    {
+      "path": "skills/gtmos-content-copywriting/references/copy-frameworks.md",
+      "sha256": "352122944bf9e891ceb0e003adce41591d111e9d97057700626249919dfe430d",
+      "bytes": 14352
+    },
+    {
+      "path": "skills/gtmos-content-copywriting/references/corey-copy-editing.md",
+      "sha256": "8ca7e2028a629080488b9e6b724ba5c28edc8202c98e8bb5e7e0c96cabc3bb48",
+      "bytes": 18156
+    },
+    {
+      "path": "skills/gtmos-content-copywriting/references/corey-copy-editing/checklist.md",
+      "sha256": "4cf94c922286223681fc53721fcc65ae7299f1e36e797e7397d369d674580c60",
+      "bytes": 4505
+    },
+    {
+      "path": "skills/gtmos-content-copywriting/references/corey-copy-editing/content-refresh.md",
+      "sha256": "35e737bf709d72584711243395ca247cb6f51a7f122117cc01c904f94796dc23",
+      "bytes": 4675
+    },
+    {
+      "path": "skills/gtmos-content-copywriting/references/corey-copy-editing/plain-english-alternatives.md",
+      "sha256": "df4f820d4c63ae8a517c64a243c101658352cd07d002355bf3c97de0a00f3775",
+      "bytes": 8258
+    },
+    {
+      "path": "skills/gtmos-content-copywriting/references/natural-transitions.md",
+      "sha256": "9bd61b0de5be2c4de4ce130c68236b4f290b12737823827a458bb2b4c8584683",
+      "bytes": 5561
+    },
+    {
+      "path": "skills/gtmos-content-social/SKILL.md",
+      "sha256": "37aa1276d08fce70bb97d968286e49a379add63e86d402e3d18366fb814174ef",
+      "bytes": 19498
+    },
+    {
+      "path": "skills/gtmos-content-social/references/carousel-frameworks.md",
+      "sha256": "e703aa530ec9f68cdf5b58e8e0d4d1a5cc3f22b9e2d3e3222f16a9763d423247",
+      "bytes": 11124
+    },
+    {
+      "path": "skills/gtmos-content-social/references/listening-sources-template.md",
+      "sha256": "c68bc6f57b0a48c432b1ce72c9324d41a04d0e7784d0bab91afb4a6065a43e38",
+      "bytes": 3479
+    },
+    {
+      "path": "skills/gtmos-content-social/references/listening.md",
+      "sha256": "9b027373c632de45fa593ae9553125cf38fc06f95b5142d339a4c270e0eb7d94",
+      "bytes": 13488
+    },
+    {
+      "path": "skills/gtmos-content-social/references/platform-limits.md",
+      "sha256": "6ecc6b40ff82b95c48906341f7d3c58337671d4d94f624c858764f1ed5a77c3c",
+      "bytes": 2830
+    },
+    {
+      "path": "skills/gtmos-content-social/references/platforms.md",
+      "sha256": "abd5744b0f5b500161c8effacb1c754d52201a1a683fbd8bafc4449b46a91da0",
+      "bytes": 8340
+    },
+    {
+      "path": "skills/gtmos-content-social/references/post-templates.md",
+      "sha256": "9cca4680c95801daedfd8acadf9089d0083784c2567784888807569896f71d9b",
+      "bytes": 4016
+    },
+    {
+      "path": "skills/gtmos-content-social/references/reverse-engineering.md",
+      "sha256": "c27bef59d463b3b11331c1770f4a23e9e6bbce7d7c8db1e7f7f4f14ba206243f",
+      "bytes": 5551
+    },
+    {
+      "path": "skills/gtmos-content-social/references/short-form-video.md",
+      "sha256": "2a09909b3f9c0e05d9b9c843697b25f681b42bb48a700756c374075c10054564",
+      "bytes": 7047
+    },
+    {
+      "path": "skills/gtmos-content-social/references/x-algorithm.md",
+      "sha256": "943b2c5a819aad53ebf62a1652adc47956d6fdf738e18cd98eeb609819a66180",
+      "bytes": 7113
+    },
+    {
+      "path": "skills/gtmos-content-strategy/SKILL.md",
+      "sha256": "6d15957fa69b1447b704f1efd747e485e5f0e622efa2293cfeaacc85cf7c710b",
+      "bytes": 21216
+    },
+    {
+      "path": "skills/gtmos-content-strategy/references/content-distribution.md",
+      "sha256": "fbfc1008a77f13bbfc1eafe995d35cc4556dd92678b8d2540f7afc611c18422e",
+      "bytes": 5672
+    },
+    {
+      "path": "skills/gtmos-content-strategy/references/headless-cms.md",
+      "sha256": "9d5632d6abd2efc922bec391bd3544d0d022d0440b7f17fe3cb8dffe52201964",
+      "bytes": 8628
+    },
+    {
+      "path": "skills/gtmos-crm-data-quality/SKILL.md",
+      "sha256": "f1cde2376c258a028da9b2b5a6f79316cecfae6624450f70dec1e09bb4766544",
+      "bytes": 10159
+    },
+    {
+      "path": "skills/gtmos-crm-data-quality/references/hubspot-bulk-operations.md",
+      "sha256": "9864280804c586b1ae19b6bf1c2eb3e1e1caeab166713cfc6dcd85dbb5cbbe3e",
+      "bytes": 15498
+    },
+    {
+      "path": "skills/gtmos-crm-forecast/SKILL.md",
+      "sha256": "2edd99484f8f883d2309c19e4b6de7c6bdf32cf9f9f2537429187c284740e5ea",
+      "bytes": 11450
+    },
+    {
+      "path": "skills/gtmos-crm-pipeline-review/SKILL.md",
+      "sha256": "85d9cb7bb19c997073ec647127a36570649f885b2da65a965c20aa53c765cae6",
+      "bytes": 8153
+    },
+    {
+      "path": "skills/gtmos-crm-pipeline-review/references/salesforce-pipeline-review.md",
+      "sha256": "d41928636ca8a901c68c1f25ab8f421d8d92f7b28e061c423861db27e260add4",
+      "bytes": 35972
+    },
+    {
+      "path": "skills/gtmos-engine-catalog/SKILL.md",
+      "sha256": "0d83c8cc9d215d985ab4b9470ccf930012509e61dd69217564f271f61cf400b1",
+      "bytes": 11339
+    },
+    {
+      "path": "skills/gtmos-leads-inbound-triage/SKILL.md",
+      "sha256": "9ba5e8fb1c2f3bc5d4cb57678882b96db8d5661ae01da487d795e5a4cfe7605d",
+      "bytes": 8906
+    },
+    {
+      "path": "skills/gtmos-leads-prospecting/SKILL.md",
+      "sha256": "c482d36df29197a6f617b4e2b6135fb76051d8aedbbbddb418d4cfa62abaa507",
+      "bytes": 22760
+    },
+    {
+      "path": "skills/gtmos-leads-prospecting/references/account-research.md",
+      "sha256": "cf09a7f41b4963d919dcdf96d659fe898a1ade5328ab481864419f6dd1d4bba9",
+      "bytes": 3771
+    },
+    {
+      "path": "skills/gtmos-leads-prospecting/references/apollo-prospect.md",
+      "sha256": "cc746c5675252c6585999b2c996ace1d49628059f31fae3f622d4bc3e269e7bc",
+      "bytes": 3832
+    },
+    {
+      "path": "skills/gtmos-leads-prospecting/references/b2b-prospecting.md",
+      "sha256": "b7a05da9d1584cc8d21432a43fe1ba802c4f9a6c601e3885d4117cc9d4d52f37",
+      "bytes": 4978
+    },
+    {
+      "path": "skills/gtmos-leads-prospecting/references/compliance.md",
+      "sha256": "b7f03614af776e90259f28cc1f484ce22a86c71ef35a1e5a4b9e24b6d89aecd4",
+      "bytes": 11065
+    },
+    {
+      "path": "skills/gtmos-leads-prospecting/references/data-sources.md",
+      "sha256": "2262f2172c285b98b1df73974d4cb441c8f835645b4d7ee21a340ff5df2a1182",
+      "bytes": 13456
+    },
+    {
+      "path": "skills/gtmos-leads-prospecting/references/demand-signals.md",
+      "sha256": "9ebcf0a8dceecfe960f59ea84183116cc510828645b37de66f2f920ec392c1cd",
+      "bytes": 10192
+    },
+    {
+      "path": "skills/gtmos-leads-prospecting/references/enrichment-playbook.md",
+      "sha256": "dcdb131d83e0a010fdbb572c828b621e9db10f96b6fafd891499683ed9a4a63c",
+      "bytes": 5290
+    },
+    {
+      "path": "skills/gtmos-leads-prospecting/references/local-prospecting.md",
+      "sha256": "1dd71471a3413d5b0a9d230b1e42ca95469c617285bf7e2abdfa463428367fc3",
+      "bytes": 8150
+    },
+    {
+      "path": "skills/gtmos-leads-prospecting/references/saas-prospecting.md",
+      "sha256": "18be53f055f3f8a2ca647dccc8d8d8d177a0df5820193463542f87fa4eeafcf8",
+      "bytes": 6045
+    },
+    {
+      "path": "skills/gtmos-leads-prospecting/references/signal-plays.md",
+      "sha256": "a10434290cb82a3d8cbccfb826b64999decc0079e54be33d1114ca8e7b150886",
+      "bytes": 8150
+    },
+    {
+      "path": "skills/gtmos-leads-prospecting/references/sourcing-and-enrichment.md",
+      "sha256": "d7f47cf69ee1e78bb21c50f2b0050460899f8e9e001c40261e08e38dd6fa9fbc",
+      "bytes": 6740
+    },
+    {
+      "path": "skills/gtmos-lifecycle-churn/SKILL.md",
+      "sha256": "41e9aa175e77df8debf0433eda297d34d73be54ca8915f29fc73d698566a3d16",
+      "bytes": 20815
+    },
+    {
+      "path": "skills/gtmos-lifecycle-churn/references/cancel-flow-patterns.md",
+      "sha256": "d64b9282b956da6831ec97a1fffda5841c5c43a71721b512b66b04bde104c139",
+      "bytes": 10650
+    },
+    {
+      "path": "skills/gtmos-lifecycle-churn/references/dunning-playbook.md",
+      "sha256": "24b96a01cfba174c9f3adde66d417e7282c0cf31789c2719e6bd37b8ad2ecf8c",
+      "bytes": 14061
+    },
+    {
+      "path": "skills/gtmos-lifecycle-email/SKILL.md",
+      "sha256": "375e06856c335be9e56d86cf1d33534882ec8f2755ebdd1aea4460e4f01eb94c",
+      "bytes": 13132
+    },
+    {
+      "path": "skills/gtmos-lifecycle-email/references/copy-guidelines.md",
+      "sha256": "02f08897e4aa99ecc4ec1893d61d0c26d0c5e62e09af26f175087455e9b68e01",
+      "bytes": 2332
+    },
+    {
+      "path": "skills/gtmos-lifecycle-email/references/email-types.md",
+      "sha256": "a5dd4f0555a7b21d2ff426948d15657825b9d16265652563f5e272d2e1879bfd",
+      "bytes": 14250
+    },
+    {
+      "path": "skills/gtmos-lifecycle-email/references/resend-email-best-practices.md",
+      "sha256": "24af17254c1f650004c9c703ec7cbd2a0c8103957266801236f031e7ed6a2e39",
+      "bytes": 6170
+    },
+    {
+      "path": "skills/gtmos-lifecycle-email/references/resend-email-best-practices/accessibility.md",
+      "sha256": "bda4563062562f60acaddae95d422e533f894b453eb2d41c5ce370e202e3bc47",
+      "bytes": 9546
+    },
+    {
+      "path": "skills/gtmos-lifecycle-email/references/resend-email-best-practices/compliance.md",
+      "sha256": "8e4e695118713593c0ddbf4ebeeebae1f5c1362d98e7884ea03930749f17ff42",
+      "bytes": 4236
+    },
+    {
+      "path": "skills/gtmos-lifecycle-email/references/resend-email-best-practices/deliverability.md",
+      "sha256": "f98bc3072c780deccf15fd128dcbd134663811264a3cec5c9fbb9c7d7ab7e503",
+      "bytes": 3420
+    },
+    {
+      "path": "skills/gtmos-lifecycle-email/references/resend-email-best-practices/email-capture.md",
+      "sha256": "231644ab8e24464aae1455a934b77ecfdffeaad2a17ef4ee1c84b80f118eb9f0",
+      "bytes": 3468
+    },
+    {
+      "path": "skills/gtmos-lifecycle-email/references/resend-email-best-practices/email-types.md",
+      "sha256": "f73a80274bfab6f356de35703c23e946941bf97f8d261a13f1bf3e2c3e71f3fc",
+      "bytes": 5815
+    },
+    {
+      "path": "skills/gtmos-lifecycle-email/references/resend-email-best-practices/list-management.md",
+      "sha256": "2578129410450a562e9f0ec3f26e69da24e8eb75255f63737b3c251ca58bd77b",
+      "bytes": 4608
+    },
+    {
+      "path": "skills/gtmos-lifecycle-email/references/resend-email-best-practices/marketing-emails.md",
+      "sha256": "6b05077c614f419b51e792638303ecd184c8c2ec7411b5c0667c3e7234869a05",
+      "bytes": 3313
+    },
+    {
+      "path": "skills/gtmos-lifecycle-email/references/resend-email-best-practices/sending-reliability.md",
+      "sha256": "732fe1d380c76411b70b4eb913d95d289c05bd25a7724897222ae7ae1e50962a",
+      "bytes": 4617
+    },
+    {
+      "path": "skills/gtmos-lifecycle-email/references/resend-email-best-practices/transactional-email-catalog.md",
+      "sha256": "31e8f776dadf2f0cf4a915752fd168b6d7be36b5d1cdc16f2d0efae74e21f9ee",
+      "bytes": 10338
+    },
+    {
+      "path": "skills/gtmos-lifecycle-email/references/resend-email-best-practices/transactional-emails.md",
+      "sha256": "c9b94a17aac6e11ad4d9209228f911e294abe65906ef35f409ffba5727ee7a47",
+      "bytes": 2489
+    },
+    {
+      "path": "skills/gtmos-lifecycle-email/references/resend-email-best-practices/webhooks-events.md",
+      "sha256": "fb135c1801dd3fd1b5a13c193ff54b0d4bc147226e3e70cddee779c17ed8086d",
+      "bytes": 4351
+    },
+    {
+      "path": "skills/gtmos-lifecycle-email/references/sequence-templates.md",
+      "sha256": "f8f318f10e29abcd009cbee29e2bd178981d96c973099b508d30af6c10ab8d79",
+      "bytes": 3909
+    },
+    {
+      "path": "skills/gtmos-lifecycle-renewal-radar/SKILL.md",
+      "sha256": "883719508a2743505cac0eb45faf36593919f810671ec18857f7eb817445a85f",
+      "bytes": 17264
+    },
+    {
+      "path": "skills/gtmos-looot/SKILL.md",
+      "sha256": "08191df80512c953b66602d1c4bf3de91a99e3f6c0ee61e7cc63d0f0da7e3316",
+      "bytes": 15177
+    },
+    {
+      "path": "skills/gtmos-marketing-cro/SKILL.md",
+      "sha256": "91adf6724f51e93e6b03c2da5aafe26916a6400b3c5fe234f4d627f29f894383",
+      "bytes": 8568
+    },
+    {
+      "path": "skills/gtmos-marketing-cro/references/experiments.md",
+      "sha256": "bbcc356c0af36cfaa4556bf9e929deac30c65cafb37f909d7c51d4777fe254ca",
+      "bytes": 7850
+    },
+    {
+      "path": "skills/gtmos-marketing-cro/references/form.md",
+      "sha256": "51a3536444e1886a0dccbf8f2549fb55e1a471a66920813bd3aa90c996ebf26e",
+      "bytes": 10419
+    },
+    {
+      "path": "skills/gtmos-marketing-launch/SKILL.md",
+      "sha256": "626bfb47051e44666fa763ff2368587a993202981a5b3eee47ad073be8c132f4",
+      "bytes": 17289
+    },
+    {
+      "path": "skills/gtmos-marketing-launch/references/shipped-changes.md",
+      "sha256": "f12758aab4f986802a30a4b49927d06bfaaa2f9ad1dc1dfb253ee7cab12a64a1",
+      "bytes": 4777
+    },
+    {
+      "path": "skills/gtmos-marketing-launch/references/site-launch-qa.md",
+      "sha256": "da8bfde785159a19622b19c2a8e2a2cc33b3a091f79d7ae1b643a16ed8830a15",
+      "bytes": 3808
+    },
+    {
+      "path": "skills/gtmos-marketing-lead-magnets/SKILL.md",
+      "sha256": "2ace22ec64f9b61d2b016a4e6df130153fc8c559a5878e6b5ba443b377c17c0b",
+      "bytes": 12933
+    },
+    {
+      "path": "skills/gtmos-marketing-lead-magnets/references/benchmarks.md",
+      "sha256": "becdf4bcde17e788ead10794c797294548c712ea1074e042336da93433a61187",
+      "bytes": 4234
+    },
+    {
+      "path": "skills/gtmos-marketing-lead-magnets/references/content-to-skill-corpus-design.md",
+      "sha256": "a6db00a8298b2ce52965c40b57c01120a0f9ff4caf5ca55ede81bc2f242bae56",
+      "bytes": 4993
+    },
+    {
+      "path": "skills/gtmos-marketing-lead-magnets/references/content-to-skill-release.md",
+      "sha256": "87bcc9218232b73b824e8cebac1e64deacffa755779ce2cc0db799c92873c891",
+      "bytes": 4792
+    },
+    {
+      "path": "skills/gtmos-marketing-lead-magnets/references/content-to-skill.md",
+      "sha256": "bfad8ab64a95f20ecb766ccd06e6cd10bd3fa0ce333d494016acf5c55e5b2a3e",
+      "bytes": 8435
+    },
+    {
+      "path": "skills/gtmos-marketing-lead-magnets/references/format-guide.md",
+      "sha256": "c42743c7b802f99edb9443b3d9b089a465c77e26c3d05fa48320b8a3ba06ec68",
+      "bytes": 5853
+    },
+    {
+      "path": "skills/gtmos-marketing-plan/SKILL.md",
+      "sha256": "c610e4bf395b85291696933daf3b6c3b27abb1b5c7fe99a3d25d3fed863936d2",
+      "bytes": 29706
+    },
+    {
+      "path": "skills/gtmos-marketing-plan/references/aarrr-framework.md",
+      "sha256": "5c7bf583c2aa62e193789b6b1a88a978bf3ba9dc0c8c6653b53f7f62c0c1a0e3",
+      "bytes": 10766
+    },
+    {
+      "path": "skills/gtmos-marketing-plan/references/budget-planning.md",
+      "sha256": "4351fa1712b66e3e527b71ec9a2e01a68edb43e77b6d310bb424756c6d1a17f7",
+      "bytes": 10265
+    },
+    {
+      "path": "skills/gtmos-marketing-plan/references/client-types.md",
+      "sha256": "a7e50774eb3d415d4d4030b9faee12700e8f986f623bc74283974fd453355c4a",
+      "bytes": 11998
+    },
+    {
+      "path": "skills/gtmos-marketing-plan/references/current-state-rubric.md",
+      "sha256": "8ab1d4a4d16ec01c2bf61d83807c0abd857aadd82f3eeaf4e4842b4bbeff1f03",
+      "bytes": 11656
+    },
+    {
+      "path": "skills/gtmos-marketing-plan/references/example-quietude.md",
+      "sha256": "ec449c6a5b0792f50e3b01387f3b1e2e50e53b04644cc3d6c1576bd8d934db5d",
+      "bytes": 70494
+    },
+    {
+      "path": "skills/gtmos-marketing-plan/references/funding-stage-unlocks.md",
+      "sha256": "49f073653ac32dd42b7e5e10c3deabd7adae8120c41baf0cf813ec20164c6488",
+      "bytes": 9797
+    },
+    {
+      "path": "skills/gtmos-marketing-plan/references/growth-patterns.md",
+      "sha256": "fafa84b8c3a62ed9c33c30fc25c7422e0d87b935de990d0acbf91889e1a053de",
+      "bytes": 13419
+    },
+    {
+      "path": "skills/gtmos-marketing-plan/references/idea-cross-reference.md",
+      "sha256": "86e69574ead127e017f4d01c92c2632ecc5003bf6d7551cd9651ffd76446444b",
+      "bytes": 13553
+    },
+    {
+      "path": "skills/gtmos-marketing-plan/references/market-sizing.md",
+      "sha256": "e991bf2f38948ea4e829c74fea83f367fbcacb4d6c2ca0f4ca89fc8b9fb2bc0e",
+      "bytes": 9820
+    },
+    {
+      "path": "skills/gtmos-marketing-plan/references/measurement-framework.md",
+      "sha256": "93d9bf9d9e624a6031a27ce61cf1617e3aa5a8fff57e1c6f80194f847234b745",
+      "bytes": 10845
+    },
+    {
+      "path": "skills/gtmos-marketing-plan/references/methodology.md",
+      "sha256": "a4b7818ea57f2cda920a09dc5f91e878f91d9301c3f896e7b105fa42d5f88322",
+      "bytes": 16811
+    },
+    {
+      "path": "skills/gtmos-marketing-plan/references/ops-stack-mapping.md",
+      "sha256": "25c2be53199386bc6bc79b0c78582009feb756f7699ec72e82cc1d8d3081c9e4",
+      "bytes": 12937
+    },
+    {
+      "path": "skills/gtmos-marketing-plan/references/plan-template.md",
+      "sha256": "9c3d3bb4c3ca431d7f5655f0998583200c444f23fc60bbb9bdb8e398e70c44a0",
+      "bytes": 19156
+    },
+    {
+      "path": "skills/gtmos-marketing-plan/references/team-and-agency-model.md",
+      "sha256": "0c5e55c0992de4d5d24cd299eb46765a8986cb204ebd7c65bce32c868ae0d5f7",
+      "bytes": 14537
+    },
+    {
+      "path": "skills/gtmos-marketing-positioning/SKILL.md",
+      "sha256": "f368774f82a9e6d1e9f0cda1ed6d45a474ecad05486bbc22f1362cfcc4c76729",
+      "bytes": 18356
+    },
+    {
+      "path": "skills/gtmos-marketing-positioning/references/brand-voice.md",
+      "sha256": "938b57ca041efc9c74dd11c8e4a2279c754aa17cfafc569a4c4886f861a615b1",
+      "bytes": 8388
+    },
+    {
+      "path": "skills/gtmos-onboarding/SKILL.md",
+      "sha256": "0822a990e5b7dea593a5154205da02d2bf9c1877d4a7f18f3a38ade5ee177699",
+      "bytes": 37920
+    },
+    {
+      "path": "skills/gtmos-ops-marketing-loops/SKILL.md",
+      "sha256": "0e172892cbf5802b98280a38dab939b075b1b0b87a10139a0e2d5d3c13002fd5",
+      "bytes": 11727
+    },
+    {
+      "path": "skills/gtmos-ops-marketing-loops/references/loop-catalog.md",
+      "sha256": "029298a9e060fce7e88f48adac0dc164846c4161d2eee9841787935ca6ab5bf1",
+      "bytes": 64764
+    },
+    {
+      "path": "skills/gtmos-ops-marketing-loops/references/loop-guardrails.md",
+      "sha256": "a93cdb67d28773d72e789c937a26f3062129c8a0076018ac24269d52e7a31e46",
+      "bytes": 4998
+    },
+    {
+      "path": "skills/gtmos-ops-marketing-loops/references/loop-orchestration.md",
+      "sha256": "3bfea32fe8b7be2d8972c3565864b2c7fcee2681ac4bbcad93d5ff0baf49cb92",
+      "bytes": 5317
+    },
+    {
+      "path": "skills/gtmos-ops-marketing-loops/references/loop-state.md",
+      "sha256": "858de8e7bc7ae8509353d0f6edc2ba8cee65238601081a7bbd769943deae01a2",
+      "bytes": 5878
+    },
+    {
+      "path": "skills/gtmos-ops-marketing-loops/references/loop-template.md",
+      "sha256": "695fde57b9b0735e49b5fc718b0e8eb726808c08b19bea89056f8913cf1bff26",
+      "bytes": 5122
+    },
+    {
+      "path": "skills/gtmos-ops-marketing-loops/references/outbound-operator.md",
+      "sha256": "113fae79e0852c68b929cae8711c05f9e5e53abfdfa3828553cdd1626e2d4fce",
+      "bytes": 5001
+    },
+    {
+      "path": "skills/gtmos-ops-marketing-loops/references/seo-operator.md",
+      "sha256": "4a09b0ba09cafa1794e089bd73f5be8fe6975ce1d6d892d8098bd29fe4f30917",
+      "bytes": 8383
+    },
+    {
+      "path": "skills/gtmos-outreach-cold-email/SKILL.md",
+      "sha256": "796e3890807fd8fc83873e071301baeba476757f1474ad55c6955134d1cd6885",
+      "bytes": 16173
+    },
+    {
+      "path": "skills/gtmos-outreach-cold-email/references/benchmarks.md",
+      "sha256": "f69fd26e8c9a4e61d3d74368e3e8dae5e737f5a05ffb49f6b13f724a2aef49e5",
+      "bytes": 6411
+    },
+    {
+      "path": "skills/gtmos-outreach-cold-email/references/deliverability.md",
+      "sha256": "dccb53b0ea4462139b642f44a748ea74ab6f034801fd8b4de599dc2f10287021",
+      "bytes": 7833
+    },
+    {
+      "path": "skills/gtmos-outreach-cold-email/references/follow-up-sequences.md",
+      "sha256": "5be46bdff5abb83005bbd2a3f7789e545b64fb318d61af4fa5d654ba63b17b4e",
+      "bytes": 3863
+    },
+    {
+      "path": "skills/gtmos-outreach-cold-email/references/frameworks.md",
+      "sha256": "067c1f5ef701932193f1421b903c5d285ffe9845d2488f9cb4691ca36e513d3b",
+      "bytes": 5387
+    },
+    {
+      "path": "skills/gtmos-outreach-cold-email/references/instantly-sequence-writer.md",
+      "sha256": "5bfc2ace691cddc7e7bb09839210f22b57e45e560473aee363a4633f17bf61a9",
+      "bytes": 8959
+    },
+    {
+      "path": "skills/gtmos-outreach-cold-email/references/linkedin-outreach.md",
+      "sha256": "c95ba4c785bafccfffd98c6d850c20ea674cac1b18fa817d3f4dce23ed159ba5",
+      "bytes": 5750
+    },
+    {
+      "path": "skills/gtmos-outreach-cold-email/references/multichannel-cadence.md",
+      "sha256": "3189071b3afb7dfbd480d2e5c9835867e757fa1cad783b2e7c3f63da3ffe1e76",
+      "bytes": 5481
+    },
+    {
+      "path": "skills/gtmos-outreach-cold-email/references/outbound-plays.md",
+      "sha256": "d48f43c90b811b1124f2cd23447854a62196c9fce45248662eaede722542f44f",
+      "bytes": 6113
+    },
+    {
+      "path": "skills/gtmos-outreach-cold-email/references/personalization.md",
+      "sha256": "9d5368645025aa632316b3c7de999762e2f8743fb54aae0b59adfa011b212c5a",
+      "bytes": 5238
+    },
+    {
+      "path": "skills/gtmos-outreach-cold-email/references/reply-handling.md",
+      "sha256": "fa2a5e020a0206ffba29093b54bd7977ebe6d3e34a6ae323b34ce86ce1604da4",
+      "bytes": 4648
+    },
+    {
+      "path": "skills/gtmos-outreach-cold-email/references/subject-lines.md",
+      "sha256": "f71f31b1151d972bb19ff03791ffb9d24941a8ccea8b913e5a5c7aca439b45ce",
+      "bytes": 3015
+    },
+    {
+      "path": "skills/gtmos-research-account/SKILL.md",
+      "sha256": "c92ea62fe134e5053fb91a30bdd5cce27e8431ebbf2ce66b5703ea65aef61bc3",
+      "bytes": 11891
+    },
+    {
+      "path": "skills/gtmos-research-account/references/research-recipe.md",
+      "sha256": "21b40d9ab0024991e0c6dfc8374106f12f7209e86e8aec05d723e6d92eda766c",
+      "bytes": 5134
+    },
+    {
+      "path": "skills/gtmos-research-competitor/SKILL.md",
+      "sha256": "89047785f39b73973da300e87a7c02121dbdb840ce2630872cd8e3c607a59960",
+      "bytes": 19650
+    },
+    {
+      "path": "skills/gtmos-research-competitor/references/templates.md",
+      "sha256": "710d78cb519012eb7e39f63643e22d7b9026c91c569262b44c45535c10717a91",
+      "bytes": 4668
+    },
+    {
+      "path": "skills/gtmos-research-competitor/references/tool-reference.md",
+      "sha256": "fda64910bc1b3a2bc7df21c15701220849b4b79a58a51f9d3ccae1b7311dbd79",
+      "bytes": 13132
+    },
+    {
+      "path": "skills/gtmos-research-customer/SKILL.md",
+      "sha256": "e5d9093d291ad235ed5cc3c2df6e3ed4759b1853b355647724d455e029968278",
+      "bytes": 16906
+    },
+    {
+      "path": "skills/gtmos-research-customer/references/interviews-and-surveys.md",
+      "sha256": "56adecdc40af1242464937100349fc1a161627394909551720494bc5ee537076",
+      "bytes": 8640
+    },
+    {
+      "path": "skills/gtmos-research-customer/references/source-guides.md",
+      "sha256": "7490a8d04f209d4c8c987530e79d0883a6b42027b86a920fc751cf8ea9904892",
+      "bytes": 16240
+    },
+    {
+      "path": "skills/gtmos-revops-lifecycle/SKILL.md",
+      "sha256": "e66c377b143a73d8ca85d8325146d3e7812a4da06b39bdbb90104a777af47a06",
+      "bytes": 17318
+    },
+    {
+      "path": "skills/gtmos-revops-lifecycle/references/automation-playbooks.md",
+      "sha256": "a49dfd46a75092895ee5f28c89cb0bdad1afc3ec6c76d9ff200abc7babeb349a",
+      "bytes": 10905
+    },
+    {
+      "path": "skills/gtmos-revops-lifecycle/references/inbound-routing.md",
+      "sha256": "d177d982745142231b9ad1df715817d91cd5198dac52826902843079403105ff",
+      "bytes": 4642
+    },
+    {
+      "path": "skills/gtmos-revops-lifecycle/references/lifecycle-definitions.md",
+      "sha256": "89b5c51f0296977df1fccea20dc96e98e539cc1f2786b796fdb43e2a3d5b8219",
+      "bytes": 9167
+    },
+    {
+      "path": "skills/gtmos-revops-lifecycle/references/routing-rules.md",
+      "sha256": "9057c207550ff289e84d6b25ca9d38b436c98a517e0aa4f30c2ff8f09f5d8370",
+      "bytes": 6792
+    },
+    {
+      "path": "skills/gtmos-revops-lifecycle/references/scoring-models.md",
+      "sha256": "683653208039ffceef2c72b3c070c86744fe1407ac2c27483e8e3ccdbd4262a9",
+      "bytes": 10678
+    },
+    {
+      "path": "skills/gtmos-routing-lead-ownership/SKILL.md",
+      "sha256": "04f215e5a127c5ad150ad024408539e00a52f4ce52708b9bb66b6f6cf2618dcc",
+      "bytes": 8420
+    },
+    {
+      "path": "skills/gtmos-routing-lead-ownership/references/hubspot-team-ownership.md",
+      "sha256": "240de4c5f939f1229a17636239f6b6a428ac571cf3ec0a5da15d9fd6902520f5",
+      "bytes": 5090
+    },
+    {
+      "path": "skills/gtmos-routing-lead-ownership/references/zapier-no-lead-left-behind-lead-treatment-audit.md",
+      "sha256": "431e8853141166403003704eb76ccff496a32e921af0ddd62de859543fc7a022",
+      "bytes": 1671
+    },
+    {
+      "path": "skills/gtmos-sales-call-prep/SKILL.md",
+      "sha256": "e01c234997f89026f979d9c3146722fe5936b1ec5e60659c248724ba2a4d7a58",
+      "bytes": 12063
+    },
+    {
+      "path": "skills/gtmos-sales-enablement/SKILL.md",
+      "sha256": "d1a698eb9f349e576bae2eab6bcfe1499a1c5e29714aa6e93b37864aea83da1c",
+      "bytes": 23299
+    },
+    {
+      "path": "skills/gtmos-sales-enablement/references/cold-call-scripts.md",
+      "sha256": "cc4e3248070804539f8c1de01fd63918d8e40a6ad858dea2a519d50a060e268f",
+      "bytes": 4133
+    },
+    {
+      "path": "skills/gtmos-sales-enablement/references/deck-frameworks.md",
+      "sha256": "265eea6c1b358d10f2dd22fd987789a9d115c14d30bf77a9086734ac60659336",
+      "bytes": 7730
+    },
+    {
+      "path": "skills/gtmos-sales-enablement/references/demo-scripts.md",
+      "sha256": "505616ebf73d30fe84a844540727ab8f3aeae29ebcda8c8ace28a18ada003da3",
+      "bytes": 11769
+    },
+    {
+      "path": "skills/gtmos-sales-enablement/references/objection-library.md",
+      "sha256": "e0cdfeffc41afbdbe2c014bcd9b3c024318eac9bd23159e871ec796aba29e0b2",
+      "bytes": 13393
+    },
+    {
+      "path": "skills/gtmos-sales-enablement/references/one-pager-templates.md",
+      "sha256": "2197326faff4ede03fb40e332e9c80a4e084d8efd48c74df8720d70817ac5ded",
+      "bytes": 5823
+    },
+    {
+      "path": "skills/gtmos-sales-enablement/references/salesforce-handle-objection.md",
+      "sha256": "345a5f4ea1b8d81bfb4ed72470e7382a504365abebf0462a8460d54daf2c0e82",
+      "bytes": 2795
+    },
+    {
+      "path": "skills/gtmos-sales-enablement/references/win-loss-analysis.md",
+      "sha256": "f6f34c503f4cc506a8f24bfea6e75b260e3eff661da206399e162960141f090a",
+      "bytes": 4299
+    },
+    {
+      "path": "skills/gtmos-sales-follow-up/SKILL.md",
+      "sha256": "c3cf7504781165ceec70cab23fce49b80a73da7968f1ca835d9ffe53751103bf",
+      "bytes": 13038
+    },
+    {
+      "path": "skills/gtmos-sales-win-loss/SKILL.md",
+      "sha256": "026281e82fe4ced4374a6aa060965ae7fed06f8bf9ecc81c041cb319b9dbfa47",
+      "bytes": 11231
+    },
+    {
+      "path": "skills/gtmos-score-icp/SKILL.md",
+      "sha256": "0128e6aa9c3580575451b7dd295e0440a5b59da147c901fd3d3a847265d20cdb",
+      "bytes": 22871
+    },
+    {
+      "path": "skills/gtmos-score-icp/references/clay-icp-matrix-builder.md",
+      "sha256": "c5b1c650ee08a987cc0cfc4de92065f613dec8501c04732b7724d8fe01f78672",
+      "bytes": 16107
+    },
+    {
+      "path": "skills/gtmos-score-icp/references/clay-icp-matrix-builder/field-vocabulary.md",
+      "sha256": "d8c035ea272b9300ac53a37b8a243478898800d291a1eb7389c11d041b58fc4c",
+      "bytes": 9341
+    },
+    {
+      "path": "skills/gtmos-seo-audit/SKILL.md",
+      "sha256": "1cf16edf71bd079305f9dae6dd5b1ba506091f880eb85f770112958b2b51a493",
+      "bytes": 15143
+    },
+    {
+      "path": "skills/gtmos-seo-audit/references/corey-seo-audit.md",
+      "sha256": "29d8d1e14e3dc92e561c0cc0d947d0d39d71f3fcfd9b0d0e67787d09de17a331",
+      "bytes": 17864
+    },
+    {
+      "path": "skills/gtmos-seo-audit/references/corey-seo-audit/ai-writing-detection.md",
+      "sha256": "f1e273f56ce7e2215ff218bf903680ddcec0fd026ab90c3ebfb3439ed0edfaa4",
+      "bytes": 6528
+    },
+    {
+      "path": "skills/gtmos-seo-audit/references/corey-seo-audit/international-seo.md",
+      "sha256": "0603022cca968acf7889fc224221aa0e70955ba64355bc18b06f7e86b32f45e5",
+      "bytes": 14898
+    },
+    {
+      "path": "skills/gtmos-seo-audit/references/corey-seo-audit/local-seo-pages-and-measurement.md",
+      "sha256": "20607ef91c4b8b37346f42130a6f51ed4ce64dc2731b6e1328b5b14f16917fe3",
+      "bytes": 4036
+    },
+    {
+      "path": "skills/gtmos-seo-audit/references/corey-seo-audit/local-seo-profile-and-citations.md",
+      "sha256": "83b1b63eb6083e7aab1f56c4928335ea2a235e837861a9e9e8043b6af162a1f3",
+      "bytes": 3971
+    },
+    {
+      "path": "skills/gtmos-seo-audit/references/corey-seo-audit/local-seo.md",
+      "sha256": "d2666d9c225bc36f9737ce612894abbe7e263b5974e2db7c1efc50f6010bb376",
+      "bytes": 7249
+    },
+    {
+      "path": "skills/gtmos-seo-audit/references/corey-seo-audit/rankings-push.md",
+      "sha256": "c21d6d4f9faf7ce5b1dc0f8bd508e7513967492fcd8ed9510a175ce243daf8c8",
+      "bytes": 4509
+    },
+    {
+      "path": "skills/gtmos-seo-audit/references/corey-seo-audit/title-tags.md",
+      "sha256": "c40b3c6af3600ca15670db8eb81000c7ca6fa25265a6550ccc630f53db3fcf51",
+      "bytes": 5533
+    },
+    {
+      "path": "skills/gtmos-seo-audit/references/semrush-technical-seo-audit.md",
+      "sha256": "c4abab203e898fe8c342e670adcec2efb0b8c691a0e663066f57c4a8111b1313",
+      "bytes": 13477
+    },
+    {
+      "path": "skills/gtmos-seo-audit/references/seo-seo-technical.md",
+      "sha256": "dfad51143f296c708b7e8b5f732e91c3cffe58623f1877a19165228be5ebed90",
+      "bytes": 18891
+    },
+    {
+      "path": "skills/gtmos-seo-audit/references/seo-seo-technical/stack-cve-exposure.md",
+      "sha256": "a43a0fe140bdf0de1fd0cf9cd79e5349ed29e3c33dac336842f3645dde61cbd3",
+      "bytes": 5263
+    },
+    {
+      "path": "skills/gtmos-seo-backlinks/SKILL.md",
+      "sha256": "3b70beef28bd34957ea000cb5c3d75d5be024e62adf92316b35dfd1e4ab1b91a",
+      "bytes": 17520
+    },
+    {
+      "path": "skills/gtmos-seo-backlinks/references/backlink-quality.md",
+      "sha256": "86a39d009b19f4f17a3dc4461afe209111dc2e8df56b6bd3eecedf5b4a03f742",
+      "bytes": 3491
+    },
+    {
+      "path": "skills/gtmos-seo-backlinks/references/corey-link-building.md",
+      "sha256": "bd915a85eda8e6d6b5f524e4b08a1b37b666c9b89e1b771467686cbf7002c975",
+      "bytes": 13935
+    },
+    {
+      "path": "skills/gtmos-seo-backlinks/references/corey-link-building/prospecting-and-outreach.md",
+      "sha256": "ecd8f2150b2eae992d8b520d98239cc894d05d3856e6f92a0cf1df27ffdef380",
+      "bytes": 4530
+    },
+    {
+      "path": "skills/gtmos-seo-backlinks/references/corey-link-building/risk-policy.md",
+      "sha256": "e4e1b74c1e7c782f0c24b4ef0c68acd5969ecb5e5fb3b66840f665d414e1d3a1",
+      "bytes": 4672
+    },
+    {
+      "path": "skills/gtmos-seo-backlinks/references/corey-link-building/tactics.md",
+      "sha256": "a03af97971dbfcf92000fd4c9c874e9a2af6e035ef135390b0dedfbc620487fc",
+      "bytes": 7212
+    },
+    {
+      "path": "skills/gtmos-seo-backlinks/references/semrush-backlink-audit.md",
+      "sha256": "8e053c47b31a0ad0e96c07401b81c483f57b29e0b445b3708c3f8f5e96e44067",
+      "bytes": 12250
+    },
+    {
+      "path": "skills/gtmos-seo-competitor-pages/SKILL.md",
+      "sha256": "3975945abe38724ff77f2631f380643e3212095bbe59e032fe548c4f8c487135",
+      "bytes": 16606
+    },
+    {
+      "path": "skills/gtmos-seo-competitor-pages/references/content-architecture.md",
+      "sha256": "a008d1d83549af7de06450508687e8a520dfd94b85bd0e8e05ab6235210296bb",
+      "bytes": 7671
+    },
+    {
+      "path": "skills/gtmos-seo-competitor-pages/references/seo-seo-competitor-pages.md",
+      "sha256": "5e259be91dfd1ef11da7146061a4094a56262e8dd4657966bee089c0f4f951e6",
+      "bytes": 8028
+    },
+    {
+      "path": "skills/gtmos-seo-competitor-pages/references/templates.md",
+      "sha256": "138f4367a45fc9cc775f9fd67324f8a6f1e1f5c3c1a90bd952db4731f080844f",
+      "bytes": 5649
+    },
+    {
+      "path": "skills/gtmos-seo-content-brief/SKILL.md",
+      "sha256": "68c5d033ca3f313e5b42b3896f58a56f1f31a50bb5622e50b1b4aa3e12d74613",
+      "bytes": 13712
+    },
+    {
+      "path": "skills/gtmos-seo-content-brief/references/excluded-domains.md",
+      "sha256": "17b3fb0c9f0cd979c949d54a3e88eb7b39b5d3514baaaa0560022b16c3ed32b8",
+      "bytes": 2881
+    },
+    {
+      "path": "skills/gtmos-seo-content-brief/references/keyword-density.md",
+      "sha256": "965607f9e79bb472d789485e312faa694a4ab12bd5506af9a073e00e3e84578d",
+      "bytes": 3448
+    },
+    {
+      "path": "skills/gtmos-seo-content-brief/references/page-type-templates.md",
+      "sha256": "ac638c16ee6ef871d07d8d8172e23a491e11e5e9734f5a5f9ac070631156fd6d",
+      "bytes": 7174
+    },
+    {
+      "path": "skills/gtmos-seo-content-brief/references/semrush-content-brief.md",
+      "sha256": "33da31d983fe089122993418c6dbccab6431bb88967f16e5bbbc22faf1e294ac",
+      "bytes": 20182
+    },
+    {
+      "path": "skills/gtmos-seo-drift/SKILL.md",
+      "sha256": "2ce923093315a603252371a36160f4318167cff57bdb66878e6902c4a33230b6",
+      "bytes": 9157
+    },
+    {
+      "path": "skills/gtmos-seo-drift/references/comparison-rules.md",
+      "sha256": "fb6b248ca2599a01103d2a0f1bda677fc4fe4c0653fee162cf053c51f110a293",
+      "bytes": 5626
+    },
+    {
+      "path": "skills/gtmos-seo-engine/SKILL.md",
+      "sha256": "25e1de9628195d7fa9ecd17d06cb245de400868ab894d8540632ddbbe44efd2d",
+      "bytes": 13251
+    },
+    {
+      "path": "skills/gtmos-seo-engine/references/backlink-quality.md",
+      "sha256": "86a39d009b19f4f17a3dc4461afe209111dc2e8df56b6bd3eecedf5b4a03f742",
+      "bytes": 3491
+    },
+    {
+      "path": "skills/gtmos-seo-engine/references/cwv-thresholds.md",
+      "sha256": "7a12b64c510a102c5bb65f0be88fba04562a4a926095cc3965a2403e525ea889",
+      "bytes": 7657
+    },
+    {
+      "path": "skills/gtmos-seo-engine/references/eeat-framework.md",
+      "sha256": "7d1f45cc9f42e9208c936af9e0d57dbdf29e52e733b5a8bed6eb65fa19475972",
+      "bytes": 7400
+    },
+    {
+      "path": "skills/gtmos-seo-engine/references/eeat-scoring-guide.md",
+      "sha256": "da90342f0c97af529345d7824147c0a19c1a20de57d1470150c8838f5c445228",
+      "bytes": 1519
+    },
+    {
+      "path": "skills/gtmos-seo-engine/references/free-backlink-sources.md",
+      "sha256": "acb1af3da1825663f495560dd8336671d990655f916a678b850b729e9e9f2e05",
+      "bytes": 6298
+    },
+    {
+      "path": "skills/gtmos-seo-engine/references/local-schema-multilocation.md",
+      "sha256": "15fcdea286dde09d6e2633973d67f5040b6dadabf92b8e2f3855f2e301da5524",
+      "bytes": 1466
+    },
+    {
+      "path": "skills/gtmos-seo-engine/references/local-schema-types.md",
+      "sha256": "65f4e35e065afb7af24ac130f39f23e536e9ca3268ab81447f34fde143407d4e",
+      "bytes": 8214
+    },
+    {
+      "path": "skills/gtmos-seo-engine/references/local-search-behavior.md",
+      "sha256": "f7870f17345a7d57e9d42b77ec85834f9aedc5ac5b54da57409e3f77f7fd47ba",
+      "bytes": 2874
+    },
+    {
+      "path": "skills/gtmos-seo-engine/references/local-seo-signals.md",
+      "sha256": "a0fd5c9ad9160e076002d8b6d6c904e5e98cae62aa79e6c6b0ecb5c9401f6bae",
+      "bytes": 7935
+    },
+    {
+      "path": "skills/gtmos-seo-engine/references/quality-gates.md",
+      "sha256": "31be2974f710c887ba359e7158f20129e25630c404eb3a0d6852d0f063505ee0",
+      "bytes": 6062
+    },
+    {
+      "path": "skills/gtmos-seo-engine/references/schema-types.md",
+      "sha256": "b815e9b26e70c86bdaf1318d47a0fa408c34548ed4f8a5688759ce4c114e96f9",
+      "bytes": 9405
+    },
+    {
+      "path": "skills/gtmos-seo-engine/references/thinking-framework-validate-act.md",
+      "sha256": "934d6c02e4d7ce380c8a8baad503bb18f2b93511a0fd7c0c6b688b3c0e842cf0",
+      "bytes": 3076
+    },
+    {
+      "path": "skills/gtmos-seo-engine/references/thinking-framework.md",
+      "sha256": "998c8b7a255d50caf495a8328e6107bbe74cea1d6b7bf9b9873d62148726830d",
+      "bytes": 6883
+    },
+    {
+      "path": "skills/gtmos-seo-geo/SKILL.md",
+      "sha256": "f297b222f99c879ff9d7e7e1ce6781b899af50e478debb340a3df1aafcb2b688",
+      "bytes": 39561
+    },
+    {
+      "path": "skills/gtmos-seo-geo/references/agent-defaults.md",
+      "sha256": "4f009f323b381553961914bf7d67755ee3c178dd10f1570f61fe306cd0054b21",
+      "bytes": 9344
+    },
+    {
+      "path": "skills/gtmos-seo-geo/references/agent-readiness.md",
+      "sha256": "1f9b3e4646c6d50a17b6b5b34ca22b868518266f23664de3132cf519c72d7a9a",
+      "bytes": 8425
+    },
+    {
+      "path": "skills/gtmos-seo-geo/references/ai-attribution.md",
+      "sha256": "accaf004e50fd92d16e5e1b57ce0aa5f5c0f88d1ba7bb2ce6939de29fe3e1728",
+      "bytes": 4302
+    },
+    {
+      "path": "skills/gtmos-seo-geo/references/answer-accuracy.md",
+      "sha256": "9c9115a720c6891fc7e0122d465ed38643170b026fa461de5971feb642f0da57",
+      "bytes": 5705
+    },
+    {
+      "path": "skills/gtmos-seo-geo/references/citations-vs-recommendations.md",
+      "sha256": "90adc950592b24d8ebd46460ef7ada6a2c4df0f4e4752903c93341cbe182b919",
+      "bytes": 12839
+    },
+    {
+      "path": "skills/gtmos-seo-geo/references/content-patterns.md",
+      "sha256": "2aa584f93587c322f08697f2eedcb6b48fd79bccb75d1f0ae2072dfcc8c7c684",
+      "bytes": 12949
+    },
+    {
+      "path": "skills/gtmos-seo-geo/references/content-types.md",
+      "sha256": "2323104990cb3057f3ce135c2b7bac71e5369992d5aeb24cec009c8f6d841d0b",
+      "bytes": 3558
+    },
+    {
+      "path": "skills/gtmos-seo-geo/references/format-volatility.md",
+      "sha256": "235858ee4d820dd0b89d3c7ffc65f4f59c7904f63feef7d2fff78cc6818caddf",
+      "bytes": 7269
+    },
+    {
+      "path": "skills/gtmos-seo-geo/references/linkedin-ai-citations.md",
+      "sha256": "2bd191703b543fc5f3ae36f5e367ed6d5504ad38e7446797cd3c5fe23ababd4b",
+      "bytes": 8747
+    },
+    {
+      "path": "skills/gtmos-seo-geo/references/multilingual-and-commerce.md",
+      "sha256": "5d65db4b85c9c257f4d052a9b3b65bb2f72af140076e2b2dc4cf7dd34d111057",
+      "bytes": 4880
+    },
+    {
+      "path": "skills/gtmos-seo-geo/references/okf.md",
+      "sha256": "4abcab5b8ee90b63c5d09c98387a8ec3cdb8f5df33e75d3b4b91eb817283bfd8",
+      "bytes": 5952
+    },
+    {
+      "path": "skills/gtmos-seo-geo/references/platform-ranking-factors.md",
+      "sha256": "39ecaf6af6ee819008b47aa852444ad532baeafb4854086285318032ecde9693",
+      "bytes": 16102
+    },
+    {
+      "path": "skills/gtmos-seo-geo/references/positioning-and-consensus.md",
+      "sha256": "b7618247e57a4560c3785155c34de77adc232784b7dd91b2c44a77a73617b9b4",
+      "bytes": 7283
+    },
+    {
+      "path": "skills/gtmos-seo-geo/references/prompt-portfolio.md",
+      "sha256": "11708d2315ef3a6df1fc1de6df8700d6229f7121479835784889f77548c7c12e",
+      "bytes": 6326
+    },
+    {
+      "path": "skills/gtmos-seo-geo/references/seo-seo-geo.md",
+      "sha256": "9ecff53b5b21318fa1bc7498260b4c2d54fb9f1c9266fca9840b90f4c476bfe8",
+      "bytes": 22467
+    },
+    {
+      "path": "skills/gtmos-seo-geo/references/seo-seo-geo/google-ai-optimization-guide.md",
+      "sha256": "909bd44c8c7d3a14c839d41e1218ddad1d4644c6089af79a182aab9030987479",
+      "bytes": 7009
+    },
+    {
+      "path": "skills/gtmos-seo-geo/references/seo-seo-geo/llmstxt-evidence.md",
+      "sha256": "6cc60538738ddabdb6da0657d43cd187d63f377140a3d4deed52dac634c344a1",
+      "bytes": 3308
+    },
+    {
+      "path": "skills/gtmos-seo-geo/references/seranking-seo-ai-search-share-of-voice.md",
+      "sha256": "92528f1cec6037eb1dec55b563b27bc2011b0f6a2b61e0bdc6f50ccce236bf73",
+      "bytes": 4624
+    },
+    {
+      "path": "skills/gtmos-seo-geo/references/youtube-ai-citations.md",
+      "sha256": "eee24cd9f377db5f59933c775a740f5ff7ece9f238b051157ba72531d9507a99",
+      "bytes": 4478
+    },
+    {
+      "path": "skills/gtmos-seo-keyword-clusters/SKILL.md",
+      "sha256": "3774db0f25cf9a2d359b7ae4087191431a5117ac2b613af119bb53ba1312e913",
+      "bytes": 16749
+    },
+    {
+      "path": "skills/gtmos-seo-keyword-clusters/references/execution-workflow.md",
+      "sha256": "7e5e067689a2ebe82d0a949a4b9b9c6568fc283e31a6b6e928fbb7677438f0db",
+      "bytes": 6455
+    },
+    {
+      "path": "skills/gtmos-seo-keyword-clusters/references/hub-spoke-architecture.md",
+      "sha256": "62eb0dca4de7e738a7981b167af629e939a8c00f9d70a4c23703b1f76acd0404",
+      "bytes": 6231
+    },
+    {
+      "path": "skills/gtmos-seo-keyword-clusters/references/seranking-seo-keyword-cluster.md",
+      "sha256": "a39b1463ab69c5d8c7456c44c0c337abd8bd864eed0283d18cb1a62e6e692455",
+      "bytes": 9918
+    },
+    {
+      "path": "skills/gtmos-seo-keyword-clusters/references/seranking-seo-keyword-cluster/serp-overlap-methodology.md",
+      "sha256": "9714d96f31ccdcc50f9a6410980d69d3fde12a86bdfd54d7009cb8ac0911b688",
+      "bytes": 6311
+    },
+    {
+      "path": "skills/gtmos-seo-keyword-clusters/references/serp-overlap-methodology.md",
+      "sha256": "a0c02dcd394a0cfe4636c02ce03da4ff58dc68b6f55ee0b3b9e36e10f20f7662",
+      "bytes": 4514
+    },
+    {
+      "path": "skills/gtmos-seo-keyword-research/SKILL.md",
+      "sha256": "cb5d4e4226a3a506e62c6a1421d8889815ac77e9a4dc9fc79052f0d377f3f3da",
+      "bytes": 23578
+    },
+    {
+      "path": "skills/gtmos-seo-page/SKILL.md",
+      "sha256": "deb178bbe0107a7a7745cd6e15c8124fd968882c0bf804b521e2ab27ea9e457c",
+      "bytes": 8126
+    },
+    {
+      "path": "skills/gtmos-seo-page/references/seo-seo-content.md",
+      "sha256": "c9702eb8e43310dacb357e3588798ce13586efbcb850adcdf5e61c17a0464fe2",
+      "bytes": 13086
+    },
+    {
+      "path": "skills/gtmos-seo-plan/SKILL.md",
+      "sha256": "7194d2395903b14ca6726c105e52670da2cb822ab9bc061135ec0d0c353db68d",
+      "bytes": 7146
+    },
+    {
+      "path": "skills/gtmos-seo-programmatic/SKILL.md",
+      "sha256": "1b21128494a3e147f36758cb1c51973b5b5b291be027c9fd0963226f4c593304",
+      "bytes": 12315
+    },
+    {
+      "path": "skills/gtmos-seo-programmatic/references/implementation-platforms.md",
+      "sha256": "27d86221387e0880768164d4d03513c85a594d11d12c7a6dd93ac17881c131e2",
+      "bytes": 5617
+    },
+    {
+      "path": "skills/gtmos-seo-programmatic/references/playbooks.md",
+      "sha256": "b2b3fd7c58c686f0670b94cf7192ff79436ccf0d602650b33a83a9d01102f11d",
+      "bytes": 8304
+    },
+    {
+      "path": "skills/gtmos-seo-programmatic/references/seo-seo-programmatic.md",
+      "sha256": "feeeb68ae05a648ed175aad5653c961ee42930682265a96b8a730de54c5cdd55",
+      "bytes": 10064
+    },
+    {
+      "path": "skills/gtmos-seo-schema/SKILL.md",
+      "sha256": "3d4d8bc0620a23bb38d01c031b3d8de5a5cd87d04537503b1fce4343a6c2bf6a",
+      "bytes": 12641
+    },
+    {
+      "path": "skills/gtmos-seo-schema/references/corey-schema.md",
+      "sha256": "c0aa5d357d3c555d6ca0345da6bd1ee226db5e5d264573268e0204c637a54a1c",
+      "bytes": 7033
+    },
+    {
+      "path": "skills/gtmos-seo-schema/references/corey-schema/schema-examples.md",
+      "sha256": "9b093bce816fac8494c8ccfd588eeb0c00e1308fe99bb46388ff222664ed94be",
+      "bytes": 9298
+    },
+    {
+      "path": "skills/gtmos-seo-schema/references/deprecated-types-2024-2026.md",
+      "sha256": "a8e0deb70032e8807182d64d407822acbc24946154d29b3551312340f7e1a6f9",
+      "bytes": 5109
+    },
+    {
+      "path": "skills/gtmos-seo-schema/references/schema-templates.json",
+      "sha256": "4bb417070cd51d0a5d91d54cda1af52bd88742bd868adfe2654e088d07fdda13",
+      "bytes": 9737
+    },
+    {
+      "path": "skills/gtmos-seo-schema/references/schema-types.md",
+      "sha256": "b815e9b26e70c86bdaf1318d47a0fa408c34548ed4f8a5688759ce4c114e96f9",
+      "bytes": 9405
+    },
+    {
+      "path": "skills/gtmos-seo-schema/references/semrush-schema-markup.md",
+      "sha256": "f2d8b1f6ae672a22022bafd3b4a3a22319e910ab1b179548d0f8a3e7529d241b",
+      "bytes": 15607
+    },
+    {
+      "path": "skills/gtmos-seo-search-console/SKILL.md",
+      "sha256": "e5577e411f881f31d2923b828fd990196677f6554c0880abbcaa70a5fe477d76",
+      "bytes": 17920
+    },
+    {
+      "path": "skills/gtmos-seo-search-console/references/auth-setup.md",
+      "sha256": "0a274d33becc06312c8bd5e4a7d2236994e5697972a3fd8697b4c0120160efbe",
+      "bytes": 5227
+    },
+    {
+      "path": "skills/gtmos-seo-search-console/references/crux-history-api.md",
+      "sha256": "73da146d03fa60e8a7d300698c0949c7f1c7ad48acb809d9dc183f0ac8922966",
+      "bytes": 2028
+    },
+    {
+      "path": "skills/gtmos-seo-search-console/references/dma-consent-mode-v2.md",
+      "sha256": "18ff25a0a9a9679cc5301cc1d76bea25046f6e3991ff2771d7eb2f6419b9aef8",
+      "bytes": 3119
+    },
+    {
+      "path": "skills/gtmos-seo-search-console/references/ga4-data-api.md",
+      "sha256": "b6c29f9d830df1a406339c5776a7aebd648c5d2fd33eb7a2689106c5b3c7bbb9",
+      "bytes": 5364
+    },
+    {
+      "path": "skills/gtmos-seo-search-console/references/indexing-api.md",
+      "sha256": "c2b5bd20d028c7d667f5da1fab628f66bba7b45948b155ede815d27b5ac1bd09",
+      "bytes": 3474
+    },
+    {
+      "path": "skills/gtmos-seo-search-console/references/keyword-planner-api.md",
+      "sha256": "5581b74899f9515481e861e5c42fef642b782ad65cc4990c6d4db9f66a3625cd",
+      "bytes": 2398
+    },
+    {
+      "path": "skills/gtmos-seo-search-console/references/nlp-api.md",
+      "sha256": "c21c9a1233d36659f5a3fa5f629917b434ce015f98d794ad8dddfbad8a752e18",
+      "bytes": 2333
+    },
+    {
+      "path": "skills/gtmos-seo-search-console/references/pagespeed-crux-api.md",
+      "sha256": "70bd5ad30369caa89f559698acf29b689c317d9c2e8d39ce1260510c2793bdd8",
+      "bytes": 5208
+    },
+    {
+      "path": "skills/gtmos-seo-search-console/references/rate-limits-quotas.md",
+      "sha256": "ad1f7d096e229526c8fe9026a98124a05221f53636eb6023f362dfd5fd3c2f96",
+      "bytes": 3379
+    },
+    {
+      "path": "skills/gtmos-seo-search-console/references/search-console-api.md",
+      "sha256": "85d81675748e7cb22e4d86c5639b8078dff341dcfabe22dc7b7acd8290e380bc",
+      "bytes": 5657
+    },
+    {
+      "path": "skills/gtmos-seo-search-console/references/supplementary-apis.md",
+      "sha256": "02d18837fc0e3ea62351921a66721609b82a0fc26fd9376d536dc2bb326e7a52",
+      "bytes": 2807
+    },
+    {
+      "path": "skills/gtmos-seo-search-console/references/youtube-api.md",
+      "sha256": "9db7a517b3f9b3e5191465ebe6168ac3f7b2ce0edd8f605817e2abd65f295d13",
+      "bytes": 1595
+    },
+    {
+      "path": "skills/gtmos-seo-site-architecture/SKILL.md",
+      "sha256": "66412df29e4da946e5724042c52ced01467bc0a7f9e63d9f35fd5ba230da61a7",
+      "bytes": 16494
+    },
+    {
+      "path": "skills/gtmos-seo-site-architecture/references/mermaid-templates.md",
+      "sha256": "362190c7d3f419d5f445170f1fb17beecc163937d2068922893b7a69eeb25f0f",
+      "bytes": 4922
+    },
+    {
+      "path": "skills/gtmos-seo-site-architecture/references/navigation-patterns.md",
+      "sha256": "2efa772709b753e33d5018c007147ca30aaa95a04b04dc0df6227ea5a053078b",
+      "bytes": 10733
+    },
+    {
+      "path": "skills/gtmos-seo-site-architecture/references/platforms-and-migration.md",
+      "sha256": "391f12c5994e1e577db75cd6044e038a276f14eda1c2ebc7f6a92293fbc59448",
+      "bytes": 9915
+    },
+    {
+      "path": "skills/gtmos-seo-site-architecture/references/semrush-internal-link-audit.md",
+      "sha256": "e22aae6059f2abc8c3608ca9cebc3d20282239e9cdd6602804f74377c46f7d05",
+      "bytes": 11657
+    },
+    {
+      "path": "skills/gtmos-seo-site-architecture/references/seo-seo-sitemap.md",
+      "sha256": "63124ac6b4bcd1102f6e14bdc8ee31e7edb878d16d760b687f9d92c76d6d3174",
+      "bytes": 6636
+    },
+    {
+      "path": "skills/gtmos-seo-site-architecture/references/site-type-templates.md",
+      "sha256": "3c3cd7ce5e31c502dc071baf82bb58cb30f5edf4a2fd8ca052fbc8f3777db140",
+      "bytes": 9624
+    },
+    {
+      "path": "skills/gtmos-setup/SKILL.md",
+      "sha256": "6154e5dcf2310c7747ba140178546efd0c26c0559283d426de1dd0e20a8a7f5d",
+      "bytes": 21044
+    },
+    {
+      "path": "skills/gtmos-source-mapping/SKILL.md",
+      "sha256": "a8e938bfb6825702d35c7bdff8afa8245ac364d1d85550f65f144ce9595a9c61",
+      "bytes": 10870
+    },
+    {
+      "path": "skills/hubspot/SKILL.md",
+      "sha256": "c55794c67f2796e5eea5e895895c4d6f1f4ed9e4df6a17c09b6f0d76eb2ab207",
+      "bytes": 4528
+    },
+    {
+      "path": "skills/looot-ai-search-visibility/SKILL.md",
+      "sha256": "66e69a4ba72feb449e9328101811938e2946a97e8e073a3a5ee4394bce78c47b",
+      "bytes": 4208
+    },
+    {
+      "path": "skills/looot-amazon-product/SKILL.md",
+      "sha256": "f3e8b54e55b84b0a8777124c5818cac829c88ad3f39f09a27031ceb296d03479",
+      "bytes": 3528
+    },
+    {
+      "path": "skills/looot-backlink-checker/SKILL.md",
+      "sha256": "33b1a1144cf8eeef487317ecda2d0544eaa1088c9dbd63d9d4e65d8358632a17",
+      "bytes": 3547
+    },
+    {
+      "path": "skills/looot-company-email-format/SKILL.md",
+      "sha256": "68c7cc54c1eb59b2fc878287f47ce47842865b71804807317f60d79113ea2cdd",
+      "bytes": 3334
+    },
+    {
+      "path": "skills/looot-company-list-builder/SKILL.md",
+      "sha256": "cf56755c25a033f6a5f9abd4213e6953a2b95282e1fb2b395b4b3ceda0ff76e3",
+      "bytes": 3857
+    },
+    {
+      "path": "skills/looot-domain-keywords/SKILL.md",
+      "sha256": "217ef45356804c2a6c4d881938f0524e255a84fce3cf198b954debc2c0b8f1fc",
+      "bytes": 3536
+    },
+    {
+      "path": "skills/looot-email-verification/SKILL.md",
+      "sha256": "9bdfa37c371176072c07ad9b76edd3581fe68a24a0e239354db6d9c5e8799297",
+      "bytes": 3778
+    },
+    {
+      "path": "skills/looot-enrich-a-company/SKILL.md",
+      "sha256": "d892a2dba6199e66a4cbdf14436d4930a72c499243fb928cacfa940644deda51",
+      "bytes": 4048
+    },
+    {
+      "path": "skills/looot-enrich-a-person/SKILL.md",
+      "sha256": "36beb552c47685f7c007f7eed5db6b9745e897c402ec42d7793d2fc9a66c74b0",
+      "bytes": 3741
+    },
+    {
+      "path": "skills/looot-find-phone-numbers/SKILL.md",
+      "sha256": "8cf425e442033b942d559c0fd524bfc850bdcd49b95f338639c600c53d4b028e",
+      "bytes": 4094
+    },
+    {
+      "path": "skills/looot-find-professional-emails/SKILL.md",
+      "sha256": "1fa5c2f998d070b17d98262c24d6b7abc5eb5ee54cc668a2a6bdd7d4f227ab4b",
+      "bytes": 3787
+    },
+    {
+      "path": "skills/looot-google-maps-reviews/SKILL.md",
+      "sha256": "8e3473b9d361e50bef78797ba8f6985bc83c9579fdeb7cc3a953efa78f96e1de",
+      "bytes": 3420
+    },
+    {
+      "path": "skills/looot-google-serp/SKILL.md",
+      "sha256": "02226acb05dbd480b3097a006def81913822ffc579deb0d60fd50d976f2dc87e",
+      "bytes": 3596
+    },
+    {
+      "path": "skills/looot-job-postings/SKILL.md",
+      "sha256": "3013e437d86671e55e8cf172ecd12bfb744dc745abc745bd096021edcb9e022d",
+      "bytes": 3441
+    },
+    {
+      "path": "skills/looot-keyword-volume/SKILL.md",
+      "sha256": "76a39346c38abe991343a683681e48e528bf13f703cff3857a6b037c6b990deb",
+      "bytes": 3902
+    },
+    {
+      "path": "skills/looot-local-business-search/SKILL.md",
+      "sha256": "b86f2dd32750dd18df827341a6560ca99b6f8e6fde4c56575ed1d4012a835d72",
+      "bytes": 3526
+    },
+    {
+      "path": "skills/looot-meta-ads-library/SKILL.md",
+      "sha256": "c177504237a6fd09cdbf457c5d1d97515d1989aa32de3c8c8197882a3d919a35",
+      "bytes": 3820
+    },
+    {
+      "path": "skills/looot-reddit-search/SKILL.md",
+      "sha256": "b9c0f817b55c1481ca53e879ce7e7d4c85c99d8b6f6fe0b5d792cea583242f80",
+      "bytes": 3188
+    },
+    {
+      "path": "skills/looot-resources/SKILL.md",
+      "sha256": "72c1285535a630df5e8a7b888e22e7e21d623270397f2d9fdd43dc501636399a",
+      "bytes": 4631
+    },
+    {
+      "path": "skills/looot-tiktok-search/SKILL.md",
+      "sha256": "972f27a53a318e49740b7a200b5a94c7967dda1c4a713e1fd29e3e53ba7c957c",
+      "bytes": 3221
+    },
+    {
+      "path": "skills/looot-youtube-transcript/SKILL.md",
+      "sha256": "f27d68fac26ae24162e1555b302cd948227a1a4adfa83f847a30ccd976b21df9",
+      "bytes": 3585
+    },
+    {
+      "path": "skills/looot/SKILL.md",
+      "sha256": "44bbee121f1c84858440d234997eb650cebed6057bd17957bb4757665c52d1ed",
+      "bytes": 11918
+    },
+    {
+      "path": "skills/mcp/SKILL.md",
+      "sha256": "d5427bedefe60ab50967eae84fc297c1d020a7e8ba48bbd94445d6096b855600",
+      "bytes": 6296
+    },
+    {
+      "path": "skills/model-providers/SKILL.md",
+      "sha256": "55f77d1256c5b37705114fefa09799ac7246cd3b9c7d5a8e04ce6b99d45cfd45",
+      "bytes": 5298
+    },
+    {
+      "path": "skills/nango/SKILL.md",
+      "sha256": "b8b8798dcc3a8c6bd70ef826fa58497c0dfe0ff9cafbff9a252c6ba6fa2721dc",
+      "bytes": 4438
+    },
+    {
+      "path": "skills/output-docgen/SKILL.md",
+      "sha256": "1bac3671aff7fa3ef278728086c84a6e5a6e253e28012e9adf154f0a8d5f0f38",
+      "bytes": 4315
+    },
+    {
+      "path": "skills/resend/SKILL.md",
+      "sha256": "3bcf69af21ed17e5401c072119442132a4cebec43b8487b40e64a36ccffd1792",
+      "bytes": 4276
+    },
+    {
+      "path": "skills/salesforce/SKILL.md",
+      "sha256": "6ea7ab4d059edff4be90ac46ef8deff2d5e847d72a6c757b10ec98f06d5c1244",
+      "bytes": 4510
+    },
+    {
+      "path": "skills/slack/SKILL.md",
+      "sha256": "f441b8c7c707f7afc041612615a12c4ac8b7a2c78593275e73ca54ff6a682014",
+      "bytes": 4825
+    },
+    {
+      "path": "skills/unipile/SKILL.md",
+      "sha256": "26fe9e9d732e9a5dd38ed3ec9b59998301df68fe55368075e204f65a996f98bf",
+      "bytes": 4726
+    },
+    {
+      "path": "skills/webform/SKILL.md",
+      "sha256": "c54e5e44e0b7dc83d77fe63a4d9fadb17dc49ed16091ea44c952f29a23ab3116",
+      "bytes": 4392
+    }
+  ]
+}

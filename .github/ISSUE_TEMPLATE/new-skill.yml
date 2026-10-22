@@ -1,0 +1,25 @@
+name: New skill
+description: Propose a skill for a GTM job this repository does not cover yet.
+labels: [new-skill]
+body:
+  - type: textarea
+    id: job
+    attributes:
+      label: The job
+      description: What the skill helps an agent do, and the phrases a user would say.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source to adapt (repository URL)
+  - type: input
+    id: license
+    attributes:
+      label: Source licence
+      description: MIT, Apache-2.0 or a Creative Commons licence that allows copying. Other sources can only be referenced.
+  - type: textarea
+    id: gtmos
+    attributes:
+      label: GTM OS fit
+      description: Which engine, definitions or operations it would use, if you know.
