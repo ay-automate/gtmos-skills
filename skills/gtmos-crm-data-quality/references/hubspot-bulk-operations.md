@@ -3,6 +3,8 @@
 
 # Reference: `bulk-operations` from HubSpot/agent-cli-skills
 
+> Scripts named below (`pagination-loop.sh`) belong to the HubSpot repository and are not shipped with GTM OS Skills. With GTM OS connected, page through records with `records.list` (`cursor` / `nextCursor`) instead.
+
 Merged into `gtmos-crm-data-quality`. Read it for the upstream method; run the work the GTM OS way described in `../SKILL.md`.
 
 ## Resources
@@ -66,7 +68,7 @@ A single `hubspot objects get` reads up to ~100 IDs per call via the batch endpo
 
 ## Bulk flow: paginate first, then reshape, then write
 
-When operating on all records of a type (or all matches of a filter), **always start with `pagination-loop.sh`** — never run a bare `list` or `search` to "check how many there are." A bare call returns at most 100 records and you will have to re-fetch them anyway. To size the job first, use `hubspot objects count --type <t> [--filter "..."]`, which returns the total matching count (e.g. `{"object_type":"contacts","total":42}`) without paging.
+When operating on all records of a type (or all matches of a filter), **always start with `pagination-loop.sh` (HubSpot's script, linked above; not shipped here)** — never run a bare `list` or `search` to "check how many there are." A bare call returns at most 100 records and you will have to re-fetch them anyway. To size the job first, use `hubspot objects count --type <t> [--filter "..."]`, which returns the total matching count (e.g. `{"object_type":"contacts","total":42}`) without paging.
 
 The canonical bulk pattern is:
 
@@ -76,23 +78,23 @@ The canonical bulk pattern is:
 
 ## Pagination
 
-`list` and `search` return at most 100 records per call. Use `resources/pagination-loop.sh` to collect all pages into a single JSONL file:
+`list` and `search` return at most 100 records per call. Use `https://github.com/HubSpot/agent-cli-skills/blob/a015a48982b922279d8521677b7c72b0acfb9506/bulk-operations/resources/pagination-loop.sh` to collect all pages into a single JSONL file:
 
 ```bash
-bash resources/pagination-loop.sh <object_type> <output_file> [properties] [extra_flags...]
+bash https://github.com/HubSpot/agent-cli-skills/blob/a015a48982b922279d8521677b7c72b0acfb9506/bulk-operations/resources/pagination-loop.sh <object_type> <output_file> [properties] [extra_flags...]
 ```
 
 Examples:
 
 ```bash
 # All contacts with specific properties
-bash resources/pagination-loop.sh contacts /tmp/contacts.jsonl email,firstname,lastname
+bash https://github.com/HubSpot/agent-cli-skills/blob/a015a48982b922279d8521677b7c72b0acfb9506/bulk-operations/resources/pagination-loop.sh contacts /tmp/contacts.jsonl email,firstname,lastname
 
 # Search with a filter (passes extra flags through to the CLI)
-bash resources/pagination-loop.sh contacts /tmp/leads.jsonl email,firstname '--filter' 'lifecyclestage=lead'
+bash https://github.com/HubSpot/agent-cli-skills/blob/a015a48982b922279d8521677b7c72b0acfb9506/bulk-operations/resources/pagination-loop.sh contacts /tmp/leads.jsonl email,firstname '--filter' 'lifecyclestage=lead'
 
 # All deals, default properties
-bash resources/pagination-loop.sh deals /tmp/deals.jsonl
+bash https://github.com/HubSpot/agent-cli-skills/blob/a015a48982b922279d8521677b7c72b0acfb9506/bulk-operations/resources/pagination-loop.sh deals /tmp/deals.jsonl
 ```
 
 The script pages through `--after` cursors automatically, prints progress to stderr, and writes JSONL to the output file. Run it as a single foreground command — do not background it or reconstruct the loop inline.

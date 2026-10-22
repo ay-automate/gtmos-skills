@@ -42,7 +42,7 @@ Early objections are usually reflexes. Answer once, briefly, and make it easy to
 | "Send me more info" | Send one specific thing (a one-pager or a two-minute video) and one question that makes a reply easy |
 | "How did you get my email?" | Answer honestly with the actual source, and offer to remove them |
 
-Deal-stage objections (pricing negotiation, security reviews, competitive bake-offs) live in the sales-enablement skill's objection library.
+Deal-stage objections (pricing negotiation, security reviews, competitive bake-offs) live in the `gtmos-sales-enablement` skill's objection library.
 
 ## What an agent can handle
 
@@ -62,4 +62,4 @@ Before an agent sends anything on its own, check that every claim in the draft m
 
 ## Log it
 
-Record on the CRM contact: reply type, date, the sequence and step that produced it, the signal and channel, and the outcome. That's what makes a weekly sequence review possible (the sequence-retro loop in the marketing-loops skill), and it's the outbound stage model in the revops skill.
+Record on the CRM contact: reply type, date, the sequence and step that produced it, the signal and channel, and the outcome. That's what makes a weekly sequence review possible (the sequence-retro loop in the `gtmos-ops-marketing-loops` skill), and it's the outbound stage model in the `gtmos-revops-lifecycle` skill.

@@ -14,9 +14,11 @@ metadata:
 
 # Schema markup
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`seo-schema`](https://github.com/AgriciDaniel/claude-seo/tree/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo-schema) in AgriciDaniel/claude-seo (MIT, Copyright (c) 2026 agricidaniel). Merged with [`schema`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/schema) from coreyhaines31/marketingskills (MIT), kept in `references/corey-schema.md`; [`schema-markup`](https://github.com/semrush/skills/tree/019ab369403c0e816707edae6194fa3bb47dfcd0/schema-markup) from semrush/skills (Apache-2.0), kept in `references/semrush-schema-markup.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`seo-schema`](https://github.com/AgriciDaniel/claude-seo/tree/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo-schema) in AgriciDaniel/claude-seo (MIT, Copyright (c) 2026 agricidaniel). Merged with [`schema`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/schema) from coreyhaines31/marketingskills (MIT), kept in `references/corey-schema.md`; [`schema-markup`](https://github.com/semrush/skills/tree/019ab369403c0e816707edae6194fa3bb47dfcd0/schema-markup) from semrush/skills (Apache-2.0), kept in `references/semrush-schema-markup.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
+
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
 Structured data is part of the **SEO & GEO engine**. The engine audits tracked pages (including their JSON-LD), lists the fixes, and publishes changes only after a person approves. Google Search Console is required for this engine; check `instance.readiness` and `seo_geo.gsc_properties` first. Confirm each schema with `gtm_describe` before the first call.
 
@@ -28,7 +30,7 @@ Structured data is part of the **SEO & GEO engine**. The engine audits tracked p
 | `seo_geo.fix_queue {severity, contentAssetId}` | Open JSON-LD issues per tracked page, ranked by severity and clicks, with the field a fix would set. |
 | `seo_geo.get_recommendation {contentAssetId}` | The engine's advisory recommendation grounded in the latest audit. |
 | `brand.get` | The legal entity name, product names and forbidden claims the markup must respect. |
-| `proof.list` (when available) | The only allowed source for ratings, review counts, awards, logos and customer names. Active proof only. |
+| `proof.list` | The only allowed source for ratings, review counts, awards, logos and customer names. Active proof only. |
 
 **2. Make sure the page is tracked and audited.** If the URL is not a tracked page yet, `seo_geo.create_tracked_page {url, targetKeywords}` creates it and queues its first audit. To refresh one page now, `seo_geo.run_audit {contentAssetId}` fetches and parses the live HTML (it never publishes). `seo_geo.audit_page` also generates a recommendation and may auto-propose a fix when it finds a real issue.
 

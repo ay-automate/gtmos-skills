@@ -97,7 +97,7 @@ Select the template that matches the page type. Adapt sections based on the spec
 | 8-15 questions | Grouped by subtopic | Each answered in 40-60 words, FS target for each |
 | CTA after last question | Convert | Contextual next step |
 
-**Schema:** WebPage. Google retired FAQ rich results for all sites on May 7, 2026, and no AI or ranking benefit is confirmed. Use QAPage only when users can submit answers to a single question. See the seo-schema skill for the canonical position.
+**Schema:** WebPage. Google retired FAQ rich results for all sites on May 7, 2026, and no AI or ranking benefit is confirmed. Use QAPage only when users can submit answers to a single question. See the `gtmos-seo-schema` skill for the canonical position.
 **Primary keyword:** In H1 as "[Topic]: Frequently Asked Questions", in first answer
 
 ## Location Page

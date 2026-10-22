@@ -47,7 +47,7 @@ Reach out to people already using the product, when their usage shows they're re
 - Speed matters more here than anywhere: the trigger loses most of its value within a day.
 - Never make the tracking feel like surveillance. Talk about the job they're doing and leave the logged events out of it.
 - Offer help first and an upgrade second. Product-qualified users convert far better than cold contacts (vendors report many times higher), so you don't need a hard sell.
-- Route accounts that exceed self-serve limits to a person. See the revops skill's routing rules.
+- Route accounts that exceed self-serve limits to a person. See the `gtmos-revops-lifecycle` skill's routing rules.
 
 **Measure:** trigger-to-reply rate, trigger-to-upgrade rate within 14 days, expansion revenue per triggered account.
 
@@ -55,7 +55,7 @@ Reach out to people already using the product, when their usage shows they're re
 
 The default play for accounts with no product usage: lead with a problem the segment is known to have, prove you understand it, and offer something small.
 
-**Trigger:** a signal from the prospecting skill's signal plays reference, or a tightly defined segment.
+**Trigger:** a signal from the `gtmos-leads-prospecting` skill's signal plays reference, or a tightly defined segment.
 
 **Offer something smaller than a meeting:** a sample of the work (verify a sample of their list, audit one page, benchmark one metric), a relevant resource, or a quick answer to a question they're probably asking.
 

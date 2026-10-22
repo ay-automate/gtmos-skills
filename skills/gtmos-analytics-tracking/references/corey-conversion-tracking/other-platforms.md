@@ -13,7 +13,7 @@ Contents:
 4. TikTok Ads (pixel and form events)
 5. Verification and common failures
 
-Before you start. You usually cannot log into the user's ad accounts, so account steps are guided. Give exact clicks and ask what they see. Website and GTM steps you can do yourself with access. Conversion moments come from this repo's detection snippets, which push canonical dataLayer events at the true submission moment. The names live in ../assets/gtm-recipes/event-map.json and snippets/README.md (for example, Typeform pushes typeform_form_submitted). And set expectations once, up front. Even a perfect browser-side setup misses typically 10–30% (depending on audience) of conversions to ad blockers, Safari cookie limits, and cross-device journeys the browser can't connect back to the ad click. See discrepancies.md.
+Before you start. You usually cannot log into the user's ad accounts, so account steps are guided. Give exact clicks and ask what they see. Website and GTM steps you can do yourself with access. Conversion moments come from this repo's detection snippets, which push canonical dataLayer events at the true submission moment. The names live in https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/gtm-recipes/event-map.json and snippets/README.md (for example, Typeform pushes typeform_form_submitted). And set expectations once, up front. Even a perfect browser-side setup misses typically 10–30% (depending on audience) of conversions to ad blockers, Safari cookie limits, and cross-device journeys the browser can't connect back to the ad click. See discrepancies.md.
 
 ### LinkedIn Ads
 
@@ -67,7 +67,7 @@ Testing reality. Only a real ad click can produce a LinkedIn conversion. Ad prev
 
 **Step 4 - Fire the lead moment and verify**
 - Goal. Send the conversion event and prove the install.
-- Do this. For a destination goal, nothing more is needed if the form redirects to the thank-you page. Otherwise, fire a custom event on the canonical dataLayer event from ../assets/gtm-recipes/event-map.json via a GTM Custom HTML tag containing window.uetq = window.uetq || []; uetq.push('event', 'submit_lead_form', {}); and create a matching Event goal with that exact action string. Then install the UET Tag Helper Chrome extension, load the site, and turn it on.
+- Do this. For a destination goal, nothing more is needed if the form redirects to the thank-you page. Otherwise, fire a custom event on the canonical dataLayer event from https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/gtm-recipes/event-map.json via a GTM Custom HTML tag containing window.uetq = window.uetq || []; uetq.push('event', 'submit_lead_form', {}); and create a matching Event goal with that exact action string. Then install the UET Tag Helper Chrome extension, load the site, and turn it on.
 - Expect to see. UET Tag Helper reports "This UET tag is set up correctly", and a test submission shows the custom event in the helper plus a bat.bing.com/action/0 request.
 - On error. Helper is real-time but the goal status UI lags up to 24 hours, so do not panic at a lagging dashboard when the helper is green. Event fires but the goal stays at 0 usually means a case mismatch between the push and the goal.
 
@@ -87,7 +87,7 @@ Testing reality. Only a real ad click can produce a LinkedIn conversion. Ad prev
 
 **Step 3 - Fire the form event**
 - Goal. Report the lead moment. This skill's recipes send SubmitForm, which TikTok supports indefinitely and reports as Lead. TikTok's May 2025 guidance says new setups should use Lead, while its April 2026 event list still shows Submit Form, so either works. Use CompleteRegistration for account signups.
-- Do this. In GTM, create a Custom Event trigger for the canonical dataLayer event from ../assets/gtm-recipes/event-map.json, and attach a Custom HTML tag containing a script with ttq.track('SubmitForm');. Without GTM, use the same dataLayer watcher pattern shown in meta.md (Step 7, the small dataLayer watcher), calling ttq.track('SubmitForm') instead of fbq.
+- Do this. In GTM, create a Custom Event trigger for the canonical dataLayer event from https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/gtm-recipes/event-map.json, and attach a Custom HTML tag containing a script with ttq.track('SubmitForm');. Without GTM, use the same dataLayer watcher pattern shown in meta.md (Step 7, the small dataLayer watcher), calling ttq.track('SubmitForm') instead of fbq.
 - Expect to see. On a test submission, a request to analytics.tiktok.com carrying the SubmitForm event.
 - On error. Event name typos or old names silently record nothing, so copy SubmitForm exactly. If the tag fires but nothing reaches TikTok, the base code loaded after the event fired.
 

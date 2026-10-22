@@ -13,9 +13,11 @@ metadata:
 
 # Search Console and Google data
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`gtmos-seo-search-console`](https://github.com/AgriciDaniel/claude-seo/tree/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo-google) in AgriciDaniel/claude-seo (MIT, Copyright (c) 2026 agricidaniel). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`seo-google`](https://github.com/AgriciDaniel/claude-seo/tree/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo-google) in AgriciDaniel/claude-seo (MIT, Copyright (c) 2026 agricidaniel). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
+
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
 **1. Connection.** Search Console is required for the SEO & GEO engine (orgs that do not use the engine do not need it). Check `instance.readiness` (`connector.gsc`) and `seo_geo.gsc_properties` Q. If it is missing, the `gsc` skill explains how to connect it (Settings > Connected accounts, or through Composio) and set the property.
 

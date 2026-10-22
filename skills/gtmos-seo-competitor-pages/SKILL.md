@@ -14,9 +14,11 @@ metadata:
 
 # Competitor and alternative pages
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`competitors`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/competitors) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Merged with [`seo-competitor-pages`](https://github.com/AgriciDaniel/claude-seo/tree/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo-competitor-pages) from AgriciDaniel/claude-seo (MIT), kept in `references/seo-seo-competitor-pages.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`competitors`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/competitors) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Merged with [`seo-competitor-pages`](https://github.com/AgriciDaniel/claude-seo/tree/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo-competitor-pages) from AgriciDaniel/claude-seo (MIT), kept in `references/seo-seo-competitor-pages.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
+
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
 Comparison pages are public claims, so GTM OS treats them in two halves: facts about the competitor need a source and a date, and claims about you need approved proof. The page itself is tracked and improved by the **SEO & GEO engine**, which needs Google Search Console (check `instance.readiness` and `seo_geo.gsc_properties`). Confirm each schema with `gtm_describe` before the first call.
 
@@ -27,8 +29,8 @@ Comparison pages are public claims, so GTM OS treats them in two halves: facts a
 | `policy.get_dry_mode`, `policy.engine_modes.get` | In dry mode a publish stays a proposal. Say so up front. |
 | `brand.get` | Voice, avoided words and forbidden claims (comparative claims are often listed here). |
 | `definition.persona`, `definition.segment` | Who the page is for, so "who it's for" sections match the real ICP. |
-| `proof.list` (when available) | The only allowed source for your results, customer names, migration stories and metrics. Active proof only. |
-| `voice.customer_language.list` (when available) | The words switchers use for their pain with the competitor. |
+| `proof.list` | The only allowed source for your results, customer names, migration stories and metrics. Active proof only. |
+| `voice.customer_language.list` | The words switchers use for their pain with the competitor. |
 | `seo_geo.keyword_opportunities` | Whether "[competitor] alternative" or "vs" queries already earn impressions. |
 
 **2. Gather competitor facts with sources.** Quote cost first with `capability.quote`, then use the governed capabilities through `capability.acquire`: `research.extract_page` for the competitor's pricing and feature pages, `research.web_search` and `research.news` for changes, `seo.serp_organic` for who ranks today. Within budget the data comes back directly; over a ceiling the call returns a proposal for a human. Record each fact with its URL and the date you read it. If the competitor is an account in the CRM, `research.request {subject: {objectType: "gtm.account", id}, kinds: ["company_profile"]}` queues the research agent instead. Ad-hoc exploration may use the `looot` skills directly.

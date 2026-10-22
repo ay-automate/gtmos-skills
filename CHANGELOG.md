@@ -2,6 +2,15 @@
 
 All notable changes to this repository. Versions follow [Semantic Versioning](https://semver.org/); each release is a git tag with `manifest.json` attached.
 
+## 0.1.1 (2026-10-22)
+
+- Every adapted skill opens its GTM OS section with the shared rules (dry mode first, effects proposed and approved by someone else, numbers only from operation results, claims only from the proof library), and `skills/GTMOS-RULES.md` ships beside the skills.
+- The proof library, customer language, score learning and outreach learning operations are documented as available (they are in the current GTM OS release).
+- Tools that are not shipped here (upstream scripts, assets, CLIs, slash commands, subagents) are linked at their pinned upstream location or rewritten as steps.
+- Attribution links show the upstream skill names; the notices link works after install.
+- THIRD-PARTY-NOTICES: per-skill licences for anthropics/skills and openai/skills.
+- LICENSE is the plain MIT text; the plugin marketplace drops a non-standard field.
+
 ## 0.1.0 (2026-10-22)
 
 First release: 94 skills.

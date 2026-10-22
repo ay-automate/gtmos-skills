@@ -13,13 +13,15 @@ metadata:
 
 # Product launch
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`launch`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/launch) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`launch`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/launch) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
 
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
+
 **1. Who.** `definition.segment`, `definition.persona`, `definition.customer_type`; existing customers vs prospects via `journey.position` and `records.aggregate`.
 
-**2. Message.** Positioning from gtmos-marketing-positioning, proof from `proof.list` (when available), voice from `brand.get`; every asset passes `brand.check_text`.
+**2. Message.** Positioning from gtmos-marketing-positioning, proof from `proof.list`, voice from `brand.get`; every asset passes `brand.check_text`.
 
 **3. Channels.** Email: sequences on an active lane (`sequence.create`, `sequence.enroll`), every send proposed with `outreach.send_message` E. Site: `seo_geo.publish_content_change` E for page updates. Paid: budget changes with `perf_ads.update_campaign` E. Social posts are done by a person.
 

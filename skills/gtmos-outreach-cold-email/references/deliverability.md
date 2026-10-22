@@ -55,14 +55,14 @@ Warmup networks still help new mailboxes, but a mailbox whose only engagement is
 - **Turn off click tracking** unless you need it, and then only with a custom tracking domain.
 - **Under about 80 words** for the first email.
 - **Vary the copy.** Identical bodies across thousands of sends look like bulk mail. Segment-specific copy and real personalization fix this naturally. Keep spintax as a last resort.
-- **Opt-out line.** A plain-text line ("If this isn't relevant, reply 'no' and I won't follow up") plus your postal address in the signature. CAN-SPAM requires both; see the prospecting skill's compliance reference.
+- **Opt-out line.** A plain-text line ("If this isn't relevant, reply 'no' and I won't follow up") plus your postal address in the signature. CAN-SPAM requires both; see the `gtmos-leads-prospecting` skill's compliance reference.
 
 ## Verify before you send
 
 Bounces are the fastest way to damage a domain. Keep them under 2% per campaign; under 1% is best in class. A single day with several percent bounces can trigger a review at Google.
 
 - Verify every list before upload, and re-verify anything older than about a week.
-- Handle catch-all domains with a policy. See the prospecting skill's sourcing and enrichment reference.
+- Handle catch-all domains with a policy. See the `gtmos-leads-prospecting` skill's sourcing and enrichment reference.
 - Pause any campaign automatically when its bounce rate passes 2%.
 
 ## Monitoring

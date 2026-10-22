@@ -14,15 +14,17 @@ metadata:
 
 # Lifecycle email sequences
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`emails`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/emails) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Merged with [`email-best-practices`](https://github.com/resend/resend-skills/tree/b2ae7b1798b70134faf679f35fc05b4331462988/skills/email-best-practices) from resend/resend-skills (MIT), kept in `references/resend-email-best-practices.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`emails`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/emails) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Merged with [`email-best-practices`](https://github.com/resend/resend-skills/tree/b2ae7b1798b70134faf679f35fc05b4331462988/skills/email-best-practices) from resend/resend-skills (MIT), kept in `references/resend-email-best-practices.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
+
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
 **1. Rules first.** `consent.get` Q per contact, `definition.suppression_rule` and `definition.compliance_policy` (who must never be emailed), `definition.lane` and `outreach.sending_mailboxes` Q (the channel and its caps), `policy.get_dry_mode` Q.
 
 **2. Audience.** From a segment (`definition.segment`) or a journey stage (`journey.position`, `journey.funnel`). Enrollment skips anyone suppressed, not contactable or without an email, and reports why.
 
-**3. Build.** `sequence.create {name, goal, lane}` D (draft), `sequence.enroll {sequenceId, contactIds}` D, then `sequence.update {status: "active"}` D once a person agrees; the cadence engine drafts each step for approval. Copy passes `brand.check_text`; proof comes from `proof.list` (when available).
+**3. Build.** `sequence.create {name, goal, lane}` D (draft), `sequence.enroll {sequenceId, contactIds}` D, then `sequence.update {status: "active"}` D once a person agrees; the cadence engine drafts each step for approval. Copy passes `brand.check_text`; proof comes from `proof.list`.
 
 **4. Sends and results.** Every send is proposed (`outreach.send_message` E) and approved by a different person. Results: `sequence.messages`, `sequence.replies`, `outreach.kpis`; small samples get "not enough data yet". The merged Resend reference covers sending best practice for transactional mail.
 

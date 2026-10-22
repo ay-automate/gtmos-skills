@@ -56,7 +56,7 @@ Write the angle as the problem the signal implies. "Saw you raised a Series A" i
 
 **A services agency selling to B2B SaaS (for example, a CRO and landing page agency)**
 - **Signals:** funding in the last 60 days; a new VP Marketing or head of growth; open roles for growth or performance marketers; a redesigned site or new pricing page; paid search or paid social campaigns launching.
-- **Play:** value first. Offer a short teardown of their actual page. Send it only after they say yes. See the cold-email skill's outbound plays reference.
+- **Play:** value first. Offer a short teardown of their actual page. Send it only after they say yes. See the `gtmos-outreach-cold-email` skill's outbound plays reference.
 - **Volume:** about 50 well-researched accounts a week beats 5,000 generic sends. Agencies rely on depth.
 
 **A self-serve SaaS tool (for example, an email verification product)**
@@ -88,7 +88,7 @@ Keep campaigns small. Several vendor and agency datasets show reply rates fallin
 | Tech stack | BuiltWith, Wappalyzer, tech mentions in job posts | APIs |
 | Product usage | Your own analytics and billing events | Webhooks into your CRM |
 
-See the [tools registry](https://github.com/coreyhaines31/marketingskills/blob/main/tools/REGISTRY.md) for setup. A scheduled sweep of these sources is the signal-sweep loop in the marketing-loops skill.
+See the [tools registry](https://github.com/coreyhaines31/marketingskills/blob/main/tools/REGISTRY.md) for setup. A scheduled sweep of these sources is the signal-sweep loop in the `gtmos-ops-marketing-loops` skill.
 
 ## Common mistakes
 

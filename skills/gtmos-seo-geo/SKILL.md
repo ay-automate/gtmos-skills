@@ -14,17 +14,19 @@ metadata:
 
 # GEO: AI search visibility and citations
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`ai-seo`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/ai-seo) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Merged with [`seo-geo`](https://github.com/AgriciDaniel/claude-seo/tree/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo-geo) from AgriciDaniel/claude-seo (MIT), kept in `references/seo-seo-geo.md`; [`seo-ai-search-share-of-voice`](https://github.com/seranking/seo-skills/tree/fd6d1408f2e6a06454d81c07c29e0f04342eb9ba/skills/seo-ai-search-share-of-voice) from seranking/seo-skills (MIT), kept in `references/seranking-seo-ai-search-share-of-voice.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`ai-seo`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/ai-seo) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Merged with [`seo-geo`](https://github.com/AgriciDaniel/claude-seo/tree/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo-geo) from AgriciDaniel/claude-seo (MIT), kept in `references/seo-seo-geo.md`; [`seo-ai-search-share-of-voice`](https://github.com/seranking/seo-skills/tree/fd6d1408f2e6a06454d81c07c29e0f04342eb9ba/skills/seo-ai-search-share-of-voice) from seranking/seo-skills (MIT), kept in `references/seranking-seo-ai-search-share-of-voice.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
 
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
+
 **1. Readiness.** Search Console is required for the SEO & GEO engine (`seo_geo.gsc_properties`). Read `seo_geo.get_visibility_settings` Q for the brand, aliases and competitors already set.
 
-**2. Track the prompts that matter.** `seo_geo.list_tracked_prompts` Q, then add the buyer questions you want to win with `seo_geo.create_tracked_prompt {kind: "ai_prompt", text, brand, brandAliases, competitors, targetUrls, engines}` D. Pick prompts from real buyer language: `voice.customer_language.list` (when available), sales calls (`transcripts.list`) and Search Console queries.
+**2. Track the prompts that matter.** `seo_geo.list_tracked_prompts` Q, then add the buyer questions you want to win with `seo_geo.create_tracked_prompt {kind: "ai_prompt", text, brand, brandAliases, competitors, targetUrls, engines}` D. Pick prompts from real buyer language: `voice.customer_language.list`, sales calls (`transcripts.list`) and Search Console queries.
 
 **3. Measure.** `seo_geo.run_visibility {tracked: "queue"}` queues the paid AI-answer measurement; only use `queue` after the user agrees to the spend. Read results with `seo_geo.get_visibility` Q, changes with `seo_geo.list_visibility_alerts` Q, and the engine KPIs (`search_ai_share_of_voice`, `search_ai_citation_rate`, `search_ai_mention_rate`, `search_geo_readiness`) with `seo_geo.kpis` Q. One-off checks can use the looot capabilities `geo.answer_chatgpt`, `geo.answer_perplexity`, `geo.answer_gemini`, `geo.answer_copilot`, `geo.answer_google_ai_overview`. Small samples get "not enough data yet", never a percentage.
 
-**4. Fix pages.** `seo_geo.run_audit` reports GEO readiness per tracked page. Rewrites (answer-first passages, entity clarity, schema, statistics with sources) go through `seo_geo.publish_content_change` E for approval. Statistics and customer results come from active proof (`proof.list`, when available) or a cited public source.
+**4. Fix pages.** `seo_geo.run_audit` reports GEO readiness per tracked page. Rewrites (answer-first passages, entity clarity, schema, statistics with sources) go through `seo_geo.publish_content_change` E for approval. Statistics and customer results come from active proof (`proof.list`) or a cited public source.
 
 ## Without GTM OS
 
@@ -312,7 +314,7 @@ AI systems cite your own site and the places that talk about you, in proportions
 - Get featured in industry roundups and comparison articles
 - Make every third-party profile (G2, Capterra, Gartner, Crunchbase, LinkedIn) describe you with the same segment and positioning as your About page; models look for consensus. For repositioning, mergers, and head terms, see [references/positioning-and-consensus.md](references/positioning-and-consensus.md)
 - Create YouTube content for key how-to queries — models don't watch the video, they read the text layer around it; see [references/youtube-ai-citations.md](references/youtube-ai-citations.md) for the full anatomy (transcript, captions, chapters, description, pinned comment)
-- Guest on podcasts in your category (prep with the public-relations skill's podcast guest prep)
+- Guest on podcasts in your category (prep with the upstream `public-relations` skill (coreyhaines31/marketingskills; not in this repository)'s podcast guest prep)
 - Answer relevant Quora questions with depth
 
 ### Machine-Readable Files for AI Agents

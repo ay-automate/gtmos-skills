@@ -5,7 +5,7 @@
 
 Merged into `gtmos-analytics-tracking`. Read it for the upstream method; run the work the GTM OS way described in `../SKILL.md`.
 
-> **Note (GTM OS Skills):** the upstream skill ships code under `assets/` (paste-in detection snippets, importable GTM recipes) and `scripts/build_recipe.py`. This repository carries Markdown only, so those files are not copied. Use them from upstream: [assets](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets) and [scripts](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/scripts). Paths below that start with `assets/` or `scripts/` refer to that upstream folder.
+> **Note (GTM OS Skills):** the upstream skill ships code under `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/` (paste-in detection snippets, importable GTM recipes) and `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/scripts/build_recipe.py`. This repository carries Markdown only, so those files are not copied. Use them from upstream: [assets](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets) and [scripts](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/scripts). Paths below that start with `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/` or `scripts/` refer to that upstream folder.
 
 # Conversion Tracking
 
@@ -31,7 +31,7 @@ Work out which side of this line you're on before doing anything else. It decide
 | Something exists and it's misbehaving | Run the **audit flow** below |
 | Something exists and they don't know if it works | Run the audit flow as a verification pass. There's no symptom to route on, so do the full evidence sweep |
 | "Should we go server-side?" or "Is tool X worth it?" | Go straight to `references/server-side.md` and answer the question with the real options and real numbers. Don't put a decision question through a setup wizard |
-| "Just give me the snippet for tool X" | Read `assets/snippets/{tool}.js` and hand over its contents verbatim, header included. Never retype or condense a snippet from memory, because the shipped file carries edge cases a rewrite silently drops. Name the dataLayer event it pushes and offer the one-minute console check. No interrogation first |
+| "Just give me the snippet for tool X" | Read `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/snippets/{tool}.js` and hand over its contents verbatim, header included. Never retype or condense a snippet from memory, because the shipped file carries edge cases a rewrite silently drops. Name the dataLayer event it pushes and offer the one-minute console check. No interrogation first |
 
 ## The three questions
 
@@ -84,9 +84,9 @@ One rule ties these together. When the user is choosing a delivery path, or the 
 python3 scripts/build_recipe.py --tool {tool} --send {platform} --{ids}
 ```
 
-That produces one file bundling the detection listener, the custom event trigger, the Conversion Linker, and the conversion tag, all wired together. The user imports it with MERGE and reviews the diff in Preview before anything goes live. General GTM craft (naming, workspaces, debugging) is covered by the **analytics** skill, so don't duplicate it.
+That produces one file bundling the detection listener, the custom event trigger, the Conversion Linker, and the conversion tag, all wired together. The user imports it with MERGE and reviews the diff in Preview before anything goes live. General GTM craft (naming, workspaces, debugging) is covered by the `gtmos-analytics-tracking` skill, so don't duplicate it.
 
-**Consent comes before the first tag.** The recipes' ad tags need `ad_storage` consent (GA4 `analytics_storage`), so where a banner defaults to denied they wait for consent. If the site serves the EEA, UK, or other consent-regulated regions, confirm its consent setup before importing, and never strip the requirements to force a tag. Details in `assets/gtm-recipes/README.md`.
+**Consent comes before the first tag.** The recipes' ad tags need `ad_storage` consent (GA4 `analytics_storage`), so where a banner defaults to denied they wait for consent. If the site serves the EEA, UK, or other consent-regulated regions, confirm its consent setup before importing, and never strip the requirements to force a tag. Details in `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/gtm-recipes/README.md`.
 
 **Step 5. Verify.** See "Verification discipline" below. A setup without a verified arrival, or at least a named handover check for the parts you can't reach, isn't finished.
 
@@ -94,7 +94,7 @@ That produces one file bundling the detection listener, the custom event trigger
 
 ## Audit flow
 
-Route on the symptom, in the user's own words, using the table below. Then gather evidence in this order. Static recon of the page and the published container first, then classify how the conversion moment fires, then walk the click ID chain, then guided account checks. The full evidence procedure, the scoring, and the report template are in `references/audit-playbook.md`, which uses the same scoring rules as the **ads** skill's audit guardrails. The short version of those rules is that every check resolves to pass, fail, unknown, or not applicable, and an unknown reduces your evidence coverage but never counts against the account's health, because "I couldn't check your pixel" and "your pixel is broken" are different findings.
+Route on the symptom, in the user's own words, using the table below. Then gather evidence in this order. Static recon of the page and the published container first, then classify how the conversion moment fires, then walk the click ID chain, then guided account checks. The full evidence procedure, the scoring, and the report template are in `references/audit-playbook.md`, which uses the same scoring rules as the `gtmos-ads-campaigns` skill's audit guardrails. The short version of those rules is that every check resolves to pass, fail, unknown, or not applicable, and an unknown reduces your evidence coverage but never counts against the account's health, because "I couldn't check your pixel" and "your pixel is broken" are different findings.
 
 | Symptom | Suspect first |
 |---|---|
@@ -159,7 +159,7 @@ Load a reference when the task reaches it. Nothing here is optional reading, it'
 | The audit's evidence procedure, scoring, and report template | `references/audit-playbook.md` |
 | Why the numbers never match, loss magnitudes, and the refund asymmetry | `references/discrepancies.md` |
 
-Assets: [`assets/snippets/`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/snippets/README.md) holds paste-in success detectors for 22 lead-gen tools, plus four universal patterns for the moments no form tool owns: phone call clicks (the most under-tracked conversion in local services), file downloads, thank-you page arrivals, and a generic AJAX success pattern. [`assets/gtm-recipes/`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/gtm-recipes/README.md) holds the importable GTM containers (detection and send, with event names in [`event-map.json`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/gtm-recipes/event-map.json)), and `scripts/build_recipe.py` merges them with the user's IDs into one import file.
+Assets: [`https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/snippets/`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/snippets/README.md) holds paste-in success detectors for 22 lead-gen tools, plus four universal patterns for the moments no form tool owns: phone call clicks (the most under-tracked conversion in local services), file downloads, thank-you page arrivals, and a generic AJAX success pattern. [`https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/gtm-recipes/`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/gtm-recipes/README.md) holds the importable GTM containers (detection and send, with event names in [`event-map.json`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/gtm-recipes/event-map.json)), and `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/scripts/build_recipe.py` merges them with the user's IDs into one import file.
 
 ## Boundaries
 

@@ -209,4 +209,4 @@ One thing holds on every platform below: storytelling and connecting with your a
 - The first line is the headline: it is what shows in the chat list preview
 - Compare topics on their own baselines: war and news channels reach the most (9-14% median), shopping, deals and betting channels the least (3-4%)
 
-**For buying posts in other channels** (vetting, ad networks, pricing per view): See the influencer-marketing skill (upstream marketingskills), [references/telegram-channels.md](https://github.com/coreyhaines31/marketingskills/blob/main/skills/influencer-marketing/references/telegram-channels.md)
+**For buying posts in other channels** (vetting, ad networks, pricing per view): See the upstream `influencer-marketing` skill (coreyhaines31/marketingskills; not in this repository) (upstream marketingskills), [references/telegram-channels.md](https://github.com/coreyhaines31/marketingskills/blob/main/skills/influencer-marketing/references/telegram-channels.md)

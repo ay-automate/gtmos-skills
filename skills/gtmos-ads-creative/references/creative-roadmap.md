@@ -101,7 +101,7 @@ Retro rules:
 
 - **Judge concepts, not ads.** Three executions of one concept failing says the concept is wrong; one failing says the execution was.
 - **Read the funnel, not the ROAS column.** The diagnostic funnel says *what* to fix; ROAS alone says only *that* something is broken.
-- **Enough data before verdicts** — respect the impression/spend thresholds in Common Mistakes and the **ads** skill's decision systems; a two-day read is a coin flip.
+- **Enough data before verdicts** — respect the impression/spend thresholds in Common Mistakes and the `gtmos-ads-campaigns` skill's decision systems; a two-day read is a coin flip.
 - **Every learning lands somewhere**: icebox update, evidence re-rank, or kill. A retro that changes nothing in the roadmap was a meeting, not a retro.
 
 To run this loop on a schedule (retro on the 1st, weekly refresh Mondays, daily batches via Mode 3), see the creative loops in **marketing-loops**.

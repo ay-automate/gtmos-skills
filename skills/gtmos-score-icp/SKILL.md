@@ -14,9 +14,11 @@ metadata:
 
 # ICP and account tier scoring
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`account-tier-scoring`](https://github.com/clay-run/clay-skill-creator/tree/fbb9149b7f0ba42db65cf5d6d540fb3ec9afd7bf/skills/clay/account-tier-scoring) in clay-run/clay-skill-creator (MIT, Copyright (c) 2026 Clay). Merged with [`icp-matrix-builder`](https://github.com/clay-run/clay-skill-creator/tree/fbb9149b7f0ba42db65cf5d6d540fb3ec9afd7bf/skills/clay/icp-matrix-builder) from clay-run/clay-skill-creator (MIT), kept in `references/clay-icp-matrix-builder.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`account-tier-scoring`](https://github.com/clay-run/clay-skill-creator/tree/fbb9149b7f0ba42db65cf5d6d540fb3ec9afd7bf/skills/clay/account-tier-scoring) in clay-run/clay-skill-creator (MIT, Copyright (c) 2026 Clay). Merged with [`icp-matrix-builder`](https://github.com/clay-run/clay-skill-creator/tree/fbb9149b7f0ba42db65cf5d6d540fb3ec9afd7bf/skills/clay/icp-matrix-builder) from clay-run/clay-skill-creator (MIT), kept in `references/clay-icp-matrix-builder.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
+
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
 In GTM OS the ICP is not a spreadsheet; it is the org's **signed scoring model**, and the **Score engine** applies it to every account and contact. This skill designs or tunes that model with the method below, proposes it, and reads back what it does. It never signs a model: a person does. Confirm each schema with `gtm_describe` before the first call.
 
@@ -37,7 +39,7 @@ In GTM OS the ICP is not a spreadsheet; it is the org's **signed scoring model**
 
 **4. Propose the change.** Draft the new spec and submit it with `config.propose_changeset` (then `config.validate_changeset` and `config.compute_impact` to show what moves). Submit the published version for sign-off with `definition.propose_for_signing`. A different person signs it (`definition.sign`, human only); signing triggers a re-score of every stale account. Tell the user what will change and that it waits for their sign-off.
 
-**5. Learn from outcomes (when available).** `score.learning_report` shows lift per criterion, calibration by tier and rep feedback; `score.learn` proposes a bounded, evidenced new version from real outcomes (positive replies, meetings, opportunities, won deals) and never signs it; `score.feedback` records a rep's "too high / too low / wrong reason". Prefer these over hand-tuning once they exist.
+**5. Learn from outcomes.** `score.learning_report` shows lift per criterion, calibration by tier and rep feedback; `score.learn` proposes a bounded, evidenced new version from real outcomes (positive replies, meetings, opportunities, won deals) and never signs it; `score.feedback` records a rep's "too high / too low / wrong reason". Prefer these over hand-tuning once they exist.
 
 **6. Verify.** After signing, `score.rescan_organization` (or wait for the automatic re-score), then `score.account_tiers` for the new distribution. A distribution with most accounts in tier 1 means the weights need work, not that the book is great.
 

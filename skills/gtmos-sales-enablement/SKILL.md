@@ -1,6 +1,6 @@
 ---
 name: gtmos-sales-enablement
-description: "Create sales collateral that reps actually use -- pitch decks, one-pagers, battle cards, demo scripts, call and voicemail scripts, objection handling -- built only on approved proof and the customer's own words. With GTM OS connected it pulls active proof and customer language (proof.list, voice.customer_language.list, when available), real objections from replies and call transcripts, checks copy with brand.check_text and renders documents through the output-docgen connector. Use for \"sales deck\", \"pitch deck\", \"one-pager\", \"objection handling\", \"demo script\", \"cold call script\", \"battle card\", \"sales collateral\", \"leave-behind\"."
+description: "Create sales collateral that reps actually use -- pitch decks, one-pagers, battle cards, demo scripts, call and voicemail scripts, objection handling -- built only on approved proof and the customer's own words. With GTM OS connected it pulls active proof and customer language (proof.list, voice.customer_language.list), real objections from replies and call transcripts, checks copy with brand.check_text and renders documents through the output-docgen connector. Use for \"sales deck\", \"pitch deck\", \"one-pager\", \"objection handling\", \"demo script\", \"cold call script\", \"battle card\", \"sales collateral\", \"leave-behind\"."
 license: MIT AND Apache-2.0
 metadata:
   version: "0.1.0"
@@ -14,11 +14,13 @@ metadata:
 
 # Sales enablement and objections
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`sales-enablement`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/sales-enablement) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Merged with [`handle-objection`](https://github.com/salesforce/salesforce-skills/tree/6b989d6490589647c4c164f7f55c2797cf322f04/salesforce-for-sales/skills/handle-objection) from salesforce/salesforce-skills (Apache-2.0), kept in `references/salesforce-handle-objection.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`sales-enablement`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/sales-enablement) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Merged with [`handle-objection`](https://github.com/salesforce/salesforce-skills/tree/6b989d6490589647c4c164f7f55c2797cf322f04/salesforce-for-sales/skills/handle-objection) from salesforce/salesforce-skills (Apache-2.0), kept in `references/salesforce-handle-objection.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
 
-**1. Inputs from the org.** `brand.get` (voice and forbidden claims), `definition.persona` and `definition.segment` (who it is for), active proof from `proof.list` (when available) for every result, logo and quote, and customer phrases from `voice.customer_language.list` (when available).
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
+
+**1. Inputs from the org.** `brand.get` (voice and forbidden claims), `definition.persona` and `definition.segment` (who it is for), active proof from `proof.list` for every result, logo and quote, and customer phrases from `voice.customer_language.list`.
 
 **2. Real objections.** `replies.list` Q filtered to objection labels (`reply_labels.get` shows the org's labels), and `transcripts.list` / `transcripts.get` Q for calls. Quote objections verbatim with their source; do not invent "common objections".
 
@@ -80,7 +82,7 @@ Every claim connects to revenue, efficiency, or risk reduction. Features mean no
 ### Claims Reps Can Defend
 Reps repeat what you write to buyers who can check it. Anything a buyer can disprove in a minute costs more than it gains.
 - **"Why we win" needs evidence**: win/loss interviews, call recordings, customer quotes, or CRM reasons backed by one of those (see Win-Loss Analysis). Without it, write advantages as hypotheses for reps to test, and say what evidence would confirm them.
-- **Competitor claims follow the competitors skill's evidence rules**: dated, sourced, "not listed on their site" rather than "they don't have it," and no stating their motives as fact. Reps can reason about why a competitor did something, labeled as a guess.
+- **Competitor claims follow the `gtmos-seo-competitor-pages` skill's evidence rules**: dated, sourced, "not listed on their site" rather than "they don't have it," and no stating their motives as fact. Reps can reason about why a competitor did something, labeled as a guess.
 - **Include where you lose.** A competitive doc that admits when the competitor is the better fit is one reps will trust in front of a buyer.
 
 ---

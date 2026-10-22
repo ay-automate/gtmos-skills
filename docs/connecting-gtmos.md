@@ -17,11 +17,11 @@ A skill decides it is connected when `gtm_describe` answers (or `gtm describe` r
 
 ## The rules every skill follows
 
-1. **Read the schema before the call.** Run `gtm_describe` on an operation before the first call in a session. Operation names in these skills are checked against GTM OS 0.2.5, but the live registry wins if it differs.
+1. **Read the schema before the call.** Run `gtm_describe` on an operation before the first call in a session. Operation names in these skills are checked against the current GTM OS release, but the live registry wins if it differs.
 2. **Definitions before questions.** The org's signed definitions already hold the ICP, personas, brand voice, money settings and more. A skill reads them first and asks the user only for what is missing.
 3. **Classes tell you what happens.** Q reads. D writes data. T moves a stage. E is a customer-facing effect (a send, a publish, a campaign change, a CRM write-back, a merge): the call **proposes**, and a different human approves it under *Needs a human*. M changes configuration and is usually human-only. An agent never approves its own proposal.
 4. **Dry mode holds.** Read `policy.get_dry_mode` and `policy.engine_modes.get` first. In dry mode every E path ends at a draft or a proposal; the skill says so and stops there.
-5. **No invented data.** Numbers come from an operation result, quoted with the operation that produced it. When a KPI has too little data, say "not enough data yet" and why. Proof, logos, metrics and customer quotes come from the proof library only (`proof.list`, when available). Customer words come from `voice.customer_language.list` (when available). Anything else is labelled as a hypothesis.
+5. **No invented data.** Numbers come from an operation result, quoted with the operation that produced it. When a KPI has too little data, say "not enough data yet" and why. Proof, logos, metrics and customer quotes come from the proof library only (`proof.list`). Customer words come from `voice.customer_language.list`. Anything else is labelled as a hypothesis.
 6. **Brand gate before anything leaves.** Run copy through `brand.check_text` before proposing a send or a publish. A violating draft is blocked at send time anyway.
 7. **Spend is real.** Quote before buying data (`capability.quote`, or `estimate: true` on enrichment) and stay inside the org's caps (`policy.guardrails.get`).
 
@@ -49,7 +49,7 @@ The class follows each name. Treat this as a map; `gtm_describe` is the authorit
 
 **Records and CRM.** `records.search` Q, `records.get` Q, `records.list` Q, `records.aggregate` Q, `records.provenance` Q, `records.create` D, `records.update` D, `account.relationship` Q, `contact.relationship` Q, `crm.dashboard` Q, `crm.sync_status` Q, `crm.update_record` E, `deal.advance_stage` T, `deal.move_stage` D, `deal.close` D, `pipeline.list` Q, `task.create` D, `task.list` Q, `activity.list` Q, `activity.log` D, `meeting.get` Q, `transcripts.list` Q, `transcripts.get` Q, `journey.funnel` Q, `journey.position` Q, `buying_roles.list` Q.
 
-**Score.** `score.score_account` D, `score.score_contact` D, `score.list_ranked` Q, `score.account_tiers` Q, `score.explain_subject` Q, `score.explain_qualification` D, `score.rescan_organization` D, `score.kpis` Q. When available (0.2.5 learning loop): `score.learn` D, `score.learning_report` Q, `score.feedback` D.
+**Score.** `score.score_account` D, `score.score_contact` D, `score.list_ranked` Q, `score.account_tiers` Q, `score.explain_subject` Q, `score.explain_qualification` D, `score.rescan_organization` D, `score.kpis` Q. Learning loop: `score.learn` D, `score.learning_report` Q, `score.feedback` D.
 
 **Signals and research.** `signals.list` Q, `signals.feed` Q, `signals.score` Q, `signals.surge_report` Q, `signals.review_queue` Q, `signals.record` D, `signals.verify` D, `signals.scan_now` D, `research.request` D, `research.queue` Q, `research.subject.get` Q, `research.fact.decide` D.
 
@@ -57,9 +57,9 @@ The class follows each name. Treat this as a map; `gtm_describe` is the authorit
 
 **Routing.** `routing.assign` D, `routing.reconcile` D, `territory.match` Q, `territory.upsert` D.
 
-**Outreach.** `outreach.draft_message` D, `outreach.draft_personalized_message` D, `outreach.send_message` E, `outreach.undo_send_message` D, `outreach.sending_mailboxes` Q, `outreach.kpis` Q, `sequence.create` D, `sequence.enroll` D, `sequence.list` Q, `sequence.messages` Q, `sequence.replies` Q, `replies.list` Q, `replies.classify` D, `reply_labels.get` Q, `brand.get` Q, `brand.check_text` Q, `consent.get` Q. When available: `outreach.learning_report` Q (what is working).
+**Outreach.** `outreach.draft_message` D, `outreach.draft_personalized_message` D, `outreach.send_message` E, `outreach.undo_send_message` D, `outreach.sending_mailboxes` Q, `outreach.kpis` Q, `sequence.create` D, `sequence.enroll` D, `sequence.list` Q, `sequence.messages` Q, `sequence.replies` Q, `replies.list` Q, `replies.classify` D, `reply_labels.get` Q, `brand.get` Q, `brand.check_text` Q, `consent.get` Q. `outreach.learning_report` Q (what is working).
 
-**Proof and customer language (when available, 0.2.5).** `proof.list` Q, `proof.get` Q, `proof.create` D, `proof.extract_from_document` D, `proof.propose_activation` M, `voice.customer_language.list` Q, `voice.customer_language.mine` D. Only *active* proof may back a claim.
+**Proof and customer language.** `proof.list` Q, `proof.get` Q, `proof.create` D, `proof.extract_from_document` D, `proof.propose_activation` M, `voice.customer_language.list` Q, `voice.customer_language.mine` D. Only *active* proof may back a claim.
 
 **SEO and GEO.** Google Search Console is required for this engine. `seo_geo.create_tracked_page` D, `seo_geo.audit_page` D, `seo_geo.run_audit` D, `seo_geo.scan_all_pages` D, `seo_geo.get_recommendation` Q, `seo_geo.get_readiness_view` Q, `seo_geo.get_page_performance` Q, `seo_geo.fix_queue` Q, `seo_geo.keyword_opportunities` Q, `seo_geo.refresh_keyword_data` D, `seo_geo.run_visibility` D, `seo_geo.get_visibility` Q, `seo_geo.create_tracked_prompt` D, `seo_geo.list_visibility_alerts` Q, `seo_geo.publish_queue` Q, `seo_geo.refresh_calendar` Q, `seo_geo.gsc_properties` Q, `seo_geo.kpis` Q, `seo_geo.publish_content_change` E, `seo_geo.undo_content_change` E. Keyword, SERP and AI-answer data come through the looot capabilities (`seo.keyword_data`, `seo.serp_organic`, `geo.answer_*`).
 

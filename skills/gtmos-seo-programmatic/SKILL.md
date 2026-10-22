@@ -14,9 +14,11 @@ metadata:
 
 # Programmatic SEO
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`programmatic-seo`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/programmatic-seo) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Merged with [`seo-programmatic`](https://github.com/AgriciDaniel/claude-seo/tree/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo-programmatic) from AgriciDaniel/claude-seo (MIT), kept in `references/seo-seo-programmatic.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`programmatic-seo`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/programmatic-seo) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Merged with [`seo-programmatic`](https://github.com/AgriciDaniel/claude-seo/tree/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo-programmatic) from AgriciDaniel/claude-seo (MIT), kept in `references/seo-seo-programmatic.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
+
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
 Programmatic pages are planned here and measured by the **SEO & GEO engine**. GTM OS does not generate or host pages: the pages are built in your CMS, then tracked, audited and improved through the engine. Google Search Console is required for this engine; check `instance.readiness` and `seo_geo.gsc_properties` first. Confirm each schema with `gtm_describe` before the first call.
 
@@ -29,13 +31,13 @@ Programmatic pages are planned here and measured by the **SEO & GEO engine**. GT
 | `seo_geo.get_visibility` | The site's Search Console totals, top pages, Ahrefs metrics and competitors, if `seo_geo.run_visibility` has run. |
 | `definition.persona`, `definition.segment`, `definition.customer_type` | The real segments for persona or industry playbooks ("[product] for [audience]"). Do not invent audiences the org does not sell to. |
 | `brand.get` | Voice and forbidden claims for every template string. |
-| `proof.list` (when available) | Any per-page stat, logo or result must be an active proof item. |
+| `proof.list` | Any per-page stat, logo or result must be an active proof item. |
 
 **2. Design the template with the method below.** Proprietary data beats public data: CRM aggregates (`records.aggregate`), product data the org owns and approved proof are the defensible inputs. Never pad a page with generated "facts".
 
 **3. Track what you launch.** For each live page, `seo_geo.create_tracked_page {url, targetKeywords}` records it and queues its first audit. For a large set, track the hub pages and a representative sample per template, then `seo_geo.scan_all_pages` audits every tracked page in one batch.
 
-**4. Fix through approvals.** `seo_geo.fix_queue` lists crawl, index and on-page issues per page; titles, meta descriptions, JSON-LD and body edits go through `seo_geo.publish_content_change` (E), which a different person approves (`seo_geo.publish_queue`, `runtime.list_approvals`). Bulk page creation in the CMS is not a GTM OS operation yet; publishing new pages through a CMS connection is planned (when available). In dry mode every publish stays a proposal.
+**4. Fix through approvals.** `seo_geo.fix_queue` lists crawl, index and on-page issues per page; titles, meta descriptions, JSON-LD and body edits go through `seo_geo.publish_content_change` (E), which a different person approves (`seo_geo.publish_queue`, `runtime.list_approvals`). Bulk page creation in the CMS is not a GTM OS operation yet; publishing new pages through a CMS connection is planned. In dry mode every publish stays a proposal.
 
 **5. Measure.** `seo_geo.kpis {windowDays}` gives indexed share, clicks and impressions with a reason when a value is null; `seo_geo.get_page_performance` gives one page's history; `seo_geo.refresh_calendar` shows which pages are due for a re-audit. Report "not enough data yet" for pages younger than a few weeks.
 

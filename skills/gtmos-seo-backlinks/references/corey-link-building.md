@@ -132,7 +132,7 @@ Report placements by target page. A total link count hides where the links went:
 
 ## Running It as a Loop
 
-Link building works as a weekly habit more than a campaign. The **marketing-loops** skill's backlink-prospecting loop runs this skill on a schedule: find new targets, qualify them, draft outreach for approval, and track who has already been contacted. Its brand-mention loop sends unlinked mentions here for reclamation.
+Link building works as a weekly habit more than a campaign. The `gtmos-ops-marketing-loops` skill's backlink-prospecting loop runs this skill on a schedule: find new targets, qualify them, draft outreach for approval, and track who has already been contacted. Its brand-mention loop sends unlinked mentions here for reclamation.
 
 ## Tools
 

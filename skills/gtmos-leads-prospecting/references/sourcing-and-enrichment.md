@@ -70,7 +70,7 @@ Verify every address before it reaches a sequence. This is the single cheapest p
 2. **Send resolved-valid catch-alls from separate, lower-volume inboxes**, so a bad batch can't damage your main sending.
 3. **Send unresolved catch-alls only for Tier 1 accounts**, where the account is worth the risk, and watch bounces on that inbox closely.
 
-**Hard limits:** keep bounces under 2% per campaign (under 1% is best in class) and pause automatically above that. See the cold-email skill's deliverability reference.
+**Hard limits:** keep bounces under 2% per campaign (under 1% is best in class) and pause automatically above that. See the `gtmos-outreach-cold-email` skill's deliverability reference.
 
 ## Suppression list
 

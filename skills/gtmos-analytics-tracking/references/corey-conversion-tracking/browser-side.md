@@ -6,7 +6,7 @@
 
 Load this to install pixels and tags directly, or via Google Tag Manager with this skill's recipe system. This path is free, self-serve, and complete; for analytics-only destinations it's a sound default, though server-side still recovers the conversions ad blockers stop and gives more accurate numbers. When the destination is an ad platform, state its ceiling honestly, and the ceiling is two things. Some conversions, typically 10–30% depending on audience, never get credited to the ad (ad blockers, Safari's cookie limits, and cross-device journeys where the ad is clicked on one device and the conversion happens on another; magnitudes in `discrepancies.md`), and a default tag carries only the click ID, IP address, and user agent. Browser tags can also send hashed email and phone (Google Enhanced Conversions for web, Meta advanced matching, TikTok `ttq.identify`); turn those on first, knowing they share the tag's losses. Say both, so the user's choice is informed.
 
-Division of labour with the neighbouring references: this file is the on-page code. Account-side configuration (creating conversion actions, datasets, and goals) and per-platform diagnostics live in `google-ads.md`, `meta.md`, and `other-platforms.md`. The moment detection that should trigger everything here lives in `conversion-moments.md`. Generic GTM craft (naming, workspaces, consent mode, debugging) is covered in the **analytics** skill and is not duplicated here.
+Division of labour with the neighbouring references: this file is the on-page code. Account-side configuration (creating conversion actions, datasets, and goals) and per-platform diagnostics live in `google-ads.md`, `meta.md`, and `other-platforms.md`. The moment detection that should trigger everything here lives in `conversion-moments.md`. Generic GTM craft (naming, workspaces, consent mode, debugging) is covered in the `gtmos-analytics-tracking` skill and is not duplicated here.
 
 Whatever is installed below, the non-negotiables apply: fire on confirmed success (never on a button click), and verify arrival in the platform, not just firing in the browser.
 
@@ -86,13 +86,13 @@ gtag('set', 'user_data', {
 With GTM installed, prefer importing a prebuilt container over hand-building tags. This skill ships importable recipes for 22 form and booking tools, 4 universal patterns, and 6 destinations:
 
 ```
-python3 ../scripts/build_recipe.py --tool gravity-forms --send google-ads \
+python3 scripts/build_recipe.py --tool gravity-forms --send google-ads \
     --conversion-id 123456789 --conversion-label AbCdEfGhIj -o import-me.json
 ```
 
-The output file bundles the tool's detection listener, a custom event trigger on the canonical dataLayer event, a Conversion Linker, and the destination's conversion tag, all wired. Import it in GTM (Admin, then Import Container, choose the existing workspace, choose **Merge** with rename), review the preview diff, test in Preview mode, then publish. Tool slugs and event names are in `../assets/gtm-recipes/event-map.json`; the step-by-step walkthrough with expected outputs and failure modes is in `google-ads.md` Part A.
+The output file bundles the tool's detection listener, a custom event trigger on the canonical dataLayer event, a Conversion Linker, and the destination's conversion tag, all wired. Import it in GTM (Admin, then Import Container, choose the existing workspace, choose **Merge** with rename), review the preview diff, test in Preview mode, then publish. Tool slugs and event names are in `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/gtm-recipes/event-map.json`; the step-by-step walkthrough with expected outputs and failure modes is in `google-ads.md` Part A.
 
-Without GTM, paste the tool's detection snippet from `../assets/snippets/` into the site head via the platform's custom code setting, then wire the platform tag to the dataLayer event it pushes.
+Without GTM, paste the tool's detection snippet from `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/snippets/` into the site head via the platform's custom code setting, then wire the platform tag to the dataLayer event it pushes.
 
 ## Meta (Facebook/Instagram)
 
@@ -327,19 +327,19 @@ Pick 1 path. Path A when the site runs Google Tag Manager, Path B when it does n
 
 **Step 4 (Path A): Build and import the GTM file**
 - **Goal.** Add a detection tag for the tool plus a GA4 event tag that sends `generate_lead` when the tool's event fires.
-- **Do this.** From the repo root run, substituting the tool key from `../assets/gtm-recipes/event-map.json`. `python3 ../scripts/build_recipe.py --tool {tool} --send ga4 --measurement-id G-XXXXXXXXXX -o import-me.json` (add `--event-name` only if the account wants a name other than the default `generate_lead`). Then in GTM click Admin, then Import Container, choose the file, pick the Existing workspace, choose Merge, then Rename conflicting tags, triggers, and variables, and Confirm. If the property is brand new and nothing loads GA4 yet, also add the base tag in GTM (Tags, New, Google tag, enter the G- ID, fire on Initialization, All Pages).
+- **Do this.** From the repo root run, substituting the tool key from `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/gtm-recipes/event-map.json`. `python3 scripts/build_recipe.py --tool {tool} --send ga4 --measurement-id G-XXXXXXXXXX -o import-me.json` (add `--event-name` only if the account wants a name other than the default `generate_lead`). Then in GTM click Admin, then Import Container, choose the file, pick the Existing workspace, choose Merge, then Rename conflicting tags, triggers, and variables, and Confirm. If the property is brand new and nothing loads GA4 yet, also add the base tag in GTM (Tags, New, Google tag, enter the G- ID, fire on Initialization, All Pages).
 - **Expect to see.** The import preview lists the added tags and 1 trigger, no deletions.
 - **On error.** "measurement ID should start with G-" means an AW- or GTM- ID was passed. Deletions in the import preview mean Overwrite was picked instead of Merge, cancel and redo.
 
 **Step 5 (Path A): Preview, test, publish**
 - **Goal.** Prove the GA4 event fires on a real submission before going live.
-- **Do this.** Click Preview in GTM, connect to the page carrying the form, submit a test entry (ask the user before submitting on production). Confirm the tool's detection event (for example `gravity_form_submitted`, the canonical names live in `../assets/gtm-recipes/event-map.json` and `../assets/snippets/README.md`) appears and the GA4 event tag fired on it. Then Submit and Publish.
+- **Do this.** Click Preview in GTM, connect to the page carrying the form, submit a test entry (ask the user before submitting on production). Confirm the tool's detection event (for example `gravity_form_submitted`, the canonical names live in `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/gtm-recipes/event-map.json` and `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/snippets/README.md`) appears and the GA4 event tag fired on it. Then Submit and Publish.
 - **Expect to see.** The detection event exactly once per submission, and the GA4 event tag marked Fired.
-- **On error.** No detection event means the wrong tool key or a form inside a cross-domain iframe, recheck `../assets/snippets/README.md`. The event firing twice means the detection code is installed twice (site head plus GTM), remove one.
+- **On error.** No detection event means the wrong tool key or a form inside a cross-domain iframe, recheck `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/snippets/README.md`. The event firing twice means the detection code is installed twice (site head plus GTM), remove one.
 
 **Step 6 (Path B): Paste the snippet and the gtag listener**
 - **Goal.** Same outcome without GTM, using the platform's custom code setting.
-- **Do this.** Paste the matching `../assets/snippets/{tool}.js` file inside a `<script>` tag in the site's `<head>`, then add the code below. Replace `G-XXXXXXXXXX` with the Measurement ID and `TOOL_EVENT_NAME` with the canonical event name. Skip the first block if GA4 already loads on the site.
+- **Do this.** Paste the matching `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/snippets/{tool}.js` file inside a `<script>` tag in the site's `<head>`, then add the code below. Replace `G-XXXXXXXXXX` with the Measurement ID and `TOOL_EVENT_NAME` with the canonical event name. Skip the first block if GA4 already loads on the site.
 
 ```html
 <!-- Google tag (gtag.js). Skip if GA4 already loads on this site -->

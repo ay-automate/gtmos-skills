@@ -55,4 +55,4 @@ Wispr Flow went from about 100 to over 3,500 ads in its Meta account in nine mon
 - **Give each ad about five days before judging it.** A Friday launch meets a different audience than a Monday one. A testing winner can also die when it graduates to a scaling budget an order of magnitude larger; graduate in steps you can afford and watch each one.
 - **Keep a lessons file that feeds the briefs.** Wispr Flow keeps a marketing repo that collects what each test taught (in ads, landing pages, newsletters, and creator partnerships) and drafts the next round of creator briefs from it. **marketing-loops** has the monthly-creative-retro loop for this.
 
-For recruiting, paying, and briefing the creators themselves, see the performance-paid creator program in the **influencer-marketing** skill.
+For recruiting, paying, and briefing the creators themselves, see the performance-paid creator program in the upstream `influencer-marketing` skill (coreyhaines31/marketingskills; not in this repository).

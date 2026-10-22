@@ -14,9 +14,11 @@ metadata:
 
 # CRM data quality
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`crm-data-quality`](https://github.com/HubSpot/agent-cli-skills/tree/a015a48982b922279d8521677b7c72b0acfb9506/crm-data-quality) in HubSpot/agent-cli-skills (Apache-2.0, HubSpot, Inc.). Merged with [`bulk-operations`](https://github.com/HubSpot/agent-cli-skills/tree/a015a48982b922279d8521677b7c72b0acfb9506/bulk-operations) from HubSpot/agent-cli-skills (Apache-2.0), kept in `references/hubspot-bulk-operations.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`crm-data-quality`](https://github.com/HubSpot/agent-cli-skills/tree/a015a48982b922279d8521677b7c72b0acfb9506/crm-data-quality) in HubSpot/agent-cli-skills (Apache-2.0, HubSpot, Inc.). Merged with [`bulk-operations`](https://github.com/HubSpot/agent-cli-skills/tree/a015a48982b922279d8521677b7c72b0acfb9506/bulk-operations) from HubSpot/agent-cli-skills (Apache-2.0), kept in `references/hubspot-bulk-operations.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
+
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
 **1. Measure.** `identity_dq.quality_report` Q (fill rate, duplicate rate, staleness, mean score) before you touch anything; repeat it after, so the change is measured.
 

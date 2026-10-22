@@ -447,7 +447,7 @@ Need voiceover for ads?
 ### Workflow: Voice + Video
 
 ```
-1. Write ad script (use ad-creative skill for copy)
+1. Write ad script (use `gtmos-ads-creative` skill for copy)
 2. Generate voiceover with ElevenLabs/OpenAI TTS
 3. Generate or render video:
    a. Silent video from Runway/Remotion → layer voice track

@@ -13,13 +13,15 @@ metadata:
 
 # Conversion rate optimization
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`cro`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/cro) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`cro`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/cro) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
 
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
+
 **1. Measure.** `tracking.site.get` Q (is the site tracked), `tracking.sources` Q and `tracking.activity` Q for visits and conversions by source, inbound form submissions from the `webform` connector as records and signals. Quote rates with their sample; small samples get "not enough data yet".
 
-**2. Audit.** Apply the method below to the page. Copy suggestions pass `brand.check_text`; proof on the page comes from `proof.list` (when available).
+**2. Audit.** Apply the method below to the page. Copy suggestions pass `brand.check_text`; proof on the page comes from `proof.list`.
 
 **3. Change and test.** Page changes for tracked pages go through `seo_geo.publish_content_change` E (approved by a person). Test design: gtmos-analytics-experiments.
 

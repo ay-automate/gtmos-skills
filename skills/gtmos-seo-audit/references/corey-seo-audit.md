@@ -452,7 +452,7 @@ Same format as above
 - [Title Tags](corey-seo-audit/title-tags.md): Title patterns by page type, Google's rewrite triggers, low-CTR fixes, and the bulk-audit table
 - [Local SEO](corey-seo-audit/local-seo.md): Business Profiles, map pack diagnosis, citations, reviews, and location pages for local businesses (with profile and page details in two companion files)
 - [Rankings Push](corey-seo-audit/rankings-push.md): Moving positions 8–20 onto page one, fixing weak click-through, and the checklist for shipping a new page
-- For AI search optimization (AEO, GEO, LLMO, AI Overviews), see the **ai-seo** skill
+- For AI search optimization (AEO, GEO, LLMO, AI Overviews), see the `gtmos-seo-geo` skill
 
 ---
 

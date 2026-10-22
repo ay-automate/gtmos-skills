@@ -109,6 +109,6 @@ This file is the **format map** — priority and selection. The *how-to-build* l
 - **Static formats** (grid, us-vs-them, headline, callout, before/after, founder's letter, FAQ, tweet/Reddit, etc.) → structural templates with copy slots in [static-ad-templates.md](static-ad-templates.md).
 - **Video formats** (VSL, yapper, green-screen, UGC reaction, faceless/motion, iOS-native reveals) → the vertical-video production spec + creator-format library in [short-form-video-specs.md](short-form-video-specs.md), the motion-style pipeline in [motion-video-ads.md](motion-video-ads.md), and the iOS-native reveals in [imessage-video-ads.md](imessage-video-ads.md).
 - **Deciding which specific concepts to make** (evidence-ranked, account-state-aware) → the Creative Strategy Loop in [creative-roadmap.md](creative-roadmap.md).
-- **Kill/keep/scale math** once these are live → `ads` skill's [meta-decision-system.md](../../gtmos-ads-campaigns/references/meta-decision-system.md).
+- **Kill/keep/scale math** once these are live → `gtmos-ads-campaigns` skill's [meta-decision-system.md](../../gtmos-ads-campaigns/references/meta-decision-system.md).
 
 *Tier list and the unicorn-vs-supporting-cast framing adapted from Dara Denney's "I Ranked 51 Meta Ad Creative Types (Tier List)"; yapper/investigation craft informed by Oren John. Patterns credited, descriptions re-expressed. Tiers reflect a point in time — Meta's algorithm and format fatigue shift; re-verify against current account data.*

@@ -16,7 +16,7 @@ Settle five things with the owner and write them at the top of the operator brie
 | **Ship mode** | "Open a PR for review" (default) or "merge when checks pass." Auto-merge needs the owner's explicit say-so; see `loop-guardrails.md` |
 | **Data access** | Which of Search Console, analytics, a rank or backlink tool, and an AI-visibility tool the agent can read |
 
-Then confirm the foundation: tracking works (the tracking-QA loop), and `.agents/product-marketing.md` exists. If it doesn't, build it with the `product-marketing` skill first. The operator reads product facts from there; it doesn't keep a second copy.
+Then confirm the foundation: tracking works (the tracking-QA loop), and `.agents/product-marketing.md` exists. If it doesn't, build it with the `gtmos-marketing-positioning` skill first. The operator reads product facts from there; it doesn't keep a second copy.
 
 ## Shared memory
 

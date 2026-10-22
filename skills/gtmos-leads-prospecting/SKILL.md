@@ -14,9 +14,11 @@ metadata:
 
 # Prospecting and list building
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`prospecting`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/prospecting) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Merged with [`prospect`](https://github.com/apolloio/apollo-mcp-plugin/tree/bd0513c961f02105492fcff0d7d29c9cccf1ed23/skills/prospect) from apolloio/apollo-mcp-plugin (MIT), kept in `references/apollo-prospect.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`prospecting`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/prospecting) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Merged with [`prospect`](https://github.com/apolloio/apollo-mcp-plugin/tree/bd0513c961f02105492fcff0d7d29c9cccf1ed23/skills/prospect) from apolloio/apollo-mcp-plugin (MIT), kept in `references/apollo-prospect.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
+
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
 GTM OS sources lists through its **data-acquisition layer** (looot capabilities behind a governed, metered broker) and scores them with the **Score engine**. Data lands as `gtm.*` records with provenance, so the list you build is the list outreach and routing use. Confirm each schema with `gtm_describe` before the first call.
 

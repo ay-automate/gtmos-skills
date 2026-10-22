@@ -68,7 +68,7 @@ Leave out metrics nobody will act on. If a number appears in the readout, it sho
 
 ## Making it a habit
 
-Run the check by hand for two weeks before automating any part of it. Manual runs show which inputs are hard to get and which calls you keep making, and that's what the automation needs to handle. When you do schedule it, the **marketing-loops** skill covers running recurring checks with state between runs.
+Run the check by hand for two weeks before automating any part of it. Manual runs show which inputs are hard to get and which calls you keep making, and that's what the automation needs to handle. When you do schedule it, the `gtmos-ops-marketing-loops` skill covers running recurring checks with state between runs.
 
 ---
 

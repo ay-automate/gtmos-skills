@@ -16,7 +16,7 @@ GA4 + Ads in EU. The operational effect for SEO audits:
   Conversion modelling fills the gap, but the raw counts are lower
   than pre-2024.
 
-## What the seo-google skill should do
+## What the `gtmos-seo-search-console` skill should do
 
 1. **When pulling GSC search analytics for an EU-targeted property**,
    note: "EU CTR comparisons before/after 2024-03-07 are not

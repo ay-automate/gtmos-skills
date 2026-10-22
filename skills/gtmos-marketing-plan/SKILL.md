@@ -13,9 +13,11 @@ metadata:
 
 # Marketing plan
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`marketing-plan`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/marketing-plan) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`marketing-plan`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/marketing-plan) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
+
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
 The plan's weakest sections are usually the ones built on guesses: current state, budget math, CAC. With GTM OS connected, fill them from the org's own data and say which operation each number came from. Confirm each schema with `gtm_describe` before the first call.
 
@@ -39,7 +41,7 @@ When a figure is null or the sample is small, write "not enough data yet" and th
 
 **4. 90-day roadmap (section 9).** If the org is in setup, `onboarding.get` returns its 90-day plan. You may shape it with `onboarding.plan.set` (add plays from `plays.catalog` to the now / next / later lanes, defer items with a reason). Installing a catalog play goes through Studio and ships only when a different person approves. Anything that sends, publishes or spends stays a proposal; the plan never turns on an engine by itself.
 
-**5. Proof in the plan.** Customer results quoted in the executive summary come from active proof only (`proof.list`, when available).
+**5. Proof in the plan.** Customer results quoted in the executive summary come from active proof only (`proof.list`).
 
 ## Without GTM OS
 

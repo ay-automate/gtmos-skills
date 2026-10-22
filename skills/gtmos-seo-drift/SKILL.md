@@ -13,9 +13,11 @@ metadata:
 
 # SEO drift monitoring
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`gtmos-seo-drift`](https://github.com/AgriciDaniel/claude-seo/tree/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo-drift) in AgriciDaniel/claude-seo (MIT, Copyright (c) 2026 agricidaniel). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`seo-drift`](https://github.com/AgriciDaniel/claude-seo/tree/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo-drift) in AgriciDaniel/claude-seo (MIT, Copyright (c) 2026 agricidaniel). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
+
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
 **1. Baseline = tracked pages.** Every tracked page (`seo_geo.get_readiness_view` Q) keeps its audit history. Track the pages a release can break with `seo_geo.create_tracked_page`.
 
@@ -38,6 +40,8 @@ Git for your SEO. Capture baselines, detect regressions, track changes over time
 ---
 
 ## Commands
+
+The upstream plugin exposes these as `/seo drift ...` commands. Here they name the steps of the procedure below; with GTM OS, the engine's tracked-page audits are the baseline (see the section above).
 
 | Command | Purpose |
 |---------|---------|
@@ -207,13 +211,13 @@ When drift is detected, recommend the appropriate specialized skill:
 
 ### Pre/Post Deployment Check
 ```
-/seo drift baseline https://example.com     # Before deploy
+drift baseline https://example.com     # Before deploy
 # ... deploy happens ...
-/seo drift compare https://example.com      # After deploy
-/seo drift baseline https://example.com     # Initial capture
+drift compare https://example.com      # After deploy
+drift baseline https://example.com     # Initial capture
 # ... weeks later ...
-/seo drift compare https://example.com      # Check for drift
-/seo drift history https://example.com      # Review all changes
-/seo drift compare https://example.com      # What changed?
-/seo drift history https://example.com      # When did it change?
+drift compare https://example.com      # Check for drift
+drift history https://example.com      # Review all changes
+drift compare https://example.com      # What changed?
+drift history https://example.com      # When did it change?
 ```

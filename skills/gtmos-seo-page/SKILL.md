@@ -14,15 +14,17 @@ metadata:
 
 # Single-page SEO and content quality
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`gtmos-seo-page`](https://github.com/AgriciDaniel/claude-seo/tree/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo-page) in AgriciDaniel/claude-seo (MIT, Copyright (c) 2026 agricidaniel). Merged with [`gtmos-seo-page`](https://github.com/AgriciDaniel/claude-seo/tree/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo-content) from AgriciDaniel/claude-seo (MIT), kept in `references/seo-seo-content.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`seo-page`](https://github.com/AgriciDaniel/claude-seo/tree/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo-page) in AgriciDaniel/claude-seo (MIT, Copyright (c) 2026 agricidaniel). Merged with [`seo-content`](https://github.com/AgriciDaniel/claude-seo/tree/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo-content) from AgriciDaniel/claude-seo (MIT), kept in `references/seo-seo-content.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
+
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
 **1. Find or track the page.** `seo_geo.get_readiness_view` Q to find it; if missing, `seo_geo.create_tracked_page {url, targetKeywords}` D (ask for the one or two keywords the page should win). Search Console is required for the engine (`seo_geo.gsc_properties`).
 
 **2. Audit it.** `seo_geo.run_audit {contentAssetId}` D stores the technical and GEO findings; `seo_geo.get_recommendation` Q returns the engine's recommendation; `seo_geo.get_page_performance {contentAssetId}` Q shows its recorded outcomes (clicks, impressions, position) over time.
 
-**3. Judge the content.** Apply the method below (and `references/seo-seo-content.md` for E-E-A-T and readability). Check copy you propose with `brand.check_text`. Claims about results or customers must come from active proof (`proof.list`, when available); otherwise cut them.
+**3. Judge the content.** Apply the method below (and `references/seo-seo-content.md` for E-E-A-T and readability). Check copy you propose with `brand.check_text`. Claims about results or customers must come from active proof (`proof.list`); otherwise cut them.
 
 **4. Propose the change.** `seo_geo.publish_content_change {contentAssetId, title, metaDescription, body, schemaJsonLd}` E proposes; a different person approves. In dry mode it stays a draft. Never present a proposed change as live.
 

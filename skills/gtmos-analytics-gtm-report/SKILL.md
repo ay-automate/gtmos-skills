@@ -14,9 +14,11 @@ metadata:
 
 # GTM performance report
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`sales-reporting`](https://github.com/HubSpot/agent-cli-skills/tree/a015a48982b922279d8521677b7c72b0acfb9506/sales-reporting) in HubSpot/agent-cli-skills (Apache-2.0, HubSpot, Inc.). Merged with [`campaign-postmortem`](https://github.com/zapier/gtm-cheat-codes/tree/022a2884f40316ef22269e29fd61b8a0f0c4cb4a/skills/marketing/campaign-postmortem) from zapier/gtm-cheat-codes (MIT), kept in `references/zapier-campaign-postmortem.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`sales-reporting`](https://github.com/HubSpot/agent-cli-skills/tree/a015a48982b922279d8521677b7c72b0acfb9506/sales-reporting) in HubSpot/agent-cli-skills (Apache-2.0, HubSpot, Inc.). Merged with [`campaign-postmortem`](https://github.com/zapier/gtm-cheat-codes/tree/022a2884f40316ef22269e29fd61b8a0f0c4cb4a/skills/marketing/campaign-postmortem) from zapier/gtm-cheat-codes (MIT), kept in `references/zapier-campaign-postmortem.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
+
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
 **1. Data health first.** `sync.health` Q and `sync.completeness` Q: if a source is stale or incomplete, the report says so at the top.
 

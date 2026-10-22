@@ -44,7 +44,7 @@ text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
 - **The organic call:** for organic TikTok/Reels, often post **without baked-in music** and attach the trending sound *in-app* — the platform's algorithm rewards native/trending audio, and an in-app sound is discoverable/attachable by others. **Bake the music in** for paid ads and anywhere you can't attach a native sound (some cross-posting, some platforms). This one decision meaningfully affects organic reach.
 
 ### Determinism (if you generate programmatically)
-Renders must be reproducible: no clocks (`Date.now()`), no `Math.random()`, no network fetches at render time. Same inputs → same MP4, every time. (Applies whether you're on Remotion, HyperFrames, or an ffmpeg pipeline — see the `video` skill for framework choice.)
+Renders must be reproducible: no clocks (`Date.now()`), no `Math.random()`, no network fetches at render time. Same inputs → same MP4, every time. (Applies whether you're on Remotion, HyperFrames, or an ffmpeg pipeline — see the upstream `video` skill (coreyhaines31/marketingskills; not in this repository) for framework choice.)
 
 ---
 
@@ -210,4 +210,4 @@ For **founder-led video ads** and organic-native brand content, four narrative s
 
 ---
 
-*Vertical-video spec (safe-zone band, caption recipe, auto-sizing, organic-vs-baked audio) and the first three creator formats are distilled from Daniel Hangan's `reelclaw-templates` (built on HeyGen's HyperFrames; TikTok Sans redistributed under SIL OFL 1.1) — patterns credited, no code vendored. The tiered format library (Yapper, Investigation, David & Goliath, Authority, VSL, and the tier logic) is adapted from Dara Denney's Meta creative-type tier list; the founder / organic-vlog structures, three-capture shooting system, and 0.5–1s cut formula are adapted from Oren John's vlog + yapping playbooks — sources credited, expressed originally. Safe-zone numbers are a cross-platform worst case; re-verify against current app UI. For framework/tooling choices to actually render these, see the `video` skill.*
+*Vertical-video spec (safe-zone band, caption recipe, auto-sizing, organic-vs-baked audio) and the first three creator formats are distilled from Daniel Hangan's `reelclaw-templates` (built on HeyGen's HyperFrames; TikTok Sans redistributed under SIL OFL 1.1) — patterns credited, no code vendored. The tiered format library (Yapper, Investigation, David & Goliath, Authority, VSL, and the tier logic) is adapted from Dara Denney's Meta creative-type tier list; the founder / organic-vlog structures, three-capture shooting system, and 0.5–1s cut formula are adapted from Oren John's vlog + yapping playbooks — sources credited, expressed originally. Safe-zone numbers are a cross-platform worst case; re-verify against current app UI. For framework/tooling choices to actually render these, see the upstream `video` skill (coreyhaines31/marketingskills; not in this repository).*

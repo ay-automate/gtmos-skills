@@ -10,7 +10,7 @@ Most buyers need to see a name a few times, in more than one place, before they 
 | Tier 2 (1:few) | Email and LinkedIn; phone for the best-fit accounts |
 | Tier 3 (1:many) | Email; LinkedIn only if it can be done without automation risk |
 
-Tiers are defined in the prospecting skill's signal plays reference.
+Tiers are defined in the `gtmos-leads-prospecting` skill's signal plays reference.
 
 ## A 21-day Tier 1 cadence
 
@@ -32,7 +32,7 @@ Shorten it for Tier 2 (email and LinkedIn over about 14 days). Tier 3 is the ema
 ## Rules that hold any cadence together
 
 1. **A reply on any channel stops every channel.** Someone who answered on LinkedIn mustn't get email 3 the next morning. This needs one shared record of who has replied, checked before each touch.
-2. **An opt-out on one channel is an opt-out on all of them.** Key the suppression list on email, LinkedIn URL, and phone together. See the prospecting skill's sourcing and enrichment reference.
+2. **An opt-out on one channel is an opt-out on all of them.** Key the suppression list on email, LinkedIn URL, and phone together. See the `gtmos-leads-prospecting` skill's sourcing and enrichment reference.
 3. **One sender per account at a time.** Two reps, or a rep and an agent, sequencing the same company looks disorganized and doubles the annoyance.
 4. **Each touch references the last** when it helps ("Following up on the voicemail I left Tuesday"), but must also make sense on its own.
 5. **Keep it to 4–7 emails and at most 3 LinkedIn messages.** More touches don't rescue the wrong offer.
@@ -48,9 +48,9 @@ Calls are the slowest channel and the fastest to a conversation. Vendor and agen
 - **Attempts:** 3 calls per contact across the cadence, on different days and times.
 - **Openers:** say who you are and why you're calling, then ask permission to continue. Avoid "Did I catch you at a bad time?", which call-analysis data ranks among the worst openers.
 - **Voicemail:** 20–30 seconds, your name, one specific reason, and "I'll send you a note too." Then send it.
-- **Rules:** scrub against Do Not Call lists, and never use AI voice on US mobile numbers without consent. See the prospecting skill's compliance reference.
+- **Rules:** scrub against Do Not Call lists, and never use AI voice on US mobile numbers without consent. See the `gtmos-leads-prospecting` skill's compliance reference.
 
-Scripts for openers, voicemails, and common pushback are in the sales-enablement skill's cold call scripts reference.
+Scripts for openers, voicemails, and common pushback are in the `gtmos-sales-enablement` skill's cold call scripts reference.
 
 ## Video
 
@@ -68,7 +68,7 @@ Useful for Tier 1 accounts that have engaged but stalled. Something relevant to 
 
 ## Ads to target accounts
 
-Upload your target account and contact lists to LinkedIn Matched Audiences (or other ad platforms) and run light awareness ads during the cadence. When the email arrives, the name is already familiar. See the ads skill's ABM playbook.
+Upload your target account and contact lists to LinkedIn Matched Audiences (or other ad platforms) and run light awareness ads during the cadence. When the email arrives, the name is already familiar. See the `gtmos-ads-campaigns` skill's ABM playbook.
 
 ## SMS and WhatsApp
 

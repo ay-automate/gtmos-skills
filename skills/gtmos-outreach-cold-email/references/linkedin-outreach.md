@@ -59,7 +59,7 @@ Run LinkedIn alongside email, not instead of it, and stop both the moment either
 
 **InMail** suits senior people you can't reach any other way. It gets the same rules as cold email: short, specific, one ask.
 
-Everything in the main cold-email skill about voice and AI tells applies here, even more strongly: LinkedIn messages sit next to the sender's face and name.
+Everything in the main `gtmos-outreach-cold-email` skill about voice and AI tells applies here, even more strongly: LinkedIn messages sit next to the sender's face and name.
 
 ## The automation decision
 

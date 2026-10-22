@@ -14,9 +14,11 @@ metadata:
 
 # Full-site SEO audit
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`gtmos-seo-audit`](https://github.com/AgriciDaniel/claude-seo/tree/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo-audit) in AgriciDaniel/claude-seo (MIT, Copyright (c) 2026 agricidaniel). Merged with [`gtmos-seo-audit`](https://github.com/AgriciDaniel/claude-seo/tree/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo-technical) from AgriciDaniel/claude-seo (MIT), kept in `references/seo-seo-technical.md`; [`gtmos-seo-audit`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/seo-audit) from coreyhaines31/marketingskills (MIT), kept in `references/corey-seo-audit.md`; [`technical-seo-audit`](https://github.com/semrush/skills/tree/019ab369403c0e816707edae6194fa3bb47dfcd0/technical-seo-audit) from semrush/skills (Apache-2.0), kept in `references/semrush-technical-seo-audit.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`seo-audit`](https://github.com/AgriciDaniel/claude-seo/tree/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo-audit) in AgriciDaniel/claude-seo (MIT, Copyright (c) 2026 agricidaniel). Merged with [`seo-technical`](https://github.com/AgriciDaniel/claude-seo/tree/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo-technical) from AgriciDaniel/claude-seo (MIT), kept in `references/seo-seo-technical.md`; [`seo-audit`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/seo-audit) from coreyhaines31/marketingskills (MIT), kept in `references/corey-seo-audit.md`; [`technical-seo-audit`](https://github.com/semrush/skills/tree/019ab369403c0e816707edae6194fa3bb47dfcd0/technical-seo-audit) from semrush/skills (Apache-2.0), kept in `references/semrush-technical-seo-audit.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
+
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
 The audit runs on the **SEO & GEO engine**. Google Search Console is required for this engine; check it first. Confirm schemas with `gtm_describe`.
 
@@ -43,24 +45,18 @@ Follow the method below with what any agent has: fetch the homepage and key page
 1. **Render homepage**: use a rendered fetch of the page (a browser tool, or `seo_geo.run_audit` with GTM OS) to capture raw HTML, rendered HTML, extracted text, SPA status, and accessibility data when needed
 2. **Detect business type**: analyze homepage signals per seo orchestrator
 3. **Crawl site**: follow internal links up to 500 pages, respect robots.txt
-4. **Delegate to subagents** (if available, otherwise run inline sequentially):
-   - `gtmos-seo-audit` -- robots.txt, sitemaps, canonicals, Core Web Vitals, security headers
-   - `gtmos-seo-page` -- E-E-A-T, readability, thin content, AI citation readiness
-   - `gtmos-seo-schema` -- detection, validation, generation recommendations
-   - `gtmos-seo-site-architecture` -- structure analysis, quality gates, missing pages
-   - `seo-performance` -- LCP, INP, CLS measurements
-   - `seo-visual` -- screenshots, mobile testing, above-fold analysis
-   - `gtmos-seo-geo` -- AI crawler access, llms.txt, citability, brand mention signals
-   - `seo-agentic` -- Lighthouse Agentic Browsing fraction (X/N), accessibility tree for agents, AI agent access policy, Markdown and discovery files, WebMCP (always include in full audits; its findings feed AI Search Readiness)
-   - `seo-local` -- GBP signals, NAP consistency, reviews, local schema, industry-specific local factors (spawn when Local Service industry detected: brick-and-mortar, SAB, or hybrid business type)
-   - `seo-maps` -- Geo-grid rank tracking, GBP audit, review intelligence, competitor radius mapping (spawn when Local Service detected AND DataForSEO MCP available)
-   - `gtmos-seo-search-console` -- CWV field data (CrUX), URL indexation (GSC), organic traffic (GA4) (spawn when Google API credentials detected via the user's Google API credentials)
-   - `seo-matomo` -- Matomo Reporting API: organic traffic, landing pages, device / country splits, referrer analysis (spawn when Matomo credentials detected via the user's Matomo credentials; runs alongside `gtmos-seo-search-console` when both are configured, or as a GA4 alternative when GA4 is not)
-   - `gtmos-seo-backlinks` -- Backlink profile data: DA/PA, referring domains, anchor text, toxic links (spawn when Moz or Bing API credentials detected via a check of which backlink sources the user has access to, or always include Common Crawl domain-level metrics)
-   - `gtmos-seo-keyword-clusters` -- Semantic clustering analysis (spawn when content strategy signals detected: blog, pillar pages, topic clusters)
-   - `seo-sxo` -- Search experience analysis: page-type mismatch, user stories, persona scoring (always include in full audits)
-   - `gtmos-seo-drift` -- Drift analysis: compare against stored baseline (spawn when drift baseline exists for the URL via the saved baseline history)
-   - `seo-ecommerce` -- Product schema, marketplace intelligence (spawn when E-commerce industry detected)
+4. **Check every area.** Run each check inline, or with the matching skill when it is loaded:
+   - Technical: robots.txt, sitemaps, canonicals, redirects, security headers, rendering (this skill; see `references/seo-seo-technical.md`)
+   - Content quality, E-E-A-T, readability, thin content: `gtmos-seo-page`
+   - Structured data: `gtmos-seo-schema`
+   - Structure, sitemaps, internal links, orphan pages: `gtmos-seo-site-architecture`
+   - Performance (LCP, INP, CLS): PageSpeed Insights, or Search Console field data through `gtmos-seo-search-console`
+   - Mobile and above-the-fold: a rendered fetch or screenshot when a browser tool is available
+   - AI search readiness (crawler access, citability, brand signals): `gtmos-seo-geo`
+   - Backlinks: `gtmos-seo-backlinks`
+   - Topic coverage and cannibalization: `gtmos-seo-keyword-clusters`
+   - Regressions against a saved baseline: `gtmos-seo-drift`
+   - Local or e-commerce sites: check local and product signals inline (no dedicated skill in this repository)
 5. **Score** -- aggregate into SEO Health Score (0-100)
 6. **Persist audit artifacts** -- write all outputs under `{domain}-audit/`
 7. **Report** -- generate prioritized action plan and optional PDF/HTML report
@@ -192,17 +188,11 @@ Write `{domain}-audit/audit-data.json` with this shape so a report document (wit
 - **Medium**: Optimization opportunity (fix within 1 month)
 - **Low**: Nice to have (backlog)
 
-## DataForSEO Integration (Optional)
-
-If DataForSEO MCP tools are available, spawn the `seo-dataforseo` agent alongside existing subagents to enrich the audit with live data: real SERP positions, backlink profiles with spam scores, on-page analysis (Lighthouse), business listings, and AI visibility checks (ChatGPT scraper, LLM mentions).
 
 ## Google API Integration (Optional)
 
-If Google API credentials are configured (the user's Google API credentials), spawn the `gtmos-seo-search-console` agent to enrich the audit with real Google field data: CrUX Core Web Vitals (replaces lab-only estimates), GSC URL indexation status, search performance (clicks, impressions, CTR), and GA4 organic traffic trends. The Performance (CWV) category score benefits most from field data.
+If Google API credentials are configured (the user's Google API credentials), run the `gtmos-seo-search-console` checks to enrich the audit with real Google field data: CrUX Core Web Vitals (replaces lab-only estimates), GSC URL indexation status, search performance (clicks, impressions, CTR), and GA4 organic traffic trends. The Performance (CWV) category score benefits most from field data.
 
-## Matomo Integration (Optional)
-
-If Matomo credentials are configured (the user's Matomo credentials), spawn the `seo-matomo` agent to enrich the audit with self-hosted analytics: organic visits trend, top landing pages, device and country breakdowns, channel / search-engine split, and organic keywords. Works as a GA4 alternative (when only Matomo is configured) or as a complement (when both GA4 and Matomo are present). Matomo numbers will not match GA4 exactly because of segmentation differences (`referrerType==search` vs `sessionDefaultChannelGroup == "Organic Search"`) and attribution-window rules.
 
 ## Google Update Correlation
 

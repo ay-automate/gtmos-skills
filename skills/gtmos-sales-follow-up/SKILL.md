@@ -13,9 +13,11 @@ metadata:
 
 # Call follow-up
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`follow-up`](https://github.com/HubSpot/hubspot-mcp-plugins/tree/032d294bc91577cb1b9c4a61372567266ca8524e/HubSpot-Sales/skills/follow-up) in HubSpot/hubspot-mcp-plugins (Apache-2.0, HubSpot, Inc.). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`follow-up`](https://github.com/HubSpot/hubspot-mcp-plugins/tree/032d294bc91577cb1b9c4a61372567266ca8524e/HubSpot-Sales/skills/follow-up) in HubSpot/hubspot-mcp-plugins (Apache-2.0, HubSpot, Inc.). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
+
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
 The call is already in GTM OS: its transcript, the deal, the email thread. You decide the goal and write the email; the Outreach engine holds the draft; a person approves the send. Confirm each schema with `gtm_describe` before the first call.
 
@@ -34,7 +36,7 @@ The call is already in GTM OS: its transcript, the deal, the email thread. You d
 
 **3. Write it through the engine.** `outreach.draft_message {contactId, channel: "email", subject}` creates the draft (status draft, an internal write), or `outreach.draft_personalized_message {contactId, channel: "email", goal}` when you want the engine to draft from the indexed context. Edit the draft with the rules in Phase 3b.
 
-**4. Gate the copy.** `brand.check_text {text, subject, surface: "outreach"}` and fix every violation. A customer result, metric or logo in the email must come from an active item in `proof.list` (when available); otherwise leave it out. Only repeat what the transcript or the thread actually says, and quote it if it matters.
+**4. Gate the copy.** `brand.check_text {text, subject, surface: "outreach"}` and fix every violation. A customer result, metric or logo in the email must come from an active item in `proof.list`; otherwise leave it out. Only repeat what the transcript or the thread actually says, and quote it if it matters.
 
 **5. Propose the send.** `outreach.send_message {messageId}` checks contactability and suppression and **proposes**; a different person approves it under *Needs a human*. In dry mode it stays a draft; say so. You never approve your own proposal.
 

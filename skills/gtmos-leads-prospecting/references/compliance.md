@@ -158,4 +158,4 @@ Before shipping a list to the user (or downstream to cold-email):
 - [ ] Personal addresses (Gmail, etc.) flagged or excluded
 - [ ] Source provider contracts permit the intended use case
 - [ ] Retention plan documented (when to delete)
-- [ ] First outreach will include an opt-out, a postal address, and (for EU/UK) where the data came from (downstream concern for cold-email skill, but mention it now)
+- [ ] First outreach will include an opt-out, a postal address, and (for EU/UK) where the data came from (downstream concern for `gtmos-outreach-cold-email` skill, but mention it now)

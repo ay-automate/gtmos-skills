@@ -65,7 +65,7 @@ Combine 2+ sources for cross-verification.
 For dev-tool SaaS, GitHub is one of the highest-quality discovery channels:
 
 1. Identify 3–5 "anchor" repos: your direct competitors, your category leader, complementary tools your buyer uses
-2. Pull stargazers (or forks for stronger intent) via `node tools/clis/github-prospects.js stargazers <owner/repo> --enrich --with-company --format csv`
+2. Pull stargazers (or forks for stronger intent) via the GitHub API, or the upstream [`github-prospects.js`](https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/tools/clis/github-prospects.js) CLI (not shipped with GTM OS Skills): `node github-prospects.js stargazers <owner/repo> --enrich --with-company --format csv`
 3. Filter to users with `company` set — these are the easiest to enrich downstream
 4. Pair with Apollo/Clay/Hunter to lookup email by name + company
 5. Validate with Truelist before adding to outreach list

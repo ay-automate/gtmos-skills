@@ -14,9 +14,11 @@ metadata:
 
 # Cold email and multichannel outbound
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`cold-email`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/cold-email) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Merged with [`sequence-writer`](https://github.com/Instantly-ai/instantly-skills/tree/ae104f34af8a70225a6474c3b89b26ce785a6b61/skills/instantly-gtm/modules/sequence-writer) from Instantly-ai/instantly-skills (MIT), kept in `references/instantly-sequence-writer.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`cold-email`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/cold-email) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Merged with [`sequence-writer`](https://github.com/Instantly-ai/instantly-skills/tree/ae104f34af8a70225a6474c3b89b26ce785a6b61/skills/instantly-gtm/modules/sequence-writer) from Instantly-ai/instantly-skills (MIT), kept in `references/instantly-sequence-writer.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
+
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
 GTM OS runs outbound through the **Outreach engine**. You write and refine; the engine drafts, checks and queues; a person approves every send. Confirm each schema with `gtm_describe` before the first call.
 
@@ -29,12 +31,12 @@ GTM OS runs outbound through the **Outreach engine**. You write and refine; the 
 | `definition.persona`, `definition.segment`, `definition.scoring_model` | Who this is for and why they qualify. |
 | `score.explain_subject` on the contact or account | The verified reasons (signals, fit) behind the touch. These are your research signals. |
 | `signals.list` for the account | Funding, hiring, job changes, page changes, each with its source. |
-| `proof.list` (when available) | The only allowed source for results, metrics, logos and quotes. Use *active* proof only. |
-| `voice.customer_language.list` (when available) | The customer's own words for pains and outcomes. |
-| `outreach.learning_report` (when available) | Which angles, proof and steps actually win replies here. |
+| `proof.list` | The only allowed source for results, metrics, logos and quotes. Use *active* proof only. |
+| `voice.customer_language.list` | The customer's own words for pains and outcomes. |
+| `outreach.learning_report` | Which angles, proof and steps actually win replies here. |
 | `definition.lane`, `outreach.sending_mailboxes` | Which channel and mailbox the send can run on, with caps and warm-up. |
 
-**2. Draft through the engine.** `outreach.draft_personalized_message {contactId, channel, goal}` retrieves the indexed context (and, when available, the approved proof and customer language) and drafts toward the goal. If no model provider is configured it returns a plain templated draft and says `reasoningMode: "unavailable"`; report that, do not dress it up. For a hand-written message use `outreach.draft_message`. Then apply the method below to edit the draft.
+**2. Draft through the engine.** `outreach.draft_personalized_message {contactId, channel, goal}` retrieves the indexed context (and the approved proof and customer language) and drafts toward the goal. If no model provider is configured it returns a plain templated draft and says `reasoningMode: "unavailable"`; report that, do not dress it up. For a hand-written message use `outreach.draft_message`. Then apply the method below to edit the draft.
 
 **3. Gate the copy.** Run `brand.check_text` on the subject and body. Fix every `forbidden_claim` and `avoid_word` before going on. Every number, customer name or result in the copy must trace to an active proof item; if it does not, cut it or ask for proof. Never invent a case study, a metric or a "companies like yours" claim.
 
@@ -169,7 +171,7 @@ Domain and mailbox math, the Google, Yahoo, and Microsoft rules, monitoring, and
 
 Most outbound that works in 2026 runs on more than one channel:
 - **LinkedIn**: profile, limits, the engage-then-connect sequence, message copy, and the automation decision. See [linkedin-outreach.md](references/linkedin-outreach.md).
-- **Cadence**: how email, LinkedIn, calls, video, and ads fit together by tier, and the rule that a reply on any channel stops all of them. See [multichannel-cadence.md](references/multichannel-cadence.md). Call scripts are in the sales-enablement skill.
+- **Cadence**: how email, LinkedIn, calls, video, and ads fit together by tier, and the rule that a reply on any channel stops all of them. See [multichannel-cadence.md](references/multichannel-cadence.md). Call scripts are in the `gtmos-sales-enablement` skill.
 - **Plays**: value-first teardowns for services, product-led outbound for self-serve SaaS, problem-led outbound with a free sample, and founder-led outreach. See [outbound-plays.md](references/outbound-plays.md).
 
 ## When They Reply

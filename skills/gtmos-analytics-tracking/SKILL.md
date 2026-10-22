@@ -14,9 +14,11 @@ metadata:
 
 # Analytics and conversion tracking
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`analytics`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/analytics) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Merged with [`conversion-tracking`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking) from coreyhaines31/marketingskills (MIT), kept in `references/corey-conversion-tracking.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`analytics`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/analytics) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Merged with [`conversion-tracking`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking) from coreyhaines31/marketingskills (MIT), kept in `references/corey-conversion-tracking.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
+
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
 GTM OS has its own first-party website tracker. It ties anonymous visits to contacts and companies, classifies each visit's source, and feeds those visits to the attribution model as touches. Your job is to install it, prove it works, and make the rest of the stack (GA4, GTM, ad pixels, forms) agree with it. Confirm each schema with `gtm_describe` before the first call.
 

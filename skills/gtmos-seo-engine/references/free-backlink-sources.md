@@ -1,6 +1,6 @@
 # Free Backlink Data Sources
 
-Reference for the seo-backlinks skill. Loaded on demand when analyzing backlinks
+Reference for the `gtmos-seo-backlinks` skill. Loaded on demand when analyzing backlinks
 with free sources.
 
 ## Source Comparison

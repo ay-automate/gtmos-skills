@@ -14,9 +14,11 @@ metadata:
 
 # Keyword clusters and topic hubs
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`gtmos-seo-keyword-clusters`](https://github.com/AgriciDaniel/claude-seo/tree/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo-cluster) in AgriciDaniel/claude-seo (MIT, Copyright (c) 2026 agricidaniel). Merged with [`seo-keyword-cluster`](https://github.com/seranking/seo-skills/tree/fd6d1408f2e6a06454d81c07c29e0f04342eb9ba/skills/seo-keyword-cluster) from seranking/seo-skills (MIT), kept in `references/seranking-seo-keyword-cluster.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`seo-cluster`](https://github.com/AgriciDaniel/claude-seo/tree/6be93f45064ffbadced572b5d5c95f55fd263af0/skills/seo-cluster) in AgriciDaniel/claude-seo (MIT, Copyright (c) 2026 agricidaniel). Merged with [`seo-keyword-cluster`](https://github.com/seranking/seo-skills/tree/fd6d1408f2e6a06454d81c07c29e0f04342eb9ba/skills/seo-keyword-cluster) from seranking/seo-skills (MIT), kept in `references/seranking-seo-keyword-cluster.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
+
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
 **1. Collect keywords.** `seo_geo.keyword_opportunities` Q (Search Console striking-distance queries with volume and difficulty) plus the user's seed list. Refresh missing metrics with `seo_geo.refresh_keyword_data` D (budget-guarded).
 

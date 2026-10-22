@@ -13,13 +13,15 @@ metadata:
 
 # Churn prevention
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`churn-prevention`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/churn-prevention) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`churn-prevention`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/churn-prevention) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
 
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
+
 **1. Who is at risk.** `product_analytics.sync` D refreshes usage; `signals.list` Q and `signals.score` Q per account; `account.relationship` Q for engagement; `journey.position` Q for lifecycle stage. Closed-lost and churned accounts: `records.list` with their reasons.
 
-**2. Why.** Customer words from calls and replies: `transcripts.list`, `replies.list`, and `voice.customer_language.list` (when available). Quote reasons with their source.
+**2. Why.** Customer words from calls and replies: `transcripts.list`, `replies.list`, and `voice.customer_language.list`. Quote reasons with their source.
 
 **3. Act.** Save and win-back messages go through the Outreach engine: drafts (`outreach.draft_message`) and approval-gated sends on an active lane. Recurring checks (usage drop, champion left) become plays: simulate first with `play.simulate`, then a person enables them. Discounts and offers must match what the org allows; never promise a term that is not in the brand voice or the offer you were given.
 

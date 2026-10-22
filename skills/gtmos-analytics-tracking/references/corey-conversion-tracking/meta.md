@@ -79,11 +79,11 @@ src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
 
 The base code alone measures nothing that matters. You need fbq('track', 'Lead') to run at the exact moment a form is submitted.
 
-Use the standard Lead event, not a custom name. Meta parks first-seen custom event names as blocked until the account owner approves them, and custom names need an extra custom conversion wrapper before campaigns can optimize on them. Lead works everywhere immediately. This repo ships detection snippets that watch each form tool and push a canonical dataLayer event at the true submission moment. The canonical names live in ../assets/gtm-recipes/event-map.json and snippets/README.md. For example, the Typeform snippet pushes typeform_form_submitted. Install the detection snippet or GTM recipe for the user's form tool first, then connect that event to Meta with 1 of the 2 steps below.
+Use the standard Lead event, not a custom name. Meta parks first-seen custom event names as blocked until the account owner approves them, and custom names need an extra custom conversion wrapper before campaigns can optimize on them. Lead works everywhere immediately. This repo ships detection snippets that watch each form tool and push a canonical dataLayer event at the true submission moment. The canonical names live in https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/gtm-recipes/event-map.json and snippets/README.md. For example, the Typeform snippet pushes typeform_form_submitted. Install the detection snippet or GTM recipe for the user's form tool first, then connect that event to Meta with 1 of the 2 steps below.
 
 **Step 6 - With GTM, a Custom Event trigger plus a Lead tag**
 - Goal. Fire the Lead event whenever the canonical dataLayer event appears.
-- Do this. In GTM, click Triggers, then New. Choose Custom Event and set Event name to the tool's canonical event, for example typeform_form_submitted (look yours up in ../assets/gtm-recipes/event-map.json). Name the trigger to match. Then click Tags, then New, choose Custom HTML, and paste this exactly. Attach the trigger you just made, save, Submit, and Publish.
+- Do this. In GTM, click Triggers, then New. Choose Custom Event and set Event name to the tool's canonical event, for example typeform_form_submitted (look yours up in https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/gtm-recipes/event-map.json). Name the trigger to match. Then click Tags, then New, choose Custom HTML, and paste this exactly. Attach the trigger you just made, save, Submit, and Publish.
 
 ```html
 <script>
@@ -96,7 +96,7 @@ Use the standard Lead event, not a custom name. Meta parks first-seen custom eve
 
 **Step 7 - Without GTM: a small dataLayer watcher**
 - Goal. Fire the Lead event from plain code when the detection snippet pushes its event.
-- Do this. The repo snippets announce conversions with dataLayer.push, so paste this wrapper into the site head after the Meta base code. Replace the event name with the user's tool from ../assets/gtm-recipes/event-map.json.
+- Do this. The repo snippets announce conversions with dataLayer.push, so paste this wrapper into the site head after the Meta base code. Replace the event name with the user's tool from https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/gtm-recipes/event-map.json.
 
 ```html
 <script>

@@ -50,7 +50,7 @@ Models look for consensus. Your G2, Capterra, Gartner, Crunchbase, LinkedIn, and
 - Review text matters as much as profile text. Models read what customers say on those pages.
 - This is one of the cheapest changes available: an afternoon of edits across profiles you already have.
 
-Pair with the review-generation playbook in the directory-submissions skill.
+Pair with the review-generation playbook in the upstream `directory-submissions` skill (coreyhaines31/marketingskills; not in this repository).
 
 ---
 

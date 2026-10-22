@@ -16,7 +16,7 @@ Report each layer separately. Rising visibility does not prove rising revenue.
 | Layer | What it captures | Where it comes from |
 |---|---|---|
 | **Exposure** | Mentions, recommendations, prominence, framing, citations | Prompt tracking (see [prompt-portfolio.md](prompt-portfolio.md)) |
-| **Immediate behavior** | AI referral sessions, landing pages, engaged sessions | Analytics, with AI referrers grouped (see the **analytics** skill) |
+| **Immediate behavior** | AI referral sessions, landing pages, engaged sessions | Analytics, with AI referrers grouped (see the `gtmos-analytics-tracking` skill) |
 | **Delayed behavior** | Branded search, direct visits, return visits, cross-session conversions | Search Console branded queries, analytics, CRM |
 | **Business outcome** | Signups, leads, qualified pipeline, purchases, revenue, retention | CRM and billing |
 

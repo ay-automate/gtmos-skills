@@ -13,15 +13,17 @@ metadata:
 
 # Keyword research
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`keyword-research`](https://github.com/semrush/skills/tree/019ab369403c0e816707edae6194fa3bb47dfcd0/keyword-research) in semrush/skills (Apache-2.0, Copyright 2026 Semrush Inc.). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`keyword-research`](https://github.com/semrush/skills/tree/019ab369403c0e816707edae6194fa3bb47dfcd0/keyword-research) in semrush/skills (Apache-2.0, Copyright 2026 Semrush Inc.). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
+
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
 **1. Start from what Google already shows you.** `seo_geo.keyword_opportunities {days, minPosition, maxPosition, minImpressions, limit}` Q returns Search Console queries at average position 4 to 20, joined with keyword volume, difficulty and CPC, ranked by the clicks a top-3 position would add. It spends nothing. Search Console is required.
 
 **2. Refresh the data.** `seo_geo.refresh_keyword_data {keywords, limit, locale}` D buys keyword data through looot under the org's budget guard; over the cap it returns `APPROVAL_REQUIRED` and buys nothing. Quote before large lists. For one-off lookups the looot capability `seo.keyword_data` and `seo.serp_organic` give volume and the live results page.
 
-**3. Add business value.** Map each keyword to a persona and stage from `definition.persona` and `definition.segment`, and to the product it sells. Use customer phrasing (`voice.customer_language.list`, when available) to find terms buyers actually use.
+**3. Add business value.** Map each keyword to a persona and stage from `definition.persona` and `definition.segment`, and to the product it sells. Use customer phrasing (`voice.customer_language.list`) to find terms buyers actually use.
 
 **4. Act.** Track the chosen targets: `seo_geo.create_tracked_page {url, targetKeywords}` for pages that exist, `seo_geo.create_tracked_prompt {kind: "serp_keyword", ...}` for rank tracking, and a brief (gtmos-seo-content-brief) for gaps.
 

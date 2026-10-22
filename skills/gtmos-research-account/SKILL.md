@@ -13,9 +13,11 @@ metadata:
 
 # Account research brief
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`company-research-brief`](https://github.com/clay-run/clay-skill-creator/tree/fbb9149b7f0ba42db65cf5d6d540fb3ec9afd7bf/skills/clay/company-research-brief) in clay-run/clay-skill-creator (MIT, Copyright (c) 2026 Clay). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`company-research-brief`](https://github.com/clay-run/clay-skill-creator/tree/fbb9149b7f0ba42db65cf5d6d540fb3ec9afd7bf/skills/clay/company-research-brief) in clay-run/clay-skill-creator (MIT, Copyright (c) 2026 Clay). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
+
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
 **1. What we already know.** `records.search` / `records.get` on the `gtm.account`, `account.relationship` Q (emails, replies, meetings, people), `signals.list` Q for the account, `score.explain_subject` Q for why it scores the way it does, and `buying_roles.list` Q against `definition.committee_model` for which committee roles are covered.
 
@@ -23,7 +25,7 @@ metadata:
 
 **3. Keep only sourced facts.** Every line of the brief names its source (a signal id, a record, a URL with its date). Accept or reject proposed facts with `research.fact.decide` D, so the next brief starts from them. A fact without a source is left out or marked unverified.
 
-**4. Angle.** Match the account's triggers to approved proof (`proof.list`, when available) for the suggested angle. Hand off to gtmos-outreach-cold-email for drafting; nothing is sent from a brief.
+**4. Angle.** Match the account's triggers to approved proof (`proof.list`) for the suggested angle. Hand off to gtmos-outreach-cold-email for drafting; nothing is sent from a brief.
 
 ## Without GTM OS
 

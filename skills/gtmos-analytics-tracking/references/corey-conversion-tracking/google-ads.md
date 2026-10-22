@@ -20,7 +20,7 @@ Guided setup for wiring a form or booking tool to Google Ads. The agent usually 
 You need three things:
 
 - Access to the Google Ads account (the user has this, you guide them).
-- The form or booking tool in play. This skill has detection recipes for 22 form and booking tools, plus 4 universal patterns (phone clicks, file downloads, thank-you pages, and generic AJAX forms). The full list with canonical dataLayer event names lives in `../assets/gtm-recipes/event-map.json` and `../assets/snippets/README.md`. Example, Gravity Forms pushes `gravity_form_submitted`. Supported tools are Acuity Scheduling, Cal.com, Calendly, Contact Form 7, Divi Forms, Elementor Forms, Fluent Forms, Formidable Forms, Forminator, Framer Forms, Gravity Forms, HubSpot Forms, Jotform, Ninja Forms, Squarespace Forms, Tally, Typeform, Webflow Forms, Wix Forms, Wix Bookings, WPForms, and WS Form.
+- The form or booking tool in play. This skill has detection recipes for 22 form and booking tools, plus 4 universal patterns (phone clicks, file downloads, thank-you pages, and generic AJAX forms). The full list with canonical dataLayer event names lives in `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/gtm-recipes/event-map.json` and `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/snippets/README.md`. Example, Gravity Forms pushes `gravity_form_submitted`. Supported tools are Acuity Scheduling, Cal.com, Calendly, Contact Form 7, Divi Forms, Elementor Forms, Fluent Forms, Formidable Forms, Forminator, Framer Forms, Gravity Forms, HubSpot Forms, Jotform, Ninja Forms, Squarespace Forms, Tally, Typeform, Webflow Forms, Wix Forms, Wix Bookings, WPForms, and WS Form.
 - A decision on the install path. Check the site's page source for a `GTM-` container snippet, or ask the user. If GTM is installed, use Path A. If not, use Path B. Never do both, that double counts.
 
 Also do a quick duplicate pre-check before installing anything. Fetch the page source and look for an existing `AW-` ID, a `gtag('event', 'conversion'` call, or an existing Google Ads conversion tag inside the GTM container. If the same real-world action is already being tracked, fix or replace that setup rather than adding a second one on top. Two tags for one form is the classic overcounting setup.
@@ -56,10 +56,10 @@ End state, GTM does all the listening and firing, and nothing gets pasted into t
 
 **Step 3 - Build the import file**
 - **Goal.** Produce 1 GTM container file that bundles the tool's detection tag, the Google Ads conversion tag, and a Conversion Linker tag.
-- **Do this.** Run this, substituting the tool key from `../assets/gtm-recipes/event-map.json` and the 2 values from Step 2. `python3 ../scripts/build_recipe.py --tool {tool} --send google-ads --conversion-id {id} --conversion-label {label} -o import-me.json` The script uses only the Python standard library and can run from any folder, paths resolve relative to the script file.
+- **Do this.** Run this, substituting the tool key from `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/gtm-recipes/event-map.json` and the 2 values from Step 2. `python3 scripts/build_recipe.py --tool {tool} --send google-ads --conversion-id {id} --conversion-label {label} -o import-me.json` The script uses only the Python standard library and can run from any folder, paths resolve relative to the script file.
 - **Expect to see.** The script prints "wrote import-me.json" plus which dataLayer event it detects and where it sends.
-- **On error.** "invalid choice" on --tool means the tool key is misspelled or unsupported, check the 26 keys in `../assets/gtm-recipes/event-map.json`. A complaint about missing --conversion-id or --conversion-label means Step 2 values were not passed.
-- **Acuity only.** Acuity needs a second file. Paste `../assets/snippets/acuity-scheduling-field.html` into Acuity's Custom Conversion Tracking field (Integrations, then Custom Conversion Tracking) with the site's own address in `SITES`, or no booking ever reaches the page. Acuity runs that field for package and gift certificate purchases too, so count only events where `acuity_type` is `appointment`.
+- **On error.** "invalid choice" on --tool means the tool key is misspelled or unsupported, check the 26 keys in `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/gtm-recipes/event-map.json`. A complaint about missing --conversion-id or --conversion-label means Step 2 values were not passed.
+- **Acuity only.** Acuity needs a second file. Paste `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/snippets/acuity-scheduling-field.html` into Acuity's Custom Conversion Tracking field (Integrations, then Custom Conversion Tracking) with the site's own address in `SITES`, or no booking ever reaches the page. Acuity runs that field for package and gift certificate purchases too, so count only events where `acuity_type` is `appointment`.
 
 **Step 4 - Import the file into GTM**
 - **Goal.** Load the 3 tags and their trigger into the site's existing GTM container without touching anything already there.
@@ -71,7 +71,7 @@ End state, GTM does all the listening and firing, and nothing gets pasted into t
 - **Goal.** Prove the tags fire on a real submission before making them live.
 - **Do this.** In GTM click Preview, connect to the page carrying the form, and submit a test entry (ask the user first before submitting on a production site). In the Tag Assistant window, look for the tool's event (for example `gravity_form_submitted`) in the left timeline and confirm the "Google Ads Conversion" tag fired on it. Then go back to GTM and click Submit, then Publish.
 - **Expect to see.** The detection event appears exactly once per submission, and the conversion tag shows as Fired.
-- **On error.** If the detection event never appears, the form may sit inside an iframe from another domain, or the tool guess was wrong. Recheck against the table in `../assets/snippets/README.md`. If the event appears twice, the detection snippet is installed twice (pasted in the site head and imported into GTM), remove one.
+- **On error.** If the detection event never appears, the form may sit inside an iframe from another domain, or the tool guess was wrong. Recheck against the table in `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/snippets/README.md`. If the event appears twice, the detection snippet is installed twice (pasted in the site head and imported into GTM), remove one.
 
 ### Path B, no Google Tag Manager
 
@@ -85,14 +85,14 @@ End state, 3 pieces of code sit in the site's `<head>` via the platform's custom
 
 **Step 7 - Install the detection snippet**
 - **Goal.** Make the site announce each submission as a dataLayer event.
-- **Do this.** Copy the matching `../assets/snippets/{tool}.js` file from this repo and paste it inside a `<script>` tag in the site's `<head>`, using the platform's custom code setting (for example WordPress header scripts, Webflow custom code, Framer custom code).
+- **Do this.** Copy the matching `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/snippets/{tool}.js` file from this repo and paste it inside a `<script>` tag in the site's `<head>`, using the platform's custom code setting (for example WordPress header scripts, Webflow custom code, Framer custom code).
 - **Expect to see.** After a test submission, running `window.dataLayer.filter(e => e.event)` in the browser console shows the tool's event (for example `typeform_form_submitted`) exactly once.
 - **On error.** Nothing in the dataLayer means the snippet is not on the page carrying the form, or the wrong tool's snippet was used. The event firing twice means it was installed twice.
-- **Acuity only.** Acuity needs a second file. Paste `../assets/snippets/acuity-scheduling-field.html` into Acuity's Custom Conversion Tracking field (Integrations, then Custom Conversion Tracking) with the site's own address in `SITES`, or no booking ever reaches the page. Acuity runs that field for package and gift certificate purchases too, so count only events where `acuity_type` is `appointment`.
+- **Acuity only.** Acuity needs a second file. Paste `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/snippets/acuity-scheduling-field.html` into Acuity's Custom Conversion Tracking field (Integrations, then Custom Conversion Tracking) with the site's own address in `SITES`, or no booking ever reaches the page. Acuity runs that field for package and gift certificate purchases too, so count only events where `acuity_type` is `appointment`.
 
 **Step 8 - Add the Google tag and the conversion listener**
 - **Goal.** Load Google's tag and fire a conversion whenever the detection event appears.
-- **Do this.** Paste this into the site's `<head>`, after the detection snippet is also in place. Replace `AW-XXXXXXXXX` with AW- plus the Conversion ID, `YYYYYYYYYYY` with the Conversion Label, and `TOOL_EVENT_NAME` with the canonical event from `../assets/gtm-recipes/event-map.json`.
+- **Do this.** Paste this into the site's `<head>`, after the detection snippet is also in place. Replace `AW-XXXXXXXXX` with AW- plus the Conversion ID, `YYYYYYYYYYY` with the Conversion Label, and `TOOL_EVENT_NAME` with the canonical event from `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/gtm-recipes/event-map.json`.
 
 ```html
 <!-- Google tag (gtag.js) -->
@@ -157,7 +157,7 @@ For anything that goes wrong after setup (statuses stuck on Unverified, Tag inac
 
 Compiled August 2026 from Google Ads Help documentation, practitioner blogs (Analytics Mania, Adalysis, Adnan Agic, PPC Land, Cometly, TagFly, Elevar, ConversionTracking.io), and community threads.
 
-**Fix assets.** From-zero setup steps are in Part A above. Missing or wrong triggers are usually fixed by this skill's tested assets: `../assets/snippets/`, `../assets/gtm-recipes/`, merged and ID-injected by `../scripts/build_recipe.py`.
+**Fix assets.** From-zero setup steps are in Part A above. Missing or wrong triggers are usually fixed by this skill's tested assets: `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/snippets/`, `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/assets/gtm-recipes/`, merged and ID-injected by `https://github.com/coreyhaines31/marketingskills/blob/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/conversion-tracking/scripts/build_recipe.py`.
 
 ### Part B.1: Diagnostic Surfaces (check these first, in this order)
 

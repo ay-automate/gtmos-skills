@@ -13,9 +13,11 @@ metadata:
 
 # Paid campaigns
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`ads`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/ads) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`ads`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/ads) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
+
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
 **1. Readiness.** `instance.readiness` (`connector.google_ads`, `connector.meta_ads`). Economics: `definition.unit_economics` (gross margin, CAC targets, the spend ceiling). Money: `money.settings.get` Q. Dry mode: `policy.get_dry_mode` Q.
 
@@ -343,7 +345,7 @@ Use Meta to screen headlines fast, then prove the winner on the page:
 
 Message continuity is a useful hypothesis, but an ad result does not establish the effect of changing the page. Confirm it with new visitors rather than reusing the screening result as proof.
 
-References: [Meta's About A/B Testing](https://www.facebook.com/business/help/1738164643098669) explains randomized, comparable exposure for ad tests. For page-test design and stopping rules, see the ab-testing skill.
+References: [Meta's About A/B Testing](https://www.facebook.com/business/help/1738164643098669) explains randomized, comparable exposure for ad tests. For page-test design and stopping rules, see the `gtmos-analytics-experiments` skill.
 
 ### Three split tests minimum at all times
 

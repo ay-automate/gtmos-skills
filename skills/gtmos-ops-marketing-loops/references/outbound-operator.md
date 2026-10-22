@@ -10,8 +10,8 @@ Settle these with the owner and write them into the operator brief:
 
 | Setting | What to capture |
 |---------|-----------------|
-| **ICP and tiers** | From `.agents/product-marketing.md`, plus the tier rules (see the prospecting skill's signal plays reference) |
-| **Plays** | Which plays run, with their triggers and offers (see the cold-email skill's outbound plays reference) |
+| **ICP and tiers** | From `.agents/product-marketing.md`, plus the tier rules (see the `gtmos-leads-prospecting` skill's signal plays reference) |
+| **Plays** | Which plays run, with their triggers and offers (see the `gtmos-outreach-cold-email` skill's outbound plays reference) |
 | **Approved claims** | The value propositions, proof points, and case studies the agent may use, nothing else |
 | **Volume caps** | Daily new contacts, sends per mailbox, LinkedIn actions per account |
 | **Approval rules** | What the agent sends alone and what waits for a human (defaults below) |

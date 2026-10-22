@@ -13,9 +13,11 @@ metadata:
 
 # Call prep
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`call-prep`](https://github.com/HubSpot/hubspot-mcp-plugins/tree/032d294bc91577cb1b9c4a61372567266ca8524e/HubSpot-Sales/skills/call-prep) in HubSpot/hubspot-mcp-plugins (Apache-2.0, HubSpot, Inc.). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`call-prep`](https://github.com/HubSpot/hubspot-mcp-plugins/tree/032d294bc91577cb1b9c4a61372567266ca8524e/HubSpot-Sales/skills/call-prep) in HubSpot/hubspot-mcp-plugins (Apache-2.0, HubSpot, Inc.). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
+
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
 GTM OS already holds the meeting, the people on it, the deal, every synced email and call, and the research agent's brief. The job is to read it in the right order and write a brief a rep can scan in two minutes. Everything in this skill is a read, except saving or delivering the brief. Confirm each schema with `gtm_describe` before the first call.
 
@@ -45,7 +47,7 @@ GTM OS already holds the meeting, the people on it, the deal, every synced email
 | `signals.list {subjectKind: "gtm.account", subjectId}` | Funding, hiring, job changes, page changes, each with its evidence. Default `view: "seller"` shows only verified signals. |
 | `research.subject.get {subject}` | The research agent's brief and source URLs. If it is missing or stale, `research.request {subject, kinds: ["meeting_prep"]}` queues fresh research; it lands later, so say so. |
 | `buying_roles.list` and `definition.committee_model` | Which committee roles the motion expects, so the brief can name who is missing from the call. |
-| `proof.list` (when available) | The only source for a customer result or metric worth mentioning. Active proof only. |
+| `proof.list` | The only source for a customer result or metric worth mentioning. Active proof only. |
 
 **4. Write the brief** in the format under *Format the brief* below. Every fact carries where it came from (a transcript date, an email date, a signal's source). A section with no data is left out, never filled.
 

@@ -13,15 +13,17 @@ metadata:
 
 # Competitor research and battle cards
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`competitor-profiling`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/competitor-profiling) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`competitor-profiling`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/competitor-profiling) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
+
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
 **1. Research.** `research.request` D queues the research agent on the competitor; read results with `research.subject.get` Q. For specific pulls use the looot capabilities `research.extract_page` (pricing and feature pages), `research.news`, `research.reviews`, `research.jobs` and the Meta ads library (see `looot-meta-ads-library`). Quote first with `capability.quote`; these calls cost money.
 
 **2. Keep only sourced claims.** Every competitor claim carries its URL and the date you saw it. Accept or reject proposed facts with `research.fact.decide` D so the profile improves over time.
 
-**3. Our side.** Claims about us come only from active proof (`proof.list`, when available) and pass `brand.check_text`. Deals lost to this competitor: `records.list` on closed-lost `gtm.deal` records with their loss reasons, and the calls in `transcripts.list`.
+**3. Our side.** Claims about us come only from active proof (`proof.list`) and pass `brand.check_text`. Deals lost to this competitor: `records.list` on closed-lost `gtm.deal` records with their loss reasons, and the calls in `transcripts.list`.
 
 **4. Use it.** Battle cards feed gtmos-sales-enablement and gtmos-seo-competitor-pages. Publishing a comparison page is an SEO effect that a person approves.
 

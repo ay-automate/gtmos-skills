@@ -149,7 +149,7 @@ Allow: /
 ### 7. Structured Data
 - Detection: JSON-LD (preferred), Microdata, RDFa
 - Validation against Google's supported types
-- See seo-schema skill for full analysis
+- See `gtmos-seo-schema` skill for full analysis
 
 ### 8. JavaScript Rendering
 - Method: the upstream claude-seo `agentic_check` script (not included in this repository) reports visible words in the raw HTML (`server-rendered`); compare with `render_page.py <url> --mode always --json` when Chromium is available. Without Chromium, report the raw-HTML result and say rendered content was not compared.

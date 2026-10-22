@@ -1,6 +1,6 @@
 ---
 name: gtmos-research-customer
-description: "Run and synthesize customer research -- interviews, call transcripts, reviews, surveys, support tickets and won or lost deal notes -- into pains, outcomes, objections, triggers and the exact words customers use. With GTM OS connected it reads call transcripts and classified replies, mines and approves customer phrases (voice.customer_language.*, when available) so they ground outreach and copy, and keeps every quote linked to its source. Use for \"customer research\", \"ICP research\", \"analyze transcripts\", \"voice of customer\", \"interview synthesis\", \"jobs to be done\", \"why do customers buy\", \"customer language\"."
+description: "Run and synthesize customer research -- interviews, call transcripts, reviews, surveys, support tickets and won or lost deal notes -- into pains, outcomes, objections, triggers and the exact words customers use. With GTM OS connected it reads call transcripts and classified replies, mines and approves customer phrases (voice.customer_language.*) so they ground outreach and copy, and keeps every quote linked to its source. Use for \"customer research\", \"ICP research\", \"analyze transcripts\", \"voice of customer\", \"interview synthesis\", \"jobs to be done\", \"why do customers buy\", \"customer language\"."
 license: MIT
 metadata:
   version: "0.1.0"
@@ -13,15 +13,17 @@ metadata:
 
 # Customer research and customer language
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`customer-research`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/customer-research) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`customer-research`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/customer-research) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
 
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
+
 **1. Sources.** `transcripts.list` / `transcripts.get` Q (calls), `replies.list` Q (classified replies), closed deals with their notes (`records.list` on `gtm.deal`), and review data through the looot `research.reviews` capability.
 
-**2. Mine.** `voice.customer_language.mine` D (when available) finds the exact phrases customers use for pains, outcomes, objections and triggers, each pointing to the transcript, reply or deal note it came from. Read them with `voice.customer_language.list` Q.
+**2. Mine.** `voice.customer_language.mine` D finds the exact phrases customers use for pains, outcomes, objections and triggers, each pointing to the transcript, reply or deal note it came from. Read them with `voice.customer_language.list` Q.
 
-**3. Approve.** A person approves or rejects phrases (`voice.customer_language.approve` / `reject`, when available); only approved phrases ground outreach and copy. Never paraphrase a quote and present it as verbatim.
+**3. Approve.** A person approves or rejects phrases (`voice.customer_language.approve` / `reject`); only approved phrases ground outreach and copy. Never paraphrase a quote and present it as verbatim.
 
 **4. Use.** Feed the synthesis to gtmos-marketing-positioning, gtmos-content-copywriting and gtmos-outreach-cold-email.
 

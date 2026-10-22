@@ -301,7 +301,7 @@ Outbound contacts don't fit the inbound lifecycle: they never "convert" on a for
 - Tier
 - Sequence and step that produced the reply
 - Channel of the reply (email, LinkedIn, phone, other)
-- Reply type (see the cold-email skill's reply handling reference)
+- Reply type (see the `gtmos-outreach-cold-email` skill's reply handling reference)
 - Last verification date and result
 
 **Handoff SLA:** positive replies get a human response within minutes during business hours, and a meeting proposal in that first response. Meetings booked by an SDR transfer to the AE with the account brief and the full thread attached.

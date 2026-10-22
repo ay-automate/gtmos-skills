@@ -13,15 +13,17 @@ metadata:
 
 # Content strategy
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`content-strategy`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/content-strategy) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`content-strategy`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/content-strategy) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
 
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
+
 **1. Demand.** `seo_geo.keyword_opportunities` Q (queries you almost rank for), `seo_geo.refresh_calendar` Q (pages due for refresh), `seo_geo.get_visibility` Q (prompts where AI answers skip you). Search Console is required for the engine.
 
-**2. Buyer questions.** `voice.customer_language.list` (when available), `transcripts.list`, `replies.list`. Use their words for topics and titles.
+**2. Buyer questions.** `voice.customer_language.list`, `transcripts.list`, `replies.list`. Use their words for topics and titles.
 
-**3. Fit.** Map topics to `definition.persona`, `definition.segment` and funnel stage. Proof for case-led content comes from `proof.list` (when available).
+**3. Fit.** Map topics to `definition.persona`, `definition.segment` and funnel stage. Proof for case-led content comes from `proof.list`.
 
 **4. Make it real.** Briefs (gtmos-seo-content-brief), tracked pages (`seo_geo.create_tracked_page`), and tasks per piece (`task.create`). Publishing is approved per change.
 

@@ -13,13 +13,15 @@ metadata:
 
 # Ad creative
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`ad-creative`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/ad-creative) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`ad-creative`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/ad-creative) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
 
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
+
 **1. What works now.** `perf_ads.get_campaign_performance` Q per campaign and `perf_ads.kpis` Q. Treat small samples as signals, not winners.
 
-**2. Inputs.** Customer words: `voice.customer_language.list` (when available) and `transcripts.list`. Proof: active items from `proof.list` (when available) for every number, result or logo in an ad. Competitor ads: the looot Meta ads library (`looot-meta-ads-library`) under the org's spend caps.
+**2. Inputs.** Customer words: `voice.customer_language.list` and `transcripts.list`. Proof: active items from `proof.list` for every number, result or logo in an ad. Competitor ads: the looot Meta ads library (`looot-meta-ads-library`) under the org's spend caps.
 
 **3. Write and gate.** Apply the method below. Run every variant through `brand.check_text` Q; cut any claim that is not in active proof.
 

@@ -18,7 +18,7 @@ Ask these before naming any platform. The answers usually narrow the field to tw
 
 1. **Who edits the site after launch?** A designer, a marketer who never touches code, an engineer, or an AI agent? The best platform for a designer-owned site is rarely the best for an engineer-owned one.
 2. **What does the site have to do?** A marketing site, a blog or resource library, pages at scale from data, a store, logged-in product screens? Marketing builders handle the first three; stores and apps usually belong elsewhere and get linked or proxied.
-3. **How many pages, and from what data?** A few dozen hand-built pages suit almost anything. Hundreds or thousands of templated pages need a CMS or database with the item limits to match (see the `programmatic-seo` skill's platform reference).
+3. **How many pages, and from what data?** A few dozen hand-built pages suit almost anything. Hundreds or thousands of templated pages need a CMS or database with the item limits to match (see the `gtmos-seo-programmatic` skill's platform reference).
 4. **What has to connect?** CRM, forms, analytics, scheduling, ad pixels, the product's own login. Check the integrations that matter before falling for the editor.
 5. **How much lock-in is acceptable?** Can you export the code and content and host it elsewhere? Hosted builders trade portability for convenience.
 6. **What does it cost at the real size?** Per-site, per-seat, per-CMS-item, and usage-based pricing diverge fast as a site grows. Price the plan you'll need in a year.
@@ -78,7 +78,7 @@ A platform migration is an SEO event. Most traffic losses after a migration come
 - Deploy redirects at the same moment as the switch.
 - Submit the new sitemap and keep the old one available briefly so search engines see the redirects.
 - Spot-check the top pages: content, title, meta, canonical, schema, and that they return 200.
-- Confirm analytics, conversion tracking, and forms work (see the `launch` skill's site launch QA).
+- Confirm analytics, conversion tracking, and forms work (see the `gtmos-marketing-launch` skill's site launch QA).
 
 **After:**
 - Watch Search Console for 404s and coverage drops daily for two weeks, then weekly. Fix missing redirects as they appear.

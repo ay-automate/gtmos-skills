@@ -295,6 +295,6 @@ A typical full-stack prospecting workflow:
 4. **Decision-maker mapping** in LinkedIn Sales Nav (manual)
 5. **Email pattern discovery** with Hunter or Apollo's built-in
 6. **Email validation** with Truelist before final list
-7. **Hand off** to cold-email skill for outreach copy
+7. **Hand off** to `gtmos-outreach-cold-email` skill for outreach copy
 
 Adapt this sequence based on which tools the user actually has.

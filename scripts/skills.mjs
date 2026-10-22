@@ -134,7 +134,7 @@ function renderMarketplace(catalog) {
       {
         name: "gtmos-skills",
         owner: { name: "AY Automate", url: "https://github.com/ay-automate" },
-        metadata: { description: catalog.description, version: catalog.version, homepage: "https://ay-automate.github.io/gtmos-releases/" },
+        metadata: { description: catalog.description, version: catalog.version },
         plugins,
       },
       null,
@@ -243,6 +243,8 @@ function lint() {
       if (!/Adapted from \[/.test(md)) err(where, "the attribution line (\"Adapted from [...]\") is missing");
       if (!/^## With GTM OS connected$/m.test(md)) err(where, "missing the \"## With GTM OS connected\" section");
       if (!/^## Without GTM OS$/m.test(md)) err(where, "missing the \"## Without GTM OS\" section");
+      if (!md.includes("](../GTMOS-RULES.md)")) err(where, "the GTM OS section must link the shared rules (../GTMOS-RULES.md)");
+      if (/when available/i.test(md.slice(md.indexOf("## With GTM OS connected"), md.indexOf("## Without GTM OS")))) err(where, "\"when available\" in the GTM OS section: every operation named must exist in the current release");
     }
     if (entry?.origin === "vendored") {
       const repo = repoOf(entry.upstream ?? "");

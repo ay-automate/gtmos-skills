@@ -406,7 +406,7 @@ Loops are grouped by function. Naming follows the "The X loop" convention.
 - **Skills used**: `influencer-marketing`, `social`
 - **Loop body**:
   1. Search X, Instagram, TikTok, LinkedIn, and YouTube for small accounts already posting about the problem you solve.
-  2. Vet with the influencer-marketing skill's audience-alignment test and fake-follower checks.
+  2. Vet with the upstream `influencer-marketing` skill (coreyhaines31/marketingskills; not in this repository)'s audience-alignment test and fake-follower checks.
   3. Add qualified creators to a watchlist; draft a first touch (a genuine reply, a product invite) for the best fits.
 - **Self-check**: Is their audience your buyer, or just adjacent? Reach without fit doesn't count.
 - **State / idempotency**: Track every creator scouted, contacted, and declined; never re-pitch inside the cooldown.
@@ -425,7 +425,7 @@ Loops are grouped by function. Naming follows the "The X loop" convention.
   1. Pull new signals since the last run: job posts, job changes of past champions, identified website visits, funding, product-usage triggers, social engagement.
   2. Drop accounts outside the ICP, already in a sequence, customers, open deals, and anything on the suppression list.
   3. Score and tier the rest; find and verify the contact who owns the problem.
-  4. Match each to its play (see the prospecting skill's signal plays reference) and stage the first touch.
+  4. Match each to its play (see the `gtmos-leads-prospecting` skill's signal plays reference) and stage the first touch.
 - **Self-check**: Is the signal inside its freshness window? Does the account still pass the ICP check? Is the email verified within the last 7 days?
 - **State / idempotency**: Key on account + signal type + signal date; never enroll the same account twice for the same signal, and respect a cooldown after any previous sequence.
 - **Stop / bail-out**: No fresh signals → log "no action." Halt if a signal source fails rather than acting on partial data. First touches for Tier 1 go to a human for approval.
@@ -445,7 +445,7 @@ Loops are grouped by function. Naming follows the "The X loop" convention.
 - **Self-check**: Is the classification confident? Anything ambiguous goes to a human. Does a draft make any claim not in the approved sources?
 - **State / idempotency**: Track processed message IDs; never answer the same reply twice.
 - **Stop / bail-out**: No new replies → exit quietly. Never send a drafted response to a positive, objection, or referral reply without approval until the agent's accuracy has been proven.
-- **Output**: Updated CRM stages, suppression updates, drafted responses, and positive-reply alerts. See the cold-email skill's reply handling reference.
+- **Output**: Updated CRM stages, suppression updates, drafted responses, and positive-reply alerts. See the `gtmos-outreach-cold-email` skill's reply handling reference.
 
 ### The cold-domain health loop
 - **Check cadence**: Daily for bounces; weekly for placement and reputation
@@ -460,7 +460,7 @@ Loops are grouped by function. Naming follows the "The X loop" convention.
 - **Self-check**: Is the drop one bad list or the infrastructure? A single campaign's bounces point at the list; every campaign on a domain dropping points at the domain.
 - **State / idempotency**: Track each mailbox's status (active, warming, paused, retired) with dates.
 - **Stop / bail-out**: All healthy → log. Escalate immediately on spam complaints near 0.1% or a primary-domain problem.
-- **Output**: A health table and the actions taken. Thresholds are in the cold-email skill's deliverability reference. (For lifecycle and marketing email, use the email-deliverability loop.)
+- **Output**: A health table and the actions taken. Thresholds are in the `gtmos-outreach-cold-email` skill's deliverability reference. (For lifecycle and marketing email, use the email-deliverability loop.)
 
 ### The sequence-retro loop
 - **Check cadence**: Weekly

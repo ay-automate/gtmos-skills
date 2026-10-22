@@ -54,8 +54,9 @@ Install one category instead with `gtmos-marketing`, `gtmos-seo`, `gtmos-outboun
 
 ```bash
 git clone https://github.com/ay-automate/gtmos-skills.git
-cp -r gtmos-skills/skills/* .agents/skills/     # Codex and agents that read .agents/skills
-cp -r gtmos-skills/skills/* ~/.codex/skills/    # Codex, user-wide
+mkdir -p .agents/skills
+cp -r gtmos-skills/skills/* gtmos-skills/THIRD-PARTY-NOTICES.md gtmos-skills/licenses .agents/skills/   # Codex and agents that read .agents/skills
+# or user-wide for Codex: the same copy into ~/.codex/skills/
 ```
 
 **Manual.** Copy any single folder from `skills/` into `.claude/skills/` (project) or `~/.claude/skills/` (user). Keep `THIRD-PARTY-NOTICES.md` and `licenses/` with the skills you redistribute.

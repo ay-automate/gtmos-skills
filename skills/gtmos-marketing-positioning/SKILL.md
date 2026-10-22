@@ -13,9 +13,11 @@ metadata:
 
 # Positioning and product marketing context
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`product-marketing`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/product-marketing) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`product-marketing`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/product-marketing) in coreyhaines31/marketingskills (MIT, Copyright (c) 2025 Corey Haines). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
+
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
 In GTM OS the product marketing context is not one file. It lives in the org's **signed definitions**, which every engine reads: Score reads the ICP, Outreach reads the brand voice, plays read segments and customer types. This skill keeps those definitions and the context file in step. Confirm each schema with `gtm_describe` before the first call.
 
@@ -30,14 +32,14 @@ In GTM OS the product marketing context is not one file. It lives in the org's *
 | `customer_type.list` | The kinds of customer in the org's own words, with how many companies each holds. |
 | `buying_roles.list`, `config.get` on `definition.committee_model` | Who sits on the buying committee. |
 | `deal_type.list`, `money.settings.get` | Business model and what counts as revenue. |
-| `proof.list` (when available) | Proof points (section 11). Only *active* proof may be cited. |
-| `voice.customer_language.list` (when available) | Customer language (section 9), each phrase linked to the transcript, reply or deal note it came from. |
+| `proof.list` | Proof points (section 11). Only *active* proof may be cited. |
+| `voice.customer_language.list` | Customer language (section 9), each phrase linked to the transcript, reply or deal note it came from. |
 
 **2. Draft from evidence, not from adjectives.** For a new org, `onboarding.draft_cards {cards: ["icp","customer_types","brand_voice","buying_roles"]}` drafts the cards from closed-won deals, pipelines and setup documents, citing what it read. Use its drafts as V1 and iterate with the user. For an existing org, edit what is there; do not restart.
 
 **3. Propose, never sign.** Changes to `definition.persona`, `definition.segment`, `definition.customer_type` or `definition.committee_model` go in one ChangeSet: `config.propose_changeset {envelopes}` (M), then `config.validate_changeset`, `config.compute_impact` so the approver sees what moves, and `config.apply`, which **proposes** the publish for a different person to approve. Signing (`definition.sign`) is human only. The brand voice is replaced with `brand.set`, which only an owner or admin can run: hand them the complete voice as a ready-to-paste payload instead of calling it yourself.
 
-**4. Keep proof honest.** Metrics, logos and testimonials in section 11 must point at an active proof item. If the user names a result that is not in the library, record it as "proof needed" and suggest adding it with `proof.create` or `proof.extract_from_document` (when available); a person activates it.
+**4. Keep proof honest.** Metrics, logos and testimonials in section 11 must point at an active proof item. If the user names a result that is not in the library, record it as "proof needed" and suggest adding it with `proof.create` or `proof.extract_from_document`; a person activates it.
 
 **5. Mirror the file.** Write `.agents/product-marketing.md` as below, and mark the sections that come from signed definitions with their kind and version, so a later edit goes back through the definitions rather than drifting in the file.
 

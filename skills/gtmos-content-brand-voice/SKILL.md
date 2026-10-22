@@ -13,13 +13,15 @@ metadata:
 
 # Brand voice
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`brand-guidelines-builder`](https://github.com/zapier/gtm-cheat-codes/tree/022a2884f40316ef22269e29fd61b8a0f0c4cb4a/skills/marketing/brand-guidelines-builder) in zapier/gtm-cheat-codes (MIT, Copyright (c) Zapier, Inc.). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`brand-guidelines-builder`](https://github.com/zapier/gtm-cheat-codes/tree/022a2884f40316ef22269e29fd61b8a0f0c4cb4a/skills/marketing/brand-guidelines-builder) in zapier/gtm-cheat-codes (MIT, Copyright (c) Zapier, Inc.). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
 
+> **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
+
 **1. Current state.** `brand.get` Q returns the signed voice, its version, forbidden claims, avoided words and voice samples. `voice: null` means none is signed yet.
 
-**2. Draft from evidence.** Collect real samples (the site, sent emails that got replies from `sequence.messages`, approved posts) and customer phrases (`voice.customer_language.list`, when available). Build the spec: `label`, `tone[]`, `vocabulary.preferred[]`, `vocabulary.avoid[]`, `examplePhrases[]`, `voiceSamples[{title, text}]` (up to 20), `forbiddenClaims[{phrase, reason, match}]` (up to 200).
+**2. Draft from evidence.** Collect real samples (the site, sent emails that got replies from `sequence.messages`, approved posts) and customer phrases (`voice.customer_language.list`). Build the spec: `label`, `tone[]`, `vocabulary.preferred[]`, `vocabulary.avoid[]`, `examplePhrases[]`, `voiceSamples[{title, text}]` (up to 20), `forbiddenClaims[{phrase, reason, match}]` (up to 200).
 
 **3. Propose, never sign.** `config.propose_changeset` M with the `definition.brand_voice` (key `default`); a person reviews and signs it. Until it is signed, drafts are not checked against it.
 
