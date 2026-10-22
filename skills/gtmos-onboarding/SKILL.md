@@ -224,6 +224,12 @@ The cards of this screen and who can approve them:
 | `customer_type.classify` | read (`gtm_query`) | Which customer type a company, person or deal is, and which types it matches. |
 | `brand.get` | read (`gtm_query`) | The brand voice and kit in force (the brand_voice card's current state). |
 | `brand.set` | **human only**: agent keys are refused | Brand voice and kit: a human approves the brand_voice card (or sets it) in the console. |
+| `proof.list` | read (`gtm_query`) | The proof library: sources (case studies, metrics, testimonials, logos) with permission (public / anonymized / internal_only), expiry, state and claims. Only active proof backs a claim in outreach. |
+| `proof.extract_from_document` | you may call it (`gtm_act`) | Turn a case study the user hands you (file or pasted text) into a DRAFT proof source; the org's model proposes claims, each quoted word for word (no model = the text is saved and you add claims with proof.update). Ask the user the permission and expiry; never guess them. |
+| `proof.update` | you may call it (`gtm_act`) | Add / fix / remove a draft's claims (each excerpt copied exactly from the text, holding every number of the claim). |
+| `proof.propose_activation` | **human only**: agent keys are refused | Activating proof: a person proposes it in Settings > Proof library and a different person approves it. |
+| `voice.customer_language.mine` | you may call it (`gtm_act`) | Find the customers' own words (pains, outcomes, objections, triggers) in transcripts, classified replies and won-deal notes; each phrase keeps its source. They wait for a human to approve. |
+| `voice.customer_language.approve` | **human only**: agent keys are refused | Approving customer phrases: a person reviews them in Settings > Proof library > Customer language. |
 | `onboarding.blueprint_adaptations` | read (`gtm_query`) | What the chosen blueprint takes from the approved cards (ICP, pilot, stages, customer types, suppression, trust caps) before it is applied. |
 
 ## Screen 4 -- Rules and who approves what (rules, team)
@@ -377,6 +383,8 @@ screen and the button, and record it as an Open item.
 | `roles.upsert` | Describe the profile the user wants (base role, denied operations, KPIs, actions: it only narrows); an owner / admin creates it in Settings > Members. |
 | `roles.assign` | Save the seats with onboarding.seats.set (its roles.errors is expected); an owner / admin saves them again in Setup > Rules, or assigns the profile in Settings > Members (never the sole owner as Operator or Exec: LAST_OWNER_NARROWING). |
 | `definition.sign_many` | List what waits to be signed (config.promotion_status, onboarding.launch.preview); a human other than the proposer signs it. |
+| `proof.propose_activation` | Prepare the draft proof (proof.extract_from_document / proof.update) and tell the user to propose activation in Settings > Proof library; a different person approves it. |
+| `voice.customer_language.approve` | Mine the phrases (voice.customer_language.mine) and tell the user to review them in Settings > Proof library > Customer language. |
 | `onboarding.launch` | Read onboarding.launch.preview and tell the user exactly what Launch will sign, promote and turn live; they click Launch in Setup > First motion. |
 
 ## Open asks
