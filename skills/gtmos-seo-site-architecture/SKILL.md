@@ -20,7 +20,7 @@ metadata:
 
 > **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
-**1. Inventory.** `seo_geo.get_readiness_view` Q lists tracked pages with their audit state; `seo_geo.run_visibility` D gives top pages by traffic from Search Console. Together they show which pages matter and which are invisible.
+**1. Inventory.** `seo_geo.get_readiness_view` Q lists tracked pages with their audit state; `seo_geo.run_visibility` D (*spends inline*: quote it first) gives top pages by traffic from Search Console. Together they show which pages matter and which are invisible.
 
 **2. Audit links and sitemaps.** `seo_geo.run_audit {contentAssetId}` D per key page; read the findings for canonicals, sitemap inclusion and links. Apply the method below and the merged references (`references/seo-seo-sitemap.md`, `references/semrush-internal-link-audit.md`).
 

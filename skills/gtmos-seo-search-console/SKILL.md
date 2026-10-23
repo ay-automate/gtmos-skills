@@ -21,7 +21,7 @@ metadata:
 
 **1. Connection.** Search Console is required for the SEO & GEO engine (orgs that do not use the engine do not need it). Check `instance.readiness` (`connector.gsc`) and `seo_geo.gsc_properties` Q. If it is missing, the `gsc` skill explains how to connect it (Settings > Connected accounts, or through Composio) and set the property.
 
-**2. Read.** Whole-site totals, top queries and top pages: `seo_geo.run_visibility {days}` D (read-only at Google; leave `tracked: "skip"` to spend nothing). Striking-distance queries: `seo_geo.keyword_opportunities` Q. One page over time: `seo_geo.get_page_performance` Q. Engine KPIs: `seo_geo.kpis` Q.
+**2. Read.** Whole-site totals, top queries and top pages: `seo_geo.run_visibility {days}` D (*spends inline*: quote it first) (read-only at Google; leave `tracked: "skip"` to spend nothing). Striking-distance queries: `seo_geo.keyword_opportunities` Q. One page over time: `seo_geo.get_page_performance` Q. Engine KPIs: `seo_geo.kpis` Q.
 
 **3. Act.** Sitemap resubmission is a publish effect: `seo_geo.publish_content_change {contentAssetId, submitSitemap: true, sitemapUrl}` E, approved by a different person. URL inspection and the Indexing API are not GTM OS operations; do those in Search Console and record the result as a task (`task.create`).
 

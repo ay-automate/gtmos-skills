@@ -28,7 +28,7 @@ Structured data is part of the **SEO & GEO engine**. The engine audits tracked p
 |---|---|
 | `policy.get_dry_mode`, `policy.engine_modes.get` | In dry mode a publish stays a proposal. Say so up front. |
 | `seo_geo.fix_queue {severity, contentAssetId}` | Open JSON-LD issues per tracked page, ranked by severity and clicks, with the field a fix would set. |
-| `seo_geo.get_recommendation {contentAssetId}` | The engine's advisory recommendation grounded in the latest audit. |
+| `seo_geo.get_recommendation {contentAssetId}` (*spends inline*: it calls the org's model, so quote the cost to the user and get a yes first) | The engine's advisory recommendation grounded in the latest audit. |
 | `brand.get` | The legal entity name, product names and forbidden claims the markup must respect. |
 | `proof.list` | The only allowed source for ratings, review counts, awards, logos and customer names. Active proof only. |
 

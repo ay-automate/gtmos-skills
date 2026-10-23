@@ -283,6 +283,27 @@ function lint() {
     }
   }
   lintUpstreams(ROOT, catalog, skillMeta, err);
+
+  // Spend inline: rule 8 of GTMOS-RULES.md lists the operations the GTM OS registry flags spendsInline (the gtm CLI's
+  // drift test compares that list with the registry). Every line of a skill's GTM OS section that names one says so.
+  const rules = read(join(ROOT, "skills", "GTMOS-RULES.md"));
+  const spendList = /<!-- spends-inline:start -->([\s\S]*?)<!-- spends-inline:end -->/.exec(rules);
+  if (!spendList) err("skills/GTMOS-RULES.md", "rule 8 is missing the spends-inline list markers");
+  const spendOps = spendList ? [...spendList[1].matchAll(/`([a-z_]+(?:\.[a-z_]+)+)`/g)].map((m) => m[1]) : [];
+  if (spendList && !spendOps.length) err("skills/GTMOS-RULES.md", "the spends-inline list is empty");
+  for (const s of catalog.skills.filter((x) => x.origin === "adapted")) {
+    const md = read(join(ROOT, "skills", s.name, "SKILL.md"));
+    const a = md.indexOf("## With GTM OS connected");
+    const b = md.indexOf("## Without GTM OS");
+    if (a < 0 || b < a) continue;
+    for (const line of md.slice(a, b).split("\n")) {
+      if (line.startsWith("> **Rules") || line.startsWith("> **Spend")) continue;
+      for (const op of spendOps) {
+        if (new RegExp("`" + op.replace(/\./g, "\\.") + "(?![a-z_.])").test(line) && !/spends inline/i.test(line))
+          err(`skills/${s.name}/SKILL.md`, `\`${op}\` spends inside its own call: mark the line *spends inline* (quote first)`);
+      }
+    }
+  }
   for (const u of loadUpstreams(ROOT).upstreams) if (!notices.includes(`https://github.com/${u.repo}`)) err(NOTICES, `${u.repo} (upstreams.json) is not recorded`);
 
   // Notices: every licence file named in a notice exists.

@@ -1,6 +1,6 @@
 ---
 name: gtmos-research-competitor
-description: "Profile competitors and build battle cards -- positioning, pricing, features, reviews, hiring, ads and messaging -- where every claim carries a source and a date. With GTM OS connected it runs research through the research agent and the looot capabilities (research.request, research.web_search, research.news, research.reviews, research.extract_page), keeps accepted facts with research.fact.decide, and grounds our side of the comparison in approved proof only. Use for \"competitor research\", \"competitor profile\", \"battle card\", \"competitive analysis\", \"how do we compare to <competitor>\", \"competitor pricing\", \"win against <competitor>\"."
+description: "Profile competitors and build battle cards -- positioning, pricing, features, reviews, hiring, ads and messaging -- where every claim carries a source and a date. With GTM OS connected it runs research through the research agent and the looot capabilities (research.request, research.web_search, research.news, research.reviews, research.extract_page), leaves the research agent's proposed facts for a person to accept or dismiss (research.fact.decide is human only), and grounds our side of the comparison in approved proof only. Use for \"competitor research\", \"competitor profile\", \"battle card\", \"competitive analysis\", \"how do we compare to <competitor>\", \"competitor pricing\", \"win against <competitor>\"."
 license: MIT
 metadata:
   version: "0.1.0"
@@ -8,7 +8,7 @@ metadata:
   upstream: "https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/competitor-profiling"
   upstream_sha: "e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b"
   upstream_license: "MIT; Copyright (c) 2025 Corey Haines"
-  modified: "2026-10-22: rebranded and adapted for GTM OS (GTM OS operating section, cross-references, tool pointers)"
+  modified: "2026-10-22: rebranded and adapted for GTM OS (GTM OS operating section, cross-references, tool pointers); 2026-10-23: fact decisions left to a person, spend-inline marks"
 ---
 
 # Competitor research and battle cards
@@ -19,9 +19,9 @@ metadata:
 
 > **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
-**1. Research.** `research.request` D queues the research agent on the competitor; read results with `research.subject.get` Q. For specific pulls use the looot capabilities `research.extract_page` (pricing and feature pages), `research.news`, `research.reviews`, `research.jobs` and the Meta ads library (see `looot-meta-ads-library`). Quote first with `capability.quote`; these calls cost money.
+**1. Research.** `research.request` D (*spends inline*: quote it first) queues the research agent on the competitor; read results with `research.subject.get` Q. For specific pulls use the looot capabilities `research.extract_page` (pricing and feature pages), `research.news`, `research.reviews`, `research.jobs` and the Meta ads library (see `looot-meta-ads-library`). Quote first with `capability.quote`; these calls cost money.
 
-**2. Keep only sourced claims.** Every competitor claim carries its URL and the date you saw it. Accept or reject proposed facts with `research.fact.decide` D so the profile improves over time.
+**2. Keep only sourced claims.** Every competitor claim carries its URL and the date you saw it. The research agent's suggestions are proposals: list them with their sources and ask a person to accept or dismiss each one (`research.fact.decide` D is human only; agent keys are refused), so the profile improves over time.
 
 **3. Our side.** Claims about us come only from active proof (`proof.list`) and pass `brand.check_text`. Deals lost to this competitor: `records.list` on closed-lost `gtm.deal` records with their loss reasons, and the calls in `transcripts.list`.
 

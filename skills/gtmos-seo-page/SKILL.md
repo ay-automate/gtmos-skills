@@ -22,7 +22,7 @@ metadata:
 
 **1. Find or track the page.** `seo_geo.get_readiness_view` Q to find it; if missing, `seo_geo.create_tracked_page {url, targetKeywords}` D (ask for the one or two keywords the page should win). Search Console is required for the engine (`seo_geo.gsc_properties`).
 
-**2. Audit it.** `seo_geo.run_audit {contentAssetId}` D stores the technical and GEO findings; `seo_geo.get_recommendation` Q returns the engine's recommendation; `seo_geo.get_page_performance {contentAssetId}` Q shows its recorded outcomes (clicks, impressions, position) over time.
+**2. Audit it.** `seo_geo.run_audit {contentAssetId}` D stores the technical and GEO findings; `seo_geo.get_recommendation` Q (*spends inline*: it calls the org's model, so quote the cost to the user and get a yes first) returns the engine's recommendation; `seo_geo.get_page_performance {contentAssetId}` Q shows its recorded outcomes (clicks, impressions, position) over time.
 
 **3. Judge the content.** Apply the method below (and `references/seo-seo-content.md` for E-E-A-T and readability). Check copy you propose with `brand.check_text`. Claims about results or customers must come from active proof (`proof.list`); otherwise cut them.
 

@@ -2,6 +2,12 @@
 
 All notable changes to this repository. Versions follow [Semantic Versioning](https://semver.org/); each release is a git tag with `manifest.json` attached.
 
+## 0.2.2 (2026-10-23)
+
+- `gtmos-research-account` and `gtmos-research-competitor`: the research agent proposes facts; only a person accepts or dismisses them (`research.fact.decide` is human only).
+- `GTMOS-RULES.md` rule 8 lists every operation the GTM OS registry flags as spending inside its own call (adds `seo_geo.get_recommendation`, `perf_ads.get_pacing_recommendation`, `score.explain_qualification`, `research.workspace_profile.refresh`, `research.task.retry`, `identity_dq.enrich_accounts`, `capability.submit_async`). Every skill marks each use *spends inline*, model-backed ones (recommendations, pacing, qualification explanations, personalized drafts) with a quote first; lint enforces the marks, and the gtm CLI's drift test checks the list against the registry.
+- `sequence.update` and `sequence.get` take `id` (`gtmos-outreach-sequences`, `gtmos-outreach-cold-email`, `gtmos-lifecycle-email`).
+
 ## 0.2.1 (2026-10-23)
 
 - `gtmos-engine-catalog` and `gtmos-ops-marketing-loops`: `plays.kpis` (per-play runs, funnel by step, outcomes, attributed revenue, cost), shipped in GTM OS 0.2.5 after 0.2.0 was cut.
@@ -21,7 +27,7 @@ All notable changes to this repository. Versions follow [Semantic Versioning](ht
 
 ## 0.1.2 (2026-10-22)
 
-- gtmos-engine-catalog: the Score defaults follow GTM OS 0.2.5 S2 -- the intent default is `score.default.v2` (decay per signal family, first-party evidence x1.5, the competitor cap, reply / bounce negatives) and the ICP-fit fallback is a neutral, size-only B2B ICP (no region, industry or team-size preference).
+- gtmos-engine-catalog: the Score defaults follow GTM OS 0.2.5 -- the intent default is `score.default.v2` (decay per signal family, first-party evidence x1.5, the competitor cap, reply / bounce negatives) and the ICP-fit fallback is a neutral, size-only B2B ICP (no region, industry or team-size preference).
 
 ## 0.1.1 (2026-10-22)
 

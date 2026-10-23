@@ -27,8 +27,8 @@ Programmatic pages are planned here and measured by the **SEO & GEO engine**. GT
 | Read or run | Why |
 |---|---|
 | `seo_geo.keyword_opportunities {days, minImpressions, limit}` | Search Console queries in striking distance, with looot volume and Ahrefs rows when present. Shows which patterns already earn impressions. |
-| `seo_geo.refresh_keyword_data {keywords, limit, locale}` | Pulls volume, difficulty and CPC for the pattern's head terms. It spends looot credit through the org's budget guard; a call over the ceiling returns `APPROVAL_REQUIRED` and buys nothing. Run `capability.quote {capability: "seo.keyword_data", args}` first for a large list. |
-| `seo_geo.get_visibility` | The site's Search Console totals, top pages, Ahrefs metrics and competitors, if `seo_geo.run_visibility` has run. |
+| `seo_geo.refresh_keyword_data {keywords, limit, locale}` (*spends inline*: quote it first) | Pulls volume, difficulty and CPC for the pattern's head terms. It spends looot credit through the org's budget guard; a call over the ceiling returns `APPROVAL_REQUIRED` and buys nothing. Run `capability.quote {capability: "seo.keyword_data", args}` first for a large list. |
+| `seo_geo.get_visibility` | The site's Search Console totals, top pages, Ahrefs metrics and competitors, if `seo_geo.run_visibility` (*spends inline*: quote it first) has run. |
 | `definition.persona`, `definition.segment`, `definition.customer_type` | The real segments for persona or industry playbooks ("[product] for [audience]"). Do not invent audiences the org does not sell to. |
 | `brand.get` | Voice and forbidden claims for every template string. |
 | `proof.list` | Any per-page stat, logo or result must be an active proof item. |

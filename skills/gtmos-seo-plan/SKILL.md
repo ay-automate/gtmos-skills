@@ -19,7 +19,7 @@ metadata:
 
 > **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
-**1. Baseline.** `seo_geo.run_visibility` D (Search Console totals, top queries and pages, Ahrefs authority and competitors when connected), `seo_geo.kpis` Q, `seo_geo.fix_queue` Q. Search Console is required for the engine.
+**1. Baseline.** `seo_geo.run_visibility` D (*spends inline*: quote it first) (Search Console totals, top queries and pages, Ahrefs authority and competitors when connected), `seo_geo.kpis` Q, `seo_geo.fix_queue` Q. Search Console is required for the engine.
 
 **2. Opportunities.** `seo_geo.keyword_opportunities` Q (striking distance), `seo_geo.refresh_calendar` Q (pages due for refresh), `seo_geo.get_visibility` Q (AI answers). Business priorities come from `definition.segment`, `definition.persona` and the money settings (`money.settings.get`); weight topics that serve the segments you sell to.
 

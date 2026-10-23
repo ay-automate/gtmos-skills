@@ -34,7 +34,7 @@ The call is already in GTM OS: its transcript, the deal, the email thread. You d
 
 **2. Set the goal** with Phase 3 below. A commitment in the transcript beats the deal stage; the deal stage beats asking the user.
 
-**3. Write it through the engine.** `outreach.draft_message {contactId, channel: "email", subject}` creates the draft (status draft, an internal write), or `outreach.draft_personalized_message {contactId, channel: "email", goal}` when you want the engine to draft from the indexed context. Edit the draft with the rules in Phase 3b.
+**3. Write it through the engine.** `outreach.draft_message {contactId, channel: "email", subject}` creates the draft (status draft, an internal write), or `outreach.draft_personalized_message {contactId, channel: "email", goal}` (*spends inline*: it calls the org's model, so quote the cost to the user and get a yes first) when you want the engine to draft from the indexed context. Edit the draft with the rules in Phase 3b.
 
 **4. Gate the copy.** `brand.check_text {text, subject, surface: "outreach"}` and fix every violation. A customer result, metric or logo in the email must come from an active item in `proof.list`; otherwise leave it out. Only repeat what the transcript or the thread actually says, and quote it if it matters.
 

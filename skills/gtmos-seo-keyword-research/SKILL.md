@@ -21,7 +21,7 @@ metadata:
 
 **1. Start from what Google already shows you.** `seo_geo.keyword_opportunities {days, minPosition, maxPosition, minImpressions, limit}` Q returns Search Console queries at average position 4 to 20, joined with keyword volume, difficulty and CPC, ranked by the clicks a top-3 position would add. It spends nothing. Search Console is required.
 
-**2. Refresh the data.** `seo_geo.refresh_keyword_data {keywords, limit, locale}` D buys keyword data through looot under the org's budget guard; over the cap it returns `APPROVAL_REQUIRED` and buys nothing. Quote before large lists. For one-off lookups the looot capability `seo.keyword_data` and `seo.serp_organic` give volume and the live results page.
+**2. Refresh the data.** `seo_geo.refresh_keyword_data {keywords, limit, locale}` D (*spends inline*: quote it first) buys keyword data through looot under the org's budget guard; over the cap it returns `APPROVAL_REQUIRED` and buys nothing. Quote before large lists. For one-off lookups the looot capability `seo.keyword_data` and `seo.serp_organic` give volume and the live results page.
 
 **3. Add business value.** Map each keyword to a persona and stage from `definition.persona` and `definition.segment`, and to the product it sells. Use customer phrasing (`voice.customer_language.list`) to find terms buyers actually use.
 

@@ -43,7 +43,7 @@ If Search Console is not connected, stop and say what is missing and where it is
 
 **4. Changes are proposals.** Titles, meta descriptions, JSON-LD, body changes and sitemap resubmissions go through `seo_geo.publish_content_change` (E). It proposes; a different person approves under *Needs a human* (`seo_geo.publish_queue` lists what is waiting). A bad publish is reverted with `seo_geo.undo_content_change {approvalId}` (E), which is also approved by a person. You never approve your own proposal.
 
-**5. Numbers come from operations.** Quote clicks, positions, citation rates and scores with the operation that produced them and its window. Keyword volume and difficulty come from looot through `seo_geo.refresh_keyword_data` (spends looot credit inside the org's budget guard); AI-answer checks come from tracked prompts. Never estimate traffic or rankings from memory.
+**5. Numbers come from operations.** Quote clicks, positions, citation rates and scores with the operation that produced them and its window. Keyword volume and difficulty come from looot through `seo_geo.refresh_keyword_data` (*spends inline*: quote it first) (spends looot credit inside the org's budget guard); AI-answer checks come from tracked prompts. Never estimate traffic or rankings from memory.
 
 ## Without GTM OS
 

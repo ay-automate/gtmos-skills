@@ -45,7 +45,7 @@ GTM OS already holds the meeting, the people on it, the deal, every synced email
 |---|---|
 | `score.explain_subject {subjectType, subjectId}` | The band and the verified reasons behind it. |
 | `signals.list {subjectKind: "gtm.account", subjectId}` | Funding, hiring, job changes, page changes, each with its evidence. Default `view: "seller"` shows only verified signals. |
-| `research.subject.get {subject}` | The research agent's brief and source URLs. If it is missing or stale, `research.request {subject, kinds: ["meeting_prep"]}` queues fresh research; it lands later, so say so. |
+| `research.subject.get {subject}` | The research agent's brief and source URLs. If it is missing or stale, `research.request {subject, kinds: ["meeting_prep"]}` (*spends inline*: quote it first) queues fresh research; it lands later, so say so. |
 | `buying_roles.list` and `definition.committee_model` | Which committee roles the motion expects, so the brief can name who is missing from the call. |
 | `proof.list` | The only source for a customer result or metric worth mentioning. Active proof only. |
 

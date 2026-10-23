@@ -1,6 +1,6 @@
 {
   "name": "gtmos-skills",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "repository": "https://github.com/ay-automate/gtmos-skills",
   "skills": 107,
   "files": [
@@ -101,8 +101,8 @@
     },
     {
       "path": "skills/GTMOS-RULES.md",
-      "sha256": "05ad7e9f6d2cae0468a51e00dbfed9cc77ba215dfa8af4818adacb8395690d53",
-      "bytes": 3769
+      "sha256": "794f7b1e8c7db84ac7922ea0362027e025effb776c1967763c813bf0c59def24",
+      "bytes": 4237
     },
     {
       "path": "skills/ads/SKILL.md",
@@ -141,8 +141,8 @@
     },
     {
       "path": "skills/gtmos-ads-campaigns/SKILL.md",
-      "sha256": "10adbc27e119184305cfd0e5fcd5d14c68a3dd590e3f7356ab598ede1c719033",
-      "bytes": 33945
+      "sha256": "0f0d72b3f2cffa1808cf7a790eb118fd3ae55adc355b782156dcb925a630c6b1",
+      "bytes": 34040
     },
     {
       "path": "skills/gtmos-ads-campaigns/references/abm-playbook.md",
@@ -526,8 +526,8 @@
     },
     {
       "path": "skills/gtmos-crm-data-quality/SKILL.md",
-      "sha256": "7bd4c0877d07183163d27e4e603f0d703e53c3246d51b944f1f89a387b08bc24",
-      "bytes": 12470
+      "sha256": "ae274cf296ef4b12fa27a25452c9c327deb61911498012dccd841c6e58050eb8",
+      "bytes": 12504
     },
     {
       "path": "skills/gtmos-crm-data-quality/references/hubspot-bulk-operations.md",
@@ -571,8 +571,8 @@
     },
     {
       "path": "skills/gtmos-leads-inbound-triage/SKILL.md",
-      "sha256": "129b66e3d699787548981ba0a2ddcdfcd67a1bb231d8548425bb5b598569ca00",
-      "bytes": 11313
+      "sha256": "66d9480daa14efa0d236404ce3d320e9cb4f19b0b68713f5e032bad74c889497",
+      "bytes": 11347
     },
     {
       "path": "skills/gtmos-leads-inbound-triage/references/looot-gtm-inbound-lead-enrichment.md",
@@ -581,8 +581,8 @@
     },
     {
       "path": "skills/gtmos-leads-prospecting/SKILL.md",
-      "sha256": "ee2a5938799690fcfacb71f6a9f9de9e2574076226b45aaf159d818aa77bfe55",
-      "bytes": 23922
+      "sha256": "86364de93384d0b4de346616d6289b5495ba4e98cd229cdbcb8d304c0e938c75",
+      "bytes": 24058
     },
     {
       "path": "skills/gtmos-leads-prospecting/references/account-research.md",
@@ -661,8 +661,8 @@
     },
     {
       "path": "skills/gtmos-lifecycle-email/SKILL.md",
-      "sha256": "c5f4402232e91956b6a7724999248bf7593a1800653a341d2b489f952f36c865",
-      "bytes": 14240
+      "sha256": "217581fbcb4b61d9495debb8549347c7e518940f124429786269ba05acaf3324",
+      "bytes": 14244
     },
     {
       "path": "skills/gtmos-lifecycle-email/references/copy-guidelines.md",
@@ -941,8 +941,8 @@
     },
     {
       "path": "skills/gtmos-outreach-cold-email/SKILL.md",
-      "sha256": "16b979e12d643bd21dbdb09c5dd560fd6cf9baef0d323654087de7b2ebcfd041",
-      "bytes": 17608
+      "sha256": "fda572c40840c3bd52522847f806a7745c10aa8b109444335cc8a5fdcecc3a3f",
+      "bytes": 17707
     },
     {
       "path": "skills/gtmos-outreach-cold-email/references/benchmarks.md",
@@ -1011,13 +1011,13 @@
     },
     {
       "path": "skills/gtmos-outreach-sequences/SKILL.md",
-      "sha256": "a5bdbc8143a5f1e462c2241267a9fec5c0c9d31cd04622c0fe2b25c70ec02981",
-      "bytes": 10523
+      "sha256": "eb56ca95bf7b4b0db5e155ade87da338f7f889d27858998d553e28de60389dca",
+      "bytes": 10511
     },
     {
       "path": "skills/gtmos-research-account/SKILL.md",
-      "sha256": "128b8106607f47b91b3df6f3277cbd90076753ab5c99af822bfe2ecd489a166f",
-      "bytes": 13330
+      "sha256": "0f91ca0138e68e7db6d6107417126f45b252556b7f7299506a6318e2403d0d6f",
+      "bytes": 13708
     },
     {
       "path": "skills/gtmos-research-account/references/looot-gtm-account-research-brief.md",
@@ -1031,8 +1031,8 @@
     },
     {
       "path": "skills/gtmos-research-competitor/SKILL.md",
-      "sha256": "f61fd501a09d244afcc8df6acd70fbc0d94e198620b4b3ccaf9e0d7b3be28f9f",
-      "bytes": 20133
+      "sha256": "30eb8411b6be7f18b9a31c2957ec67c54e189e31a397dc2ed6ab8936d8d23e83",
+      "bytes": 20427
     },
     {
       "path": "skills/gtmos-research-competitor/references/templates.md",
@@ -1106,8 +1106,8 @@
     },
     {
       "path": "skills/gtmos-sales-call-prep/SKILL.md",
-      "sha256": "6884b87e510bdacbbbb978ab0906e0854667e0ffdfd9633075477cac29ffa768",
-      "bytes": 12545
+      "sha256": "eeb2799b051399ac6a09a67f4897e6191107ca4a6d93d5fb792e35dc02dc044f",
+      "bytes": 12579
     },
     {
       "path": "skills/gtmos-sales-enablement/SKILL.md",
@@ -1151,8 +1151,8 @@
     },
     {
       "path": "skills/gtmos-sales-follow-up/SKILL.md",
-      "sha256": "2976d8bdf723675b64f582c1b6bc43b8efcefa0cd5be6bb83da4a32154ab305e",
-      "bytes": 13520
+      "sha256": "6beb1868303308fc36a2f76c188b11120e8a77f34c4d77b35ee6c1e6e43e2aa4",
+      "bytes": 13615
     },
     {
       "path": "skills/gtmos-sales-win-loss/SKILL.md",
@@ -1176,8 +1176,8 @@
     },
     {
       "path": "skills/gtmos-seo-audit/SKILL.md",
-      "sha256": "b8225418d8ed32cf489de684df2ac7359268991e96e9b3b463b972faa71c79be",
-      "bytes": 13179
+      "sha256": "ee6bd65a201682262d31bf3cbff71fba8cddcfd511763f91d9b8d45cd44f6e7c",
+      "bytes": 13274
     },
     {
       "path": "skills/gtmos-seo-audit/references/corey-seo-audit.md",
@@ -1236,8 +1236,8 @@
     },
     {
       "path": "skills/gtmos-seo-backlinks/SKILL.md",
-      "sha256": "d30efcd808005b85b1d72a71e86afc34afcc98760b55374849ae6814150bb787",
-      "bytes": 18013
+      "sha256": "bb4adefe1af43d87b9a0dde7958c7efc102afa43a4589ec55b49a9031efbaab4",
+      "bytes": 18047
     },
     {
       "path": "skills/gtmos-seo-backlinks/references/backlink-quality.md",
@@ -1271,8 +1271,8 @@
     },
     {
       "path": "skills/gtmos-seo-competitor-pages/SKILL.md",
-      "sha256": "5875a8dbe86107072662ccb2a1cd19fe59281baa26cae2485508c8ab71abacfe",
-      "bytes": 17071
+      "sha256": "dc94f9595d6db693ec37edb066fd37f5433166758eef09b986f60f3864b51b70",
+      "bytes": 17105
     },
     {
       "path": "skills/gtmos-seo-competitor-pages/references/content-architecture.md",
@@ -1296,8 +1296,8 @@
     },
     {
       "path": "skills/gtmos-seo-content-brief/SKILL.md",
-      "sha256": "708ef25949cfdf8dea902ec8e44ca563030c4ae765267db13a0f2ea8b8f6d596",
-      "bytes": 14172
+      "sha256": "7148e4af1ac7e3f0e11e925be8df08309a840d1aed96c0cd1dba19a434e51910",
+      "bytes": 14267
     },
     {
       "path": "skills/gtmos-seo-content-brief/references/excluded-domains.md",
@@ -1331,8 +1331,8 @@
     },
     {
       "path": "skills/gtmos-seo-engine/SKILL.md",
-      "sha256": "025fdbb5cd957be4dd4ac4c2594585478448e1a8f95addc224faf4f517c46082",
-      "bytes": 13750
+      "sha256": "0fdc7ae8bb7e648b747ddd8ffc68c5ec3919bd80376465b83be9436b3c85e462",
+      "bytes": 13784
     },
     {
       "path": "skills/gtmos-seo-engine/references/backlink-quality.md",
@@ -1401,8 +1401,8 @@
     },
     {
       "path": "skills/gtmos-seo-geo/SKILL.md",
-      "sha256": "56966d55e3bbf73138e5e6fe577a8e05f64d1238021dd4f8923aec1618f42840",
-      "bytes": 40094
+      "sha256": "d6c9c724f852912be5865f47389179687d1b411a935c22fae35169d03bc8f36d",
+      "bytes": 40128
     },
     {
       "path": "skills/gtmos-seo-geo/references/agent-defaults.md",
@@ -1501,8 +1501,8 @@
     },
     {
       "path": "skills/gtmos-seo-keyword-clusters/SKILL.md",
-      "sha256": "39bc87c6c0390571967ca54d841dd8f9d24de4dc8f13e357e9dce08bcfdfa636",
-      "bytes": 17233
+      "sha256": "d9704da3c3bcb8ea41d13e7a943a80be55c316958b044b008286218ff0db2d61",
+      "bytes": 17267
     },
     {
       "path": "skills/gtmos-seo-keyword-clusters/references/execution-workflow.md",
@@ -1531,13 +1531,13 @@
     },
     {
       "path": "skills/gtmos-seo-keyword-research/SKILL.md",
-      "sha256": "59a75c4dab01db06abb60cc12914ec0e61f2fd8ac01480d00d7bde8ab8e0e344",
-      "bytes": 24061
+      "sha256": "fc936e87737f0294e5e45a6601e29b58e3f0a765bb268750c7723cd266041c1a",
+      "bytes": 24095
     },
     {
       "path": "skills/gtmos-seo-page/SKILL.md",
-      "sha256": "ef36159c615c2665c4f43311636811197d82c5d7edcc9813e7dfb971f92fc383",
-      "bytes": 8600
+      "sha256": "c97aa21455589626594e82766381f09ae214f6af2b5d5be168c763dbf2716d2f",
+      "bytes": 8695
     },
     {
       "path": "skills/gtmos-seo-page/references/seo-seo-content.md",
@@ -1546,13 +1546,13 @@
     },
     {
       "path": "skills/gtmos-seo-plan/SKILL.md",
-      "sha256": "169886567ed5972ee5d9f91e61d07be3f731db64061f7492d77bd14cd04311b3",
-      "bytes": 7639
+      "sha256": "00275140f970d9674326a3bc9f9ad073036a33b0db11311d80493243f5ca097f",
+      "bytes": 7673
     },
     {
       "path": "skills/gtmos-seo-programmatic/SKILL.md",
-      "sha256": "e38624e39120f79a78321aa34d06c11a550b400a5f84cb26d0cacfc5908d7974",
-      "bytes": 12780
+      "sha256": "ff28725c8f077caed609014ddaf84a0c74229a1356eb67e7264d0f05d9b6afc8",
+      "bytes": 12848
     },
     {
       "path": "skills/gtmos-seo-programmatic/references/implementation-platforms.md",
@@ -1571,8 +1571,8 @@
     },
     {
       "path": "skills/gtmos-seo-schema/SKILL.md",
-      "sha256": "1645a33c8875c01f03fb2280f6ca3ea18496de96c45d08c28b351fddc83d00bb",
-      "bytes": 13123
+      "sha256": "907328cbb39d07ee78a4e85a516afc741921b80654403b3d1854eb5e3cdb2e29",
+      "bytes": 13218
     },
     {
       "path": "skills/gtmos-seo-schema/references/corey-schema.md",
@@ -1606,8 +1606,8 @@
     },
     {
       "path": "skills/gtmos-seo-search-console/SKILL.md",
-      "sha256": "968dfdbf492f4f1c20d053bea99f2378c99e9819923fa68438f020f064593dc0",
-      "bytes": 18405
+      "sha256": "e2c4f1bc2f6de75833ae615a99d48a36d9e3638489902f0838d471e648ba95e1",
+      "bytes": 18439
     },
     {
       "path": "skills/gtmos-seo-search-console/references/auth-setup.md",
@@ -1671,8 +1671,8 @@
     },
     {
       "path": "skills/gtmos-seo-site-architecture/SKILL.md",
-      "sha256": "7dd0b6f467de5ab52a375302c0da448461a260d4c0ba2e0b26b120ae4a9b1b36",
-      "bytes": 16993
+      "sha256": "2cfbf1f4813abaf4f56d6bdac8a6b394e1373a54932b10bfabafb13333b03db3",
+      "bytes": 17027
     },
     {
       "path": "skills/gtmos-seo-site-architecture/references/mermaid-templates.md",

@@ -20,7 +20,7 @@ metadata:
 
 > **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
-**1. Profile.** `seo_geo.run_visibility {domain}` D returns Ahrefs domain rating, backlinks, referring domains and top pages when Ahrefs is connected through Composio, plus Search Console totals. Without Ahrefs, the looot backlink jobs (see `looot-backlink-checker`) price and fetch backlink data; quote first.
+**1. Profile.** `seo_geo.run_visibility {domain}` D (*spends inline*: quote it first) returns Ahrefs domain rating, backlinks, referring domains and top pages when Ahrefs is connected through Composio, plus Search Console totals. Without Ahrefs, the looot backlink jobs (see `looot-backlink-checker`) price and fetch backlink data; quote first.
 
 **2. Gaps.** Run the same read for two or three competitors (from `seo_geo.get_visibility_settings` or the user) and compare referring domains with the method below.
 

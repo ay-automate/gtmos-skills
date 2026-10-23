@@ -21,13 +21,13 @@ metadata:
 
 A sequence in GTM OS is a campaign whose steps follow the org's **step plan**, a `definition.sequence`. Without one it runs the classic cadence (a step every 3 days). Confirm the schema with `gtm_describe` and the kind reference before the first call.
 
-**1. Read first.** `sequence.list` Q and `sequence.get {sequenceId}` Q (roster, sent and reply counts, and the step plan with `signed` and `reason`); `config.list {kind: "definition.sequence"}` for plans that exist; `definition.lane` and `lane.list` Q for the channels and caps; `outreach.learning_report` Q for angles and steps that already win here.
+**1. Read first.** `sequence.list` Q and `sequence.get {id}` Q (roster, sent and reply counts, and the step plan with `signed` and `reason`); `config.list {kind: "definition.sequence"}` for plans that exist; `definition.lane` and `lane.list` Q for the channels and caps; `outreach.learning_report` Q for angles and steps that already win here.
 
 **2. Write the step plan.** A `definition.sequence` has a `label`, 1 to 20 `steps` and `exits`. Each step has a `key`, a `channel` (`email` or `linkedin`), a `wait` (`amount` in `days` or `business_days`), an optional `sendWindow` in the recipient's time (`start`, `end`, ISO `days`), a `template` or a `brief` for the drafting agent, and optional `variants` (2 to 5, weighted). A LinkedIn step sets `linkedin.action`: `message`, `connect`, `connect_then_message` (with a `note` and an `acceptWait` that moves on or exits) or `inmail`. Exits: reply, unsubscribe, bounce and manual stop are always on; meeting booked and a stage change are your choice.
 
 **3. Propose it.** `config.propose_changeset` M with the spec, `config.validate_changeset` Q, then `definition.propose_for_signing`; a different person signs it, and it runs in prod once signed and promoted. Until then a bound sequence's members wait, with that reason.
 
-**4. Bind and run.** `sequence.create {name, goal, lane, stepsKey}` D or `sequence.update {sequenceId, stepsKey}` D; members keep the steps already sent. Enrol with `sequence.enroll` D and activate with `sequence.update {status: "active"}` D once a person agrees. Every step's send is proposed and approved by a person, and passes the claims gate.
+**4. Bind and run.** `sequence.create {name, goal, lane, stepsKey}` D or `sequence.update {id, stepsKey}` D; members keep the steps already sent. Enrol with `sequence.enroll` D and activate with `sequence.update {id, status: "active"}` D once a person agrees. Every step's send is proposed and approved by a person, and passes the claims gate.
 
 **5. Measure per step.** `outreach.step_stats {sequenceId?}` Q: per step and variant, sent, replied, positive replies, meetings and bounces, with rates once a step has 30 sends (null with a reason before). Meetings are null without a meeting source; bounces only where the provider reports them. Change one thing at a time, and never call a variant the winner on a null rate.
 

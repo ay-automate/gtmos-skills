@@ -32,20 +32,20 @@ GTM OS sources lists through its **data-acquisition layer** (looot capabilities 
 | `score.list_ranked {subjectType: "gtm.account"}` | Accounts already in GTM OS and how they rank: start here before buying new data. |
 | `policy.guardrails.get`, `capability.list` | Spend caps, and which capabilities (`find.*`, `enrich.*`) this org has bound. |
 
-**2. Quote before you buy.** `capability.quote {capability: "find.companies", args: {...}}` returns the estimate and whether it sits inside the per-unit ceiling. Show the user the price before any batch and run only after a yes for that batch. For enrichment use `enrichment.enrich_accounts {estimate: true}` and `enrichment.enrich_contacts {estimate: true}`: no acquire, no spend. The enrichment runs spend inside their own call, so GTM OS pack agents never get them: a person runs them, or you quote and hand the run over.
+**2. Quote before you buy.** `capability.quote {capability: "find.companies", args: {...}}` returns the estimate and whether it sits inside the per-unit ceiling. Show the user the price before any batch and run only after a yes for that batch. For enrichment use `enrichment.enrich_accounts {estimate: true}` (*spends inline*: quote it first) and `enrichment.enrich_contacts {estimate: true}`: no acquire, no spend. The enrichment runs spend inside their own call, so GTM OS pack agents never get them: a person runs them, or you quote and hand the run over.
 
-**3. Source candidates.** Acquire through the broker with `capability.acquire`:
+**3. Source candidates.** Acquire through the broker with `capability.acquire` (*spends inline*: quote it first):
 - `find.companies` (filters), `find.lookalikes` (seed domains of best customers), `find.people` (titles, seniority, company), `find.person_linkedin`.
 - Hiring, news and funding triggers come through `research.jobs`, `research.news` and the Signals engine (`signals.list`, `signals.surge_report`); every signal keeps its evidence link.
 - Within budget the broker returns data. Over a per-unit ceiling or a scope budget it returns a **proposal** that a different person approves; stop and report the approval id. Pass an `idempotencyKey` so a retry never pays twice.
 
-**4. Fill the gaps, empty-only.** `enrichment.enrich_accounts {ids}` and `enrichment.enrich_contacts {ids}` walk the provider waterfall (email, phone, verification, firmographics) and never overwrite a value. A looot "miss" means *not found*: record it as unknown, never guess an email. Read `enrichment.coverage_report` afterwards and report fill rates as returned.
+**4. Fill the gaps, empty-only.** `enrichment.enrich_accounts {ids}` (*spends inline*: quote it first) and `enrichment.enrich_contacts {ids}` walk the provider waterfall (email, phone, verification, firmographics) and never overwrite a value. A looot "miss" means *not found*: record it as unknown, never guess an email. Read `enrichment.coverage_report` afterwards and report fill rates as returned.
 
 **5. Dedupe and respect suppression.** Search before creating (`records.search` by domain or email). `identity_dq.scan_duplicates` catches pairs you missed; merging is a separate, approved step (see `gtmos-crm-data-quality`). Anyone matching a suppression rule stays off the sheet.
 
 **6. Score and rank.** `score.score_account` / `score.score_contact` score new records against the signed model; `score.rescan_organization` re-scores in bulk. `score.list_ranked` gives band, segment, coverage and top reasons; `score.explain_subject` gives the evidence per lead. Use the engine's band as the Hot/Warm/Cold column, and quote its reasons rather than writing your own.
 
-**7. Hand off.** The ranked list feeds `gtmos-outreach-cold-email` (drafts and approved sends) and `gtmos-routing-lead-ownership` (owners). Building the list writes data (D-class) and needs no approval; contacting anyone does. For a specific list job use the matching workflow: `gtmos-leads-icp-lookalikes` (from seed customers), `gtmos-leads-tech-stack` (by detected tools), `gtmos-leads-buying-committee` (people per role), `gtmos-signals-hiring`, `gtmos-signals-funding` and `gtmos-signals-job-changes` (trigger lists). Values you filled go stale: `enrichment.freshness` and `enrichment.refresh_stale` (see `gtmos-crm-data-quality`).
+**7. Hand off.** The ranked list feeds `gtmos-outreach-cold-email` (drafts and approved sends) and `gtmos-routing-lead-ownership` (owners). Building the list writes data (D-class) and needs no approval; contacting anyone does. For a specific list job use the matching workflow: `gtmos-leads-icp-lookalikes` (from seed customers), `gtmos-leads-tech-stack` (by detected tools), `gtmos-leads-buying-committee` (people per role), `gtmos-signals-hiring`, `gtmos-signals-funding` and `gtmos-signals-job-changes` (trigger lists). Values you filled go stale: `enrichment.freshness` and `enrichment.refresh_stale` (*spends inline*: quote it first) (see `gtmos-crm-data-quality`).
 
 ## Without GTM OS
 

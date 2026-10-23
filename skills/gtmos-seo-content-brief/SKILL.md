@@ -20,7 +20,7 @@ metadata:
 
 > **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
-**1. Size it.** `seo_geo.keyword_opportunities` Q for the target query's position, impressions and the clicks a top-3 spot would add. For a rewrite, `seo_geo.get_page_performance {contentAssetId}` Q and `seo_geo.get_recommendation` Q for what the engine already found.
+**1. Size it.** `seo_geo.keyword_opportunities` Q for the target query's position, impressions and the clicks a top-3 spot would add. For a rewrite, `seo_geo.get_page_performance {contentAssetId}` Q and `seo_geo.get_recommendation` Q (*spends inline*: it calls the org's model, so quote the cost to the user and get a yes first) for what the engine already found.
 
 **2. See what wins.** The looot capability `seo.serp_organic` returns the current first page; `research.extract_page` reads a competitor page as structured data. Both are billed per call.
 

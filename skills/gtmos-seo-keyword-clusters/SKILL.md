@@ -20,7 +20,7 @@ metadata:
 
 > **Rules ([GTMOS-RULES.md](../GTMOS-RULES.md)).** Read `policy.get_dry_mode` first; in dry mode every effect stops at a draft. E-class operations are proposed and a different person approves them; never approve your own proposal. Numbers come only from operation results, named with the operation. Claims about results, customers or metrics must be backed by active proof from `proof.list`.
 
-**1. Collect keywords.** `seo_geo.keyword_opportunities` Q (Search Console striking-distance queries with volume and difficulty) plus the user's seed list. Refresh missing metrics with `seo_geo.refresh_keyword_data` D (budget-guarded).
+**1. Collect keywords.** `seo_geo.keyword_opportunities` Q (Search Console striking-distance queries with volume and difficulty) plus the user's seed list. Refresh missing metrics with `seo_geo.refresh_keyword_data` D (*spends inline*: quote it first) (budget-guarded).
 
 **2. Get SERPs.** Clustering by SERP overlap needs the top results per keyword: the looot capability `seo.serp_organic` returns Google's first page. It is billed per call, so quote the count first (`capability.quote`) and get the user's yes for large lists.
 
