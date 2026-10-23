@@ -1,6 +1,6 @@
 {
   "name": "gtmos-skills",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "repository": "https://github.com/ay-automate/gtmos-skills",
   "skills": 94,
   "files": [
@@ -526,8 +526,8 @@
     },
     {
       "path": "skills/gtmos-engine-catalog/SKILL.md",
-      "sha256": "0d83c8cc9d215d985ab4b9470ccf930012509e61dd69217564f271f61cf400b1",
-      "bytes": 11339
+      "sha256": "60fc8e520a3795ba01c805cf7b2afcd02a026ca93c65722aea59a5d73837eedd",
+      "bytes": 11499
     },
     {
       "path": "skills/gtmos-leads-inbound-triage/SKILL.md",

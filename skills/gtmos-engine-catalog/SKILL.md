@@ -17,9 +17,9 @@ Rule for every engine: verify live with its own check AND `gtm_query instance.re
 - **Operations:** `score.score_account`, `score.explain_qualification`, `score.rescan_organization`, `score.ingest_market_signals` (D); `query.list_qualifications`, `query.get_qualification` (Q).
 - **Connections:** a model provider for explanations; signals arrive from the Signals engine / looot.
 - **Definitions:** `definition.scoring_model` key `default` (intent) and key `icp_fit` (firmographic); `definition.committee_model` key `default` (ABM blueprints).
-- **Defaults:** `score.default.v1` -- qualified >= 60, review >= 30; weights e.g. funding 30, hiring 25, acquisition/expansion 20, exec change 15, headcount growth 15, product launch 12, pricing/product visits 10, negative -40. ICP-fit default: Benelux, 200-5,000 employees, threshold 70.
+- **Defaults:** `score.default.v2` -- qualified >= 60, review >= 30; weights e.g. funding 30, hiring 25, acquisition/expansion 20, exec change 15, headcount growth 15, product launch 12, pricing/product visits 10, negative -40; decay per signal family (buying 45d, intent 14d), first-party x1.5, competitor cap 0, reply / bounce negatives. ICP-fit default: a neutral size-only B2B ICP (50-5,000 employees = 100), threshold 70 -- sign the org's own.
 - **Knobs:** thresholds, per-signal weights, ICP regions/size/industries, committee personas (ABM).
-- **Verify live:** `gtm_act score.score_account {accountId}` on a real account; the result's policy version reads `definition.scoring_model:default:vN` when YOUR signed model is used (`score.default.v1` means the default is still in force).
+- **Verify live:** `gtm_act score.score_account {accountId}` on a real account; the result's policy version reads `definition.scoring_model:default:vN` when YOUR signed model is used (`score.default.v2` means the default is still in force).
 - **Gotchas:** the environment decides which model runs -- a model signed in dev is not used by prod calls until promoted.
 
 ## Enrichment -- `stdlib/engine.enrichment`
