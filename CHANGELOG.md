@@ -2,6 +2,11 @@
 
 All notable changes to this repository. Versions follow [Semantic Versioning](https://semver.org/); each release is a git tag with `manifest.json` attached.
 
+## 0.2.3 (2026-10-24)
+
+- `GTMOS-RULES.md` rule 8 adds the GTM OS 0.2.5 G1 operations that spend inside their own call: `seo_geo.build_clusters` (when it embeds), `seo_geo.create_brief` and `seo_geo.draft_page` (the org's model). Rule 9 names `seo_geo.approve_draft` (human only).
+- `gtmos-seo-keyword-clusters`, `gtmos-seo-content-brief`, `gtmos-seo-engine` and `gtmos-engine-catalog`: topic clusters (`seo_geo.build_clusters`, `seo_geo.cluster_sources` for the embedding estimate, `seo_geo.clusters`, `seo_geo.get_cluster`) and the content factory (`seo_geo.add_content_idea`, `seo_geo.create_brief`, `seo_geo.draft_page`, `seo_geo.update_draft`, `seo_geo.qa_draft`, `seo_geo.approve_draft`, `seo_geo.move_content`, `seo_geo.content_item`, `seo_geo.factory`), each spending use marked *spends inline* with a quote first.
+
 ## 0.2.2 (2026-10-23)
 
 - `gtmos-research-account` and `gtmos-research-competitor`: the research agent proposes facts; only a person accepts or dismisses them (`research.fact.decide` is human only).

@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Agent skills for marketing, SEO and GEO, outbound, leads, ads, CRM and RevOps. They work on their own and run on GTM OS when it is connected.",
-    "version": "0.2.2"
+    "version": "0.2.3"
   },
   "plugins": [
     {

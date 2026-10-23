@@ -61,8 +61,8 @@ Comprehensive SEO analysis across business types (SaaS, local services, e-commer
 | A deep look at one URL, or content quality and E-E-A-T | `gtmos-seo-page` | `seo_geo.create_tracked_page`, `seo_geo.run_audit`, `seo_geo.get_recommendation` |
 | AI Overviews, ChatGPT / Perplexity / Gemini citations, GEO | `gtmos-seo-geo` | `seo_geo.create_tracked_prompt`, `seo_geo.run_visibility`, `seo_geo.get_visibility` |
 | Keyword research and opportunities | `gtmos-seo-keyword-research` | `seo_geo.keyword_opportunities`, `seo_geo.refresh_keyword_data` |
-| Keyword clusters, pillar and spoke planning | `gtmos-seo-keyword-clusters` | `seo_geo.keyword_opportunities`, looot `seo.serp_organic` |
-| A content brief | `gtmos-seo-content-brief` | `seo_geo.get_recommendation`, `seo_geo.keyword_opportunities` |
+| Keyword clusters, pillar and spoke planning | `gtmos-seo-keyword-clusters` | `seo_geo.keyword_opportunities`, `seo_geo.build_clusters` (*spends inline* when it embeds: quote first), `seo_geo.clusters`, looot `seo.serp_organic` |
+| A content brief, a draft, the QA gate | `gtmos-seo-content-brief` | `seo_geo.create_brief` and `seo_geo.draft_page` (*spends inline*: quote first), `seo_geo.qa_draft`, `seo_geo.factory`, `seo_geo.keyword_opportunities` |
 | Schema markup | `gtmos-seo-schema` | `seo_geo.publish_content_change` (`schemaJsonLd`) |
 | Pages at scale from data | `gtmos-seo-programmatic` | tracked pages per template |
 | "X vs Y" and alternatives pages | `gtmos-seo-competitor-pages` | proof library, `seo_geo.publish_content_change` |

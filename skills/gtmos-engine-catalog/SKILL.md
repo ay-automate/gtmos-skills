@@ -64,7 +64,7 @@ Rule for every engine: verify live with its own check AND `gtm_query instance.re
 
 ## SEO & GEO (Search) -- `stdlib/engine.search`
 - **Purpose:** audit tracked pages, recommend and propose content changes, track rank + AI-search (GEO) readiness.
-- **Operations:** `seo_geo.create_tracked_page`, `seo_geo.run_audit`, `seo_geo.audit_page`, `seo_geo.scan_all_pages` (D); `seo_geo.get_recommendation`, `seo_geo.get_readiness_view`, `seo_geo.get_page_performance` (Q); `seo_geo.publish_content_change`, `seo_geo.undo_content_change` (E).
+- **Operations:** `seo_geo.create_tracked_page`, `seo_geo.run_audit`, `seo_geo.audit_page`, `seo_geo.scan_all_pages` (D); `seo_geo.get_recommendation`, `seo_geo.get_readiness_view`, `seo_geo.get_page_performance` (Q); `seo_geo.publish_content_change`, `seo_geo.undo_content_change` (E). Clusters and the content factory: `seo_geo.build_clusters` (D, *spends inline* when it embeds), `seo_geo.cluster_sources`, `seo_geo.clusters`, `seo_geo.get_cluster`, `seo_geo.factory`, `seo_geo.content_item` (Q); `seo_geo.add_content_idea`, `seo_geo.create_brief` and `seo_geo.draft_page` (D, *spends inline*), `seo_geo.update_draft`, `seo_geo.qa_draft`, `seo_geo.move_content` (D); `seo_geo.approve_draft` (D, human only).
 - **Connections:** **Google Search Console REQUIRED** (Settings > Connected accounts) + the property (`connections.set_provider_setting` `gsc/site_url`, or `gtm apply --gsc-property`); GA4 optional; looot for keyword data.
 - **Defaults:** the `seo` / `full-gtm` blueprints seed a daily audit play (`seo_geo.scan_all_pages`) and search metrics.
 - **Verify live:** `gtm doctor` GSC line OK; `seo_geo.create_tracked_page` + `seo_geo.audit_page` on a real URL.

@@ -1,6 +1,6 @@
 {
   "name": "gtmos-skills",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "repository": "https://github.com/ay-automate/gtmos-skills",
   "skills": 107,
   "files": [
@@ -101,8 +101,8 @@
     },
     {
       "path": "skills/GTMOS-RULES.md",
-      "sha256": "794f7b1e8c7db84ac7922ea0362027e025effb776c1967763c813bf0c59def24",
-      "bytes": 4237
+      "sha256": "69df97875eb076be604d3ce3245e5b94e0179237e9fafaa9c2f02ba0816ac3f0",
+      "bytes": 4359
     },
     {
       "path": "skills/ads/SKILL.md",
@@ -556,8 +556,8 @@
     },
     {
       "path": "skills/gtmos-engine-catalog/SKILL.md",
-      "sha256": "15988acf8d052b3606ec4de350aff24fc6385d5a83e0375ae1d546f8a7cb360b",
-      "bytes": 19633
+      "sha256": "a1124fe3df6af8d3ae1d90d3a15bc4835d96575d9ccd8b2b9d2947e12e2bfaf4",
+      "bytes": 20057
     },
     {
       "path": "skills/gtmos-leads-buying-committee/SKILL.md",
@@ -1296,8 +1296,8 @@
     },
     {
       "path": "skills/gtmos-seo-content-brief/SKILL.md",
-      "sha256": "7148e4af1ac7e3f0e11e925be8df08309a840d1aed96c0cd1dba19a434e51910",
-      "bytes": 14267
+      "sha256": "856d0b3aa09a583b35c740d02a8527422338593a69b8024a3b082ab66e28a0f3",
+      "bytes": 15187
     },
     {
       "path": "skills/gtmos-seo-content-brief/references/excluded-domains.md",
@@ -1331,8 +1331,8 @@
     },
     {
       "path": "skills/gtmos-seo-engine/SKILL.md",
-      "sha256": "0fdc7ae8bb7e648b747ddd8ffc68c5ec3919bd80376465b83be9436b3c85e462",
-      "bytes": 13784
+      "sha256": "d835dd84b2120ed80b6bf85c1f848c25b8ea8c8ea31324e8a694211ef80c0ccb",
+      "bytes": 13987
     },
     {
       "path": "skills/gtmos-seo-engine/references/backlink-quality.md",
@@ -1501,8 +1501,8 @@
     },
     {
       "path": "skills/gtmos-seo-keyword-clusters/SKILL.md",
-      "sha256": "d9704da3c3bcb8ea41d13e7a943a80be55c316958b044b008286218ff0db2d61",
-      "bytes": 17267
+      "sha256": "606bc0d91972d51255e4c9e928dd1a5056b0767783b461b2ecda5bf10b3ef170",
+      "bytes": 17852
     },
     {
       "path": "skills/gtmos-seo-keyword-clusters/references/execution-workflow.md",

@@ -26,7 +26,9 @@ metadata:
 
 **3. Ground it.** Facts the page should cite come from active proof (`proof.list`) or a public source with a date. Buyer questions and wording come from `voice.customer_language.list` and `transcripts.list`. Tone comes from `brand.get`.
 
-**4. Hand off.** The brief is a document, not an effect. When the draft exists, `brand.check_text` it and propose it with `seo_geo.publish_content_change` E (a different person approves); new pages are tracked with `seo_geo.create_tracked_page`.
+**4. Write it in the factory.** `seo_geo.create_brief {clusterId | keyword | contentAssetId}` D (*spends inline*: it calls the org's model, so quote the cost to the user and get a yes first) writes the structured brief from the org's own data: intent, outline, entities, questions (search queries and tracked AI prompts), internal links, competitors from the recorded first pages, and approved proof points. Anything the model adds must quote that data word for word; without a model the brief is deterministic and says why. `seo_geo.draft_page` D (*spends inline*: same, quote first) drafts the page in the signed brand voice. Edit with `seo_geo.update_draft` D, then `seo_geo.qa_draft` D runs the claims gate, brand safety, readability, required entities, links and length. Approval (`seo_geo.approve_draft`) is human only and never the draft's author or the person an agent drafted for. Track progress on `seo_geo.factory` Q and one item with `seo_geo.content_item` Q.
+
+**5. Hand off.** An approved draft is not published: propose it with `seo_geo.publish_content_change` E (a different person approves); new pages are tracked with `seo_geo.create_tracked_page`.
 
 ## Without GTM OS
 

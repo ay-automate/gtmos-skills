@@ -24,9 +24,9 @@ metadata:
 
 **2. Get SERPs.** Clustering by SERP overlap needs the top results per keyword: the looot capability `seo.serp_organic` returns Google's first page. It is billed per call, so quote the count first (`capability.quote`) and get the user's yes for large lists.
 
-**3. Cluster and plan.** Apply the method below. Check existing tracked pages (`seo_geo.get_readiness_view`) so a cluster maps to a page you already have before creating a new one; two tracked pages on one cluster is cannibalization.
+**3. Cluster and plan.** `seo_geo.build_clusters` D (*spends inline* when it embeds: quote first -- read `seo_geo.cluster_sources` Q for the estimate, then pass `embeddings: "use"` and `maxCostUsd` only after the user's yes; without them it spends nothing) groups Search Console queries, tracked prompts and keyword data by recorded SERP overlap, embeddings or word similarity, with intent, pillar page, coverage and cannibalisation. Read them with `seo_geo.clusters` Q and `seo_geo.get_cluster` Q. Apply the method below on top. Check existing tracked pages (`seo_geo.get_readiness_view`) so a cluster maps to a page you already have before creating a new one; two tracked pages on one cluster is cannibalization.
 
-**4. Track and schedule.** `seo_geo.create_tracked_page {url, targetKeywords}` for each hub and spoke that exists, `seo_geo.refresh_calendar` Q to see what is due for refresh, and briefs for the gaps (gtmos-seo-content-brief).
+**4. Track and schedule.** `seo_geo.create_tracked_page {url, targetKeywords}` for each hub and spoke that exists, `seo_geo.refresh_calendar` Q to see what is due for refresh, and briefs for the gaps: `seo_geo.add_content_idea` D or `seo_geo.create_brief {clusterId}` D (*spends inline*: quote first; see gtmos-seo-content-brief).
 
 ## Without GTM OS
 
