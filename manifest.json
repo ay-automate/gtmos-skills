@@ -1,13 +1,13 @@
 {
   "name": "gtmos-skills",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "repository": "https://github.com/ay-automate/gtmos-skills",
-  "skills": 94,
+  "skills": 107,
   "files": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
-      "sha256": "55a58b23256055fb78e92d03e98610082787fb49aa15ccacf22644dde5ed7320",
-      "bytes": 23312
+      "sha256": "bc90775e41976ba938e1ab1437bed8a1c24ab52722f987b64243dd38dbf87bef",
+      "bytes": 26599
     },
     {
       "path": "licenses/Apache-2.0-HubSpot-agent-cli-skills.txt",
@@ -40,6 +40,11 @@
       "bytes": 1069
     },
     {
+      "path": "licenses/MIT-Jakeschincariol-linkedin-agent-skill.txt",
+      "sha256": "857c8d5276809c8196b3cd7cb3300324768bfc562b2b6281b06d6865058e186c",
+      "bytes": 1073
+    },
+    {
       "path": "licenses/MIT-apolloio-apollo-mcp-plugin.txt",
       "sha256": "32d2293a7c5f76c3a8b1bd1e9a5a26cc7a472c0b462b8cec5ee81daed2896752",
       "bytes": 1066
@@ -53,6 +58,16 @@
       "path": "licenses/MIT-coreyhaines31-marketingskills.txt",
       "sha256": "b70d71e24e40fce5da8f4b6f9cd862096a048e433db7f3c8cac5e348e6d34591",
       "bytes": 1069
+    },
+    {
+      "path": "licenses/MIT-gooseworks-ai-goose-skills.txt",
+      "sha256": "9c05de6851e9b409f52b4fac51a37e740878be9fd482cbc020747e322a9ceca1",
+      "bytes": 1067
+    },
+    {
+      "path": "licenses/MIT-loootai-gtm-skills.txt",
+      "sha256": "637743a3de36b3866e0269291c7f929b1d8b3313aa6c6abeeeda6711ea3639d1",
+      "bytes": 1062
     },
     {
       "path": "licenses/MIT-loootai-looot-skills.txt",
@@ -86,8 +101,8 @@
     },
     {
       "path": "skills/GTMOS-RULES.md",
-      "sha256": "4b903ab89764f363bcf0be7d16697e69fd220a0a191764e4bc0bcca8880d4063",
-      "bytes": 1957
+      "sha256": "05ad7e9f6d2cae0468a51e00dbfed9cc77ba215dfa8af4818adacb8395690d53",
+      "bytes": 3769
     },
     {
       "path": "skills/ads/SKILL.md",
@@ -126,8 +141,8 @@
     },
     {
       "path": "skills/gtmos-ads-campaigns/SKILL.md",
-      "sha256": "f25a45a0422c9de7a52a8e4872d936472d7d9bbf6873c14ea1d20b6768caf999",
-      "bytes": 32292
+      "sha256": "10adbc27e119184305cfd0e5fcd5d14c68a3dd590e3f7356ab598ede1c719033",
+      "bytes": 33945
     },
     {
       "path": "skills/gtmos-ads-campaigns/references/abm-playbook.md",
@@ -395,6 +410,16 @@
       "bytes": 4004
     },
     {
+      "path": "skills/gtmos-content-claims-gate/SKILL.md",
+      "sha256": "d4f5eb8327e250e243839d33e1af41b9307796f9b16bb9d67a7d5d6bae53bfc1",
+      "bytes": 9903
+    },
+    {
+      "path": "skills/gtmos-content-claims-gate/references/claim-types.md",
+      "sha256": "4c36bf00085f506cd9a82aee584803aabcf04eb5ba5b62ae128b627f6f5c09e2",
+      "bytes": 3658
+    },
+    {
       "path": "skills/gtmos-content-copywriting/SKILL.md",
       "sha256": "13f408442f03f83e6794d9f62d557062a07629c19c79e5949b645b6235008e17",
       "bytes": 17880
@@ -501,13 +526,18 @@
     },
     {
       "path": "skills/gtmos-crm-data-quality/SKILL.md",
-      "sha256": "6c6503fe3aa0b245a528697f020458dd4eefbe37728d7381eb020d46ede9443c",
-      "bytes": 10658
+      "sha256": "7bd4c0877d07183163d27e4e603f0d703e53c3246d51b944f1f89a387b08bc24",
+      "bytes": 12470
     },
     {
       "path": "skills/gtmos-crm-data-quality/references/hubspot-bulk-operations.md",
       "sha256": "2b310eda7d0ee42eab9420bfd1e3fb7c53d7e72c21748403c4c2e1aeda74efc1",
       "bytes": 16297
+    },
+    {
+      "path": "skills/gtmos-crm-email-hygiene/SKILL.md",
+      "sha256": "3c3db9f95e60a9e8231a02a1c63c6a809470dd918394bbcd1232f3e0553dd0f4",
+      "bytes": 7561
     },
     {
       "path": "skills/gtmos-crm-forecast/SKILL.md",
@@ -516,8 +546,8 @@
     },
     {
       "path": "skills/gtmos-crm-pipeline-review/SKILL.md",
-      "sha256": "b2516146cc663e8111871d344b012ab0bf44e1c9368aa26105311078e3d6bcc4",
-      "bytes": 8652
+      "sha256": "3c471454db3b6ad84f4a49f39ed1a0b37d1c45db6765968ef55479686a3446c5",
+      "bytes": 9265
     },
     {
       "path": "skills/gtmos-crm-pipeline-review/references/salesforce-pipeline-review.md",
@@ -526,18 +556,33 @@
     },
     {
       "path": "skills/gtmos-engine-catalog/SKILL.md",
-      "sha256": "60fc8e520a3795ba01c805cf7b2afcd02a026ca93c65722aea59a5d73837eedd",
-      "bytes": 11499
+      "sha256": "502d5ecc64ab1b7c442f342909964fb8c1f25b96caed1929b4475a488a8d8500",
+      "bytes": 19528
+    },
+    {
+      "path": "skills/gtmos-leads-buying-committee/SKILL.md",
+      "sha256": "cbfd48f7fc69b94474dbfb0e9e7f0ef4638c4ecb2636a6e3057a808ddafbcb8c",
+      "bytes": 8520
+    },
+    {
+      "path": "skills/gtmos-leads-icp-lookalikes/SKILL.md",
+      "sha256": "037915a75da987ea378af4d09c045361c0d813066d1b6f44b050b0067f05d99c",
+      "bytes": 8112
     },
     {
       "path": "skills/gtmos-leads-inbound-triage/SKILL.md",
-      "sha256": "db4018a975f73199f5b7ca83e7ecb08058263f755870b19f2a8979c8fd39c632",
-      "bytes": 9405
+      "sha256": "129b66e3d699787548981ba0a2ddcdfcd67a1bb231d8548425bb5b598569ca00",
+      "bytes": 11313
+    },
+    {
+      "path": "skills/gtmos-leads-inbound-triage/references/looot-gtm-inbound-lead-enrichment.md",
+      "sha256": "3bda6fe14d122b5810d8e90408741e8024003034b5f3956aeae0510106458216",
+      "bytes": 3849
     },
     {
       "path": "skills/gtmos-leads-prospecting/SKILL.md",
-      "sha256": "35183109659af42a0529a63c3467436cedb3430033567819ec8136f9b49a1fec",
-      "bytes": 23259
+      "sha256": "ee2a5938799690fcfacb71f6a9f9de9e2574076226b45aaf159d818aa77bfe55",
+      "bytes": 23922
     },
     {
       "path": "skills/gtmos-leads-prospecting/references/account-research.md",
@@ -595,6 +640,11 @@
       "bytes": 6757
     },
     {
+      "path": "skills/gtmos-leads-tech-stack/SKILL.md",
+      "sha256": "f3c66aa1ef5f14ed8cc5c599d305ca3f0c9fd6ab772d35ef507bf025580b2a5d",
+      "bytes": 6904
+    },
+    {
       "path": "skills/gtmos-lifecycle-churn/SKILL.md",
       "sha256": "01991e6b370bac84032b9dffd0b99b427129667dc9fa254fd551b8ee449da656",
       "bytes": 21297
@@ -611,8 +661,8 @@
     },
     {
       "path": "skills/gtmos-lifecycle-email/SKILL.md",
-      "sha256": "d060f22f50e4b6028a380681271591e4926f73f940fd4fc51e89e40547c1c719",
-      "bytes": 13614
+      "sha256": "c5f4402232e91956b6a7724999248bf7593a1800653a341d2b489f952f36c865",
+      "bytes": 14240
     },
     {
       "path": "skills/gtmos-lifecycle-email/references/copy-guidelines.md",
@@ -851,8 +901,8 @@
     },
     {
       "path": "skills/gtmos-ops-marketing-loops/SKILL.md",
-      "sha256": "f1d79095c322703a2db1b552290ddcc2ca697df7afaad31d3e7ec89c95b9d9c9",
-      "bytes": 12226
+      "sha256": "a68414be916bb27480eb4d2b532c4ba0d63ef41d86daf40b4e793984cc5881d8",
+      "bytes": 13939
     },
     {
       "path": "skills/gtmos-ops-marketing-loops/references/loop-catalog.md",
@@ -891,8 +941,8 @@
     },
     {
       "path": "skills/gtmos-outreach-cold-email/SKILL.md",
-      "sha256": "714774978f59af2770e470aed318a61783f23d4aa72ed41b629b9d7cf83805a1",
-      "bytes": 16612
+      "sha256": "16b979e12d643bd21dbdb09c5dd560fd6cf9baef0d323654087de7b2ebcfd041",
+      "bytes": 17608
     },
     {
       "path": "skills/gtmos-outreach-cold-email/references/benchmarks.md",
@@ -950,9 +1000,29 @@
       "bytes": 3015
     },
     {
+      "path": "skills/gtmos-outreach-first-lines/SKILL.md",
+      "sha256": "4c94f0fec5c0ea8c47e929e089a2313e100ed2274d75fc6d4b45d57a87cad30a",
+      "bytes": 7197
+    },
+    {
+      "path": "skills/gtmos-outreach-linkedin/SKILL.md",
+      "sha256": "5e29a5fef5ec20f6e32f073c9652f74debc6c5a38a2fda85d6dd7f496b430200",
+      "bytes": 7293
+    },
+    {
+      "path": "skills/gtmos-outreach-sequences/SKILL.md",
+      "sha256": "a5bdbc8143a5f1e462c2241267a9fec5c0c9d31cd04622c0fe2b25c70ec02981",
+      "bytes": 10523
+    },
+    {
       "path": "skills/gtmos-research-account/SKILL.md",
-      "sha256": "16b4972533eb1e892af25124b255672a36b8072cd99d00e4ddf8386db4383783",
-      "bytes": 12374
+      "sha256": "128b8106607f47b91b3df6f3277cbd90076753ab5c99af822bfe2ecd489a166f",
+      "bytes": 13330
+    },
+    {
+      "path": "skills/gtmos-research-account/references/looot-gtm-account-research-brief.md",
+      "sha256": "625a8c1f044e582ca50998864a24df408b24cbd82795ec82e48caf406ad06e0f",
+      "bytes": 5027
     },
     {
       "path": "skills/gtmos-research-account/references/research-recipe.md",
@@ -1021,8 +1091,8 @@
     },
     {
       "path": "skills/gtmos-routing-lead-ownership/SKILL.md",
-      "sha256": "731577a96f2b1004eeadfac6a0e836359ea03198bfcc5d005686bbfd317a3095",
-      "bytes": 8919
+      "sha256": "20b8557640953c3e4e755a7d2274bdab29d6006d4e6788aff2275567ec8d9e8b",
+      "bytes": 10266
     },
     {
       "path": "skills/gtmos-routing-lead-ownership/references/hubspot-team-ownership.md",
@@ -1091,8 +1161,8 @@
     },
     {
       "path": "skills/gtmos-score-icp/SKILL.md",
-      "sha256": "f04aa5d6866176e9959bbaf7f07ce5a7bcb62a67e21651675107190e7611eb09",
-      "bytes": 23353
+      "sha256": "6ba31cfba65dfc1a45c9d624f7265c4c1dd6adb4f879a27d918df6cc6a4a4972",
+      "bytes": 25344
     },
     {
       "path": "skills/gtmos-score-icp/references/clay-icp-matrix-builder.md",
@@ -1218,6 +1288,11 @@
       "path": "skills/gtmos-seo-competitor-pages/references/templates.md",
       "sha256": "138f4367a45fc9cc775f9fd67324f8a6f1e1f5c3c1a90bd952db4731f080844f",
       "bytes": 5649
+    },
+    {
+      "path": "skills/gtmos-seo-competitor-serp-watch/SKILL.md",
+      "sha256": "a2ee18ad7d66fc35c20c2bae12a732a0eee4bce05ea3e9838b00b7c52b4ce31e",
+      "bytes": 7660
     },
     {
       "path": "skills/gtmos-seo-content-brief/SKILL.md",
@@ -1635,6 +1710,26 @@
       "bytes": 21044
     },
     {
+      "path": "skills/gtmos-signals-account-digest/SKILL.md",
+      "sha256": "a493c1aa7cb1c9cec885a082f74db4d24be04620b2889da437d55195aee861d5",
+      "bytes": 8037
+    },
+    {
+      "path": "skills/gtmos-signals-funding/SKILL.md",
+      "sha256": "b8bf18e1752cf3cdbfd472a9a3c063df96ba4b3989e53481b7e15126eb18f403",
+      "bytes": 7156
+    },
+    {
+      "path": "skills/gtmos-signals-hiring/SKILL.md",
+      "sha256": "70a506cd715d3560e571f05da7a682e566b3fb7c91e59acdeaf1e56dc5357cbe",
+      "bytes": 7412
+    },
+    {
+      "path": "skills/gtmos-signals-job-changes/SKILL.md",
+      "sha256": "ca8c57120fee4bc524304fb64787d4db72bf33f08ed7eb8fb1a01f4c5cb7d6d3",
+      "bytes": 8014
+    },
+    {
       "path": "skills/gtmos-source-mapping/SKILL.md",
       "sha256": "a8e938bfb6825702d35c7bdff8afa8245ac364d1d85550f65f144ce9595a9c61",
       "bytes": 10870
@@ -1646,93 +1741,93 @@
     },
     {
       "path": "skills/looot-ai-search-visibility/SKILL.md",
-      "sha256": "66e69a4ba72feb449e9328101811938e2946a97e8e073a3a5ee4394bce78c47b",
-      "bytes": 4208
+      "sha256": "c94491ed1d8ec495ba029abdb31b75fb4186b8ecb1ecf6fa99970ef78c1d14b5",
+      "bytes": 4345
     },
     {
       "path": "skills/looot-amazon-product/SKILL.md",
-      "sha256": "f3e8b54e55b84b0a8777124c5818cac829c88ad3f39f09a27031ceb296d03479",
-      "bytes": 3528
+      "sha256": "b2f840b4e68939d9885a3dbb1d08038673dd172372ac6a861f6a20d787764e31",
+      "bytes": 3665
     },
     {
       "path": "skills/looot-backlink-checker/SKILL.md",
-      "sha256": "33b1a1144cf8eeef487317ecda2d0544eaa1088c9dbd63d9d4e65d8358632a17",
-      "bytes": 3547
+      "sha256": "d4f57ca5eee257a33ebd20349adc4566e8854a331435d59c9b751b69b70eb3d7",
+      "bytes": 3684
     },
     {
       "path": "skills/looot-company-email-format/SKILL.md",
-      "sha256": "68c7cc54c1eb59b2fc878287f47ce47842865b71804807317f60d79113ea2cdd",
-      "bytes": 3334
+      "sha256": "5086c1377768085674070f336b77f742b90f378d54cd971c5f569338f29be822",
+      "bytes": 3471
     },
     {
       "path": "skills/looot-company-list-builder/SKILL.md",
-      "sha256": "cf56755c25a033f6a5f9abd4213e6953a2b95282e1fb2b395b4b3ceda0ff76e3",
-      "bytes": 3857
+      "sha256": "2a801f859fc173099946c1ec2e5e1149d150ec2595f6dc991072edfdabfa77f0",
+      "bytes": 3994
     },
     {
       "path": "skills/looot-domain-keywords/SKILL.md",
-      "sha256": "217ef45356804c2a6c4d881938f0524e255a84fce3cf198b954debc2c0b8f1fc",
-      "bytes": 3536
+      "sha256": "c7ef543f41d8b5bcf7e084cfa24f070c4ad0f873eeef389451a7a6feaf0ea07d",
+      "bytes": 3673
     },
     {
       "path": "skills/looot-email-verification/SKILL.md",
-      "sha256": "9bdfa37c371176072c07ad9b76edd3581fe68a24a0e239354db6d9c5e8799297",
-      "bytes": 3778
+      "sha256": "70040219f7a13f6faa9cc074fc2979b069a0f1f7c19962ff9466105ee3df73d6",
+      "bytes": 3915
     },
     {
       "path": "skills/looot-enrich-a-company/SKILL.md",
-      "sha256": "d892a2dba6199e66a4cbdf14436d4930a72c499243fb928cacfa940644deda51",
-      "bytes": 4048
+      "sha256": "a95a564306f4d0048777dc8ca7c34349f02316fc70f81497b9e9d31b8a7c12df",
+      "bytes": 4185
     },
     {
       "path": "skills/looot-enrich-a-person/SKILL.md",
-      "sha256": "36beb552c47685f7c007f7eed5db6b9745e897c402ec42d7793d2fc9a66c74b0",
-      "bytes": 3741
+      "sha256": "4d15c3d0e085846d0cbec3e16733d72fe8e5d1f39c7068665739429797ed1d1b",
+      "bytes": 3878
     },
     {
       "path": "skills/looot-find-phone-numbers/SKILL.md",
-      "sha256": "8cf425e442033b942d559c0fd524bfc850bdcd49b95f338639c600c53d4b028e",
-      "bytes": 4094
+      "sha256": "6b749df219401a828c39771d02907b3dffe5b5417b8a3b5b76d12e4f19bc15b5",
+      "bytes": 4231
     },
     {
       "path": "skills/looot-find-professional-emails/SKILL.md",
-      "sha256": "1fa5c2f998d070b17d98262c24d6b7abc5eb5ee54cc668a2a6bdd7d4f227ab4b",
-      "bytes": 3787
+      "sha256": "6d04f51acfa9daeca671de245e02f2ed3286542ecaee541d42e9ae3e237fa3d1",
+      "bytes": 3924
     },
     {
       "path": "skills/looot-google-maps-reviews/SKILL.md",
-      "sha256": "8e3473b9d361e50bef78797ba8f6985bc83c9579fdeb7cc3a953efa78f96e1de",
-      "bytes": 3420
+      "sha256": "a2e2666ef9464e09b4f72bc837bc7d5ca39e7c06b1322542f22e1ad258963a61",
+      "bytes": 3557
     },
     {
       "path": "skills/looot-google-serp/SKILL.md",
-      "sha256": "02226acb05dbd480b3097a006def81913822ffc579deb0d60fd50d976f2dc87e",
-      "bytes": 3596
+      "sha256": "c607ecaa644e18a7b570bf3065edfcc0c2878130aef2186229e8038dd7f07519",
+      "bytes": 3733
     },
     {
       "path": "skills/looot-job-postings/SKILL.md",
-      "sha256": "3013e437d86671e55e8cf172ecd12bfb744dc745abc745bd096021edcb9e022d",
-      "bytes": 3441
+      "sha256": "149931db959350ba3a4d0ed2d730ac03d6fb23359ec46a14b4d27c24218fb609",
+      "bytes": 3578
     },
     {
       "path": "skills/looot-keyword-volume/SKILL.md",
-      "sha256": "76a39346c38abe991343a683681e48e528bf13f703cff3857a6b037c6b990deb",
-      "bytes": 3902
+      "sha256": "a7b15753668fefeca1c7325a1df5599a911e61487ec544430e063f5946c780ff",
+      "bytes": 4039
     },
     {
       "path": "skills/looot-local-business-search/SKILL.md",
-      "sha256": "b86f2dd32750dd18df827341a6560ca99b6f8e6fde4c56575ed1d4012a835d72",
-      "bytes": 3526
+      "sha256": "45cd6adee6dd79aa16b01313ea877838230581a0efe87fdc8cc85ea14a6c1288",
+      "bytes": 3663
     },
     {
       "path": "skills/looot-meta-ads-library/SKILL.md",
-      "sha256": "c177504237a6fd09cdbf457c5d1d97515d1989aa32de3c8c8197882a3d919a35",
-      "bytes": 3820
+      "sha256": "c001d56b42e47a25e595b73138a458c4656ce84eb405a5cfbf4040c7273440a9",
+      "bytes": 3957
     },
     {
       "path": "skills/looot-reddit-search/SKILL.md",
-      "sha256": "b9c0f817b55c1481ca53e879ce7e7d4c85c99d8b6f6fe0b5d792cea583242f80",
-      "bytes": 3188
+      "sha256": "91a37e21f61405513576e88df84248822061e5142800dc1a27ec9b07de93dbf4",
+      "bytes": 3325
     },
     {
       "path": "skills/looot-resources/SKILL.md",
@@ -1741,18 +1836,18 @@
     },
     {
       "path": "skills/looot-tiktok-search/SKILL.md",
-      "sha256": "972f27a53a318e49740b7a200b5a94c7967dda1c4a713e1fd29e3e53ba7c957c",
-      "bytes": 3221
+      "sha256": "8d158d5f420a3e1717a85fbadb231d6c6aa30016cc16d7c31daed7fbf1fc2503",
+      "bytes": 3358
     },
     {
       "path": "skills/looot-youtube-transcript/SKILL.md",
-      "sha256": "f27d68fac26ae24162e1555b302cd948227a1a4adfa83f847a30ccd976b21df9",
-      "bytes": 3585
+      "sha256": "53b609631db2c255d89efaf201c3d15fdc4774d3698e768a47b6bb7aaab35f7e",
+      "bytes": 3722
     },
     {
       "path": "skills/looot/SKILL.md",
-      "sha256": "44bbee121f1c84858440d234997eb650cebed6057bd17957bb4757665c52d1ed",
-      "bytes": 11918
+      "sha256": "e58eba11da5e13917fe56c69345a610dca754bdcbc53683a630dc6d595598cc8",
+      "bytes": 12743
     },
     {
       "path": "skills/mcp/SKILL.md",
@@ -1791,8 +1886,8 @@
     },
     {
       "path": "skills/unipile/SKILL.md",
-      "sha256": "26fe9e9d732e9a5dd38ed3ec9b59998301df68fe55368075e204f65a996f98bf",
-      "bytes": 4726
+      "sha256": "e70d5a1731eab44aade50856778ada1674d513591cf67878b35a8c7b9ef91776",
+      "bytes": 5405
     },
     {
       "path": "skills/webform/SKILL.md",

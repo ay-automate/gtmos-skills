@@ -4,6 +4,8 @@
 //   node scripts/skills.mjs lint     check frontmatter, names, catalog, links, notices, content rules,
 //                                    and that the generated files are current
 //   node scripts/skills.mjs build    regenerate the README index, .claude-plugin/marketplace.json and manifest.json
+//   node scripts/skills.mjs upstream <list|check|diff|import|refresh|scan> ...
+//                                    pinned upstream sources (upstreams.json): see scripts/upstream.mjs and CONTRIBUTING.md
 //
 // manifest.json lists every file `gtm init` installs (skills/**, THIRD-PARTY-NOTICES.md, licenses/**) with its
 // sha-256. The CLI pins the manifest's own sha-256 and refuses any file that does not match it.
@@ -12,6 +14,7 @@ import { createHash } from "node:crypto";
 import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { checkUpstreams, diffUpstream, importUpstream, lintUpstreams, loadUpstreams, refreshUpstream, scanAdapted } from "./upstream.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const CATALOG_PATH = join(ROOT, "catalog.json");
@@ -269,6 +272,19 @@ function lint() {
     }
   }
 
+  // Upstreams: vendored files verbatim, every source registered at the commit the skills name, licences present.
+  const skillMeta = new Map();
+  for (const d of dirs) {
+    try {
+      const fm = parseFrontmatter(read(join(ROOT, "skills", d, "SKILL.md")));
+      if (fm) skillMeta.set(d, fm.metadata ?? {});
+    } catch {
+      // reported above
+    }
+  }
+  lintUpstreams(ROOT, catalog, skillMeta, err);
+  for (const u of loadUpstreams(ROOT).upstreams) if (!notices.includes(`https://github.com/${u.repo}`)) err(NOTICES, `${u.repo} (upstreams.json) is not recorded`);
+
   // Notices: every licence file named in a notice exists.
   for (const m of notices.matchAll(/\(licenses\/([^)]+)\)/g)) if (!existsSync(join(ROOT, "licenses", m[1]))) err(NOTICES, `licenses/${m[1]} does not exist`);
 
@@ -295,11 +311,77 @@ function build() {
   console.log(`built: README index, marketplace (${catalog.categories.length + 1} plugins), manifest (${m.files.length} files, sha256 ${sha256(readFileSync(join(ROOT, "manifest.json")))})`);
 }
 
+function flag(name) {
+  const i = process.argv.indexOf(`--${name}`);
+  return i > 0 ? process.argv[i + 1] : undefined;
+}
+
+function skillMetaMap() {
+  const m = new Map();
+  for (const d of skillDirs()) {
+    const fm = parseFrontmatter(read(join(ROOT, "skills", d, "SKILL.md")));
+    if (fm) m.set(d, fm.metadata ?? {});
+  }
+  return m;
+}
+
+/** `upstream` subcommands. check exits 1 when a pin is behind HEAD or a vendored file was edited (for the monthly job). */
+function upstream() {
+  const sub = process.argv[3];
+  const id = process.argv[4] && !process.argv[4].startsWith("--") ? process.argv[4] : undefined;
+  if (sub === "list") {
+    for (const u of loadUpstreams(ROOT).upstreams) console.log(`${u.id.padEnd(28)} ${u.mode.padEnd(9)} ${u.repo}@${u.sha.slice(0, 8)} ${u.license.spdx} (${u.paths.length} path(s))`);
+  } else if (sub === "check") {
+    let behind = 0;
+    for (const r of checkUpstreams(ROOT, id)) {
+      const state = r.localEdits.length ? "EDITED" : r.licenseChanged ? "LICENCE CHANGED" : r.moved ? (r.changed.length || r.removed.length ? "drift" : "moved, our paths unchanged") : "current";
+      console.log(`${r.id.padEnd(28)} ${state.padEnd(28)} ${r.pinned.slice(0, 8)} -> ${r.head.slice(0, 8)}`);
+      for (const p of r.changed) console.log(`    changed: ${p}`);
+      for (const p of r.removed) console.log(`    removed: ${p}`);
+      for (const p of r.localEdits) console.log(`    edited here: ${p}`);
+      if (r.localEdits.length || r.licenseChanged || r.changed.length || r.removed.length) behind++;
+    }
+    if (behind) process.exitCode = 1;
+  } else if (sub === "diff") {
+    if (!id) throw new Error("usage: upstream diff <id> [--sha <commit>]");
+    process.stdout.write(diffUpstream(ROOT, id, flag("sha")));
+  } else if (sub === "import") {
+    const e = importUpstream(ROOT, {
+      id: id ?? flag("id"),
+      repo: flag("repo"),
+      sha: flag("sha"),
+      mode: flag("mode"),
+      paths: (flag("paths") ?? "").split(",").filter(Boolean),
+      to: flag("to"),
+      license: flag("license"),
+      skills: (flag("skills") ?? "").split(","),
+      force: process.argv.includes("--force"),
+    });
+    console.log(`registered ${e.id}: ${e.repo}@${e.sha.slice(0, 8)} (${e.license.spdx}), ${e.paths.length} path(s). Now: node scripts/skills.mjs build`);
+  } else if (sub === "refresh") {
+    if (!id) throw new Error("usage: upstream refresh <id> [--sha <commit>] [--reviewed]");
+    const r = refreshUpstream(ROOT, id, { to: flag("sha"), reviewed: process.argv.includes("--reviewed") });
+    if (r.unchanged) console.log(`${id} is already at that commit`);
+    else console.log(`${id}: ${r.from.slice(0, 8)} -> ${r.to.slice(0, 8)}; touched ${r.touched.length} file(s):\n  ${r.touched.join("\n  ")}\nNow: update CHANGELOG.md, node scripts/skills.mjs build, node scripts/skills.mjs lint`);
+  } else if (sub === "scan") {
+    for (const line of scanAdapted(ROOT, skillMetaMap())) console.log(line);
+  } else {
+    console.error("usage: node scripts/skills.mjs upstream <list|check [id]|diff <id>|import <id> --repo o/r --sha <commit> --mode vendored|adapted --paths a,b [--to dir] [--license SPDX] [--skills s1,s2]|refresh <id> [--sha <commit>] [--reviewed]|scan>");
+    process.exit(2);
+  }
+}
+
 const cmd = process.argv[2];
-if (cmd === "lint") lint();
-else if (cmd === "build") build();
-else {
-  console.error("usage: node scripts/skills.mjs <lint|build>");
-  process.exit(2);
+try {
+  if (cmd === "lint") lint();
+  else if (cmd === "build") build();
+  else if (cmd === "upstream") upstream();
+  else {
+    console.error("usage: node scripts/skills.mjs <lint|build|upstream>");
+    process.exit(2);
+  }
+} catch (e) {
+  console.error(`x ${e.message}`);
+  process.exit(1);
 }
 

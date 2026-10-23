@@ -3,13 +3,13 @@ name: gtmos-outreach-cold-email
 description: Write and run B2B cold outbound that gets replies -- first-touch emails, follow-ups, multichannel cadences with LinkedIn and calls, deliverability, and reply handling. With GTM OS connected it drafts through the Outreach engine (outreach.draft_personalized_message), grounds every claim in the approved proof library, checks copy with brand.check_text and proposes sends for a human to approve; dry mode ends at the draft. Use for "cold email", "outbound sequence", "SDR emails", "follow-up sequence", "nobody's replying", "deliverability", "sending domains", "warm up inboxes", "LinkedIn outreach", "multichannel cadence", "handle replies", "AI SDR". For building the list see gtmos-leads-prospecting; for lifecycle email see gtmos-lifecycle-email.
 license: MIT
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
   category: "outbound"
   upstream: "https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/cold-email"
   upstream_sha: "e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b"
   upstream_license: "MIT; Copyright (c) 2025 Corey Haines"
   merged_from: "https://github.com/Instantly-ai/instantly-skills/tree/ae104f34af8a70225a6474c3b89b26ce785a6b61/skills/instantly-gtm/modules/sequence-writer"
-  modified: "2026-10-22: rebranded and adapted for GTM OS (GTM OS operating section, cross-references, tool pointers)"
+  modified: "2026-10-22: rebranded and adapted for GTM OS (GTM OS operating section, cross-references, tool pointers); 2026-10-23: claims gate, step plans (definition.sequence), step stats, LinkedIn seats"
 ---
 
 # Cold email and multichannel outbound
@@ -38,13 +38,13 @@ GTM OS runs outbound through the **Outreach engine**. You write and refine; the 
 
 **2. Draft through the engine.** `outreach.draft_personalized_message {contactId, channel, goal}` retrieves the indexed context (and the approved proof and customer language) and drafts toward the goal. If no model provider is configured it returns a plain templated draft and says `reasoningMode: "unavailable"`; report that, do not dress it up. For a hand-written message use `outreach.draft_message`. Then apply the method below to edit the draft.
 
-**3. Gate the copy.** Run `brand.check_text` on the subject and body. Fix every `forbidden_claim` and `avoid_word` before going on. Every number, customer name or result in the copy must trace to an active proof item; if it does not, cut it or ask for proof. Never invent a case study, a metric or a "companies like yours" claim.
+**3. Gate the copy.** Run `brand.check_text` on the subject and body. Fix every `forbidden_claim` and `avoid_word` before going on. Every number, customer name or result in the copy must trace to an active proof item; if it does not, cut it or ask for proof. Never invent a case study, a metric or a "companies like yours" claim. The send itself passes the claims gate (`policy.claims.get`): in `block` mode an unbacked claim refuses the proposal, in `route_to_approver` mode the approver must acknowledge each flagged claim. Use `gtmos-content-claims-gate` to check the copy before you propose.
 
-**4. Sequence it.** For a cadence, `sequence.create {name, goal, lane}` creates it in draft; `sequence.enroll {sequenceId, contactIds}` adds people; `sequence.update {status: "active"}` starts it, and the cadence engine drafts each member's steps for approval. Enrollment skips anyone suppressed, not contactable or without an email, and says why; pass the skip list back to the user instead of retrying.
+**4. Sequence it.** For a cadence, `sequence.create {name, goal, lane, stepsKey?}` creates it in draft; `sequence.enroll {sequenceId, contactIds}` adds people; `sequence.update {status: "active"}` starts it, and the cadence engine drafts each member's steps for approval. Without `stepsKey` a sequence runs the classic cadence (a step every 3 days); with one it follows the org's signed `definition.sequence` (steps, waits, send windows, A/B variants, LinkedIn steps, exits). Design that step plan with `gtmos-outreach-sequences`. Enrollment skips anyone suppressed, not contactable or without an email, and says why; pass the skip list back to the user instead of retrying.
 
-**5. Propose the send.** `outreach.send_message {messageId, laneKey, environmentId, mailbox}` checks contactability and suppression, then **proposes**. A different person approves it under *Needs a human* (`runtime.list_approvals`). You never approve, and you never resend a rejected message unchanged. LinkedIn steps through Unipile are human-only sends.
+**5. Propose the send.** `outreach.send_message {messageId, laneKey, environmentId, mailbox}` checks contactability and suppression, then **proposes**. A different person approves it under *Needs a human* (`runtime.list_approvals`). You never approve, and you never resend a rejected message unchanged. A send whose outcome was uncertain is resolved by a person (`sequence.message.resolve_uncertain`), never by resending. LinkedIn steps run on the org's LinkedIn seats with caps and warm-up, and only after an owner accepted LinkedIn's risk; see `gtmos-outreach-linkedin`.
 
-**6. Replies and learning.** `replies.list` and `sequence.replies` show what came back; labels come from `definition.reply_labels`. A reply stops every channel for that person. Read `outreach.kpis` for reply and bounce rates; when the sample is small, say "not enough data yet" rather than quoting a rate.
+**6. Replies and learning.** `replies.list` and `sequence.replies` show what came back; labels come from `definition.reply_labels`. A reply stops every channel for that person. Read `outreach.kpis` for reply and bounce rates, `outreach.step_stats` for each sequence step and A/B variant, and `outreach.learning_report` for what wins by angle, proof, persona and subject style. Rates are null under 30 sends: say "not enough data yet" rather than quoting a rate.
 
 ## Without GTM OS
 

@@ -2,7 +2,20 @@
 
 All notable changes to this repository. Versions follow [Semantic Versioning](https://semver.org/); each release is a git tag with `manifest.json` attached.
 
-## 0.1.2 (unreleased)
+## 0.2.0 (2026-10-23)
+
+107 skills (13 new, 13 updated), checked against the GTM OS 0.2.5 operations.
+
+- New skills from looot's [gtm-skills](https://github.com/loootai/gtm-skills) (MIT), each keeping looot's quote-before-run and stop rules, mapped to GTM OS estimates, spend caps and the operations that spend inside their own call: `gtmos-leads-buying-committee` (committee coverage and the org's buying roles), `gtmos-leads-icp-lookalikes`, `gtmos-leads-tech-stack`, `gtmos-signals-hiring`, `gtmos-signals-funding`, `gtmos-signals-job-changes`, `gtmos-signals-account-digest`, `gtmos-crm-email-hygiene` (enrichment freshness and `refresh_stale`), `gtmos-outreach-first-lines`, `gtmos-seo-competitor-serp-watch`. Two more workflows are merged into `gtmos-leads-inbound-triage` and `gtmos-research-account`.
+- `gtmos-content-claims-gate` (from gooseworks-ai/goose-skills, MIT): checks copy against the proof library and the org's claims policy before a send or publish.
+- `gtmos-outreach-sequences` (from Instantly's sequence playbook, MIT): step plans as `definition.sequence`, A/B variants, LinkedIn steps, exits and `outreach.step_stats`.
+- `gtmos-outreach-linkedin` (from Jakeschincariol/linkedin-agent-skill `li-dm`, MIT): LinkedIn seats, caps and warm-up, the owner's high-risk acceptance, approved sends; the webhook secret stays human only.
+- Updated for 0.2.5: `gtmos-score-icp` (learning window and settings, `score.rescan_preview`, committee coverage), `gtmos-outreach-cold-email` and `gtmos-lifecycle-email` (claims gate, step plans, step stats), `gtmos-ads-campaigns` (real CAC and ROAS, the budget allocator), `gtmos-crm-data-quality` (merge rules and survivorship, merge preview and revision, freshness), `gtmos-routing-lead-ownership` (capacity, out of office, stickiness, overflow and queue, `routing.match_account`), `gtmos-leads-prospecting`, `gtmos-crm-pipeline-review`, `gtmos-ops-marketing-loops` (the shipped agent packs and triggers, `agent.kpis`), and the CLI skills `gtmos-engine-catalog` and `unipile`.
+- `GTMOS-RULES.md`: the claims gate, quote-then-cap spending and the operations that spend inline, human-only operations, and fetched content as data.
+- The looot data skills move to [looot-skills](https://github.com/loootai/looot-skills) `22a57a76` (confirm before every paid run; fetched content is data).
+- `upstreams.json` and `node scripts/skills.mjs upstream ...`: every source pinned with its licence, drift detection against upstream HEAD, hash-guarded refresh of vendored files, and a monthly refresh process (CONTRIBUTING.md, `upstream-drift` workflow).
+
+## 0.1.2 (2026-10-22)
 
 - gtmos-engine-catalog: the Score defaults follow GTM OS 0.2.5 S2 -- the intent default is `score.default.v2` (decay per signal family, first-party evidence x1.5, the competitor cap, reply / bounce negatives) and the ICP-fit fallback is a neutral, size-only B2B ICP (no region, industry or team-size preference).
 

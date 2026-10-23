@@ -3,13 +3,13 @@ name: gtmos-routing-lead-ownership
 description: Find the authoritative owner of a lead or account, audit whether high-intent leads got timely human follow-up ("no lead left behind"), and fix ownership gaps -- unowned records, owners who left, territory mismatches, bulk reassignments. With GTM OS connected it reads owners and territories, previews routing with territory.match, assigns with routing.assign (an auditable decision record per change), sweeps unowned or orphaned records with routing.reconcile, edits territories with territory.upsert (human only) and opens follow-up tasks; CRM-of-record owner changes are proposed through crm.update_record for approval. Use for "who owns this lead", "find the account owner", "unowned leads", "lead routing", "round robin", "territories", "reassign accounts", "rep left, move their book", "speed to lead audit", "leads nobody followed up". For triaging single new leads see gtmos-leads-inbound-triage.
 license: MIT AND Apache-2.0
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
   category: "outbound"
   upstream: "https://github.com/zapier/gtm-cheat-codes/tree/022a2884f40316ef22269e29fd61b8a0f0c4cb4a/skills/gtm-ops/find-lead-account-owner"
   upstream_sha: "022a2884f40316ef22269e29fd61b8a0f0c4cb4a"
   upstream_license: "MIT; Copyright (c) Zapier, Inc."
   merged_from: "https://github.com/zapier/gtm-cheat-codes/tree/022a2884f40316ef22269e29fd61b8a0f0c4cb4a/skills/gtm-ops/no-lead-left-behind-lead-treatment-audit | https://github.com/HubSpot/agent-cli-skills/tree/a015a48982b922279d8521677b7c72b0acfb9506/team-ownership"
-  modified: "2026-10-22: rebranded and adapted for GTM OS (GTM OS operating section, cross-references, tool pointers)"
+  modified: "2026-10-22: rebranded and adapted for GTM OS (GTM OS operating section, cross-references, tool pointers); 2026-10-23: routing capacity, out of office, stickiness, overflow and queue, lead-to-account matching"
 ---
 
 # Lead ownership and routing audit
@@ -35,13 +35,15 @@ Ownership in GTM OS lives on the record (`ownerPrincipalId` on accounts, contact
 | `activity.list`, `account.relationship`, `sequence.messages` | The follow-up timeline for the lead treatment audit. |
 | `task.list` | Open and overdue follow-ups. |
 
-**3. Assign.** Preview first, then `routing.assign {subjectType, subjectId, ownerId | strategy: "territory" | "round_robin", rule, reason, source: "manual"}`. Each call writes the owner and a decision record. For a sweep of unowned records (or records whose owner left the org), `routing.reconcile {subjectType, territoryKey?, limit}` assigns by round robin, one decision record each. Before reassigning a record that already has a live owner, show the list and get the user's go-ahead.
+**3. Capacity and matching.** `routing.member_settings.list` Q lists every member who can own records with their caps per routed type (open cap, weekly cap), weight, availability (active, out of office) and live load. Round robin skips a member who is inactive, out of office or at a cap, and weights shape the rotation; an explicit assignment by name is never refused (its decision record notes the cap). Changing a member's settings (`routing.member_settings.set`) is human only. For a lead with no current company, `routing.match_account {contactId | email | domain}` Q returns candidate accounts by email domain with confidence (free-mail never matches; two tied candidates are ambiguous). Assignment attaches the lead only on an exact domain match (a subdomain only when the territory allows it); any other match is recorded, not attached.
 
-**4. Territories.** `territory.upsert {name, kind, match: {countries, regions, industries, segments, customerTypes, employeeMin, employeeMax, accountIds, domains}, ...}` creates or edits a territory. It is human only: draft the change and let an owner or admin run it.
+**4. Assign.** Preview first, then `routing.assign {subjectType, subjectId, ownerId | strategy: "territory" | "round_robin", rule, reason, source: "manual"}`. Each call writes the owner and a decision record carrying every skip, the stickiness decision (a contact or deal goes to its account's owner unless the territory turns it off) and the match. When nobody is eligible the subject goes to the territory's overflow owner or is queued (owner unchanged, outcome `queued`): report queued subjects, do not force them onto someone. For a sweep of unowned records (or records whose owner left the org), `routing.reconcile {subjectType, territoryKey?, limit}` assigns by round robin, one decision record each; a queued subject is skipped for 24 hours unless a member's settings change. Before reassigning a record that already has a live owner, show the list and get the user's go-ahead.
 
-**5. Follow up.** `task.create {title, subject, dueAt, assigneePrincipalId}` puts the follow-up on the new owner's list. Messages to the lead go through `gtmos-outreach-cold-email`, proposed for approval.
+**5. Territories.** `territory.upsert {name, kind, match: {countries, regions, industries, segments, customerTypes, employeeMin, employeeMax, accountIds, domains}, ...}` creates or edits a territory. It is human only: draft the change and let an owner or admin run it.
 
-**6. CRM of record.** Owner fields in HubSpot or Salesforce change through `crm.update_record {recordType, recordId, fields}` (E): it proposes, a different person approves. Say "proposed", not "done", until it executes.
+**6. Follow up.** `task.create {title, subject, dueAt, assigneePrincipalId}` puts the follow-up on the new owner's list. Messages to the lead go through `gtmos-outreach-cold-email`, proposed for approval.
+
+**7. CRM of record.** Owner fields in HubSpot or Salesforce change through `crm.update_record {recordType, recordId, fields}` (E): it proposes, a different person approves. Say "proposed", not "done", until it executes.
 
 Quote counts from the operation results. If an SLA or speed-to-lead figure needs more data than exists, say so.
 

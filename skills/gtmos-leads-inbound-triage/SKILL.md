@@ -3,17 +3,18 @@ name: gtmos-leads-inbound-triage
 description: Triage new inbound leads (demo requests, form fills, signups, referrals) by ICP fit and intent, give each a priority (P0, P1, P2 or DQ), route it to an owner and set the first touch and response SLA. With GTM OS connected it scores through the Score engine (score.score_contact, score.explain_subject), reads the lead's signals, customer type and existing relationship, previews and makes the assignment with territory.match and routing.assign, and opens a follow-up task; it never sends anything itself. Use for "triage these leads", "new inbound leads", "who should take this lead", "is this lead any good", "prioritize the lead queue", "speed to lead", "route inbound", "MQL review". For the ownership audit across the whole book see gtmos-routing-lead-ownership.
 license: Apache-2.0
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
   category: "outbound"
   upstream: "https://github.com/salesforce/salesforce-skills/tree/6b989d6490589647c4c164f7f55c2797cf322f04/salesforce-for-sales/skills/lead-triage"
   upstream_sha: "6b989d6490589647c4c164f7f55c2797cf322f04"
   upstream_license: "Apache-2.0; Copyright (c) 2026 Salesforce, Inc."
-  modified: "2026-10-22: rebranded and adapted for GTM OS (GTM OS operating section, cross-references, tool pointers)"
+  merged_from: "https://github.com/loootai/gtm-skills/tree/1cb22eede6829b8f9fa87a78e6957a97e4032bd5/skills/gtm-inbound-lead-enrichment"
+  modified: "2026-10-22: rebranded and adapted for GTM OS (GTM OS operating section, cross-references, tool pointers); 2026-10-23: merged looot gtm-inbound-lead-enrichment, lead-to-account matching, routing capacity, the inbound responder agent"
 ---
 
 # Inbound lead triage
 
-> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`lead-triage`](https://github.com/salesforce/salesforce-skills/tree/6b989d6490589647c4c164f7f55c2797cf322f04/salesforce-for-sales/skills/lead-triage) in salesforce/salesforce-skills (Apache-2.0, Copyright (c) 2026 Salesforce, Inc.). Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
+> Part of [GTM OS Skills](https://github.com/ay-automate/gtmos-skills). Adapted from [`lead-triage`](https://github.com/salesforce/salesforce-skills/tree/6b989d6490589647c4c164f7f55c2797cf322f04/salesforce-for-sales/skills/lead-triage) in salesforce/salesforce-skills (Apache-2.0, Copyright (c) 2026 Salesforce, Inc.). Merged with [`gtm-inbound-lead-enrichment`](https://github.com/loootai/gtm-skills/tree/1cb22eede6829b8f9fa87a78e6957a97e4032bd5/skills/gtm-inbound-lead-enrichment) from loootai/gtm-skills (MIT), kept in `references/looot-gtm-inbound-lead-enrichment.md`. Changed for GTM OS: the operating section below, rewritten cross-references and tool pointers. Notices: [THIRD-PARTY-NOTICES.md](https://github.com/ay-automate/gtmos-skills/blob/main/THIRD-PARTY-NOTICES.md) (installed beside the skills as `THIRD-PARTY-NOTICES.md`).
 
 ## With GTM OS connected
 
@@ -32,15 +33,19 @@ Inbound triage in GTM OS is three engines working one record: **Score** decides 
 | `journey.position` | Where the record already sits (new lead, open deal, customer). |
 | Owner on the account | If the company already has an owner, the lead goes to them (coordinate, do not reassign). |
 
+**Enrich before you score, business email only.** A sign-up gives an email and little else. Free-mail and disposable addresses are flagged, never enriched (the merged looot workflow in `references/looot-gtm-inbound-lead-enrichment.md` lists the free checks). For a lead with no current company, `routing.match_account {contactId}` Q finds the account by email domain (free-mail never matches; ties are ambiguous). Missing person or company fields: `enrichment.enrich_contacts {ids, estimate: true}` (and `enrichment.enrich_accounts` for a new company), then a run on a yes; both spend inside their own call, so quote first and never run them for a personal address.
+
 **2. Score it with the engine, not by hand.** `score.score_contact {contactId}` scores the lead against the org's signed model (fit inherited from its account, intent from its own signals). `score.explain_subject {subjectType: "gtm.contact", subjectId}` returns the band, the points per factor, the top signals and the greyed signals (sources not wired, never imputed). Use the band and reasons as the fit and intent tables below; a greyed signal is "no data", not "no intent". If the account is not scored yet, run `score.score_account` first.
 
 **3. Set the priority.** Map the engine's band and the intent signals onto P0, P1, P2 or DQ with the rules below. A hard disqualifier from `definition.scoring_model` or a match on `definition.suppression_rule` is DQ, whatever the score.
 
-**4. Route it.** Preview with `territory.match {subjectType: "gtm.contact", subjectId}`: the winning territory, its owner or rotation, and why. Then `routing.assign {subjectType, subjectId, ownerId | strategy: "territory" | "round_robin", rule, reason}` writes the owner and an auditable decision record. It is an internal write; say who got the lead and why. If the account is already owned, assign the lead to that owner and note "existing relationship".
+**4. Route it.** Preview with `territory.match {subjectType: "gtm.contact", subjectId}`: the winning territory, its owner or rotation, and why. Then `routing.assign {subjectType, subjectId, ownerId | strategy: "territory" | "round_robin", rule, reason}` writes the owner and an auditable decision record. It is an internal write; say who got the lead and why. If the account is already owned, assign the lead to that owner and note "existing relationship" (the territory's stickiness does this by default). Round robin skips members who are out of office or at their cap (`routing.member_settings.list` Q); when nobody can take the lead it goes to the territory's overflow owner or is queued, and the result says so. An exact email-domain match attaches a lead with no company to that account.
 
 **5. Set the first touch.** `task.create {title, subject, dueAt, assigneePrincipalId}` with the SLA as the due date (P0 same day, P1 within 48 hours, P2 this week). For the first message, hand off to `gtmos-outreach-cold-email`: it drafts through the Outreach engine and proposes the send for a person to approve. In dry mode (`policy.get_dry_mode`) the draft is where it stops.
 
 **6. CRM of record.** Lead status or owner changes in HubSpot or Salesforce go through `crm.update_record` (E): it proposes, a different person approves. Never claim the CRM was updated before the approval executes.
+
+**7. The inbound responder.** The `inbound-responder` agent in `stdlib/pack.crm-agents` runs this triage on every form submission (a `form_submitted` signal): it qualifies the lead, drafts a grounded first reply and proposes the send, or opens a task when the lead needs a person first. `packages.agents` Q shows whether it is installed; its proposals land in `runtime.list_approvals`.
 
 Report numbers only from these results. If `score.kpis` shows too few scored leads to compare against, say so instead of quoting a calibration.
 

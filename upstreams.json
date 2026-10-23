@@ -1,0 +1,1070 @@
+{
+  "upstreams": [
+    {
+      "id": "agent-cli-skills",
+      "repo": "HubSpot/agent-cli-skills",
+      "sha": "a015a48982b922279d8521677b7c72b0acfb9506",
+      "mode": "adapted",
+      "license": {
+        "spdx": "Apache-2.0",
+        "path": "LICENSE",
+        "oid": "309bf3c7d6efd82de5cdc5df5007c3f98b2558f4",
+        "file": "licenses/Apache-2.0-HubSpot-agent-cli-skills.txt"
+      },
+      "paths": [
+        {
+          "path": "bulk-operations",
+          "oid": "b0f3aec74430dd2ca038ad1db501a4968de6a781",
+          "skills": [
+            "gtmos-crm-data-quality"
+          ]
+        },
+        {
+          "path": "crm-data-quality",
+          "oid": "39ded8a82d15dbd94ac190de2c8055bf557d1057",
+          "skills": [
+            "gtmos-crm-data-quality"
+          ]
+        },
+        {
+          "path": "sales-reporting",
+          "oid": "e1b70b0d71119b3aaf73da887c51229d16f40b33",
+          "skills": [
+            "gtmos-analytics-gtm-report"
+          ]
+        },
+        {
+          "path": "team-ownership",
+          "oid": "8caf96fb4e4c512d4af042356ad3d685c634a57b",
+          "skills": [
+            "gtmos-routing-lead-ownership"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "apollo-mcp-plugin",
+      "repo": "apolloio/apollo-mcp-plugin",
+      "sha": "bd0513c961f02105492fcff0d7d29c9cccf1ed23",
+      "mode": "adapted",
+      "license": {
+        "spdx": "MIT",
+        "path": "LICENSE",
+        "oid": "e9239109776bebe489a179d1214020b9ec063d02",
+        "file": "licenses/MIT-apolloio-apollo-mcp-plugin.txt"
+      },
+      "paths": [
+        {
+          "path": "skills/prospect",
+          "oid": "59932238dedc64da52370361a205c7f37a3b51aa",
+          "skills": [
+            "gtmos-leads-prospecting"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "claude-seo",
+      "repo": "AgriciDaniel/claude-seo",
+      "sha": "6be93f45064ffbadced572b5d5c95f55fd263af0",
+      "mode": "adapted",
+      "license": {
+        "spdx": "MIT",
+        "path": "LICENSE",
+        "oid": "94fac7465f1e76414fc59f9fd97cdfd2105e030d",
+        "file": "licenses/MIT-AgriciDaniel-claude-seo.txt"
+      },
+      "paths": [
+        {
+          "path": "skills/seo",
+          "oid": "3dba76438de86006e7297b5fb7bc4390fa700f4d",
+          "skills": [
+            "gtmos-seo-engine"
+          ]
+        },
+        {
+          "path": "skills/seo-audit",
+          "oid": "2f7690870846be5469f16f17cdea0530df44b5cb",
+          "skills": [
+            "gtmos-seo-audit"
+          ]
+        },
+        {
+          "path": "skills/seo-backlinks",
+          "oid": "567483c9baa6880f18e79f0827518f6429d26988",
+          "skills": [
+            "gtmos-seo-backlinks"
+          ]
+        },
+        {
+          "path": "skills/seo-cluster",
+          "oid": "b80d181c0f6d423528da9821bd240eff36e3c813",
+          "skills": [
+            "gtmos-seo-keyword-clusters"
+          ]
+        },
+        {
+          "path": "skills/seo-competitor-pages",
+          "oid": "9a5f3f6c0b01c4e7de66ca592a948231f2ba39ac",
+          "skills": [
+            "gtmos-seo-competitor-pages"
+          ]
+        },
+        {
+          "path": "skills/seo-content",
+          "oid": "414206793ae64ce3322ede006189c7f874d6f0d0",
+          "skills": [
+            "gtmos-seo-page"
+          ]
+        },
+        {
+          "path": "skills/seo-content-brief",
+          "oid": "86b42303f029b3533efc6b3c939245a594cac0db",
+          "skills": [
+            "gtmos-seo-content-brief"
+          ]
+        },
+        {
+          "path": "skills/seo-drift",
+          "oid": "8ff75737e49fee22e0ae6d76a554e0c5d1795f28",
+          "skills": [
+            "gtmos-seo-drift"
+          ]
+        },
+        {
+          "path": "skills/seo-geo",
+          "oid": "7d2a5b98def25b81004ff45504697ec2af6c0131",
+          "skills": [
+            "gtmos-seo-geo"
+          ]
+        },
+        {
+          "path": "skills/seo-google",
+          "oid": "73136ebeaa9bcef787a3923fdcd4a74b7c7acfc4",
+          "skills": [
+            "gtmos-seo-search-console"
+          ]
+        },
+        {
+          "path": "skills/seo-page",
+          "oid": "ad8c90a09e278ef5a7e288c810da0b7ac6885ec4",
+          "skills": [
+            "gtmos-seo-page"
+          ]
+        },
+        {
+          "path": "skills/seo-plan",
+          "oid": "15b2b3606d5e867e135a8c8551ea82d344a6da8f",
+          "skills": [
+            "gtmos-seo-plan"
+          ]
+        },
+        {
+          "path": "skills/seo-programmatic",
+          "oid": "00cf04b8ce5631f05f99f3bb23e4079cb864db87",
+          "skills": [
+            "gtmos-seo-programmatic"
+          ]
+        },
+        {
+          "path": "skills/seo-schema",
+          "oid": "21855890d58c26d77950b2aa8d000d75ac5aa439",
+          "skills": [
+            "gtmos-seo-schema"
+          ]
+        },
+        {
+          "path": "skills/seo-sitemap",
+          "oid": "890c7637b8d7dad53ae1b0e19060b3e5e3fdaefd",
+          "skills": [
+            "gtmos-seo-site-architecture"
+          ]
+        },
+        {
+          "path": "skills/seo-technical",
+          "oid": "088441f497e2228d7cff15f2bca2664668295cff",
+          "skills": [
+            "gtmos-seo-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "clay-skill-creator",
+      "repo": "clay-run/clay-skill-creator",
+      "sha": "fbb9149b7f0ba42db65cf5d6d540fb3ec9afd7bf",
+      "mode": "adapted",
+      "license": {
+        "spdx": "MIT",
+        "path": "LICENSE",
+        "oid": "51026063e78d0df9848d2cdbbd057fdccbb0dc18",
+        "file": "licenses/MIT-clay-run-clay-skill-creator.txt"
+      },
+      "paths": [
+        {
+          "path": "skills/clay/account-tier-scoring",
+          "oid": "ef27788927cc981409c3322600258d6477edee48",
+          "skills": [
+            "gtmos-score-icp"
+          ]
+        },
+        {
+          "path": "skills/clay/company-research-brief",
+          "oid": "485a538634766c4d2b750bc25d67f26344cc0dbe",
+          "skills": [
+            "gtmos-research-account"
+          ]
+        },
+        {
+          "path": "skills/clay/icp-matrix-builder",
+          "oid": "7bdc3f5c64d3ea1180fa19f1e5260f271a29f139",
+          "skills": [
+            "gtmos-score-icp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "goose-skills",
+      "repo": "gooseworks-ai/goose-skills",
+      "sha": "6d5d5f160c623613d7eb682b6a467beb165cc2a4",
+      "mode": "adapted",
+      "license": {
+        "spdx": "MIT",
+        "path": "LICENSE",
+        "oid": "aeeec28487b4bfd0698a5be2ee53f8aa37772de7",
+        "file": "licenses/MIT-gooseworks-ai-goose-skills.txt"
+      },
+      "paths": [
+        {
+          "path": "marketing-agent/skills/claims-gate",
+          "oid": "3aee494c6818d940ff20f62885f6b8e7e3922aa6",
+          "skills": [
+            "gtmos-content-claims-gate"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gtm-cheat-codes",
+      "repo": "zapier/gtm-cheat-codes",
+      "sha": "022a2884f40316ef22269e29fd61b8a0f0c4cb4a",
+      "mode": "adapted",
+      "license": {
+        "spdx": "MIT",
+        "path": "LICENSE",
+        "oid": "dc1b5b44c203618ca50343426c5ec710729c36bc",
+        "file": "licenses/MIT-zapier-gtm-cheat-codes.txt"
+      },
+      "paths": [
+        {
+          "path": "skills/gtm-ops/find-lead-account-owner",
+          "oid": "63f3eb4b7ccd30c8156e2e4bacfbcbed6de88cf0",
+          "skills": [
+            "gtmos-routing-lead-ownership"
+          ]
+        },
+        {
+          "path": "skills/gtm-ops/no-lead-left-behind-lead-treatment-audit",
+          "oid": "9004d3480ff6657978e368d0cc3aabf0482efe42",
+          "skills": [
+            "gtmos-routing-lead-ownership"
+          ]
+        },
+        {
+          "path": "skills/marketing/brand-guidelines-builder",
+          "oid": "d3ce5227253475454541eeea44d7451be691a168",
+          "skills": [
+            "gtmos-content-brand-voice"
+          ]
+        },
+        {
+          "path": "skills/marketing/campaign-postmortem",
+          "oid": "3b132767756dc5535badb317ebd24bad36a2e5f8",
+          "skills": [
+            "gtmos-analytics-gtm-report"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gtm-skills",
+      "repo": "loootai/gtm-skills",
+      "sha": "1cb22eede6829b8f9fa87a78e6957a97e4032bd5",
+      "mode": "adapted",
+      "license": {
+        "spdx": "MIT",
+        "path": "LICENSE",
+        "oid": "ae1ac5c7e81ae4e6d5f2c8e1bc91cb403d5d8e4e",
+        "file": "licenses/MIT-loootai-gtm-skills.txt"
+      },
+      "paths": [
+        {
+          "path": "skills/gtm-account-research-brief",
+          "oid": "0b5fb1c804afbdd59cfabeaaca622685964bb14f",
+          "skills": [
+            "gtmos-research-account"
+          ]
+        },
+        {
+          "path": "skills/gtm-account-signal-digest",
+          "oid": "2d461c5311b4b423305f66b5059f79c641233c29",
+          "skills": [
+            "gtmos-signals-account-digest"
+          ]
+        },
+        {
+          "path": "skills/gtm-buying-committee-map",
+          "oid": "3cb85747f22d46bc6bbbc95707c90524d4bbbc10",
+          "skills": [
+            "gtmos-leads-buying-committee"
+          ]
+        },
+        {
+          "path": "skills/gtm-competitor-serp-watch",
+          "oid": "8084385de32fdfd3da4e9c9e4d430ecb42830400",
+          "skills": [
+            "gtmos-seo-competitor-serp-watch"
+          ]
+        },
+        {
+          "path": "skills/gtm-email-list-hygiene",
+          "oid": "e0fe8f7b326e2e5ded857a07ed08622e8a4375e6",
+          "skills": [
+            "gtmos-crm-email-hygiene"
+          ]
+        },
+        {
+          "path": "skills/gtm-funding-signal-scan",
+          "oid": "5381da9d237fd8788c9332558f5ae67d32692374",
+          "skills": [
+            "gtmos-signals-funding"
+          ]
+        },
+        {
+          "path": "skills/gtm-hiring-signal-scan",
+          "oid": "8dfb39f755adc98c4a8a8bf7aca8e43618c04333",
+          "skills": [
+            "gtmos-signals-hiring"
+          ]
+        },
+        {
+          "path": "skills/gtm-icp-lookalike-list",
+          "oid": "32592ff9255e3345e4cbff7e820e260ed82cb587",
+          "skills": [
+            "gtmos-leads-icp-lookalikes"
+          ]
+        },
+        {
+          "path": "skills/gtm-inbound-lead-enrichment",
+          "oid": "36bc326f734ac01cf5b326a4a05fecb507e77e23",
+          "skills": [
+            "gtmos-leads-inbound-triage"
+          ]
+        },
+        {
+          "path": "skills/gtm-job-change-check",
+          "oid": "0df50d209963648c1d5f58ec32cc99179e0b2f37",
+          "skills": [
+            "gtmos-signals-job-changes"
+          ]
+        },
+        {
+          "path": "skills/gtm-personalized-first-lines",
+          "oid": "f82ff65b1b2158d0d16f6dffd1b1b54c7f54619e",
+          "skills": [
+            "gtmos-outreach-first-lines"
+          ]
+        },
+        {
+          "path": "skills/gtm-tech-stack-targeting",
+          "oid": "f36db6049f0d6edc55549b665e2caf3e69505ae0",
+          "skills": [
+            "gtmos-leads-tech-stack"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hubspot-mcp-plugins",
+      "repo": "HubSpot/hubspot-mcp-plugins",
+      "sha": "032d294bc91577cb1b9c4a61372567266ca8524e",
+      "mode": "adapted",
+      "license": {
+        "spdx": "Apache-2.0",
+        "path": "LICENSE",
+        "oid": "cba6ab58c3d08b5bef58820b3399090d8d34cf5a",
+        "file": "licenses/Apache-2.0-HubSpot-hubspot-mcp-plugins.txt"
+      },
+      "paths": [
+        {
+          "path": "HubSpot-Partner/skills/renewal-radar",
+          "oid": "0494ce4562abcc9cc99dbf1aa3411411502c28c9",
+          "skills": [
+            "gtmos-lifecycle-renewal-radar"
+          ]
+        },
+        {
+          "path": "HubSpot-Sales/skills/call-prep",
+          "oid": "2f9be6cd6dd645e64b8f53844e9593149da3158e",
+          "skills": [
+            "gtmos-sales-call-prep"
+          ]
+        },
+        {
+          "path": "HubSpot-Sales/skills/follow-up",
+          "oid": "4d9aae7068619c8646ea9cd784f974b0bf2f4f40",
+          "skills": [
+            "gtmos-sales-follow-up"
+          ]
+        },
+        {
+          "path": "HubSpot-Sales/skills/pipeline-pulse",
+          "oid": "0bd015fb980838d062127ba970cee0cccd8a44b8",
+          "skills": [
+            "gtmos-crm-pipeline-review"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "instantly-skills",
+      "repo": "Instantly-ai/instantly-skills",
+      "sha": "ae104f34af8a70225a6474c3b89b26ce785a6b61",
+      "mode": "adapted",
+      "license": {
+        "spdx": "MIT",
+        "path": "LICENSE",
+        "oid": "a0461f590dc4a5d2dfb28cebae250c15441cbac9",
+        "file": "licenses/MIT-Instantly-ai-instantly-skills.txt"
+      },
+      "paths": [
+        {
+          "path": "skills/instantly-gtm/modules/sequence-writer",
+          "oid": "50e795af25dc631110c1c2622a245cd8212e6cb5",
+          "skills": [
+            "gtmos-outreach-cold-email"
+          ]
+        },
+        {
+          "path": "skills/instantly-gtm/references/sequence-playbook.md",
+          "oid": "cfb3117ad23b6c1a726c5661aa5513dec40783e4",
+          "skills": [
+            "gtmos-outreach-sequences"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "linkedin-agent-skill",
+      "repo": "Jakeschincariol/linkedin-agent-skill",
+      "sha": "add2c23882fe79180737d242ff80a5da205eda6a",
+      "mode": "adapted",
+      "license": {
+        "spdx": "MIT",
+        "path": "LICENSE",
+        "oid": "ac31f09aba721de8d139c7bef3d5024421426472",
+        "file": "licenses/MIT-Jakeschincariol-linkedin-agent-skill.txt"
+      },
+      "paths": [
+        {
+          "path": "skills/li-dm",
+          "oid": "e3be55c71abc3d20a4a34c2bbe698de9d537ce36",
+          "skills": [
+            "gtmos-outreach-linkedin"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "looot-skills",
+      "repo": "loootai/looot-skills",
+      "sha": "22a57a76e3f75e54511ab1e24b662b89c0008ae6",
+      "mode": "vendored",
+      "license": {
+        "spdx": "MIT",
+        "path": "LICENSE",
+        "oid": "ae1ac5c7e81ae4e6d5f2c8e1bc91cb403d5d8e4e",
+        "file": "licenses/MIT-loootai-looot-skills.txt"
+      },
+      "roots": [
+        {
+          "path": "skills/looot",
+          "to": "skills/looot"
+        },
+        {
+          "path": "skills/looot-ai-search-visibility",
+          "to": "skills/looot-ai-search-visibility"
+        },
+        {
+          "path": "skills/looot-amazon-product",
+          "to": "skills/looot-amazon-product"
+        },
+        {
+          "path": "skills/looot-backlink-checker",
+          "to": "skills/looot-backlink-checker"
+        },
+        {
+          "path": "skills/looot-company-email-format",
+          "to": "skills/looot-company-email-format"
+        },
+        {
+          "path": "skills/looot-company-list-builder",
+          "to": "skills/looot-company-list-builder"
+        },
+        {
+          "path": "skills/looot-domain-keywords",
+          "to": "skills/looot-domain-keywords"
+        },
+        {
+          "path": "skills/looot-email-verification",
+          "to": "skills/looot-email-verification"
+        },
+        {
+          "path": "skills/looot-enrich-a-company",
+          "to": "skills/looot-enrich-a-company"
+        },
+        {
+          "path": "skills/looot-enrich-a-person",
+          "to": "skills/looot-enrich-a-person"
+        },
+        {
+          "path": "skills/looot-find-phone-numbers",
+          "to": "skills/looot-find-phone-numbers"
+        },
+        {
+          "path": "skills/looot-find-professional-emails",
+          "to": "skills/looot-find-professional-emails"
+        },
+        {
+          "path": "skills/looot-google-maps-reviews",
+          "to": "skills/looot-google-maps-reviews"
+        },
+        {
+          "path": "skills/looot-google-serp",
+          "to": "skills/looot-google-serp"
+        },
+        {
+          "path": "skills/looot-job-postings",
+          "to": "skills/looot-job-postings"
+        },
+        {
+          "path": "skills/looot-keyword-volume",
+          "to": "skills/looot-keyword-volume"
+        },
+        {
+          "path": "skills/looot-local-business-search",
+          "to": "skills/looot-local-business-search"
+        },
+        {
+          "path": "skills/looot-meta-ads-library",
+          "to": "skills/looot-meta-ads-library"
+        },
+        {
+          "path": "skills/looot-reddit-search",
+          "to": "skills/looot-reddit-search"
+        },
+        {
+          "path": "skills/looot-tiktok-search",
+          "to": "skills/looot-tiktok-search"
+        },
+        {
+          "path": "skills/looot-youtube-transcript",
+          "to": "skills/looot-youtube-transcript"
+        }
+      ],
+      "paths": [
+        {
+          "path": "skills/looot/SKILL.md",
+          "to": "skills/looot/SKILL.md",
+          "sha256": "e58eba11da5e13917fe56c69345a610dca754bdcbc53683a630dc6d595598cc8"
+        },
+        {
+          "path": "skills/looot-ai-search-visibility/SKILL.md",
+          "to": "skills/looot-ai-search-visibility/SKILL.md",
+          "sha256": "c94491ed1d8ec495ba029abdb31b75fb4186b8ecb1ecf6fa99970ef78c1d14b5"
+        },
+        {
+          "path": "skills/looot-amazon-product/SKILL.md",
+          "to": "skills/looot-amazon-product/SKILL.md",
+          "sha256": "b2f840b4e68939d9885a3dbb1d08038673dd172372ac6a861f6a20d787764e31"
+        },
+        {
+          "path": "skills/looot-backlink-checker/SKILL.md",
+          "to": "skills/looot-backlink-checker/SKILL.md",
+          "sha256": "d4f57ca5eee257a33ebd20349adc4566e8854a331435d59c9b751b69b70eb3d7"
+        },
+        {
+          "path": "skills/looot-company-email-format/SKILL.md",
+          "to": "skills/looot-company-email-format/SKILL.md",
+          "sha256": "5086c1377768085674070f336b77f742b90f378d54cd971c5f569338f29be822"
+        },
+        {
+          "path": "skills/looot-company-list-builder/SKILL.md",
+          "to": "skills/looot-company-list-builder/SKILL.md",
+          "sha256": "2a801f859fc173099946c1ec2e5e1149d150ec2595f6dc991072edfdabfa77f0"
+        },
+        {
+          "path": "skills/looot-domain-keywords/SKILL.md",
+          "to": "skills/looot-domain-keywords/SKILL.md",
+          "sha256": "c7ef543f41d8b5bcf7e084cfa24f070c4ad0f873eeef389451a7a6feaf0ea07d"
+        },
+        {
+          "path": "skills/looot-email-verification/SKILL.md",
+          "to": "skills/looot-email-verification/SKILL.md",
+          "sha256": "70040219f7a13f6faa9cc074fc2979b069a0f1f7c19962ff9466105ee3df73d6"
+        },
+        {
+          "path": "skills/looot-enrich-a-company/SKILL.md",
+          "to": "skills/looot-enrich-a-company/SKILL.md",
+          "sha256": "a95a564306f4d0048777dc8ca7c34349f02316fc70f81497b9e9d31b8a7c12df"
+        },
+        {
+          "path": "skills/looot-enrich-a-person/SKILL.md",
+          "to": "skills/looot-enrich-a-person/SKILL.md",
+          "sha256": "4d15c3d0e085846d0cbec3e16733d72fe8e5d1f39c7068665739429797ed1d1b"
+        },
+        {
+          "path": "skills/looot-find-phone-numbers/SKILL.md",
+          "to": "skills/looot-find-phone-numbers/SKILL.md",
+          "sha256": "6b749df219401a828c39771d02907b3dffe5b5417b8a3b5b76d12e4f19bc15b5"
+        },
+        {
+          "path": "skills/looot-find-professional-emails/SKILL.md",
+          "to": "skills/looot-find-professional-emails/SKILL.md",
+          "sha256": "6d04f51acfa9daeca671de245e02f2ed3286542ecaee541d42e9ae3e237fa3d1"
+        },
+        {
+          "path": "skills/looot-google-maps-reviews/SKILL.md",
+          "to": "skills/looot-google-maps-reviews/SKILL.md",
+          "sha256": "a2e2666ef9464e09b4f72bc837bc7d5ca39e7c06b1322542f22e1ad258963a61"
+        },
+        {
+          "path": "skills/looot-google-serp/SKILL.md",
+          "to": "skills/looot-google-serp/SKILL.md",
+          "sha256": "c607ecaa644e18a7b570bf3065edfcc0c2878130aef2186229e8038dd7f07519"
+        },
+        {
+          "path": "skills/looot-job-postings/SKILL.md",
+          "to": "skills/looot-job-postings/SKILL.md",
+          "sha256": "149931db959350ba3a4d0ed2d730ac03d6fb23359ec46a14b4d27c24218fb609"
+        },
+        {
+          "path": "skills/looot-keyword-volume/SKILL.md",
+          "to": "skills/looot-keyword-volume/SKILL.md",
+          "sha256": "a7b15753668fefeca1c7325a1df5599a911e61487ec544430e063f5946c780ff"
+        },
+        {
+          "path": "skills/looot-local-business-search/SKILL.md",
+          "to": "skills/looot-local-business-search/SKILL.md",
+          "sha256": "45cd6adee6dd79aa16b01313ea877838230581a0efe87fdc8cc85ea14a6c1288"
+        },
+        {
+          "path": "skills/looot-meta-ads-library/SKILL.md",
+          "to": "skills/looot-meta-ads-library/SKILL.md",
+          "sha256": "c001d56b42e47a25e595b73138a458c4656ce84eb405a5cfbf4040c7273440a9"
+        },
+        {
+          "path": "skills/looot-reddit-search/SKILL.md",
+          "to": "skills/looot-reddit-search/SKILL.md",
+          "sha256": "91a37e21f61405513576e88df84248822061e5142800dc1a27ec9b07de93dbf4"
+        },
+        {
+          "path": "skills/looot-tiktok-search/SKILL.md",
+          "to": "skills/looot-tiktok-search/SKILL.md",
+          "sha256": "8d158d5f420a3e1717a85fbadb231d6c6aa30016cc16d7c31daed7fbf1fc2503"
+        },
+        {
+          "path": "skills/looot-youtube-transcript/SKILL.md",
+          "to": "skills/looot-youtube-transcript/SKILL.md",
+          "sha256": "53b609631db2c255d89efaf201c3d15fdc4774d3698e768a47b6bb7aaab35f7e"
+        }
+      ]
+    },
+    {
+      "id": "marketingskills",
+      "repo": "coreyhaines31/marketingskills",
+      "sha": "e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b",
+      "mode": "adapted",
+      "license": {
+        "spdx": "MIT",
+        "path": "LICENSE",
+        "oid": "7c48dd638a9ebed49a8ef0c0c4eea90105381cdf",
+        "file": "licenses/MIT-coreyhaines31-marketingskills.txt"
+      },
+      "paths": [
+        {
+          "path": "skills/ab-testing",
+          "oid": "0b5bf688fd6d1d4d811c9f6a1e696f3db910fe5f",
+          "skills": [
+            "gtmos-analytics-experiments"
+          ]
+        },
+        {
+          "path": "skills/ad-creative",
+          "oid": "226a47be4944d8408ecc69709c888d28f9c6187d",
+          "skills": [
+            "gtmos-ads-creative"
+          ]
+        },
+        {
+          "path": "skills/ads",
+          "oid": "33357d9ba0e4f7176dd1625e8ca8c35f210e1509",
+          "skills": [
+            "gtmos-ads-campaigns"
+          ]
+        },
+        {
+          "path": "skills/ai-seo",
+          "oid": "c162a8885e5c61452a3bb0267dabc243b34df26f",
+          "skills": [
+            "gtmos-seo-geo"
+          ]
+        },
+        {
+          "path": "skills/analytics",
+          "oid": "ae1ef55bf660e8122eba4f168352bb4a973d6816",
+          "skills": [
+            "gtmos-analytics-tracking"
+          ]
+        },
+        {
+          "path": "skills/attribution",
+          "oid": "005b824107a755c6aa4cb813e2fe18351c17c65d",
+          "skills": [
+            "gtmos-analytics-attribution"
+          ]
+        },
+        {
+          "path": "skills/churn-prevention",
+          "oid": "c5f8385afef914059ee3b3601c59dd4c6de143ef",
+          "skills": [
+            "gtmos-lifecycle-churn"
+          ]
+        },
+        {
+          "path": "skills/cold-email",
+          "oid": "f666727ac38b48b291898a182cafdee9ffc0e80e",
+          "skills": [
+            "gtmos-outreach-cold-email"
+          ]
+        },
+        {
+          "path": "skills/competitor-profiling",
+          "oid": "5b49b2a510ac31e986a802ead418a02d36294662",
+          "skills": [
+            "gtmos-research-competitor"
+          ]
+        },
+        {
+          "path": "skills/competitors",
+          "oid": "9519169b55f4c6e6d13f36380c87883d13960125",
+          "skills": [
+            "gtmos-seo-competitor-pages"
+          ]
+        },
+        {
+          "path": "skills/content-strategy",
+          "oid": "a7ddb527614d7cf06c85e2fbe45abb7564c3cb26",
+          "skills": [
+            "gtmos-content-strategy"
+          ]
+        },
+        {
+          "path": "skills/conversion-tracking",
+          "oid": "9b3f34b6cdb4d4042e8861f5a2e55a4ab1c53d64",
+          "skills": [
+            "gtmos-analytics-tracking"
+          ]
+        },
+        {
+          "path": "skills/copy-editing",
+          "oid": "b1b144c16000ab7cfac005c73788a2e0eb719fed",
+          "skills": [
+            "gtmos-content-copywriting"
+          ]
+        },
+        {
+          "path": "skills/copywriting",
+          "oid": "5de411655b1692373f8950f56d50991bd5294a8e",
+          "skills": [
+            "gtmos-content-copywriting"
+          ]
+        },
+        {
+          "path": "skills/cro",
+          "oid": "702d6826004d08ccda0bde3e15dd26adc622bceb",
+          "skills": [
+            "gtmos-marketing-cro"
+          ]
+        },
+        {
+          "path": "skills/customer-research",
+          "oid": "8f5ba9a5187f4c9c4a92ad13b3b77f05710597b3",
+          "skills": [
+            "gtmos-research-customer"
+          ]
+        },
+        {
+          "path": "skills/emails",
+          "oid": "0bc7a8131489e9d5ef3be01c006194bba872a6d3",
+          "skills": [
+            "gtmos-lifecycle-email"
+          ]
+        },
+        {
+          "path": "skills/launch",
+          "oid": "adfac4356f3c3eefc213007d2a2c96f727f4d8f6",
+          "skills": [
+            "gtmos-marketing-launch"
+          ]
+        },
+        {
+          "path": "skills/lead-magnets",
+          "oid": "68e2dc9bec677a19d57887b3b877ff5b10b8ace1",
+          "skills": [
+            "gtmos-marketing-lead-magnets"
+          ]
+        },
+        {
+          "path": "skills/link-building",
+          "oid": "e3182466f5d79b95613fed9cadb2968d3323055e",
+          "skills": [
+            "gtmos-seo-backlinks"
+          ]
+        },
+        {
+          "path": "skills/marketing-loops",
+          "oid": "d906a8f6a38d1e65c56cde9694a17efd8762ecd5",
+          "skills": [
+            "gtmos-ops-marketing-loops"
+          ]
+        },
+        {
+          "path": "skills/marketing-plan",
+          "oid": "4281ea249d624016148a83403f0390a9a3d3aceb",
+          "skills": [
+            "gtmos-marketing-plan"
+          ]
+        },
+        {
+          "path": "skills/product-marketing",
+          "oid": "4fedb1e29ccc7e314edf4cb526df76ca870303b8",
+          "skills": [
+            "gtmos-marketing-positioning"
+          ]
+        },
+        {
+          "path": "skills/programmatic-seo",
+          "oid": "eb2e157f0899f44c0a8043141157518ec9462c0e",
+          "skills": [
+            "gtmos-seo-programmatic"
+          ]
+        },
+        {
+          "path": "skills/prospecting",
+          "oid": "1b469f12e4c99a0c248b2234f79e6f4e7ca41210",
+          "skills": [
+            "gtmos-leads-prospecting"
+          ]
+        },
+        {
+          "path": "skills/revops",
+          "oid": "17c88c845122a13b34ee8d2b2126fa1bdace0aee",
+          "skills": [
+            "gtmos-revops-lifecycle"
+          ]
+        },
+        {
+          "path": "skills/sales-enablement",
+          "oid": "d30c793a41dcb3f4e08280d76a4d2a8a494b7ad0",
+          "skills": [
+            "gtmos-sales-enablement"
+          ]
+        },
+        {
+          "path": "skills/schema",
+          "oid": "b59f97c1c2e2e1dce493c202fd2e4ee26b4bfdb2",
+          "skills": [
+            "gtmos-seo-schema"
+          ]
+        },
+        {
+          "path": "skills/seo-audit",
+          "oid": "dedc690c587c376951526c087a567f207c070595",
+          "skills": [
+            "gtmos-seo-audit"
+          ]
+        },
+        {
+          "path": "skills/site-architecture",
+          "oid": "64066e856d3697e6033a83f3029179b2003f58b5",
+          "skills": [
+            "gtmos-seo-site-architecture"
+          ]
+        },
+        {
+          "path": "skills/social",
+          "oid": "d86c1600245f577b83c992fc20fd6ff0b6763741",
+          "skills": [
+            "gtmos-content-social"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "resend-skills",
+      "repo": "resend/resend-skills",
+      "sha": "b2ae7b1798b70134faf679f35fc05b4331462988",
+      "mode": "adapted",
+      "license": {
+        "spdx": "MIT",
+        "path": "LICENSE",
+        "oid": "e3051e17fde2eed9dd324da1159c03cebdf90880",
+        "file": "licenses/MIT-resend-resend-skills.txt"
+      },
+      "paths": [
+        {
+          "path": "skills/email-best-practices",
+          "oid": "308d0a1bd388ac93d50654271d7aa588b4ce40cd",
+          "skills": [
+            "gtmos-lifecycle-email"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "salesforce-skills",
+      "repo": "salesforce/salesforce-skills",
+      "sha": "6b989d6490589647c4c164f7f55c2797cf322f04",
+      "mode": "adapted",
+      "license": {
+        "spdx": "Apache-2.0",
+        "path": "LICENSE.txt",
+        "oid": "1a67589f069766095235245a98ef8aef76e30421",
+        "file": "licenses/Apache-2.0-salesforce-salesforce-skills.txt"
+      },
+      "paths": [
+        {
+          "path": "salesforce-for-sales/skills/forecast-narrative",
+          "oid": "e6ef0d39a3dc638ad258a6f608b3c21510f93881",
+          "skills": [
+            "gtmos-crm-forecast"
+          ]
+        },
+        {
+          "path": "salesforce-for-sales/skills/handle-objection",
+          "oid": "7212ecab842cadc31baf12d43fd7030be700352e",
+          "skills": [
+            "gtmos-sales-enablement"
+          ]
+        },
+        {
+          "path": "salesforce-for-sales/skills/lead-triage",
+          "oid": "ec3bb3f9039ed4406758129b2e82cb648c6a0d81",
+          "skills": [
+            "gtmos-leads-inbound-triage"
+          ]
+        },
+        {
+          "path": "salesforce-for-sales/skills/pipeline-review",
+          "oid": "839300f7e46e7b96b87d2d82b11d79f895cc229d",
+          "skills": [
+            "gtmos-crm-pipeline-review"
+          ]
+        },
+        {
+          "path": "salesforce-for-sales/skills/win-loss-review",
+          "oid": "0585e23ac83ff34fb7236f1779200c21bf8e7306",
+          "skills": [
+            "gtmos-sales-win-loss"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "semrush-skills",
+      "repo": "semrush/skills",
+      "sha": "019ab369403c0e816707edae6194fa3bb47dfcd0",
+      "mode": "adapted",
+      "license": {
+        "spdx": "Apache-2.0",
+        "path": "LICENSE",
+        "oid": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+        "file": "licenses/Apache-2.0-semrush-skills.txt"
+      },
+      "paths": [
+        {
+          "path": "backlink-audit",
+          "oid": "040ee3ade344fcdf417f0343e524d24d7666e2c3",
+          "skills": [
+            "gtmos-seo-backlinks"
+          ]
+        },
+        {
+          "path": "content-brief",
+          "oid": "15eb7884bb6bba4b2dccefc1fbf085586fd9cce0",
+          "skills": [
+            "gtmos-seo-content-brief"
+          ]
+        },
+        {
+          "path": "internal-link-audit",
+          "oid": "d867520a91d3fc0c58f1be405049b2e2c84f0d9e",
+          "skills": [
+            "gtmos-seo-site-architecture"
+          ]
+        },
+        {
+          "path": "keyword-research",
+          "oid": "09c0e3b702b334a8f0baa802d232cc351b11aaa9",
+          "skills": [
+            "gtmos-seo-keyword-research"
+          ]
+        },
+        {
+          "path": "schema-markup",
+          "oid": "c0a6bfad8a4a4e654e440bfdf60b1c1c84f722f9",
+          "skills": [
+            "gtmos-seo-schema"
+          ]
+        },
+        {
+          "path": "technical-seo-audit",
+          "oid": "2cba1da3cce595552f482753d6152af8f6c5d0a3",
+          "skills": [
+            "gtmos-seo-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seranking-seo-skills",
+      "repo": "seranking/seo-skills",
+      "sha": "fd6d1408f2e6a06454d81c07c29e0f04342eb9ba",
+      "mode": "adapted",
+      "license": {
+        "spdx": "MIT",
+        "path": "LICENSE",
+        "oid": "ca6b9a33c8234bf47cdcfb2dc157b308195845c5",
+        "file": "licenses/MIT-seranking-seo-skills.txt"
+      },
+      "paths": [
+        {
+          "path": "skills/seo-ai-search-share-of-voice",
+          "oid": "e16d94247edeae25b5f84af23cd8813c04078b3a",
+          "skills": [
+            "gtmos-seo-geo"
+          ]
+        },
+        {
+          "path": "skills/seo-keyword-cluster",
+          "oid": "0dd3aedeaa8a41772c1788e2795306687b8b5106",
+          "skills": [
+            "gtmos-seo-keyword-clusters"
+          ]
+        }
+      ]
+    }
+  ]
+}

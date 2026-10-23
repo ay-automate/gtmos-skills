@@ -20,6 +20,7 @@ the registry for the current organization is authoritative if it differs from th
 - `outreach.linkedin_read_profile`, `outreach.linkedin_read_inbox`, `outreach.linkedin_read_connections`.
 - `outreach.linkedin_send_connection_request` and `outreach.linkedin_send_message`.
 - `outreach.refresh_first_degree_connections` maintains `unipile_first_degree_connection` for suppression.
+- `outreach.linkedin_seats` (Q) reports the seats of the activated LinkedIn lanes: caps per kind per UTC day and rolling 7 days, warm-up, usage, `noteMaxChars`, whether Unipile is connected and whether an owner accepted LinkedIn's high risk. `outreach.linkedin_webhook_secret` returns the Unipile webhook secret to humans only (owner / admin); agent keys are refused.
 
 ## Connect it
 
@@ -44,7 +45,7 @@ retain source provenance. Do not infer fields from the vendor API.
 
 ## Governance and safety
 
-LinkedIn sends are high-risk, OFF by default, and human-send only per the coverage map. Never bulk send, evade platform limits, or target a suppressed/opted-out person. The first-degree snapshot exists specifically to prevent connection requests to existing connections.
+LinkedIn sends are high-risk and OFF by default: every LinkedIn send is refused until an owner accepts the risk (`broker.accept_high_risk`, human only, approved by a different person). After that each send is proposed and a different person approves it, inside the seat's caps and warm-up; a send over a cap is held until room opens, never dropped. Never bulk send, evade platform limits, or target a suppressed/opted-out person. The first-degree snapshot exists specifically to prevent connection requests to existing connections. Never ask for, print or store the webhook secret.
 
 - E-class/customer-facing writes are proposed for approval; a different human approves them.
 - Respect consent, suppression, unsubscribe, and do-not-contact state before any person-level action.

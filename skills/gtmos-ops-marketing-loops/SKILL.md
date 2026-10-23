@@ -3,12 +3,12 @@ name: gtmos-ops-marketing-loops
 description: "Turn recurring GTM work into loops that run on a schedule or a trigger -- signal sweeps, reply triage, content refresh, pacing checks, weekly reports -- as GTM OS plays and agent triggers that propose work and wait for a person. With GTM OS connected it builds definition.play automations (event, schedule, segment, metric or webhook triggers), simulates them with play.simulate before anything runs, and lists the approvals they create. Use for \"marketing loop\", \"automate this weekly\", \"recurring workflow\", \"run this every day\", \"agent on a schedule\", \"trigger when\", \"always-on outbound\", \"play\"."
 license: MIT
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
   category: "agents"
   upstream: "https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/marketing-loops"
   upstream_sha: "e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b"
   upstream_license: "MIT; Copyright (c) 2025 Corey Haines"
-  modified: "2026-10-22: rebranded and adapted for GTM OS (GTM OS operating section, cross-references, tool pointers)"
+  modified: "2026-10-22: rebranded and adapted for GTM OS (GTM OS operating section, cross-references, tool pointers); 2026-10-23: shipped agent packs and triggers, agent KPIs"
 ---
 
 # Recurring GTM loops as plays
@@ -25,9 +25,11 @@ metadata:
 
 **3. Simulate first.** `play.simulate` Q runs it with zero writes and shows who it would touch. Only then may a person enable it; `play.trigger` T runs it once on demand.
 
-**4. Agents.** An agent run on a schedule or event uses `agent.trigger.create` D. Its proposals land in `runtime.list_approvals` Q for a person.
+**4. Agents.** Check the shipped agents before building one. `packages.agents` Q lists every pack that ships agents (`stdlib/pack.core-agents`, `crm-agents`, `data-agents`, `growth-agents`, `ops-agents`, `revenue-agents`), its install state and, per agent, its bounds (steps, cost, deadline), skills, scopes, shipped triggers and the principal registered for this workspace. Enabling a pack is `packages.enable` M, approved by a person. The packs cover signal-led first touches and research briefs, inbound replies, meeting prep, call follow-ups, the weekly pipeline review, deal desk checks, enrichment gaps, the nightly duplicate sweep, the daily SEO and GEO watch, setup and the ops brief, the signal digest, the routing steward, the scoring steward and reply triage. Pack agents propose; they never approve, and they are never granted an operation that spends inside its own call.
 
-**5. Watch it.** Dry mode (`policy.get_dry_mode`) stops every effect at a draft. Report each loop's results from its operations, and pause loops that produce nothing useful.
+A custom trigger uses `agent.trigger.create {agentPrincipalId, type: "manual" | "schedule" | "event", scheduleCron?, eventObjectType?, eventKind?}` D: a schedule takes a 5-field cron (`*` or a fixed number per field), an event takes an object type and an event kind. A trigger only chooses when a run starts; it can never raise the agent's bounds. Event triggers skip bulk writers (imports, CRM sync, enrichment) unless told otherwise, and fires are capped per hour. Pause with `agent.trigger.update`, stop an agent at once with `agent.kill` M. Proposals land in `runtime.list_approvals` Q for a person.
+
+**5. Watch it.** Dry mode (`policy.get_dry_mode`) stops every effect at a draft. Report each loop's results from its operations, and pause loops that produce nothing useful. `agent.kpis {windowDays}` Q gives runs, success rate, approvals proposed vs approved, actions executed, cost and eval pass rate per agent; a rate is null with a reason under its minimum sample, and runs decided by the demo model are excluded. `policy.shadow_report` Q shows what each engine drafted while dry.
 
 ## Without GTM OS
 

@@ -3,13 +3,13 @@ name: gtmos-score-icp
 description: Turn an ICP into a visible, tunable account scoring model and tier a book of accounts with it -- weighted dimensions, renormalized over what was actually observed, a minimum-observability gate, tier cuts the user can move, and evidence for every judgment. With GTM OS connected it reads the signed definition.scoring_model (icp_fit for firmographic fit, default for intent, signals for signal strength), drafts changes as a ChangeSet for a human to sign, and checks the result with score.account_tiers, score.explain_subject and score.kpis. Use for "define our ICP", "ICP scoring", "account tiering", "tier our accounts", "lead scoring model", "fit score", "which accounts are tier 1", "tune the scoring weights", "why is this account tier 2", "is the score working". For building a list to score see gtmos-leads-prospecting.
 license: MIT
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
   category: "outbound"
   upstream: "https://github.com/clay-run/clay-skill-creator/tree/fbb9149b7f0ba42db65cf5d6d540fb3ec9afd7bf/skills/clay/account-tier-scoring"
   upstream_sha: "fbb9149b7f0ba42db65cf5d6d540fb3ec9afd7bf"
   upstream_license: "MIT; Copyright (c) 2026 Clay"
   merged_from: "https://github.com/clay-run/clay-skill-creator/tree/fbb9149b7f0ba42db65cf5d6d540fb3ec9afd7bf/skills/clay/icp-matrix-builder"
-  modified: "2026-10-22: rebranded and adapted for GTM OS (GTM OS operating section, cross-references, tool pointers)"
+  modified: "2026-10-22: rebranded and adapted for GTM OS (GTM OS operating section, cross-references, tool pointers); 2026-10-23: score learning window and settings, rescan preview, committee coverage"
 ---
 
 # ICP and account tier scoring
@@ -39,9 +39,18 @@ In GTM OS the ICP is not a spreadsheet; it is the org's **signed scoring model**
 
 **4. Propose the change.** Draft the new spec and submit it with `config.propose_changeset` (then `config.validate_changeset` and `config.compute_impact` to show what moves). Submit the published version for sign-off with `definition.propose_for_signing`. A different person signs it (`definition.sign`, human only); signing triggers a re-score of every stale account. Tell the user what will change and that it waits for their sign-off.
 
-**5. Learn from outcomes.** `score.learning_report` shows lift per criterion, calibration by tier and rep feedback; `score.learn` proposes a bounded, evidenced new version from real outcomes (positive replies, meetings, opportunities, won deals) and never signs it; `score.feedback` records a rep's "too high / too low / wrong reason". Prefer these over hand-tuning once they exist.
+**5. Learn from outcomes.** Prefer these over hand-tuning once the org has outcomes.
 
-**6. Verify.** After signing, `score.rescan_organization` (or wait for the automatic re-score), then `score.account_tiers` for the new distribution. A distribution with most accounts in tier 1 means the weights need work, not that the book is great.
+| Operation | What it does |
+|---|---|
+| `score.learning_report` Q | The learning runs and their proposals, lift per criterion, calibration (Brier score, reliability by tier), lift per signed version and rep feedback. `window.state` says whether a proposal is possible now, or when (`waiting`, `firstProposalPossibleAt`). Every rate is null with a reason under the minimum sample: report the reason. |
+| `score.learn` D | Learns from a fixed cohort (each account's verdict as of `T0 = now - maturityDays - horizonDays`, and what followed: a positive reply, a meeting, an opportunity, a won deal) and **proposes** a new version: at least 30 verdicts per arm, a significance test across criteria, each weight moved at most 30% per run. Thresholds, tiers, bands and disqualifiers never change. A person other than the proposer approves (and so signs) it. One open proposal per model. |
+| `score.feedback` D | A rep's "too high / too low / wrong reason" on a scored subject, with why. A person's flag is a learning input; an agent's flag is recorded and never learned from. |
+| `score.learning_settings.get` Q | Whether the weekly job may propose on its own, the outcome it learns and the cohort window (default 60 / 60 days; 21 / 21 suits fast outbound where replies are the outcome). Changing it (`score.learning_settings.set`) is human only, and nothing ever auto-signs. |
+
+**6. Preview, then verify.** Before a person signs a new model (or before an upgrade), `score.rescan_preview {limit}` Q scores the accounts a rescan would pick inside rolled-back transactions and returns the churn: into and out of qualified, verdict, tier and band changes, and the handoffs that would fire. Nothing is written. Show that diff with the proposal. After signing, `score.rescan_organization` (or wait for the automatic re-score), then `score.account_tiers` for the new distribution. A distribution with most accounts in tier 1 means the weights need work, not that the book is great.
+
+**7. Buying committee (ABM models).** `buying_roles.list` Q is the org's role vocabulary and champion role; `score.committee_coverage {accountId}` Q reports, for the largest open deal, which required roles are identified, engaged and recently touched, the champion gate (coverage is capped at 50% without one) and the multithread risk. `computed: false` with a reason means no open deal or no committee contacts: say that, never a 0. To fill gaps, use `gtmos-leads-buying-committee`.
 
 Never write a tier into the CRM from this skill. A CRM field update goes through `crm.update_record` (E), which proposes and waits for approval.
 

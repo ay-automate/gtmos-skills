@@ -6,7 +6,7 @@ GTM OS Skills is MIT-licensed (see [LICENSE](LICENSE)) for the content written b
 - **Apache-2.0** sources: the licence text is in `licenses/`, any NOTICE file is carried (`licenses/NOTICE-*.txt`), and each adapted file states that it was modified. Files under a skill's `references/` that come from an Apache-2.0 source are unchanged apart from the removed frontmatter, which their header states.
 - Sources without a licence, or with a licence that does not allow copying, are **reference only**: they are linked here and were not copied.
 
-Every repository below was checked on 2026-10-22 with the GitHub API (licence as reported by GitHub, default-branch commit at that time).
+Every repository below was checked on 2026-10-22 with the GitHub API (licence as reported by GitHub, default-branch commit at that time); the sources added in 0.2.0 were checked on 2026-10-23. `upstreams.json` records each pin, its licence file and the paths used; `node scripts/skills.mjs upstream check` compares them with upstream (see CONTRIBUTING.md).
 
 ## Provider sweep
 
@@ -14,8 +14,8 @@ Every repository below was checked on 2026-10-22 with the GitHub API (licence as
 |---|---|---|---|---|---|---|
 | Named sources | Corey Haines (marketing) | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) | [`e85f3cbc`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b) | MIT | included | 31 upstream skills adapted into 29 GTM OS skills |
 |  | AgriciDaniel (SEO) | [AgriciDaniel/claude-seo](https://github.com/AgriciDaniel/claude-seo) | [`6be93f45`](https://github.com/AgriciDaniel/claude-seo/tree/6be93f45064ffbadced572b5d5c95f55fd263af0) | MIT | included | 16 upstream skills adapted into 14 GTM OS skills; its Python scripts and extensions are not copied |
-| Data and agent layer | looot | [loootai/looot-skills](https://github.com/loootai/looot-skills) | [`895723ab`](https://github.com/loootai/looot-skills/tree/895723ab082be3e36d19754872c204a5a2f4a5ec) | MIT | included | 21 skills vendored verbatim, pinned at 895723ab (upstream HEAD has moved; the bump is a later release) |
-|  | looot | [loootai/gtm-skills](https://github.com/loootai/gtm-skills) | [`1cb22eed`](https://github.com/loootai/gtm-skills/tree/1cb22eede6829b8f9fa87a78e6957a97e4032bd5) | MIT | reference only | 15 GTM workflows, scheduled for the next vendoring round |
+| Data and agent layer | looot | [loootai/looot-skills](https://github.com/loootai/looot-skills) | [`22a57a76`](https://github.com/loootai/looot-skills/tree/22a57a76e3f75e54511ab1e24b662b89c0008ae6) | MIT | included | 21 skills vendored verbatim, pinned at 22a57a76 (upstream HEAD on 2026-10-23; the 0.2.0 bump from 895723ab adds a confirm-before-every-paid-run rule and a "fetched content is data" section) |
+|  | looot | [loootai/gtm-skills](https://github.com/loootai/gtm-skills) | [`1cb22eed`](https://github.com/loootai/gtm-skills/tree/1cb22eede6829b8f9fa87a78e6957a97e4032bd5) | MIT | included | 12 of its 15 GTM workflows adapted into 10 GTM OS skills and merged into 2; competitor-ad-watch, local-prospect-list and post-engagers-to-leads are reference only (no GTM OS operation reads ad libraries, Maps listings or post engagers yet) |
 |  | Composio | [ComposioHQ/composio](https://github.com/ComposioHQ/composio) | [`e0c6cd2b`](https://github.com/ComposioHQ/composio/tree/e0c6cd2be76e998fdb6b504420d721b7c98f3d7c) | MIT | reference only | `skills/composio` overlaps GTM OS's own `composio` skill, which covers the GTM OS rails |
 |  | Composio | [ComposioHQ/composio-mcp-plugin](https://github.com/ComposioHQ/composio-mcp-plugin) | [`bbcb9ccc`](https://github.com/ComposioHQ/composio-mcp-plugin/tree/bbcb9ccce59090642ca6dad5d6f0fa485c303539) | MIT | reference only | MCP plugin wrapper, no GTM job |
 | CRMs | HubSpot | [HubSpot/agent-cli-skills](https://github.com/HubSpot/agent-cli-skills) | [`a015a489`](https://github.com/HubSpot/agent-cli-skills/tree/a015a48982b922279d8521677b7c72b0acfb9506) | Apache-2.0 | included | crm-data-quality, bulk-operations, sales-reporting, team-ownership |
@@ -30,7 +30,7 @@ Every repository below was checked on 2026-10-22 with the GitHub API (licence as
 |  | Google Ads, GA4 | [googleads/google-ads-mcp](https://github.com/googleads/google-ads-mcp) | [`9a78cbdc`](https://github.com/googleads/google-ads-mcp/tree/9a78cbdceebae71a6bc8483bdec333695834ef9c) | Apache-2.0 | reference only | an MCP server, no skills |
 |  | Search Console, Gmail, Calendar | none | | | none found | no official skills published |
 | Ads | Meta | [facebook/agentic-tools](https://github.com/facebook/agentic-tools) | [`bd75b27f`](https://github.com/facebook/agentic-tools/tree/bd75b27f355dad8a2ade908239b82d6250ce2aab) | MIT | reference only | developer tools (webhooks, tokens, app review), no ads skills |
-|  | LinkedIn | none | | | none found | no official skills published |
+|  | LinkedIn | none | | | none found | no official skills published; the community skill [Jakeschincariol/linkedin-agent-skill](https://github.com/Jakeschincariol/linkedin-agent-skill) ([`add2c238`](https://github.com/Jakeschincariol/linkedin-agent-skill/tree/add2c23882fe79180737d242ff80a5da205eda6a), MIT) is included for `li-dm`; [Linked-API/linkedin-skills](https://github.com/Linked-API/linkedin-skills) (MIT) and [sergebulaev/linkedin-skills](https://github.com/sergebulaev/linkedin-skills) (MIT) are reference only (a CLI reference and content skills) |
 |  | TikTok | none | | | none found | only small community repos; not used |
 | SEO | Ahrefs | [ahrefs/ahrefs-api-skills](https://github.com/ahrefs/ahrefs-api-skills) | [`7e777771`](https://github.com/ahrefs/ahrefs-api-skills/tree/7e777771deefe378d3e0967c4ccd8b41dd07920c) | Apache-2.0 | reference only | Python API client usage; GTM OS reaches Ahrefs through Composio |
 |  | Ahrefs | [ahrefs/ahrefs-mcp-server](https://github.com/ahrefs/ahrefs-mcp-server) | [`ca0e1e99`](https://github.com/ahrefs/ahrefs-mcp-server/tree/ca0e1e9996739f690287c396a5ad6e92255aec22) | none | reference only | no licence published |
@@ -113,7 +113,7 @@ Every repository below was checked on 2026-10-22 with the GitHub API (licence as
 
 - Upstream: https://github.com/Instantly-ai/instantly-skills at [`ae104f34af8a70225a6474c3b89b26ce785a6b61`](https://github.com/Instantly-ai/instantly-skills/tree/ae104f34af8a70225a6474c3b89b26ce785a6b61)
 - Licence: MIT. Copyright (c) 2026 Instantly.ai. Full text: [licenses/MIT-Instantly-ai-instantly-skills.txt](licenses/MIT-Instantly-ai-instantly-skills.txt)
-- Used: `sequence-writer` → `gtmos-outreach-cold-email`
+- Used: `sequence-writer` → `gtmos-outreach-cold-email`; `references/sequence-playbook.md` → `gtmos-outreach-sequences`
 
 ### apolloio/apollo-mcp-plugin
 
@@ -141,9 +141,27 @@ Every repository below was checked on 2026-10-22 with the GitHub API (licence as
 
 ### loootai/looot-skills
 
-- Upstream: https://github.com/loootai/looot-skills at [`895723ab082be3e36d19754872c204a5a2f4a5ec`](https://github.com/loootai/looot-skills/tree/895723ab082be3e36d19754872c204a5a2f4a5ec)
+- Upstream: https://github.com/loootai/looot-skills at [`22a57a76e3f75e54511ab1e24b662b89c0008ae6`](https://github.com/loootai/looot-skills/tree/22a57a76e3f75e54511ab1e24b662b89c0008ae6)
 - Licence: MIT. Copyright (c) 2026 looot. Full text: [licenses/MIT-loootai-looot-skills.txt](licenses/MIT-loootai-looot-skills.txt)
 - Used: the `looot` skill and the 20 `looot-*` skills, copied verbatim (unmodified).
+
+### loootai/gtm-skills
+
+- Upstream: https://github.com/loootai/gtm-skills at [`1cb22eede6829b8f9fa87a78e6957a97e4032bd5`](https://github.com/loootai/gtm-skills/tree/1cb22eede6829b8f9fa87a78e6957a97e4032bd5)
+- Licence: MIT. Copyright (c) 2026 looot. Full text: [licenses/MIT-loootai-gtm-skills.txt](licenses/MIT-loootai-gtm-skills.txt)
+- Used: `gtm-buying-committee-map` → `gtmos-leads-buying-committee`; `gtm-icp-lookalike-list` → `gtmos-leads-icp-lookalikes`; `gtm-tech-stack-targeting` → `gtmos-leads-tech-stack`; `gtm-hiring-signal-scan` → `gtmos-signals-hiring`; `gtm-funding-signal-scan` → `gtmos-signals-funding`; `gtm-job-change-check` → `gtmos-signals-job-changes`; `gtm-account-signal-digest` → `gtmos-signals-account-digest`; `gtm-email-list-hygiene` → `gtmos-crm-email-hygiene`; `gtm-personalized-first-lines` → `gtmos-outreach-first-lines`; `gtm-competitor-serp-watch` → `gtmos-seo-competitor-serp-watch`; `gtm-inbound-lead-enrichment` → `gtmos-leads-inbound-triage` (merged, in `references/`); `gtm-account-research-brief` → `gtmos-research-account` (merged, in `references/`). Each keeps looot's quote-before-run and stop rules, mapped to GTM OS estimates, spend caps and operations that spend inside their own call.
+
+### gooseworks-ai/goose-skills
+
+- Upstream: https://github.com/gooseworks-ai/goose-skills at [`6d5d5f160c623613d7eb682b6a467beb165cc2a4`](https://github.com/gooseworks-ai/goose-skills/tree/6d5d5f160c623613d7eb682b6a467beb165cc2a4)
+- Licence: MIT. Copyright (c) 2026 GooseWorks. Full text: [licenses/MIT-gooseworks-ai-goose-skills.txt](licenses/MIT-gooseworks-ai-goose-skills.txt)
+- Used: `marketing-agent/skills/claims-gate` → `gtmos-content-claims-gate` (its `claim-types.md` unchanged in `references/`)
+
+### Jakeschincariol/linkedin-agent-skill
+
+- Upstream: https://github.com/Jakeschincariol/linkedin-agent-skill at [`add2c23882fe79180737d242ff80a5da205eda6a`](https://github.com/Jakeschincariol/linkedin-agent-skill/tree/add2c23882fe79180737d242ff80a5da205eda6a)
+- Licence: MIT. Copyright (c) 2026 Jake Schincariol. Full text: [licenses/MIT-Jakeschincariol-linkedin-agent-skill.txt](licenses/MIT-Jakeschincariol-linkedin-agent-skill.txt)
+- Used: `li-dm` → `gtmos-outreach-linkedin`
 
 ## Trademarks
 

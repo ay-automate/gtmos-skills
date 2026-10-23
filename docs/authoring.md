@@ -5,7 +5,7 @@ This is the house format. `node scripts/skills.mjs lint` checks the mechanical p
 ## Folder and name
 
 - One folder per skill: `skills/<name>/SKILL.md`, plus an optional `references/` folder for long material the skill links to.
-- Adapted and new skills are named `gtmos-<area>-<job>`: lowercase, hyphens, at most 64 characters. Areas in use: `marketing`, `research`, `seo`, `outreach`, `leads`, `score`, `routing`, `ads`, `revops`, `crm`, `sales`, `lifecycle`, `analytics`, `content`, `ops`.
+- Adapted and new skills are named `gtmos-<area>-<job>`: lowercase, hyphens, at most 64 characters. Areas in use: `marketing`, `research`, `seo`, `outreach`, `leads`, `score`, `routing`, `ads`, `revops`, `crm`, `sales`, `lifecycle`, `analytics`, `content`, `ops`, `signals`.
 - The connector skills that ship with the `gtm` CLI (`hubspot`, `gsc`, `composio`, `gtmos-setup` and so on) and the vendored `looot-*` skills keep their names, because existing workspaces already refer to them.
 - Register the skill in `catalog.json` with its category. The README index and the plugin marketplace are generated from that file.
 
@@ -42,6 +42,7 @@ metadata:
 - E-class operations propose; a different person approves. A skill never tells the agent to approve, and never retries a rejected effect.
 - Dry mode is respected: in dry mode the skill stops at the draft and says so.
 - Quote cost before buying data.
+- Register the source in `upstreams.json` (`node scripts/skills.mjs upstream scan` for an adapted skill, `upstream import` for a verbatim copy); lint fails on a source that is not registered or is pinned at another commit.
 - Keep upstream copyright and licence notices. Rebranding is fine; removing attribution is not. Apache-2.0 sources also need the change stated and their NOTICE carried (see `licenses/`).
 - Only copy from sources under MIT, Apache-2.0 or a Creative Commons licence that allows it. Anything else is reference only: link to it, do not copy it.
 - No secrets, internal hostnames, local paths or GTM OS source code.

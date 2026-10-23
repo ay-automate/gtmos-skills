@@ -3,12 +3,12 @@ name: gtmos-ads-campaigns
 description: "Plan, audit and optimize paid campaigns on Google Ads, Meta and LinkedIn -- structure, targeting, bidding, budgets, pacing and when to scale or kill -- against real unit economics. With GTM OS connected it uses the Performance Ads engine: perf_ads.sync_performance, get_campaign_performance, get_pacing_recommendation, scan_all_campaigns and kpis, spend ceilings from definition.unit_economics, revenue from money.attribution, and every budget or status change proposed through perf_ads.update_campaign for a person to approve. Use for \"paid ads\", \"PPC\", \"Google Ads\", \"Meta ads\", \"LinkedIn ads\", \"ROAS\", \"CAC\", \"ad budget\", \"pacing\", \"campaign audit\", \"scale campaigns\"."
 license: MIT
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
   category: "ads"
   upstream: "https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/ads"
   upstream_sha: "e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b"
   upstream_license: "MIT; Copyright (c) 2025 Corey Haines"
-  modified: "2026-10-22: rebranded and adapted for GTM OS (GTM OS operating section, cross-references, tool pointers)"
+  modified: "2026-10-22: rebranded and adapted for GTM OS (GTM OS operating section, cross-references, tool pointers); 2026-10-23: real CAC and ROAS economics, the budget allocator"
 ---
 
 # Paid campaigns
@@ -23,9 +23,11 @@ metadata:
 
 **2. Real numbers.** `perf_ads.sync_performance` D pulls spend and conversions; `perf_ads.get_campaign_performance {campaignId}` Q reads them; `perf_ads.kpis` Q for engine KPIs. Platform-reported conversions are not revenue: compare with `money.attribution` Q and say which model and window it used. When data is thin, say so.
 
-**3. Decide.** `perf_ads.scan_all_campaigns` D (or `scan_campaign`) and `perf_ads.get_pacing_recommendation {campaignId}` Q give the engine's pacing math and recommendation. Apply the method below on top.
+**3. Economics.** `perf_ads.kpis` Q reports, per platform and campaign, spend, platform CPA, ROAS on real customers and real CAC (spend over new customers the revenue truth credits to ads, by the org's attribution model), the gap between platform CPA and real CAC, MER, aMER, ACoS, payback and LTV:CAC against the org's signed `definition.unit_economics`. Each campaign carries a verdict (`worse_than_target`, `better_than_target`, `on_target`, `insufficient_sample`, `not_measurable`, `no_target`) with its reason. Fixture rows never count; a figure is null with a reason when the revenue truth is missing or some spend is not counted. Quote the reason, never a guess. Label every ROAS and CAC with the attribution model the result names.
 
-**4. Change through approvals.** Budget and status changes are real money: `perf_ads.update_campaign {campaignId, budgetAmount, status}` E proposes, a different person approves, and an increase is capped at 2x the current budget. `perf_ads.undo_campaign_change` E reverses one. GTM OS does not create new campaigns, ad sets or audiences yet; those steps stay in the ad platform, done by a person.
+**4. Decide.** `perf_ads.scan_all_campaigns` D (or `scan_campaign`) and `perf_ads.get_pacing_recommendation {campaignId}` Q give the engine's pacing math and recommendation. `perf_ads.reallocation_plan` Q previews the allocator: bounded, budget-neutral moves from campaigns with a real CAC worse than the org's target to ones better than it, with evidence per move and why every other campaign is left alone (too young, too little sample, fixture or unproven rows, paused, a change already pending, no target set). It proposes nothing. Apply the method below on top.
+
+**5. Change through approvals.** Budget and status changes are real money: `perf_ads.update_campaign {campaignId, budgetAmount, status}` E proposes, a different person approves, and an increase is capped at 2x the current budget. `perf_ads.reallocate` D runs the allocator now (it also runs nightly): each move is its own `perf_ads.update_campaign` proposal, at most 20% of a campaign's budget, with its evidence; in dry mode the moves are drafted and nothing is proposed. `perf_ads.allocator_runs` Q shows what each run proposed and each approval's state. `perf_ads.undo_campaign_change` E reverses an executed change. With no signed target in `definition.unit_economics` the allocator moves nothing and says so: help the user draft the target, a person signs it. GTM OS does not create new campaigns, ad sets or audiences yet; those steps stay in the ad platform, done by a person.
 
 ## Without GTM OS
 

@@ -8,7 +8,7 @@
 [![Codex](https://img.shields.io/badge/Codex-.agents%2Fskills-111827)](#install)
 [![CI](https://github.com/ay-automate/gtmos-skills/actions/workflows/ci.yml/badge.svg)](.github/workflows/ci.yml)
 
-<!-- skills-count -->94<!-- /skills-count --> skills that teach an agent how go-to-market work is done well: cold outbound that gets replies, SEO audits with a fix queue, AI-search visibility, ICP scoring, pipeline reviews, forecasts, attribution, lifecycle email and more.
+<!-- skills-count -->107<!-- /skills-count --> skills that teach an agent how go-to-market work is done well: cold outbound that gets replies, SEO audits with a fix queue, AI-search visibility, ICP scoring, pipeline reviews, forecasts, attribution, lifecycle email and more.
 
 Each skill works on its own. An agent that loads one follows a tested method and asks for the inputs it lacks. It never invents a number or a customer quote. Connect [GTM OS](https://ay-automate.github.io/gtmos-releases/) and the same skill runs on your real data: your ICP, your brand voice, your proof library, your CRM, with every send, publish and budget change waiting for a person to approve it.
 
@@ -24,12 +24,12 @@ Each skill works on its own. An agent that loads one follows a tested method and
 | Category | What is in it |
 |---|---|
 | Marketing | Positioning and product context, marketing plans, launches, lead magnets, CRO, customer research |
-| SEO and GEO | Site and page audits, keyword research and clusters, content briefs, schema, programmatic SEO, competitor pages, backlinks, drift, Search Console, AI-search visibility |
-| Outbound and leads | Cold email and multichannel outbound, prospecting, inbound triage, ICP scoring, lead routing, account research, the looot data skills |
+| SEO and GEO | Site and page audits, keyword research and clusters, content briefs, schema, programmatic SEO, competitor pages, backlinks, drift, Search Console, AI-search visibility, competitor SERP watch |
+| Outbound and leads | Cold email and multichannel outbound, step-plan sequences, LinkedIn, personalized first lines, prospecting, lookalike and tech-stack lists, buying committees, hiring, funding and job-change signals, a weekly signal digest, inbound triage, ICP scoring, lead routing, account research, the looot data skills |
 | Ads | Paid campaigns, pacing against unit economics, ad creative |
-| CRM and RevOps | Lifecycle and stages, data quality, pipeline review, forecast, call prep, follow-up, enablement, win-loss, battle cards, renewals, churn, lifecycle email |
+| CRM and RevOps | Lifecycle and stages, data quality and merge rules, email list hygiene, pipeline review, forecast, call prep, follow-up, enablement, win-loss, battle cards, renewals, churn, lifecycle email |
 | Analytics | Tracking, attribution, experiments, GTM reports |
-| Content | Content strategy, copywriting, social, brand voice |
+| Content | Content strategy, copywriting, social, brand voice, the claims gate |
 | Agents and ops | GTM OS setup and onboarding, the engine catalog, plays and recurring loops, connectors |
 
 ## Install
@@ -87,7 +87,7 @@ Positioning, plans, launches, lead magnets, conversion and customer research.
 | [`gtmos-marketing-cro`](skills/gtmos-marketing-cro/SKILL.md) | Raise conversion on pages and forms, measured with site tracking. | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) |
 | [`gtmos-research-customer`](skills/gtmos-research-customer/SKILL.md) | Customer research from calls, replies and deal notes, kept as the customer's own words. | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) |
 
-### SEO and GEO (21)
+### SEO and GEO (22)
 
 Audits, keywords, content briefs, schema, links and AI-search visibility, run on the SEO and GEO engine.
 
@@ -108,6 +108,7 @@ Audits, keywords, content briefs, schema, links and AI-search visibility, run on
 | [`gtmos-seo-search-console`](skills/gtmos-seo-search-console/SKILL.md) | Search Console, indexation and Core Web Vitals data for SEO decisions. | [AgriciDaniel/claude-seo](https://github.com/AgriciDaniel/claude-seo) |
 | [`gtmos-seo-site-architecture`](skills/gtmos-seo-site-architecture/SKILL.md) | Site structure, URL hierarchy, sitemaps and internal linking. | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills), [AgriciDaniel/claude-seo](https://github.com/AgriciDaniel/claude-seo), [semrush/skills](https://github.com/semrush/skills) |
 | [`gtmos-seo-plan`](skills/gtmos-seo-plan/SKILL.md) | An SEO strategy and roadmap from competitive analysis and the content calendar. | [AgriciDaniel/claude-seo](https://github.com/AgriciDaniel/claude-seo) |
+| [`gtmos-seo-competitor-serp-watch`](skills/gtmos-seo-competitor-serp-watch/SKILL.md) | Track your and competitors' positions in Google and AI answers for buying keywords, with changes. | [loootai/gtm-skills](https://github.com/loootai/gtm-skills) |
 | [`gsc`](skills/gsc/SKILL.md) | Google Search Console in GTM OS (required for the SEO and GEO engine). | GTM OS |
 | [`looot-google-serp`](skills/looot-google-serp/SKILL.md) | Read a Google results page. | [loootai/looot-skills](https://github.com/loootai/looot-skills) (verbatim) |
 | [`looot-domain-keywords`](skills/looot-domain-keywords/SKILL.md) | The keywords a domain ranks for. | [loootai/looot-skills](https://github.com/loootai/looot-skills) (verbatim) |
@@ -115,18 +116,28 @@ Audits, keywords, content briefs, schema, links and AI-search visibility, run on
 | [`looot-backlink-checker`](skills/looot-backlink-checker/SKILL.md) | Check a domain's backlinks. | [loootai/looot-skills](https://github.com/loootai/looot-skills) (verbatim) |
 | [`looot-ai-search-visibility`](skills/looot-ai-search-visibility/SKILL.md) | How a brand shows up in AI answers. | [loootai/looot-skills](https://github.com/loootai/looot-skills) (verbatim) |
 
-### Outbound and leads (28)
+### Outbound and leads (38)
 
-Cold outreach, prospecting, inbound triage, ICP scoring, routing, account research and the data layer.
+Cold outreach, sequences, LinkedIn, prospecting, buying signals, inbound triage, ICP scoring, routing, account research and the data layer.
 
 | Skill | What it does | Source |
 |---|---|---|
 | [`gtmos-outreach-cold-email`](skills/gtmos-outreach-cold-email/SKILL.md) | Cold email and multichannel outbound drafted on the Outreach engine; every send approved by a person. | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills), [Instantly-ai/instantly-skills](https://github.com/Instantly-ai/instantly-skills) |
 | [`gtmos-leads-prospecting`](skills/gtmos-leads-prospecting/SKILL.md) | Build and qualify prospect lists with quoted, verified data and ICP scoring. | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills), [apolloio/apollo-mcp-plugin](https://github.com/apolloio/apollo-mcp-plugin) |
-| [`gtmos-leads-inbound-triage`](skills/gtmos-leads-inbound-triage/SKILL.md) | Score, route and answer inbound leads inside the SLA. | [salesforce/salesforce-skills](https://github.com/salesforce/salesforce-skills) |
+| [`gtmos-leads-inbound-triage`](skills/gtmos-leads-inbound-triage/SKILL.md) | Score, route and answer inbound leads inside the SLA. | [salesforce/salesforce-skills](https://github.com/salesforce/salesforce-skills), [loootai/gtm-skills](https://github.com/loootai/gtm-skills) |
 | [`gtmos-score-icp`](skills/gtmos-score-icp/SKILL.md) | Define the ICP and account tiers as a signed scoring model, explained per account. | [clay-run/clay-skill-creator](https://github.com/clay-run/clay-skill-creator) |
 | [`gtmos-routing-lead-ownership`](skills/gtmos-routing-lead-ownership/SKILL.md) | Find the right owner for every lead and audit that no lead is left behind. | [zapier/gtm-cheat-codes](https://github.com/zapier/gtm-cheat-codes), [HubSpot/agent-cli-skills](https://github.com/HubSpot/agent-cli-skills) |
-| [`gtmos-research-account`](skills/gtmos-research-account/SKILL.md) | A one-page account brief where every fact has a source. | [clay-run/clay-skill-creator](https://github.com/clay-run/clay-skill-creator) |
+| [`gtmos-research-account`](skills/gtmos-research-account/SKILL.md) | A one-page account brief where every fact has a source. | [clay-run/clay-skill-creator](https://github.com/clay-run/clay-skill-creator), [loootai/gtm-skills](https://github.com/loootai/gtm-skills) |
+| [`gtmos-leads-buying-committee`](skills/gtmos-leads-buying-committee/SKILL.md) | Map the buying committee per account, find who is missing, and fill the gaps with verified contacts. | [loootai/gtm-skills](https://github.com/loootai/gtm-skills) |
+| [`gtmos-leads-icp-lookalikes`](skills/gtmos-leads-icp-lookalikes/SKILL.md) | Build a ranked target account list from your best customers, scored by the org's own ICP model. | [loootai/gtm-skills](https://github.com/loootai/gtm-skills) |
+| [`gtmos-leads-tech-stack`](skills/gtmos-leads-tech-stack/SKILL.md) | Segment accounts by the tools they run: displace, expand or disqualify, with 'not detected' kept honest. | [loootai/gtm-skills](https://github.com/loootai/gtm-skills) |
+| [`gtmos-signals-hiring`](skills/gtmos-signals-hiring/SKILL.md) | Find accounts hiring for the roles that predict a purchase, recorded as signals with their evidence. | [loootai/gtm-skills](https://github.com/loootai/gtm-skills) |
+| [`gtmos-signals-funding`](skills/gtmos-signals-funding/SKILL.md) | Find recently funded companies in a segment, or rounds on your list, each with its source. | [loootai/gtm-skills](https://github.com/loootai/gtm-skills) |
+| [`gtmos-signals-job-changes`](skills/gtmos-signals-job-changes/SKILL.md) | Find past champions and customers who changed jobs, with a verified email at the new company. | [loootai/gtm-skills](https://github.com/loootai/gtm-skills) |
+| [`gtmos-signals-account-digest`](skills/gtmos-signals-account-digest/SKILL.md) | A weekly digest of what changed at target accounts: news, hiring and page changes, only what is new. | [loootai/gtm-skills](https://github.com/loootai/gtm-skills) |
+| [`gtmos-outreach-first-lines`](skills/gtmos-outreach-first-lines/SKILL.md) | One opener per lead that cites a real, recent, sourced fact, or no line at all. | [loootai/gtm-skills](https://github.com/loootai/gtm-skills) |
+| [`gtmos-outreach-sequences`](skills/gtmos-outreach-sequences/SKILL.md) | Design multi-step sequences as a signed step plan: steps, waits, send windows, A/B variants, exits, measured per step. | [Instantly-ai/instantly-skills](https://github.com/Instantly-ai/instantly-skills) |
+| [`gtmos-outreach-linkedin`](skills/gtmos-outreach-linkedin/SKILL.md) | LinkedIn connection notes, first messages and follow-ups on the org's LinkedIn seats, every send approved by a person. | [Jakeschincariol/linkedin-agent-skill](https://github.com/Jakeschincariol/linkedin-agent-skill) |
 | [`gmail`](skills/gmail/SKILL.md) | Gmail sending and reply ingestion in GTM OS. | GTM OS |
 | [`resend`](skills/resend/SKILL.md) | Resend as a GTM OS sender. | GTM OS |
 | [`unipile`](skills/unipile/SKILL.md) | LinkedIn steps through Unipile in GTM OS (human-only sends). | GTM OS |
@@ -161,7 +172,7 @@ Paid campaigns and creative, with spend changes that a person approves.
 | [`ads`](skills/ads/SKILL.md) | Google Ads and Meta Ads connectors in GTM OS. | GTM OS |
 | [`looot-meta-ads-library`](skills/looot-meta-ads-library/SKILL.md) | Read the Meta Ads Library for competitor ads. | [loootai/looot-skills](https://github.com/loootai/looot-skills) (verbatim) |
 
-### CRM and RevOps (16)
+### CRM and RevOps (17)
 
 Lifecycle, data quality, pipeline, forecast, call prep, follow-up, win-loss, renewals and churn.
 
@@ -179,6 +190,7 @@ Lifecycle, data quality, pipeline, forecast, call prep, follow-up, win-loss, ren
 | [`gtmos-lifecycle-renewal-radar`](skills/gtmos-lifecycle-renewal-radar/SKILL.md) | Renewal runway, account health and save or expand plays. | [HubSpot/hubspot-mcp-plugins](https://github.com/HubSpot/hubspot-mcp-plugins) |
 | [`gtmos-lifecycle-churn`](skills/gtmos-lifecycle-churn/SKILL.md) | Reduce churn with cancel flows, save offers and health signals. | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) |
 | [`gtmos-lifecycle-email`](skills/gtmos-lifecycle-email/SKILL.md) | Lifecycle and nurture email sequences on an approved sending lane. | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills), [resend/resend-skills](https://github.com/resend/resend-skills) |
+| [`gtmos-crm-email-hygiene`](skills/gtmos-crm-email-hygiene/SKILL.md) | Clean an email list before sending: dedupe, syntax, verification, split into send, review and drop. | [loootai/gtm-skills](https://github.com/loootai/gtm-skills) |
 | [`gtmos-source-mapping`](skills/gtmos-source-mapping/SKILL.md) | Map any connected app's records into the GTM OS ontology. | GTM OS |
 | [`hubspot`](skills/hubspot/SKILL.md) | HubSpot through the GTM OS connector. | GTM OS |
 | [`salesforce`](skills/salesforce/SKILL.md) | Salesforce through the GTM OS connector. | GTM OS |
@@ -196,7 +208,7 @@ Tracking, attribution, experiments and GTM reporting where every number names it
 | [`gtmos-analytics-gtm-report`](skills/gtmos-analytics-gtm-report/SKILL.md) | Weekly GTM and pipeline reports where every figure names the operation behind it. | [HubSpot/agent-cli-skills](https://github.com/HubSpot/agent-cli-skills), [zapier/gtm-cheat-codes](https://github.com/zapier/gtm-cheat-codes) |
 | [`ga4`](skills/ga4/SKILL.md) | Google Analytics 4 in GTM OS. | GTM OS |
 
-### Content (4)
+### Content (5)
 
 Content strategy, copywriting, social and the brand voice gate.
 
@@ -206,6 +218,7 @@ Content strategy, copywriting, social and the brand voice gate.
 | [`gtmos-content-copywriting`](skills/gtmos-content-copywriting/SKILL.md) | Write and edit marketing copy in the brand voice, with claims backed by proof. | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) |
 | [`gtmos-content-social`](skills/gtmos-content-social/SKILL.md) | LinkedIn and social content, scheduling and engagement triage. | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) |
 | [`gtmos-content-brand-voice`](skills/gtmos-content-brand-voice/SKILL.md) | Codify the brand voice as a signed definition and check copy against it. | [zapier/gtm-cheat-codes](https://github.com/zapier/gtm-cheat-codes) |
+| [`gtmos-content-claims-gate`](skills/gtmos-content-claims-gate/SKILL.md) | Check every claim in a piece of copy against the proof library: keep, rewrite or cut, and say what proof would restore it. | [gooseworks-ai/goose-skills](https://github.com/gooseworks-ai/goose-skills) |
 
 ### Agents and ops (10)
 

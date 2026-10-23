@@ -3,13 +3,13 @@ name: gtmos-crm-pipeline-review
 description: "Review the pipeline deal by deal -- stuck stages, no next step, slipped close dates, single-threaded deals, missing amounts -- and turn findings into tasks and proposed updates. With GTM OS connected it reads crm.dashboard, open deals with records.list (closing overdue or this month, activity windows), relationship history and the committee, and proposes stage moves and CRM write-backs for approval. Use for \"pipeline review\", \"pipeline pulse\", \"deal review\", \"which deals are stuck\", \"deal risks\", \"weekly pipeline meeting\", \"clean up my pipeline\"."
 license: Apache-2.0
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
   category: "crm"
   upstream: "https://github.com/HubSpot/hubspot-mcp-plugins/tree/032d294bc91577cb1b9c4a61372567266ca8524e/HubSpot-Sales/skills/pipeline-pulse"
   upstream_sha: "032d294bc91577cb1b9c4a61372567266ca8524e"
   upstream_license: "Apache-2.0; HubSpot, Inc."
   merged_from: "https://github.com/salesforce/salesforce-skills/tree/6b989d6490589647c4c164f7f55c2797cf322f04/salesforce-for-sales/skills/pipeline-review"
-  modified: "2026-10-22: rebranded and adapted for GTM OS (GTM OS operating section, cross-references, tool pointers)"
+  modified: "2026-10-22: rebranded and adapted for GTM OS (GTM OS operating section, cross-references, tool pointers); 2026-10-23: committee coverage, the pipeline review agent"
 ---
 
 # Pipeline review
@@ -22,11 +22,13 @@ metadata:
 
 **1. The picture.** `crm.dashboard {scope}` Q: open pipeline, win rate, pipeline by stage, largest open deals, overdue tasks. Quote its numbers as "from crm.dashboard".
 
-**2. The deals.** `records.list {objectType: "gtm.deal", closing: "overdue" | "this_month", activityWithinDays, sort}` Q for the review set; `records.aggregate` Q for exact totals by stage. Per deal: `account.relationship` Q (last email, reply, meeting), `task.list` Q (next step), `buying_roles.list` Q (single-threaded?), `transcripts.list` Q (recent calls).
+**2. The deals.** `records.list {objectType: "gtm.deal", closing: "overdue" | "this_month", activityWithinDays, sort}` Q for the review set; `records.aggregate` Q for exact totals by stage. Per deal: `account.relationship` Q (last email, reply, meeting), `task.list` Q (next step), `score.committee_coverage {accountId}` Q (required roles identified, engaged and recently touched on the largest open deal, champion gate, multithread risk; `computed: false` with a reason when there is no open deal or no committee contact), `transcripts.list` Q (recent calls). Role names come from `buying_roles.list` Q.
 
 **3. Flag with evidence.** Apply the checks below. Each flag cites the field or record behind it (for example "no activity since 2026-09-30, from account.relationship").
 
 **4. Act through approvals.** `task.create` D for each next step. Stage changes: `deal.move_stage` D or `deal.advance_stage` T (guarded by the stage machine). Write-back to the CRM of record: `crm.update_record` E, approved by a different person. Never edit a forecast category or amount on your own.
+
+**5. The weekly agent.** The `pipeline-review-agent` (pack `stdlib/pack.crm-agents`, every Monday at 07:00) runs this review and suggests one task per deal that needs attention. `packages.agents` Q shows whether the pack is installed and the agent registered; `agent.kpis` Q shows its runs and approval rate.
 
 ## Without GTM OS
 

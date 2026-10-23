@@ -3,13 +3,13 @@ name: gtmos-crm-data-quality
 description: "Find and fix CRM data problems -- duplicates, invalid emails and domains, missing fields, inconsistent formats, stale records -- with a reviewable digest before any change, and reversible merges. With GTM OS connected it uses the Identity and data quality engine: identity_dq.quality_report, scan_duplicates, validate_records, normalize_records (with undo), and merges proposed through identity_dq.merge_records for a person to approve. Use for \"CRM cleanup\", \"dedupe\", \"duplicates\", \"data quality\", \"bad emails\", \"normalize records\", \"merge companies\", \"data hygiene\"."
 license: Apache-2.0
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
   category: "crm"
   upstream: "https://github.com/HubSpot/agent-cli-skills/tree/a015a48982b922279d8521677b7c72b0acfb9506/crm-data-quality"
   upstream_sha: "a015a48982b922279d8521677b7c72b0acfb9506"
   upstream_license: "Apache-2.0; HubSpot, Inc."
   merged_from: "https://github.com/HubSpot/agent-cli-skills/tree/a015a48982b922279d8521677b7c72b0acfb9506/bulk-operations"
-  modified: "2026-10-22: rebranded and adapted for GTM OS (GTM OS operating section, cross-references, tool pointers)"
+  modified: "2026-10-22: rebranded and adapted for GTM OS (GTM OS operating section, cross-references, tool pointers); 2026-10-23: merge rules and survivorship, merge preview and revision, enrichment freshness"
 ---
 
 # CRM data quality
@@ -22,13 +22,17 @@ metadata:
 
 **1. Measure.** `identity_dq.quality_report` Q (fill rate, duplicate rate, staleness, mean score) before you touch anything; repeat it after, so the change is measured.
 
-**2. Find problems.** `identity_dq.scan_duplicates {objectType, limit}` Q returns candidate pairs with match reasons and confidence; it merges nothing. `identity_dq.validate_records` Q finds invalid values. Matching and survivorship rules come from `definition.identity_rule`; scheduled checks from `definition.data_monitor`.
+**2. Find problems.** `identity_dq.scan_duplicates {objectType, limit}` Q returns candidate pairs with match reasons and confidence; it merges nothing. `identity_dq.validate_records` Q finds invalid values. Scheduled checks come from `definition.data_monitor`.
 
-**3. Review first.** Show the digest: pair, reason, confidence, which record survives and why. Low-confidence pairs stay for a person.
+**3. Know the merge rules.** `identity_dq.merge_rules.get` Q returns the identity keys, match weights, the threshold and each field's survivorship strategy, every value with its source (signed `definition.identity_rule`, built-in or fallback). To change them, `identity_dq.merge_rules.propose` D writes a validated ChangeSet in dev and nothing else; then `config.apply` (a different person approves), sign-off and promotion to prod. Nothing changes before it is signed in prod.
 
-**4. Change, reversibly.** `identity_dq.normalize_records` D (undo with `identity_dq.undo_normalization`), `identity_dq.flag_invalid_records` D, `identity_dq.backfill_domains` D. Merges are proposed: `identity_dq.merge_records {objectType, survivorId, loserId}` E, approved by a different person; `identity_dq.unmerge_records` E reverses one. Before any automated write onto an existing record, resolve it by id (link-resolve) so you never create a duplicate.
+**4. Review first.** Show the digest: pair, reason, confidence, which record survives and why. `identity_dq.preview_merge` Q gives the exact payload a merge would propose: fields filled from the duplicate, conflicting fields with both values, the chosen one, the strategy and the reason. Low-confidence pairs stay for a person.
 
-**5. CRM of record.** Write-back to HubSpot or Salesforce goes through `crm.update_record` E (approval) only.
+**5. Change, reversibly.** `identity_dq.normalize_records` D (undo with `identity_dq.undo_normalization`), `identity_dq.flag_invalid_records` D, `identity_dq.backfill_domains` D. Merges are proposed: `identity_dq.merge_records {objectType, survivorId, loserId}` E, approved by a different person; it never auto-merges, archives the loser instead of deleting it, and `identity_dq.unmerge_records` E reverses it. A person picks the surviving value of a conflicting field with `identity_dq.revise_merge` (human only; a third person approves the revision, and a field with the manual strategy needs it before approval). Before any automated write onto an existing record, resolve it by id (link-resolve) so you never create a duplicate.
+
+**6. Freshness of enriched values.** `enrichment.freshness` Q is a census of values enrichment wrote: share within their TTL, stale count, average confidence, per field (values a person changed are not counted; fixture fills never). `enrichment.record_freshness {objectType, id}` Q shows, per field of one record, who set it, when it was verified, its TTL and confidence. `enrichment.policy.get` Q lists the TTLs (setting them is human only). `enrichment.refresh_stale {objectType, estimate: true}` D previews re-checking stale values: show the expected cost, get a yes, then run it with `maxUsd` set to the previewed amount. It only touches values enrichment wrote and the record still holds, never a person's value. In dry mode it returns the estimate and looks nothing up.
+
+**7. CRM of record.** Write-back to HubSpot or Salesforce goes through `crm.update_record` E (approval) only. To clean a list before sending, use `gtmos-crm-email-hygiene`.
 
 ## Without GTM OS
 

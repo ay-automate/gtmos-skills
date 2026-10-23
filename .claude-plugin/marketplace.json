@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Agent skills for marketing, SEO and GEO, outbound, leads, ads, CRM and RevOps. They work on their own and run on GTM OS when it is connected.",
-    "version": "0.1.2"
+    "version": "0.2.0"
   },
   "plugins": [
     {
@@ -36,12 +36,23 @@
         "./skills/gtmos-seo-search-console",
         "./skills/gtmos-seo-site-architecture",
         "./skills/gtmos-seo-plan",
+        "./skills/gtmos-seo-competitor-serp-watch",
         "./skills/gtmos-outreach-cold-email",
         "./skills/gtmos-leads-prospecting",
         "./skills/gtmos-leads-inbound-triage",
         "./skills/gtmos-score-icp",
         "./skills/gtmos-routing-lead-ownership",
         "./skills/gtmos-research-account",
+        "./skills/gtmos-leads-buying-committee",
+        "./skills/gtmos-leads-icp-lookalikes",
+        "./skills/gtmos-leads-tech-stack",
+        "./skills/gtmos-signals-hiring",
+        "./skills/gtmos-signals-funding",
+        "./skills/gtmos-signals-job-changes",
+        "./skills/gtmos-signals-account-digest",
+        "./skills/gtmos-outreach-first-lines",
+        "./skills/gtmos-outreach-sequences",
+        "./skills/gtmos-outreach-linkedin",
         "./skills/gtmos-ads-campaigns",
         "./skills/gtmos-ads-creative",
         "./skills/gtmos-revops-lifecycle",
@@ -56,6 +67,7 @@
         "./skills/gtmos-lifecycle-renewal-radar",
         "./skills/gtmos-lifecycle-churn",
         "./skills/gtmos-lifecycle-email",
+        "./skills/gtmos-crm-email-hygiene",
         "./skills/gtmos-analytics-tracking",
         "./skills/gtmos-analytics-attribution",
         "./skills/gtmos-analytics-experiments",
@@ -64,6 +76,7 @@
         "./skills/gtmos-content-copywriting",
         "./skills/gtmos-content-social",
         "./skills/gtmos-content-brand-voice",
+        "./skills/gtmos-content-claims-gate",
         "./skills/gtmos-ops-marketing-loops",
         "./skills/gtmos-setup",
         "./skills/gtmos-onboarding",
@@ -146,6 +159,7 @@
         "./skills/gtmos-seo-search-console",
         "./skills/gtmos-seo-site-architecture",
         "./skills/gtmos-seo-plan",
+        "./skills/gtmos-seo-competitor-serp-watch",
         "./skills/gsc",
         "./skills/looot-google-serp",
         "./skills/looot-domain-keywords",
@@ -156,7 +170,7 @@
     },
     {
       "name": "gtmos-outbound",
-      "description": "GTM OS Skills: Outbound and leads. Cold outreach, prospecting, inbound triage, ICP scoring, routing, account research and the data layer.",
+      "description": "GTM OS Skills: Outbound and leads. Cold outreach, sequences, LinkedIn, prospecting, buying signals, inbound triage, ICP scoring, routing, account research and the data layer.",
       "source": "./",
       "strict": false,
       "skills": [
@@ -166,6 +180,16 @@
         "./skills/gtmos-score-icp",
         "./skills/gtmos-routing-lead-ownership",
         "./skills/gtmos-research-account",
+        "./skills/gtmos-leads-buying-committee",
+        "./skills/gtmos-leads-icp-lookalikes",
+        "./skills/gtmos-leads-tech-stack",
+        "./skills/gtmos-signals-hiring",
+        "./skills/gtmos-signals-funding",
+        "./skills/gtmos-signals-job-changes",
+        "./skills/gtmos-signals-account-digest",
+        "./skills/gtmos-outreach-first-lines",
+        "./skills/gtmos-outreach-sequences",
+        "./skills/gtmos-outreach-linkedin",
         "./skills/gmail",
         "./skills/resend",
         "./skills/unipile",
@@ -220,6 +244,7 @@
         "./skills/gtmos-lifecycle-renewal-radar",
         "./skills/gtmos-lifecycle-churn",
         "./skills/gtmos-lifecycle-email",
+        "./skills/gtmos-crm-email-hygiene",
         "./skills/gtmos-source-mapping",
         "./skills/hubspot",
         "./skills/salesforce",
@@ -248,7 +273,8 @@
         "./skills/gtmos-content-strategy",
         "./skills/gtmos-content-copywriting",
         "./skills/gtmos-content-social",
-        "./skills/gtmos-content-brand-voice"
+        "./skills/gtmos-content-brand-voice",
+        "./skills/gtmos-content-claims-gate"
       ]
     },
     {

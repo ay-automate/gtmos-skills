@@ -3,13 +3,13 @@ name: gtmos-leads-prospecting
 description: Build a verified, scored prospect list from an ICP across B2B SaaS, general B2B, local small business and early demand-signal motions. With GTM OS connected it reads the org's personas, segments and scoring model, quotes the cost first (capability.quote, enrichment estimate), sources companies and people through the governed looot capabilities (find.companies, find.people, find.lookalikes), fills gaps with the empty-only enrichment waterfall, skips suppressed and existing records, and ranks the result with score.list_ranked. Use for "build a prospect list", "find leads", "lead list", "who should we target", "lookalike accounts", "TAM list", "find decision makers", "local business leads", "first customers", "design partners". For writing the outreach see gtmos-outreach-cold-email; for the ICP model itself see gtmos-score-icp.
 license: MIT
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
   category: "outbound"
   upstream: "https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/prospecting"
   upstream_sha: "e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b"
   upstream_license: "MIT; Copyright (c) 2025 Corey Haines"
   merged_from: "https://github.com/apolloio/apollo-mcp-plugin/tree/bd0513c961f02105492fcff0d7d29c9cccf1ed23/skills/prospect"
-  modified: "2026-10-22: rebranded and adapted for GTM OS (GTM OS operating section, cross-references, tool pointers)"
+  modified: "2026-10-22: rebranded and adapted for GTM OS (GTM OS operating section, cross-references, tool pointers); 2026-10-23: quote-then-cap runs, freshness, the gtm-skills workflows"
 ---
 
 # Prospecting and list building
@@ -32,7 +32,7 @@ GTM OS sources lists through its **data-acquisition layer** (looot capabilities 
 | `score.list_ranked {subjectType: "gtm.account"}` | Accounts already in GTM OS and how they rank: start here before buying new data. |
 | `policy.guardrails.get`, `capability.list` | Spend caps, and which capabilities (`find.*`, `enrich.*`) this org has bound. |
 
-**2. Quote before you buy.** `capability.quote {capability: "find.companies", args: {...}}` returns the estimate and whether it sits inside the per-unit ceiling. Show the user the price before any batch. For enrichment use `enrichment.enrich_accounts {estimate: true}` and `enrichment.enrich_contacts {estimate: true}`: no acquire, no spend.
+**2. Quote before you buy.** `capability.quote {capability: "find.companies", args: {...}}` returns the estimate and whether it sits inside the per-unit ceiling. Show the user the price before any batch and run only after a yes for that batch. For enrichment use `enrichment.enrich_accounts {estimate: true}` and `enrichment.enrich_contacts {estimate: true}`: no acquire, no spend. The enrichment runs spend inside their own call, so GTM OS pack agents never get them: a person runs them, or you quote and hand the run over.
 
 **3. Source candidates.** Acquire through the broker with `capability.acquire`:
 - `find.companies` (filters), `find.lookalikes` (seed domains of best customers), `find.people` (titles, seniority, company), `find.person_linkedin`.
@@ -45,7 +45,7 @@ GTM OS sources lists through its **data-acquisition layer** (looot capabilities 
 
 **6. Score and rank.** `score.score_account` / `score.score_contact` score new records against the signed model; `score.rescan_organization` re-scores in bulk. `score.list_ranked` gives band, segment, coverage and top reasons; `score.explain_subject` gives the evidence per lead. Use the engine's band as the Hot/Warm/Cold column, and quote its reasons rather than writing your own.
 
-**7. Hand off.** The ranked list feeds `gtmos-outreach-cold-email` (drafts and approved sends) and `gtmos-routing-lead-ownership` (owners). Building the list writes data (D-class) and needs no approval; contacting anyone does.
+**7. Hand off.** The ranked list feeds `gtmos-outreach-cold-email` (drafts and approved sends) and `gtmos-routing-lead-ownership` (owners). Building the list writes data (D-class) and needs no approval; contacting anyone does. For a specific list job use the matching workflow: `gtmos-leads-icp-lookalikes` (from seed customers), `gtmos-leads-tech-stack` (by detected tools), `gtmos-leads-buying-committee` (people per role), `gtmos-signals-hiring`, `gtmos-signals-funding` and `gtmos-signals-job-changes` (trigger lists). Values you filled go stale: `enrichment.freshness` and `enrichment.refresh_stale` (see `gtmos-crm-data-quality`).
 
 ## Without GTM OS
 

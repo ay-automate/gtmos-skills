@@ -3,13 +3,13 @@ name: gtmos-lifecycle-email
 description: "Plan and write lifecycle email -- welcome, onboarding, nurture, trial conversion, re-engagement and win-back sequences -- with consent, suppression and sending rules respected. With GTM OS connected it builds sequences on the Outreach engine (sequence.create, sequence.enroll) on an active lane, checks consent and suppression, gates copy with brand.check_text and approved proof, and every send is proposed for a person to approve. Use for \"email sequence\", \"drip campaign\", \"nurture sequence\", \"onboarding emails\", \"welcome series\", \"lifecycle email\", \"re-engagement\", \"trial emails\"."
 license: MIT
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
   category: "crm"
   upstream: "https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/emails"
   upstream_sha: "e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b"
   upstream_license: "MIT; Copyright (c) 2025 Corey Haines"
   merged_from: "https://github.com/resend/resend-skills/tree/b2ae7b1798b70134faf679f35fc05b4331462988/skills/email-best-practices"
-  modified: "2026-10-22: rebranded and adapted for GTM OS (GTM OS operating section, cross-references, tool pointers)"
+  modified: "2026-10-22: rebranded and adapted for GTM OS (GTM OS operating section, cross-references, tool pointers); 2026-10-23: step plans (definition.sequence) and step stats"
 ---
 
 # Lifecycle email sequences
@@ -24,9 +24,9 @@ metadata:
 
 **2. Audience.** From a segment (`definition.segment`) or a journey stage (`journey.position`, `journey.funnel`). Enrollment skips anyone suppressed, not contactable or without an email, and reports why.
 
-**3. Build.** `sequence.create {name, goal, lane}` D (draft), `sequence.enroll {sequenceId, contactIds}` D, then `sequence.update {status: "active"}` D once a person agrees; the cadence engine drafts each step for approval. Copy passes `brand.check_text`; proof comes from `proof.list`.
+**3. Build.** Write the steps as a `definition.sequence` (waits in days or business days, a send window in the recipient's time, a template or a brief per step, optional A/B variants, and the exits: reply, unsubscribe, bounce and manual stop always, meeting booked or a stage change by choice); `gtmos-outreach-sequences` covers the format. Propose it with `config.propose_changeset` M; a person signs it before it runs in prod. Then `sequence.create {name, goal, lane, stepsKey}` D (draft), `sequence.enroll {sequenceId, contactIds}` D, and `sequence.update {status: "active"}` D once a person agrees; the cadence engine drafts each step for approval. Copy passes `brand.check_text`; proof comes from `proof.list`.
 
-**4. Sends and results.** Every send is proposed (`outreach.send_message` E) and approved by a different person. Results: `sequence.messages`, `sequence.replies`, `outreach.kpis`; small samples get "not enough data yet". The merged Resend reference covers sending best practice for transactional mail.
+**4. Sends and results.** Every send is proposed (`outreach.send_message` E) and approved by a different person, and checked by the claims gate (`policy.claims.get`). Results: `sequence.messages`, `sequence.replies`, `outreach.kpis`, and `outreach.step_stats` per step and variant; rates are null under 30 sends, so small samples get "not enough data yet". The merged Resend reference covers sending best practice for transactional mail.
 
 ## Without GTM OS
 
