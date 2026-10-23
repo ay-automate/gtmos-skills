@@ -1,6 +1,6 @@
 {
   "name": "gtmos-skills",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "repository": "https://github.com/ay-automate/gtmos-skills",
   "skills": 107,
   "files": [
@@ -556,8 +556,8 @@
     },
     {
       "path": "skills/gtmos-engine-catalog/SKILL.md",
-      "sha256": "502d5ecc64ab1b7c442f342909964fb8c1f25b96caed1929b4475a488a8d8500",
-      "bytes": 19528
+      "sha256": "15988acf8d052b3606ec4de350aff24fc6385d5a83e0375ae1d546f8a7cb360b",
+      "bytes": 19633
     },
     {
       "path": "skills/gtmos-leads-buying-committee/SKILL.md",
@@ -901,8 +901,8 @@
     },
     {
       "path": "skills/gtmos-ops-marketing-loops/SKILL.md",
-      "sha256": "a68414be916bb27480eb4d2b532c4ba0d63ef41d86daf40b4e793984cc5881d8",
-      "bytes": 13939
+      "sha256": "b7e8fc4929939bed5e7bca3f4b5396b4f96ee8fa8f7c15d2aee591e23b34536b",
+      "bytes": 14043
     },
     {
       "path": "skills/gtmos-ops-marketing-loops/references/loop-catalog.md",

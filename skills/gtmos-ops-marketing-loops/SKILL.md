@@ -8,7 +8,7 @@ metadata:
   upstream: "https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/marketing-loops"
   upstream_sha: "e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b"
   upstream_license: "MIT; Copyright (c) 2025 Corey Haines"
-  modified: "2026-10-22: rebranded and adapted for GTM OS (GTM OS operating section, cross-references, tool pointers); 2026-10-23: shipped agent packs and triggers, agent KPIs"
+  modified: "2026-10-22: rebranded and adapted for GTM OS (GTM OS operating section, cross-references, tool pointers); 2026-10-23: shipped agent packs and triggers, agent and play KPIs"
 ---
 
 # Recurring GTM loops as plays
@@ -29,7 +29,7 @@ metadata:
 
 A custom trigger uses `agent.trigger.create {agentPrincipalId, type: "manual" | "schedule" | "event", scheduleCron?, eventObjectType?, eventKind?}` D: a schedule takes a 5-field cron (`*` or a fixed number per field), an event takes an object type and an event kind. A trigger only chooses when a run starts; it can never raise the agent's bounds. Event triggers skip bulk writers (imports, CRM sync, enrichment) unless told otherwise, and fires are capped per hour. Pause with `agent.trigger.update`, stop an agent at once with `agent.kill` M. Proposals land in `runtime.list_approvals` Q for a person.
 
-**5. Watch it.** Dry mode (`policy.get_dry_mode`) stops every effect at a draft. Report each loop's results from its operations, and pause loops that produce nothing useful. `agent.kpis {windowDays}` Q gives runs, success rate, approvals proposed vs approved, actions executed, cost and eval pass rate per agent; a rate is null with a reason under its minimum sample, and runs decided by the demo model are excluded. `policy.shadow_report` Q shows what each engine drafted while dry.
+**5. Watch it.** Dry mode (`policy.get_dry_mode`) stops every effect at a draft. Report each loop's results from its operations, and pause loops that produce nothing useful. `agent.kpis {windowDays}` Q gives runs, success rate, approvals proposed vs approved, actions executed, cost and eval pass rate per agent; a rate is null with a reason under its minimum sample, and runs decided by the demo model are excluded. `plays.kpis` Q gives per-play runs, the funnel by step, outcomes, attributed revenue and cost. `policy.shadow_report` Q shows what each engine drafted while dry.
 
 ## Without GTM OS
 

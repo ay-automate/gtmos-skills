@@ -1,5 +1,5 @@
 {
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Agent skills for marketing, SEO and GEO, outbound, leads, ads, CRM and RevOps. They work on their own and run on GTM OS when it is connected.",
   "categories": [
     { "id": "marketing", "label": "Marketing", "blurb": "Positioning, plans, launches, lead magnets, conversion and customer research." },

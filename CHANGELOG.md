@@ -2,6 +2,10 @@
 
 All notable changes to this repository. Versions follow [Semantic Versioning](https://semver.org/); each release is a git tag with `manifest.json` attached.
 
+## 0.2.1 (2026-10-23)
+
+- `gtmos-engine-catalog` and `gtmos-ops-marketing-loops`: `plays.kpis` (per-play runs, funnel by step, outcomes, attributed revenue, cost), shipped in GTM OS 0.2.5 after 0.2.0 was cut.
+
 ## 0.2.0 (2026-10-23)
 
 107 skills (13 new, 13 updated), checked against the GTM OS 0.2.5 operations.
