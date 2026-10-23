@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 // GTM OS Skills: lint and build. No dependencies; Node 20+.
 //
-//   node scripts/skills.mjs lint     check frontmatter, names, catalog, links, notices, content rules,
-//                                    and that the generated files are current
+//   node scripts/skills.mjs lint     check frontmatter, names, catalog, links, notices, content rules (skills and
+//                                    agents), and that the generated files are current
 //   node scripts/skills.mjs build    regenerate the README index, .claude-plugin/marketplace.json and manifest.json
 //   node scripts/skills.mjs upstream <list|check|diff|import|refresh|scan> ...
 //                                    pinned upstream sources (upstreams.json): see scripts/upstream.mjs and CONTRIBUTING.md
 //
-// manifest.json lists every file `gtm init` installs (skills/**, THIRD-PARTY-NOTICES.md, licenses/**) with its
-// sha-256. The CLI pins the manifest's own sha-256 and refuses any file that does not match it.
+// manifest.json lists every file `gtm init` installs (skills/**, agents/**, THIRD-PARTY-NOTICES.md, licenses/**)
+// with its sha-256. The CLI pins the manifest's own sha-256 and refuses any file that does not match it.
 
 import { createHash } from "node:crypto";
 import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
@@ -80,6 +80,14 @@ function loadCatalog() {
   return JSON.parse(read(CATALOG_PATH));
 }
 
+/** 0.3.0: the subagents, one markdown file per agent under agents/. */
+const agentFiles = () =>
+  existsSync(join(ROOT, "agents"))
+    ? readdirSync(join(ROOT, "agents"))
+        .filter((f) => f.endsWith(".md"))
+        .sort()
+    : [];
+
 const skillDirs = () =>
   readdirSync(join(ROOT, "skills"))
     .filter((d) => statSync(join(ROOT, "skills", d)).isDirectory())
@@ -87,7 +95,8 @@ const skillDirs = () =>
 
 /** Files `gtm init` installs, in a stable order. */
 function installedFiles() {
-  return [...walk(join(ROOT, "skills")), join(ROOT, NOTICES), ...walk(join(ROOT, "licenses"))].map(rel).sort();
+  const agents = existsSync(join(ROOT, "agents")) ? walk(join(ROOT, "agents")) : [];
+  return [...walk(join(ROOT, "skills")), ...agents, join(ROOT, NOTICES), ...walk(join(ROOT, "licenses"))].map(rel).sort();
 }
 
 function repoOf(url) {
@@ -104,6 +113,23 @@ function renderIndex(catalog) {
     for (const s of skills) {
       const fm = parseFrontmatter(read(join(ROOT, "skills", s.name, "SKILL.md")));
       out.push(`| [\`${s.name}\`](skills/${s.name}/SKILL.md) | ${s.summary} | ${sourceLabel(s, fm)} |`);
+    }
+    out.push("");
+  }
+  const agents = catalog.agents ?? [];
+  if (agents.length) {
+    const label = new Map(catalog.categories.map((c) => [c.id, c.label]));
+    out.push(
+      `### Subagents (${agents.length})`,
+      "",
+      "Claude Code subagents (also installed as Codex custom agents) that run one GTM role on GTM OS. They propose and never approve, quote before they spend, and name the steps only a person may take.",
+      "",
+      "| Agent | What it does | Area | Source |",
+      "|---|---|---|---|",
+    );
+    for (const a of agents) {
+      const fm = parseFrontmatter(read(join(ROOT, "agents", `${a.name}.md`)));
+      out.push(`| [\`${a.name}\`](agents/${a.name}.md) | ${a.summary} | ${label.get(a.category) ?? a.category} | ${sourceLabel(a, fm)} |`);
     }
     out.push("");
   }
@@ -125,12 +151,22 @@ function renderMarketplace(catalog) {
     strict: false,
     skills: catalog.skills.filter((s) => s.category === cat.id).map((s) => `./skills/${s.name}`),
   }));
+  const agents = (catalog.agents ?? []).map((a) => `./agents/${a.name}.md`);
+  if (agents.length)
+    plugins.push({
+      name: "gtmos-subagents",
+      description: "GTM OS subagents: GTM operator, RevOps analyst, deal reviewer, sales researcher, content strategist, SEO refresher, customer success manager, competitive analyst, ads analyst, data steward and eval reviewer.",
+      source: "./",
+      strict: false,
+      agents,
+    });
   plugins.unshift({
     name: "gtmos-all",
-    description: "Every GTM OS skill: marketing, SEO and GEO, outbound and leads, ads, CRM and RevOps, analytics, content, agents and ops.",
+    description: "Every GTM OS skill and subagent: marketing, SEO and GEO, outbound and leads, ads, CRM and RevOps, analytics, content, agents and ops.",
     source: "./",
     strict: false,
     skills: catalog.skills.map((s) => `./skills/${s.name}`),
+    ...(agents.length ? { agents } : {}),
   });
   return (
     JSON.stringify(
@@ -151,7 +187,7 @@ function renderManifest(catalog) {
     const buf = readFileSync(join(ROOT, path));
     return { path, sha256: sha256(buf), bytes: buf.length };
   });
-  return JSON.stringify({ name: "gtmos-skills", version: catalog.version, repository: "https://github.com/ay-automate/gtmos-skills", skills: catalog.skills.length, files }, null, 2) + "\n";
+  return JSON.stringify({ name: "gtmos-skills", version: catalog.version, repository: "https://github.com/ay-automate/gtmos-skills", skills: catalog.skills.length, agents: (catalog.agents ?? []).length, files }, null, 2) + "\n";
 }
 
 const INDEX_START = "<!-- skills-index:start -->";
@@ -163,6 +199,7 @@ function renderReadme(catalog, readme) {
   if (a < 0 || b < a) throw new Error("README.md is missing the skills-index markers");
   let out = readme.slice(0, a + INDEX_START.length) + "\n\n" + renderIndex(catalog) + "\n\n" + readme.slice(b);
   out = out.replace(/<!-- skills-count -->\d*<!-- \/skills-count -->/g, `<!-- skills-count -->${catalog.skills.length}<!-- /skills-count -->`);
+  out = out.replace(/<!-- agents-count -->\d*<!-- \/agents-count -->/g, `<!-- agents-count -->${(catalog.agents ?? []).length}<!-- /agents-count -->`);
   return out;
 }
 
@@ -255,6 +292,59 @@ function lint() {
     }
   }
 
+  // 0.3.0: the subagents. Each is a Claude Code subagent file (name, description, tools, model) adapted from a
+  // licence-checked upstream, with the GTM OS operating section, the shared rules link and its human-only operations.
+  const agentsListed = new Map((catalog.agents ?? []).map((a) => [a.name, a]));
+  if (agentsListed.size !== (catalog.agents ?? []).length) err("catalog.json", "duplicate agent names");
+  const files = agentFiles();
+  for (const f of files) if (!agentsListed.has(f.replace(/\.md$/, ""))) err(`agents/${f}`, "not listed in catalog.json (agents)");
+  for (const a of catalog.agents ?? []) {
+    if (!files.includes(`${a.name}.md`)) err("catalog.json", `agent ${a.name} has no agents/${a.name}.md`);
+    if (!cats.has(a.category)) err("catalog.json", `agent ${a.name}: unknown category ${a.category}`);
+    if (a.origin !== "adapted") err("catalog.json", `agent ${a.name}: agents are adapted from an upstream (origin "adapted")`);
+    if (!a.summary || a.summary.length > 160) err("catalog.json", `agent ${a.name}: summary missing or longer than 160 characters`);
+  }
+  for (const f of files) {
+    const where = `agents/${f}`;
+    const md = read(join(ROOT, "agents", f));
+    if (md.includes("\r")) err(where, "CRLF line endings (use LF)");
+    let fm;
+    try {
+      fm = parseFrontmatter(md);
+    } catch (e) {
+      err(where, `frontmatter: ${e.message}`);
+      continue;
+    }
+    if (!fm) {
+      err(where, "no YAML frontmatter");
+      continue;
+    }
+    const name = f.replace(/\.md$/, "");
+    if (fm.name !== name) err(where, `name "${fm.name}" does not match the file name`);
+    if (!NAME_RE.test(name) || name.length > 64) err(where, "name must be lowercase words joined by hyphens, at most 64 characters");
+    if (dirs.includes(name)) err(where, `an agent and a skill share the name ${name}`);
+    if (typeof fm.description !== "string" || !fm.description.trim()) err(where, "description missing");
+    else if (fm.description.length > MAX_DESCRIPTION) err(where, `description is ${fm.description.length} characters (max ${MAX_DESCRIPTION})`);
+    if (typeof fm.tools !== "string" || !fm.tools.includes("mcp__gtmos__gtm_describe")) err(where, "tools must list the GTM OS MCP tools (mcp__gtmos__gtm_describe, ...)");
+    if (!fm.model) err(where, "model is required (inherit, sonnet, opus or haiku)");
+    if (!fm.license) err(where, "license is required");
+    const meta = fm.metadata ?? {};
+    for (const k of ["upstream", "upstream_sha", "upstream_license", "modified"]) if (!meta[k]) err(where, `metadata.${k} is required for an agent`);
+    if (meta.category && agentsListed.get(name) && meta.category !== agentsListed.get(name).category) err(where, `metadata.category ${meta.category} differs from catalog.json`);
+    for (const u of [meta.upstream, ...(meta.merged_from ? meta.merged_from.split(" | ") : [])].filter(Boolean)) {
+      const repo = repoOf(u);
+      if (!repo) err(where, `upstream URL not understood: ${u}`);
+      else if (!notices.includes(`https://github.com/${repo}`)) err(where, `${repo} is not recorded in ${NOTICES}`);
+      if (meta.upstream_sha && u === meta.upstream && !u.includes(meta.upstream_sha)) err(where, "metadata.upstream must be pinned to metadata.upstream_sha");
+    }
+    if (!/Adapted from \[/.test(md)) err(where, "the attribution line (\"Adapted from [...]\") is missing");
+    if (!/^## With GTM OS connected$/m.test(md)) err(where, "missing the \"## With GTM OS connected\" section");
+    if (!/^## Without GTM OS$/m.test(md)) err(where, "missing the \"## Without GTM OS\" section");
+    if (!md.includes("](../skills/GTMOS-RULES.md)")) err(where, "the GTM OS section must link the shared rules (../skills/GTMOS-RULES.md)");
+    if (!/^\*\*Human-only\.\*\* .*`[a-z_]+\.[a-z_.]+`/m.test(md)) err(where, "name the human-only operations (a \"**Human-only.**\" line)");
+    if (!/never approve/i.test(md)) err(where, "say that the agent never approves (propose, never self-approve)");
+  }
+
   // Every markdown file: relative links resolve, and nothing forbidden.
   const mdFiles = walk(ROOT).filter((p) => p.endsWith(".md") && !rel(p).startsWith(".git/") && !rel(p).startsWith("node_modules/"));
   for (const p of mdFiles) {
@@ -282,7 +372,7 @@ function lint() {
       // reported above
     }
   }
-  lintUpstreams(ROOT, catalog, skillMeta, err);
+  lintUpstreams(ROOT, catalog, skillMeta, err, agentMetaMap());
 
   // Spend inline: rule 8 of GTMOS-RULES.md lists the operations the GTM OS registry flags spendsInline (the gtm CLI's
   // drift test compares that list with the registry). Every line of a skill's GTM OS section that names one says so.
@@ -304,6 +394,18 @@ function lint() {
       }
     }
   }
+  // The same for every agent, over its whole GTM OS text (everything before the upstream excerpts).
+  for (const f of files) {
+    const md = read(join(ROOT, "agents", f));
+    const a = md.indexOf("## With GTM OS connected");
+    const b = md.indexOf("\n> The method below is upstream text");
+    for (const line of md.slice(Math.max(a, 0), b > a ? b : md.length).split("\n")) {
+      if (line.startsWith("> **Rules")) continue;
+      for (const op of spendOps)
+        if (new RegExp("`" + op.replace(/\./g, "\\.") + "(?![a-z_.])").test(line) && !/spends inline/i.test(line))
+          err(`agents/${f}`, `\`${op}\` spends inside its own call: mark the line *spends inline* (quote first)`);
+    }
+  }
   for (const u of loadUpstreams(ROOT).upstreams) if (!notices.includes(`https://github.com/${u.repo}`)) err(NOTICES, `${u.repo} (upstreams.json) is not recorded`);
 
   // Notices: every licence file named in a notice exists.
@@ -320,7 +422,7 @@ function lint() {
     console.error(`\n${errors.length} problem(s).`);
     process.exit(1);
   }
-  console.log(`ok: ${dirs.length} skills, ${mdFiles.length} markdown files, ${installedFiles().length} installed files.`);
+  console.log(`ok: ${dirs.length} skills, ${files.length} agents, ${mdFiles.length} markdown files, ${installedFiles().length} installed files.`);
 }
 
 function build() {
@@ -329,7 +431,7 @@ function build() {
   // The manifest hashes the installed files, so it is written last.
   writeFileSync(join(ROOT, "manifest.json"), renderManifest(catalog));
   const m = JSON.parse(read(join(ROOT, "manifest.json")));
-  console.log(`built: README index, marketplace (${catalog.categories.length + 1} plugins), manifest (${m.files.length} files, sha256 ${sha256(readFileSync(join(ROOT, "manifest.json")))})`);
+  console.log(`built: README index, marketplace (${JSON.parse(read(join(ROOT, ".claude-plugin", "marketplace.json"))).plugins.length} plugins), manifest (${m.files.length} files, sha256 ${sha256(readFileSync(join(ROOT, "manifest.json")))})`);
 }
 
 function flag(name) {
@@ -342,6 +444,20 @@ function skillMetaMap() {
   for (const d of skillDirs()) {
     const fm = parseFrontmatter(read(join(ROOT, "skills", d, "SKILL.md")));
     if (fm) m.set(d, fm.metadata ?? {});
+  }
+  return m;
+}
+
+/** Each agent's frontmatter metadata (upstream, merged_from, ...), keyed by agent name. */
+function agentMetaMap() {
+  const m = new Map();
+  for (const f of agentFiles()) {
+    try {
+      const fm = parseFrontmatter(read(join(ROOT, "agents", f)));
+      if (fm) m.set(f.replace(/\.md$/, ""), fm.metadata ?? {});
+    } catch {
+      // reported by lint
+    }
   }
   return m;
 }
@@ -385,7 +501,7 @@ function upstream() {
     if (r.unchanged) console.log(`${id} is already at that commit`);
     else console.log(`${id}: ${r.from.slice(0, 8)} -> ${r.to.slice(0, 8)}; touched ${r.touched.length} file(s):\n  ${r.touched.join("\n  ")}\nNow: update CHANGELOG.md, node scripts/skills.mjs build, node scripts/skills.mjs lint`);
   } else if (sub === "scan") {
-    for (const line of scanAdapted(ROOT, skillMetaMap())) console.log(line);
+    for (const line of scanAdapted(ROOT, skillMetaMap(), agentMetaMap())) console.log(line);
   } else {
     console.error("usage: node scripts/skills.mjs upstream <list|check [id]|diff <id>|import <id> --repo o/r --sha <commit> --mode vendored|adapted --paths a,b [--to dir] [--license SPDX] [--skills s1,s2]|refresh <id> [--sha <commit>] [--reviewed]|scan>");
     process.exit(2);

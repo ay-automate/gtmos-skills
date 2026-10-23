@@ -20,10 +20,34 @@
           ]
         },
         {
+          "path": "bulk-operations/SKILL.md",
+          "oid": "c37924f5af2658cc67a9a4b8a44b8928d4612a34",
+          "skills": [],
+          "agents": [
+            "data-steward"
+          ]
+        },
+        {
           "path": "crm-data-quality",
           "oid": "39ded8a82d15dbd94ac190de2c8055bf557d1057",
           "skills": [
             "gtmos-crm-data-quality"
+          ]
+        },
+        {
+          "path": "crm-data-quality/SKILL.md",
+          "oid": "06dea88d9fc31938f14688cb7963bbb83dbe523f",
+          "skills": [],
+          "agents": [
+            "data-steward"
+          ]
+        },
+        {
+          "path": "deal-management/SKILL.md",
+          "oid": "bef56919a89ce7a58e48fe04be5da284c948ae97",
+          "skills": [],
+          "agents": [
+            "deal-reviewer"
           ]
         },
         {
@@ -59,6 +83,130 @@
           "oid": "59932238dedc64da52370361a205c7f37a3b51aa",
           "skills": [
             "gtmos-leads-prospecting"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "awesome-claude-code-subagents",
+      "repo": "VoltAgent/awesome-claude-code-subagents",
+      "sha": "408d3c9eee2d0c75c12a3abb5de29e53c2ca6b9e",
+      "mode": "adapted",
+      "license": {
+        "spdx": "MIT",
+        "path": "LICENSE",
+        "oid": "d0d77b4b2054f2e2ac448150dc1ac6acc4112281",
+        "file": "licenses/MIT-VoltAgent-awesome-claude-code-subagents.txt"
+      },
+      "paths": [
+        {
+          "path": "categories/08-business-product/customer-success-manager.md",
+          "oid": "004b0dd557ad2d92c1f399df245c6afccfd283f8",
+          "skills": [],
+          "agents": [
+            "customer-success-manager"
+          ]
+        },
+        {
+          "path": "categories/08-business-product/sales-engineer.md",
+          "oid": "91a6177c589ed309a6d9eb96d665190f55f4fc9f",
+          "skills": [],
+          "agents": [
+            "deal-reviewer"
+          ]
+        },
+        {
+          "path": "categories/10-research-analysis/ab-test-analysis.md",
+          "oid": "1b6a450bf43503b3e542aaec09b25c8b37f85ef9",
+          "skills": [],
+          "agents": [
+            "revops-analyst"
+          ]
+        },
+        {
+          "path": "categories/10-research-analysis/cohort-analysis.md",
+          "oid": "296551e78d62e0c963cb732a1ef908f6fafdbaa9",
+          "skills": [],
+          "agents": [
+            "revops-analyst"
+          ]
+        },
+        {
+          "path": "categories/10-research-analysis/competitive-analyst.md",
+          "oid": "9f8998317d22a8048288c2c2d06eb323e0fe6add",
+          "skills": [],
+          "agents": [
+            "competitive-analyst"
+          ]
+        },
+        {
+          "path": "categories/10-research-analysis/market-researcher.md",
+          "oid": "024cb9280d8ba894856f8c5522e94a41895b43d5",
+          "skills": [],
+          "agents": [
+            "competitive-analyst"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "claude-cookbooks",
+      "repo": "anthropics/claude-cookbooks",
+      "sha": "a162e0184e71b60290808a43961a6cbc8060123c",
+      "mode": "adapted",
+      "license": {
+        "spdx": "MIT",
+        "path": "LICENSE",
+        "oid": "e0d914d8c81feba1a081620902f8c4877ad6313d",
+        "file": "licenses/MIT-anthropics-claude-cookbooks.txt"
+      },
+      "paths": [
+        {
+          "path": "claude_agent_sdk/chief_of_staff_agent/.claude/agents/financial-analyst.md",
+          "oid": "2bb3511e4afab6629ddf451c50d4cedd1698f424",
+          "skills": [],
+          "agents": [
+            "gtm-operator"
+          ]
+        },
+        {
+          "path": "claude_agent_sdk/chief_of_staff_agent/.claude/commands/budget-impact.md",
+          "oid": "dacce2169a266c21d7d0aa8b1b4d0c8ab62ed9b7",
+          "skills": [],
+          "agents": [
+            "gtm-operator"
+          ]
+        },
+        {
+          "path": "claude_agent_sdk/chief_of_staff_agent/.claude/commands/strategic-brief.md",
+          "oid": "f9b123fc85a70f52879a28db539fc41e9129b083",
+          "skills": [],
+          "agents": [
+            "gtm-operator"
+          ]
+        },
+        {
+          "path": "patterns/agents/evaluator_optimizer.ipynb",
+          "oid": "21115d50207d3746ba8981da139a83b955b776a0",
+          "skills": [],
+          "agents": [
+            "eval-reviewer"
+          ]
+        },
+        {
+          "path": "patterns/agents/prompts/citations_agent.md",
+          "oid": "7e521079128193459aa458ff8dd34db54b6e2b0b",
+          "skills": [],
+          "agents": [
+            "sales-researcher"
+          ]
+        },
+        {
+          "path": "patterns/agents/prompts/research_subagent.md",
+          "oid": "9cb7225b844cc346a6024fc11957bd409b3de973",
+          "skills": [],
+          "agents": [
+            "sales-researcher"
           ]
         }
       ]
@@ -405,6 +553,22 @@
           ]
         },
         {
+          "path": "HubSpot-Partner/skills/renewal-radar/SKILL.md",
+          "oid": "f59485117c8922567b0d136c4dc23291b9a308fd",
+          "skills": [],
+          "agents": [
+            "customer-success-manager"
+          ]
+        },
+        {
+          "path": "HubSpot-Sales/agents/account-research.md",
+          "oid": "b6f94c73b6b1845d32d386d0cb22112386219486",
+          "skills": [],
+          "agents": [
+            "sales-researcher"
+          ]
+        },
+        {
           "path": "HubSpot-Sales/skills/call-prep",
           "oid": "2f9be6cd6dd645e64b8f53844e9593149da3158e",
           "skills": [
@@ -423,6 +587,14 @@
           "oid": "0bd015fb980838d062127ba970cee0cccd8a44b8",
           "skills": [
             "gtmos-crm-pipeline-review"
+          ]
+        },
+        {
+          "path": "HubSpot-Sales/skills/pipeline-pulse/SKILL.md",
+          "oid": "546684dbbfa6f13a835710e82a61edfd70b256db",
+          "skills": [],
+          "agents": [
+            "deal-reviewer"
           ]
         }
       ]
@@ -712,6 +884,14 @@
           "oid": "33357d9ba0e4f7176dd1625e8ca8c35f210e1509",
           "skills": [
             "gtmos-ads-campaigns"
+          ]
+        },
+        {
+          "path": "skills/ads/SKILL.md",
+          "oid": "3ce3480e82685a359424d8131d4e331a981b1b36",
+          "skills": [],
+          "agents": [
+            "ads-analyst"
           ]
         },
         {
@@ -1062,6 +1242,84 @@
           "oid": "0dd3aedeaa8a41772c1788e2795306687b8b5106",
           "skills": [
             "gtmos-seo-keyword-clusters"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wshobson-agents",
+      "repo": "wshobson/agents",
+      "sha": "0874a27b17a22e2b7c2e2bcd725768e0803cad06",
+      "mode": "adapted",
+      "license": {
+        "spdx": "MIT",
+        "path": "LICENSE",
+        "oid": "326f0a55c96e672fedf9d807ca043c00df05ba0e",
+        "file": "licenses/MIT-wshobson-agents.txt"
+      },
+      "paths": [
+        {
+          "path": "plugins/business-analytics/agents/business-analyst.md",
+          "oid": "23f3398c904ed7f2c534482393bcb5e990fdee9a",
+          "skills": [],
+          "agents": [
+            "revops-analyst"
+          ]
+        },
+        {
+          "path": "plugins/business-analytics/skills/kpi-dashboard-design/SKILL.md",
+          "oid": "a7cbffcb06c4202ddba028946ab6cade3f662e71",
+          "skills": [],
+          "agents": [
+            "revops-analyst"
+          ]
+        },
+        {
+          "path": "plugins/content-marketing/agents/content-marketer.md",
+          "oid": "60af65e1d74303b965587f7d43ed7beb53e84d84",
+          "skills": [],
+          "agents": [
+            "content-strategist"
+          ]
+        },
+        {
+          "path": "plugins/seo-analysis-monitoring/agents/seo-cannibalization-detector.md",
+          "oid": "9929788b3d33599d4f721784d801982031c847eb",
+          "skills": [],
+          "agents": [
+            "seo-refresher"
+          ]
+        },
+        {
+          "path": "plugins/seo-analysis-monitoring/agents/seo-content-refresher.md",
+          "oid": "364c2046f3c8999e0da3709292bcd6ba1e6793d5",
+          "skills": [],
+          "agents": [
+            "seo-refresher"
+          ]
+        },
+        {
+          "path": "plugins/seo-content-creation/agents/seo-content-planner.md",
+          "oid": "a1dd8224784fb4c42c4b346fa18fd299e5489a07",
+          "skills": [],
+          "agents": [
+            "content-strategist"
+          ]
+        },
+        {
+          "path": "plugins/seo-technical-optimization/agents/seo-keyword-strategist.md",
+          "oid": "cef7bb178b93586f306a3e508ea808c8951d4f03",
+          "skills": [],
+          "agents": [
+            "content-strategist"
+          ]
+        },
+        {
+          "path": "plugins/seo-technical-optimization/agents/seo-meta-optimizer.md",
+          "oid": "7f38e06df7c0d95ecb7bded1e870c4877798b5fa",
+          "skills": [],
+          "agents": [
+            "seo-refresher"
           ]
         }
       ]

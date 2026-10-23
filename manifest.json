@@ -1,13 +1,69 @@
 {
   "name": "gtmos-skills",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "repository": "https://github.com/ay-automate/gtmos-skills",
   "skills": 107,
+  "agents": 11,
   "files": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
-      "sha256": "bc90775e41976ba938e1ab1437bed8a1c24ab52722f987b64243dd38dbf87bef",
-      "bytes": 26599
+      "sha256": "e6cac477812f363954f8710b72ff1f96ef4be5b5db7e3dcd35b55bebfb28eee6",
+      "bytes": 30572
+    },
+    {
+      "path": "agents/ads-analyst.md",
+      "sha256": "8035b83c70b65c6664744ee62c9f7c7cc55e80f5eede768663b30a496a9090cf",
+      "bytes": 11135
+    },
+    {
+      "path": "agents/competitive-analyst.md",
+      "sha256": "f6776e2cfafee98cbef72dacde65215fbf4d31c6300a2644bc7b16981714f1fe",
+      "bytes": 10801
+    },
+    {
+      "path": "agents/content-strategist.md",
+      "sha256": "c787683c673f85a63cd4f5c2c0c83790a0296aa3cc87090621b429286a43989d",
+      "bytes": 12678
+    },
+    {
+      "path": "agents/customer-success-manager.md",
+      "sha256": "3ad4eb67a08311636a584bd3dad1b7f0196a7b53578a8e2c1606827cc3763d3a",
+      "bytes": 11973
+    },
+    {
+      "path": "agents/data-steward.md",
+      "sha256": "a76e4be7acc4ad62a4fcb850ec322310f1980edf4086b0194ba3e7ce4fe1a83a",
+      "bytes": 10640
+    },
+    {
+      "path": "agents/deal-reviewer.md",
+      "sha256": "4827ba08644ad29046bbbda3550fe1b0a4515f82a560a121263de8cfe1cfbb66",
+      "bytes": 13682
+    },
+    {
+      "path": "agents/eval-reviewer.md",
+      "sha256": "4d31698c10ca6701b7b146e1999fc527e79d501e6e533411f5cbf73ec21a5be6",
+      "bytes": 7027
+    },
+    {
+      "path": "agents/gtm-operator.md",
+      "sha256": "fb5625fd45875fa2058273dd80c437e5cec795406ac71f55c6d8dda4fbb2b443",
+      "bytes": 10403
+    },
+    {
+      "path": "agents/revops-analyst.md",
+      "sha256": "fac3d5d1f2d5d68d5cbd0ddbd9041b60d203de31ae47c456fd915923d3cef62c",
+      "bytes": 14694
+    },
+    {
+      "path": "agents/sales-researcher.md",
+      "sha256": "b12ab10382d714eff8bd618d1061dce07478c29e1a146830bbec78956124fc61",
+      "bytes": 16986
+    },
+    {
+      "path": "agents/seo-refresher.md",
+      "sha256": "978dd4f7956022f3d2969e62c4d1b5187db8b0ca44cc3b5c4765aceff2b4d60a",
+      "bytes": 13951
     },
     {
       "path": "licenses/Apache-2.0-HubSpot-agent-cli-skills.txt",
@@ -43,6 +99,16 @@
       "path": "licenses/MIT-Jakeschincariol-linkedin-agent-skill.txt",
       "sha256": "857c8d5276809c8196b3cd7cb3300324768bfc562b2b6281b06d6865058e186c",
       "bytes": 1073
+    },
+    {
+      "path": "licenses/MIT-VoltAgent-awesome-claude-code-subagents.txt",
+      "sha256": "8ed27772f4430d6e3815599b849c1b6e59088671133ef67e9b1be4acef2b75da",
+      "bytes": 1065
+    },
+    {
+      "path": "licenses/MIT-anthropics-claude-cookbooks.txt",
+      "sha256": "d7a04bf11ce24a7b79cd44b4a78dcc9971eaeb3b565821de437e0ecb7723e634",
+      "bytes": 1065
     },
     {
       "path": "licenses/MIT-apolloio-apollo-mcp-plugin.txt",
@@ -83,6 +149,11 @@
       "path": "licenses/MIT-seranking-seo-skills.txt",
       "sha256": "be37f39e84329222181a6d75c84b73a514e691d52da9741db864e057ce8e3eee",
       "bytes": 1067
+    },
+    {
+      "path": "licenses/MIT-wshobson-agents.txt",
+      "sha256": "f89abb55d9f073f38f1703e4518f0613c788c6174be7f13b8dfe48a1c076c746",
+      "bytes": 1068
     },
     {
       "path": "licenses/MIT-zapier-gtm-cheat-codes.txt",

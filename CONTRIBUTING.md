@@ -23,12 +23,23 @@ node scripts/skills.mjs lint
 
 CI runs the same lint on every pull request.
 
+### Subagents
+
+A subagent is one file, `agents/<name>.md`, listed under `agents` in `catalog.json`. Copy it from a licence-checked upstream agent (never write one from scratch) and keep the upstream text as excerpts at the end. Lint checks that it has:
+
+- the Claude Code frontmatter (`name` equal to the file name, `description`, `tools` with the GTM OS MCP tools, `model`), plus `license` and `metadata.upstream`, `upstream_sha`, `upstream_license`, `modified` (and `merged_from` for more than one source), each repository recorded in THIRD-PARTY-NOTICES.md and `upstreams.json` at the same commit;
+- the attribution line, the *With GTM OS connected* and *Without GTM OS* sections and the link to `../skills/GTMOS-RULES.md`;
+- a `**Human-only.**` line naming the operations only a person runs, and the rule that it never approves;
+- *spends inline* on every line naming an operation from rule 8.
+
+`gtm init` installs the same file into `.claude/agents/` and `.agents/agents/`, and writes a Codex custom agent (`.codex/agents/<name>.toml`) from it.
+
 ## Upstream sources
 
 `upstreams.json` records every repository a skill here comes from, pinned to one commit, with its licence file and the paths used. Two kinds:
 
 - **vendored**: files copied verbatim (the `looot-*` skills). Each file's sha-256 is recorded; lint fails if one is edited here. Put a change in a `gtmos-*` skill instead.
-- **adapted**: the upstream paths a `gtmos-*` skill was adapted from, with their git object id at the pin. The skill's own frontmatter must name the same commit.
+- **adapted**: the upstream paths a `gtmos-*` skill or a subagent was adapted from, with their git object id at the pin (and which skills and agents use each). The skill's or agent's own frontmatter must name the same commit.
 
 The commands (git is the only network tool they use; temp folders are always removed):
 

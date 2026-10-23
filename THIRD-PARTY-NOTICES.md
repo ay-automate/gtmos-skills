@@ -1,12 +1,12 @@
 # Third-party notices
 
-GTM OS Skills is MIT-licensed (see [LICENSE](LICENSE)) for the content written by AY Automate. Many skills are adapted from, or copy, skills published by others. Their licences and copyright notices are kept here and in [licenses/](licenses/), and every adapted skill names its source, the pinned commit and its licence in its frontmatter (`metadata.upstream`, `metadata.upstream_sha`, `metadata.upstream_license`) and in its attribution line.
+GTM OS Skills is MIT-licensed (see [LICENSE](LICENSE)) for the content written by AY Automate. Many skills and every subagent are adapted from, or copy, skills and agents published by others. Their licences and copyright notices are kept here and in [licenses/](licenses/), and every adapted skill names its source, the pinned commit and its licence in its frontmatter (`metadata.upstream`, `metadata.upstream_sha`, `metadata.upstream_license`) and in its attribution line.
 
 - **MIT** sources: the copyright notice and permission notice are reproduced in `licenses/`. Adapted skills state what changed.
 - **Apache-2.0** sources: the licence text is in `licenses/`, any NOTICE file is carried (`licenses/NOTICE-*.txt`), and each adapted file states that it was modified. Files under a skill's `references/` that come from an Apache-2.0 source are unchanged apart from the removed frontmatter, which their header states.
 - Sources without a licence, or with a licence that does not allow copying, are **reference only**: they are linked here and were not copied.
 
-Every repository below was checked on 2026-10-22 with the GitHub API (licence as reported by GitHub, default-branch commit at that time); the sources added in 0.2.0 were checked on 2026-10-23. `upstreams.json` records each pin, its licence file and the paths used; `node scripts/skills.mjs upstream check` compares them with upstream (see CONTRIBUTING.md).
+Every repository below was checked on 2026-10-22 with the GitHub API (licence as reported by GitHub, default-branch commit at that time); the sources added in 0.2.0 were checked on 2026-10-23, and those added in 0.3.0 for the subagents on 2026-10-24. `upstreams.json` records each pin, its licence file and the paths used; `node scripts/skills.mjs upstream check` compares them with upstream (see CONTRIBUTING.md).
 
 ## Provider sweep
 
@@ -56,6 +56,10 @@ Every repository below was checked on 2026-10-22 with the GitHub API (licence as
 |  | Zoom | [zoom/skills](https://github.com/zoom/skills) | [`9a18f14b`](https://github.com/zoom/skills/tree/9a18f14b5cebd3aa022ef1565e1dbdc5d315b193) | MIT | reference only | Zoom SDK and API developer skills |
 | CMS | Webflow | [webflow/webflow-skills](https://github.com/webflow/webflow-skills) | [`75af2b73`](https://github.com/webflow/webflow-skills/tree/75af2b737f58ceeb290dfe72703045c312cf0b94) | MIT | reference only | CMS and site skills; candidates once GTM OS publishes to Webflow |
 |  | WordPress | [WordPress/agent-skills](https://github.com/WordPress/agent-skills) | [`eff3785f`](https://github.com/WordPress/agent-skills/tree/eff3785fc28c4380d172094518c66a6a997c95d4) | NOASSERTION | reference only | licence not asserted (NOASSERTION) |
+| Agents (0.3.0) | Seth Hobson | [wshobson/agents](https://github.com/wshobson/agents) | [`0874a27b`](https://github.com/wshobson/agents/tree/0874a27b17a22e2b7c2e2bcd725768e0803cad06) | MIT | included | 8 agent and skill files excerpted into 3 GTM OS subagents |
+|  | VoltAgent | [VoltAgent/awesome-claude-code-subagents](https://github.com/VoltAgent/awesome-claude-code-subagents) | [`408d3c9e`](https://github.com/VoltAgent/awesome-claude-code-subagents/tree/408d3c9eee2d0c75c12a3abb5de29e53c2ca6b9e) | MIT | included | 6 subagents excerpted into 4 GTM OS subagents |
+|  | Anthropic | [anthropics/claude-cookbooks](https://github.com/anthropics/claude-cookbooks) | [`a162e018`](https://github.com/anthropics/claude-cookbooks/tree/a162e0184e71b60290808a43961a6cbc8060123c) | MIT | included | the chief-of-staff agent pattern, research and citation prompts and the evaluator-optimizer pattern, excerpted into 3 GTM OS subagents |
+|  | Anthropic | [anthropics/claude-agent-sdk-demos](https://github.com/anthropics/claude-agent-sdk-demos) | | none | reference only | no licence published |
 | Models and workflow tools | Anthropic | [anthropics/skills](https://github.com/anthropics/skills) | [`dbd4588f`](https://github.com/anthropics/skills/tree/dbd4588f9e1033efb41dad4bef2f7947c8993d44) | per skill (see notes) | reference only | no repository-wide licence; each skill carries its own LICENSE.txt (brand-guidelines and skill-creator are Apache-2.0, the document skills are proprietary). None covers a GTM job; used as the skill format reference |
 |  | OpenAI | [openai/skills](https://github.com/openai/skills) | [`49f948fa`](https://github.com/openai/skills/tree/49f948faa9258a0c61caceaf225e179651397431) | per skill (see notes) | reference only | no repository-wide licence; each curated skill carries its own LICENSE.txt (Apache-2.0 for those checked). They are developer and tooling skills with no GTM job |
 |  | OpenRouter | [OpenRouterTeam/skills](https://github.com/OpenRouterTeam/skills) | [`33597a44`](https://github.com/OpenRouterTeam/skills/tree/33597a44e38b0cdc38ea1256ef8bcf50c2704e3d) | none | reference only | no licence published |
@@ -71,7 +75,7 @@ Every repository below was checked on 2026-10-22 with the GitHub API (licence as
 
 - Upstream: https://github.com/coreyhaines31/marketingskills at [`e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b`](https://github.com/coreyhaines31/marketingskills/tree/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b)
 - Licence: MIT. Copyright (c) 2025 Corey Haines. Full text: [licenses/MIT-coreyhaines31-marketingskills.txt](licenses/MIT-coreyhaines31-marketingskills.txt)
-- Used: `product-marketing` → `gtmos-marketing-positioning`; `marketing-plan` → `gtmos-marketing-plan`; `launch` → `gtmos-marketing-launch`; `lead-magnets` → `gtmos-marketing-lead-magnets`; `cro` → `gtmos-marketing-cro`; `customer-research` → `gtmos-research-customer`; `seo-audit` → `gtmos-seo-audit`; `ai-seo` → `gtmos-seo-geo`; `schema` → `gtmos-seo-schema`; `programmatic-seo` → `gtmos-seo-programmatic`; `competitors` → `gtmos-seo-competitor-pages`; `link-building` → `gtmos-seo-backlinks`; `site-architecture` → `gtmos-seo-site-architecture`; `cold-email` → `gtmos-outreach-cold-email`; `prospecting` → `gtmos-leads-prospecting`; `ads` → `gtmos-ads-campaigns`; `ad-creative` → `gtmos-ads-creative`; `revops` → `gtmos-revops-lifecycle`; `sales-enablement` → `gtmos-sales-enablement`; `competitor-profiling` → `gtmos-research-competitor`; `churn-prevention` → `gtmos-lifecycle-churn`; `emails` → `gtmos-lifecycle-email`; `analytics` → `gtmos-analytics-tracking`; `conversion-tracking` → `gtmos-analytics-tracking`; `attribution` → `gtmos-analytics-attribution`; `ab-testing` → `gtmos-analytics-experiments`; `content-strategy` → `gtmos-content-strategy`; `copywriting` → `gtmos-content-copywriting`; `copy-editing` → `gtmos-content-copywriting`; `social` → `gtmos-content-social`; `marketing-loops` → `gtmos-ops-marketing-loops`
+- Used: `product-marketing` → `gtmos-marketing-positioning`; `marketing-plan` → `gtmos-marketing-plan`; `launch` → `gtmos-marketing-launch`; `lead-magnets` → `gtmos-marketing-lead-magnets`; `cro` → `gtmos-marketing-cro`; `customer-research` → `gtmos-research-customer`; `seo-audit` → `gtmos-seo-audit`; `ai-seo` → `gtmos-seo-geo`; `schema` → `gtmos-seo-schema`; `programmatic-seo` → `gtmos-seo-programmatic`; `competitors` → `gtmos-seo-competitor-pages`; `link-building` → `gtmos-seo-backlinks`; `site-architecture` → `gtmos-seo-site-architecture`; `cold-email` → `gtmos-outreach-cold-email`; `prospecting` → `gtmos-leads-prospecting`; `ads` → `gtmos-ads-campaigns`; `ad-creative` → `gtmos-ads-creative`; `revops` → `gtmos-revops-lifecycle`; `sales-enablement` → `gtmos-sales-enablement`; `competitor-profiling` → `gtmos-research-competitor`; `churn-prevention` → `gtmos-lifecycle-churn`; `emails` → `gtmos-lifecycle-email`; `analytics` → `gtmos-analytics-tracking`; `conversion-tracking` → `gtmos-analytics-tracking`; `attribution` → `gtmos-analytics-attribution`; `ab-testing` → `gtmos-analytics-experiments`; `content-strategy` → `gtmos-content-strategy`; `copywriting` → `gtmos-content-copywriting`; `copy-editing` → `gtmos-content-copywriting`; `social` → `gtmos-content-social`; `marketing-loops` → `gtmos-ops-marketing-loops`; 0.3.0 subagents: `ads` → agent `ads-analyst`
 
 ### AgriciDaniel/claude-seo
 
@@ -83,13 +87,13 @@ Every repository below was checked on 2026-10-22 with the GitHub API (licence as
 
 - Upstream: https://github.com/HubSpot/agent-cli-skills at [`a015a48982b922279d8521677b7c72b0acfb9506`](https://github.com/HubSpot/agent-cli-skills/tree/a015a48982b922279d8521677b7c72b0acfb9506)
 - Licence: Apache-2.0. HubSpot, Inc (repository owner; the licence file has no copyright line). Full text: [licenses/Apache-2.0-HubSpot-agent-cli-skills.txt](licenses/Apache-2.0-HubSpot-agent-cli-skills.txt)
-- Used: `team-ownership` → `gtmos-routing-lead-ownership`; `crm-data-quality` → `gtmos-crm-data-quality`; `bulk-operations` → `gtmos-crm-data-quality`; `sales-reporting` → `gtmos-analytics-gtm-report`
+- Used: `team-ownership` → `gtmos-routing-lead-ownership`; `crm-data-quality` → `gtmos-crm-data-quality`; `bulk-operations` → `gtmos-crm-data-quality`; `sales-reporting` → `gtmos-analytics-gtm-report`; 0.3.0 subagents: `deal-management` → agent `deal-reviewer`; `crm-data-quality` and `bulk-operations` → agent `data-steward`
 
 ### HubSpot/hubspot-mcp-plugins
 
 - Upstream: https://github.com/HubSpot/hubspot-mcp-plugins at [`032d294bc91577cb1b9c4a61372567266ca8524e`](https://github.com/HubSpot/hubspot-mcp-plugins/tree/032d294bc91577cb1b9c4a61372567266ca8524e)
 - Licence: Apache-2.0. HubSpot, Inc (repository owner; the licence file has no copyright line). Full text: [licenses/Apache-2.0-HubSpot-hubspot-mcp-plugins.txt](licenses/Apache-2.0-HubSpot-hubspot-mcp-plugins.txt)
-- Used: `pipeline-pulse` → `gtmos-crm-pipeline-review`; `call-prep` → `gtmos-sales-call-prep`; `follow-up` → `gtmos-sales-follow-up`; `renewal-radar` → `gtmos-lifecycle-renewal-radar`
+- Used: `pipeline-pulse` → `gtmos-crm-pipeline-review`; `call-prep` → `gtmos-sales-call-prep`; `follow-up` → `gtmos-sales-follow-up`; `renewal-radar` → `gtmos-lifecycle-renewal-radar`; 0.3.0 subagents: `HubSpot-Sales/agents/account-research` → agent `sales-researcher`; `pipeline-pulse` → agent `deal-reviewer`; `renewal-radar` → agent `customer-success-manager`
 
 ### salesforce/salesforce-skills
 
@@ -162,6 +166,24 @@ Every repository below was checked on 2026-10-22 with the GitHub API (licence as
 - Upstream: https://github.com/Jakeschincariol/linkedin-agent-skill at [`add2c23882fe79180737d242ff80a5da205eda6a`](https://github.com/Jakeschincariol/linkedin-agent-skill/tree/add2c23882fe79180737d242ff80a5da205eda6a)
 - Licence: MIT. Copyright (c) 2026 Jake Schincariol. Full text: [licenses/MIT-Jakeschincariol-linkedin-agent-skill.txt](licenses/MIT-Jakeschincariol-linkedin-agent-skill.txt)
 - Used: `li-dm` → `gtmos-outreach-linkedin`
+
+### wshobson/agents
+
+- Upstream: https://github.com/wshobson/agents at [`0874a27b17a22e2b7c2e2bcd725768e0803cad06`](https://github.com/wshobson/agents/tree/0874a27b17a22e2b7c2e2bcd725768e0803cad06)
+- Licence: MIT. Copyright (c) 2024 Seth Hobson. Full text: [licenses/MIT-wshobson-agents.txt](licenses/MIT-wshobson-agents.txt)
+- Used (0.3.0 subagents, as excerpts): `business-analytics/agents/business-analyst` and `business-analytics/skills/kpi-dashboard-design` → agent `revops-analyst`; `seo-content-creation/agents/seo-content-planner`, `seo-technical-optimization/agents/seo-keyword-strategist` and `content-marketing/agents/content-marketer` → agent `content-strategist`; `seo-analysis-monitoring/agents/seo-content-refresher`, `seo-analysis-monitoring/agents/seo-cannibalization-detector` and `seo-technical-optimization/agents/seo-meta-optimizer` → agent `seo-refresher`
+
+### VoltAgent/awesome-claude-code-subagents
+
+- Upstream: https://github.com/VoltAgent/awesome-claude-code-subagents at [`408d3c9eee2d0c75c12a3abb5de29e53c2ca6b9e`](https://github.com/VoltAgent/awesome-claude-code-subagents/tree/408d3c9eee2d0c75c12a3abb5de29e53c2ca6b9e)
+- Licence: MIT. Copyright (c) 2025 VoltAgent. Full text: [licenses/MIT-VoltAgent-awesome-claude-code-subagents.txt](licenses/MIT-VoltAgent-awesome-claude-code-subagents.txt)
+- Used (0.3.0 subagents, as excerpts, without the context-manager protocol and the sample progress and delivery messages): `customer-success-manager` → agent `customer-success-manager`; `competitive-analyst` and `market-researcher` → agent `competitive-analyst`; `sales-engineer` → agent `deal-reviewer`; `cohort-analysis` and `ab-test-analysis` → agent `revops-analyst`
+
+### anthropics/claude-cookbooks
+
+- Upstream: https://github.com/anthropics/claude-cookbooks at [`a162e0184e71b60290808a43961a6cbc8060123c`](https://github.com/anthropics/claude-cookbooks/tree/a162e0184e71b60290808a43961a6cbc8060123c)
+- Licence: MIT. Copyright (c) 2023 Anthropic. Full text: [licenses/MIT-anthropics-claude-cookbooks.txt](licenses/MIT-anthropics-claude-cookbooks.txt)
+- Used (0.3.0 subagents, as excerpts): `claude_agent_sdk/chief_of_staff_agent` (`financial-analyst` agent, `strategic-brief` and `budget-impact` commands) → agent `gtm-operator`; `patterns/agents/prompts/research_subagent` and `citations_agent` → agent `sales-researcher`; `patterns/agents/evaluator_optimizer` → agent `eval-reviewer`
 
 ## Trademarks
 

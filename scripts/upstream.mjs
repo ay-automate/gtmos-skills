@@ -3,8 +3,8 @@
 // upstreams.json records every repository a skill here comes from, pinned to one commit:
 //   - mode "vendored": files copied verbatim. Each file's sha-256 is recorded, so lint catches a local edit and
 //     a refresh never overwrites one (hash-guarded).
-//   - mode "adapted": the upstream paths our gtmos-* skills were adapted from, each with its git object id at the
-//     pin, so `check` can say which adaptations an upstream change touches.
+//   - mode "adapted": the upstream paths our gtmos-* skills and our subagents (agents/) were adapted from, each with
+//     its git object id at the pin, so `check` can say which adaptations an upstream change touches.
 // Every entry also records the upstream licence (its SPDX id, the file in the upstream repo and its object id, and the
 // copy in licenses/). A refresh refuses when the upstream licence file changed.
 //
@@ -195,7 +195,7 @@ export function diffUpstream(root, id, to) {
  * vendored: refuses when a vendored file was edited here (its sha-256 no longer matches the record) or when the
  *   upstream licence changed; otherwise rewrites the vendored files, their hashes, and every reference to the old
  *   commit in catalog.json and THIRD-PARTY-NOTICES.md.
- * adapted: needs `reviewed` (the gtmos-* skills were checked against the new upstream text); then moves the pin and
+ * adapted: needs `reviewed` (the gtmos-* skills and agents were checked against the new upstream text); then moves the pin and
  *   rewrites the old commit in those skills' frontmatter and attribution lines, and in THIRD-PARTY-NOTICES.md.
  * Returns what changed.
  */
@@ -261,6 +261,8 @@ export function refreshUpstream(root, id, { to, reviewed = false } = {}) {
     };
     rewrite("catalog.json", false);
     rewrite("THIRD-PARTY-NOTICES.md", true);
+    if (existsSync(join(root, "agents")))
+      for (const f of readdirSync(join(root, "agents")).filter((x) => x.endsWith(".md"))) if (readFileSync(join(root, "agents", f), "utf8").includes(old)) rewrite(`agents/${f}`, false);
     for (const d of readdirSync(join(root, "skills"))) {
       for (const f of ["SKILL.md", ...(existsSync(join(root, "skills", d, "references")) ? readdirSync(join(root, "skills", d, "references")).filter((x) => x.endsWith(".md")).map((x) => `references/${x}`) : [])]) {
         const p = `skills/${d}/${f}`;
@@ -274,7 +276,7 @@ export function refreshUpstream(root, id, { to, reviewed = false } = {}) {
 }
 
 /** Lint the registry against the working tree (no network). Pushes messages into `err(where, msg)`. */
-export function lintUpstreams(root, catalog, skillMeta, err) {
+export function lintUpstreams(root, catalog, skillMeta, err, agentMeta = new Map()) {
   const data = loadUpstreams(root);
   const byRepo = new Map();
   for (const u of data.upstreams) {
@@ -291,10 +293,24 @@ export function lintUpstreams(root, catalog, skillMeta, err) {
         else if (sha256(readFileSync(abs)) !== p.sha256) err(where, `${p.to} differs from ${u.repo}@${u.sha.slice(0, 8)}: vendored files are verbatim (put changes in a gtmos-* skill, or refresh the pin)`);
       }
     } else {
-      for (const p of u.paths) for (const s of p.skills ?? []) if (!skillMeta.has(s)) err(where, `${p.path} names an unknown skill ${s}`);
+      for (const p of u.paths) {
+        for (const s of p.skills ?? []) if (!skillMeta.has(s)) err(where, `${p.path} names an unknown skill ${s}`);
+        for (const a of p.agents ?? []) if (!agentMeta.has(a)) err(where, `${p.path} names an unknown agent ${a}`);
+      }
     }
   }
-  // Every vendored catalog entry and every adapted skill's source is registered, at the registered commit.
+  // Every vendored catalog entry and every adapted skill's and agent's source is registered, at the registered commit.
+  const pinned = (where, url) => {
+    const m = /^https:\/\/github\.com\/([^/]+\/[^/]+)\/(?:tree|blob)\/([0-9a-f]{40})\//.exec(url);
+    if (!m) return;
+    const u = byRepo.get(m[1]);
+    if (!u) err(where, `${m[1]} is not registered in upstreams.json (run \`node scripts/skills.mjs upstream scan\`)`);
+    else if (u.sha !== m[2]) err(where, `${m[1]} is pinned at ${m[2].slice(0, 8)}, upstreams.json at ${u.sha.slice(0, 8)}`);
+  };
+  for (const a of catalog.agents ?? []) {
+    const meta = agentMeta.get(a.name) ?? {};
+    for (const url of [meta.upstream, ...(meta.merged_from ? meta.merged_from.split(" | ") : [])].filter(Boolean)) pinned(`agents/${a.name}.md`, url);
+  }
   for (const s of catalog.skills) {
     if (s.origin === "vendored") {
       const repo = /^https:\/\/github\.com\/([^/]+\/[^/]+)\//.exec(s.upstream ?? "")?.[1];
@@ -316,12 +332,14 @@ export function lintUpstreams(root, catalog, skillMeta, err) {
 }
 
 /**
- * Register (or refresh the records of) every adapted source from the skills' own frontmatter: one entry per
- * repository, pinned at the commit the skills name, with the object id of every path they were adapted from.
+ * Register (or refresh the records of) every adapted source from the skills' and agents' own frontmatter: one entry
+ * per repository, pinned at the commit they name, with the object id of every path they were adapted from (and which
+ * skills and agents use it).
  */
-export function scanAdapted(root, skillMeta) {
-  const want = new Map(); // repo -> { sha, paths: Map(path -> Set(skill)) }
-  for (const [name, meta] of skillMeta) {
+export function scanAdapted(root, skillMeta, agentMeta = new Map()) {
+  const want = new Map(); // repo -> { sha, paths: Map(path -> { skills: Set, agents: Set }) }
+  const users = [...[...skillMeta].map(([name, meta]) => ["skills", name, meta]), ...[...agentMeta].map(([name, meta]) => ["agents", name, meta])];
+  for (const [kind, name, meta] of users) {
     for (const url of [meta.upstream, ...(meta.merged_from ? meta.merged_from.split(" | ") : [])].filter(Boolean)) {
       const m = /^https:\/\/github\.com\/([^/]+\/[^/]+)\/(?:tree|blob)\/([0-9a-f]{40})\/(.+)$/.exec(url);
       if (!m) continue;
@@ -329,8 +347,8 @@ export function scanAdapted(root, skillMeta) {
       if (!want.has(repo)) want.set(repo, { sha, paths: new Map() });
       const w = want.get(repo);
       if (w.sha !== sha) throw new Error(`${repo} is pinned at two commits (${w.sha.slice(0, 8)}, ${sha.slice(0, 8)}); use one`);
-      if (!w.paths.has(path)) w.paths.set(path, new Set());
-      w.paths.get(path).add(name);
+      if (!w.paths.has(path)) w.paths.set(path, { skills: new Set(), agents: new Set() });
+      w.paths.get(path)[kind].add(name);
     }
   }
   const data = loadUpstreams(root);
@@ -347,10 +365,10 @@ export function scanAdapted(root, skillMeta) {
       if (!ALLOWED_LICENSES.includes(spdx)) throw new Error(`${repo}: licence not recognised`);
       const file = `licenses/${localLicenseName(spdx, repo)}`;
       if (!existsSync(join(root, file))) throw new Error(`${repo}: add its licence text as ${file}`);
-      const paths = [...w.paths].sort(([a], [b]) => a.localeCompare(b)).map(([path, skills]) => {
+      const paths = [...w.paths].sort(([a], [b]) => a.localeCompare(b)).map(([path, by]) => {
         const oid = g.oid(w.sha, path);
         if (!oid) throw new Error(`${repo}@${w.sha.slice(0, 8)} has no ${path}`);
-        return { path, oid, skills: [...skills].sort() };
+        return { path, oid, skills: [...by.skills].sort(), ...(by.agents.size ? { agents: [...by.agents].sort() } : {}) };
       });
       data.upstreams = data.upstreams.filter((u) => u.repo !== repo).concat({ id, repo, sha: w.sha, mode: "adapted", license: { spdx, path: lic.path, oid: lic.oid, file }, paths });
       out.push(`${id}: ${repo}@${w.sha.slice(0, 8)}, ${paths.length} path(s)`);

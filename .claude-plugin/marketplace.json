@@ -6,12 +6,12 @@
   },
   "metadata": {
     "description": "Agent skills for marketing, SEO and GEO, outbound, leads, ads, CRM and RevOps. They work on their own and run on GTM OS when it is connected.",
-    "version": "0.2.3"
+    "version": "0.3.0"
   },
   "plugins": [
     {
       "name": "gtmos-all",
-      "description": "Every GTM OS skill: marketing, SEO and GEO, outbound and leads, ads, CRM and RevOps, analytics, content, agents and ops.",
+      "description": "Every GTM OS skill and subagent: marketing, SEO and GEO, outbound and leads, ads, CRM and RevOps, analytics, content, agents and ops.",
       "source": "./",
       "strict": false,
       "skills": [
@@ -122,6 +122,19 @@
         "./skills/looot-backlink-checker",
         "./skills/looot-ai-search-visibility",
         "./skills/looot-meta-ads-library"
+      ],
+      "agents": [
+        "./agents/gtm-operator.md",
+        "./agents/revops-analyst.md",
+        "./agents/deal-reviewer.md",
+        "./agents/sales-researcher.md",
+        "./agents/content-strategist.md",
+        "./agents/seo-refresher.md",
+        "./agents/customer-success-manager.md",
+        "./agents/competitive-analyst.md",
+        "./agents/ads-analyst.md",
+        "./agents/data-steward.md",
+        "./agents/eval-reviewer.md"
       ]
     },
     {
@@ -293,6 +306,25 @@
         "./skills/model-providers",
         "./skills/output-docgen",
         "./skills/slack"
+      ]
+    },
+    {
+      "name": "gtmos-subagents",
+      "description": "GTM OS subagents: GTM operator, RevOps analyst, deal reviewer, sales researcher, content strategist, SEO refresher, customer success manager, competitive analyst, ads analyst, data steward and eval reviewer.",
+      "source": "./",
+      "strict": false,
+      "agents": [
+        "./agents/gtm-operator.md",
+        "./agents/revops-analyst.md",
+        "./agents/deal-reviewer.md",
+        "./agents/sales-researcher.md",
+        "./agents/content-strategist.md",
+        "./agents/seo-refresher.md",
+        "./agents/customer-success-manager.md",
+        "./agents/competitive-analyst.md",
+        "./agents/ads-analyst.md",
+        "./agents/data-steward.md",
+        "./agents/eval-reviewer.md"
       ]
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "Agent skills for marketing, SEO and GEO, outbound, leads, ads, CRM and RevOps. They work on their own and run on GTM OS when it is connected.",
   "categories": [
     { "id": "marketing", "label": "Marketing", "blurb": "Positioning, plans, launches, lead magnets, conversion and customer research." },
@@ -119,5 +119,18 @@
     { "name": "looot-backlink-checker", "category": "seo", "origin": "vendored", "upstream": "https://github.com/loootai/looot-skills/tree/22a57a76e3f75e54511ab1e24b662b89c0008ae6/skills/looot-backlink-checker", "summary": "Check a domain's backlinks." },
     { "name": "looot-ai-search-visibility", "category": "seo", "origin": "vendored", "upstream": "https://github.com/loootai/looot-skills/tree/22a57a76e3f75e54511ab1e24b662b89c0008ae6/skills/looot-ai-search-visibility", "summary": "How a brand shows up in AI answers." },
     { "name": "looot-meta-ads-library", "category": "ads", "origin": "vendored", "upstream": "https://github.com/loootai/looot-skills/tree/22a57a76e3f75e54511ab1e24b662b89c0008ae6/skills/looot-meta-ads-library", "summary": "Read the Meta Ads Library for competitor ads." }
+  ],
+  "agents": [
+    { "name": "gtm-operator", "category": "agents", "origin": "adapted", "summary": "Chief of staff for the GTM: engine KPIs, the approval queue, spend against caps and agent health in one brief. Observes and suggests (A1)." },
+    { "name": "revops-analyst", "category": "analytics", "origin": "adapted", "summary": "Revenue, pipeline, funnel and attribution answers from the org's own operations; drafts metric definitions for a person to sign." },
+    { "name": "deal-reviewer", "category": "crm", "origin": "adapted", "summary": "Deal-by-deal risk review with evidence per flag, buying-committee coverage, and a suggested next step on every deal that needs one." },
+    { "name": "sales-researcher", "category": "outbound", "origin": "adapted", "summary": "Parallel account and contact research from everything the org already knows, one structured block with a source on every line." },
+    { "name": "content-strategist", "category": "content", "origin": "adapted", "summary": "Topic clusters, keyword targets, briefs and a calendar from the org's search data, ICP, brand voice and proof library." },
+    { "name": "seo-refresher", "category": "seo", "origin": "adapted", "summary": "Keeps existing pages working: refresh calendar, decay, cannibalization and meta fixes, proposed for approval." },
+    { "name": "customer-success-manager", "category": "crm", "origin": "adapted", "summary": "Customer health from evidence, renewals by tier, at-risk accounts and expansion, with tasks and drafts for the account owner." },
+    { "name": "competitive-analyst", "category": "marketing", "origin": "adapted", "summary": "Competitors ranked by how often they appear in the org's deals and calls, and battle cards with a source and date on every claim." },
+    { "name": "ads-analyst", "category": "ads", "origin": "adapted", "summary": "Paid campaigns read against real revenue and CAC targets, pacing explained, and budget changes proposed for a person to approve." },
+    { "name": "data-steward", "category": "crm", "origin": "adapted", "summary": "Measures and fixes CRM data quality: validate, normalise, backfill, preview every merge and propose it for approval." },
+    { "name": "eval-reviewer", "category": "agents", "origin": "adapted", "summary": "Reviews agent and mission runs against fixed safety and quality checks and reports passes, failures and regressions. Read only." }
   ]
 }

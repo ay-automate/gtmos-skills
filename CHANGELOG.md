@@ -2,6 +2,15 @@
 
 All notable changes to this repository. Versions follow [Semantic Versioning](https://semver.org/); each release is a git tag with `manifest.json` attached.
 
+## 0.3.0 (2026-10-24)
+
+11 subagents, the first in this repository, next to the 107 skills.
+
+- New `agents/`: `gtm-operator`, `revops-analyst`, `deal-reviewer`, `sales-researcher`, `content-strategist`, `seo-refresher`, `customer-success-manager`, `competitive-analyst`, `ads-analyst`, `data-steward` and `eval-reviewer`. Each is a Claude Code subagent adapted from [wshobson/agents](https://github.com/wshobson/agents) (MIT), [VoltAgent/awesome-claude-code-subagents](https://github.com/VoltAgent/awesome-claude-code-subagents) (MIT), HubSpot's [hubspot-mcp-plugins](https://github.com/HubSpot/hubspot-mcp-plugins) and [agent-cli-skills](https://github.com/HubSpot/agent-cli-skills) (Apache-2.0), [anthropics/claude-cookbooks](https://github.com/anthropics/claude-cookbooks) (MIT) and [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) (MIT). The GTM OS section names the operations of GTM OS 0.2.5, links `GTMOS-RULES.md`, proposes and never approves, quotes before anything that spends inline, and lists the operations only a person runs; the upstream text is kept as excerpts.
+- `manifest.json` covers `agents/**` (and counts the agents); `gtm init` installs them into `.claude/agents` and `.agents/agents`, and writes Codex custom agents into `.codex/agents`.
+- The marketplace gains a `gtmos-subagents` plugin; `gtmos-all` includes the agents.
+- `upstreams.json` registers the three new sources; adapted paths record the agents that use them. Lint checks every agent (frontmatter, sections, rules link, human-only line, spends-inline marks, pins).
+
 ## 0.2.3 (2026-10-24)
 
 - `GTMOS-RULES.md` rule 8 adds the GTM OS 0.2.5 G1 operations that spend inside their own call: `seo_geo.build_clusters` (when it embeds), `seo_geo.create_brief` and `seo_geo.draft_page` (the org's model). Rule 9 names `seo_geo.approve_draft` (human only).

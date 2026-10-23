@@ -1,10 +1,11 @@
 # GTM OS Skills
 
-**Agent skills for marketing, SEO and GEO, outbound, leads, ads, CRM and RevOps, for Claude Code, Codex and any agent that reads `SKILL.md`.**
+**Agent skills and subagents for marketing, SEO and GEO, outbound, leads, ads, CRM and RevOps, for Claude Code, Codex and any agent that reads `SKILL.md`.**
 
 [![Skills](https://img.shields.io/badge/skills-94-0f766e)](#skills-index)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin%20marketplace-d97757)](#install)
+[![Subagents](https://img.shields.io/badge/subagents-11-7c3aed)](#subagents)
 [![Codex](https://img.shields.io/badge/Codex-.agents%2Fskills-111827)](#install)
 [![CI](https://github.com/ay-automate/gtmos-skills/actions/workflows/ci.yml/badge.svg)](.github/workflows/ci.yml)
 
@@ -32,9 +33,15 @@ Each skill works on its own. An agent that loads one follows a tested method and
 | Content | Content strategy, copywriting, social, brand voice, the claims gate |
 | Agents and ops | GTM OS setup and onboarding, the engine catalog, plays and recurring loops, connectors |
 
+## Subagents
+
+<!-- agents-count -->11<!-- /agents-count --> subagents in [`agents/`](agents/) take on one GTM role each: GTM operator, RevOps analyst, deal reviewer, sales researcher, content strategist, SEO refresher, customer success manager, competitive analyst, ads analyst, data steward and eval reviewer. Each is a Claude Code subagent file (name, description, tools, model) adapted from licence-checked upstream agents by Seth Hobson (wshobson/agents), VoltAgent, HubSpot and Anthropic's cookbooks, with the upstream text kept as excerpts and the source pinned in [upstreams.json](upstreams.json).
+
+With GTM OS connected, a subagent works only through the GTM OS MCP tools, reads the shared [rules](skills/GTMOS-RULES.md), proposes every effect for a different person to approve, quotes before anything that spends, and names the operations only a person may run. Without GTM OS it follows the plain method in its last section. The full list is in the [index](#subagents-11).
+
 ## Install
 
-**With GTM OS (recommended).** `gtm init` installs every skill into `.claude/skills`, `.codex/skills` and `.agents/skills`, from a pinned release of this repository. It checks each file against the release manifest's sha-256 and falls back to the copy bundled with the CLI when you are offline.
+**With GTM OS (recommended).** `gtm init` installs every skill into `.claude/skills`, `.codex/skills` and `.agents/skills`, and every subagent into `.claude/agents` and `.agents/agents` (and `.codex/agents/*.toml` as Codex custom agents), from a pinned release of this repository. It checks each file against the release manifest's sha-256 and falls back to the copy bundled with the CLI when you are offline.
 
 ```bash
 npm install -g @gtmos/cli
@@ -48,7 +55,7 @@ gtm init
 /plugin install gtmos-all@gtmos-skills
 ```
 
-Install one category instead with `gtmos-marketing`, `gtmos-seo`, `gtmos-outbound`, `gtmos-ads`, `gtmos-crm`, `gtmos-analytics`, `gtmos-content` or `gtmos-agents`.
+Install one category instead with `gtmos-marketing`, `gtmos-seo`, `gtmos-outbound`, `gtmos-ads`, `gtmos-crm`, `gtmos-analytics`, `gtmos-content` or `gtmos-agents`, and the subagents alone with `gtmos-subagents` (`gtmos-all` includes them).
 
 **Codex and other agents.** Copy the skills into the folder your agent reads:
 
@@ -59,7 +66,7 @@ cp -r gtmos-skills/skills/* gtmos-skills/THIRD-PARTY-NOTICES.md gtmos-skills/lic
 # or user-wide for Codex: the same copy into ~/.codex/skills/
 ```
 
-**Manual.** Copy any single folder from `skills/` into `.claude/skills/` (project) or `~/.claude/skills/` (user). Keep `THIRD-PARTY-NOTICES.md` and `licenses/` with the skills you redistribute.
+**Manual.** Copy any single folder from `skills/` into `.claude/skills/` (project) or `~/.claude/skills/` (user), and any file from `agents/` into `.claude/agents/`. Codex reads custom agents as TOML in `.codex/agents/` (`name`, `description`, `developer_instructions`); `gtm init` writes those for you. Keep `THIRD-PARTY-NOTICES.md` and `licenses/` with the skills you redistribute.
 
 ## How skills connect to GTM OS
 
@@ -236,6 +243,24 @@ Setup, onboarding, the engine catalog, plays and loops, and the connectors agent
 | [`model-providers`](skills/model-providers/SKILL.md) | Anthropic, OpenAI and Gemini as GTM OS model providers. | GTM OS |
 | [`output-docgen`](skills/output-docgen/SKILL.md) | Generate DOCX and PDF documents through GTM OS. | GTM OS |
 | [`slack`](skills/slack/SKILL.md) | Slack in GTM OS: workspace connection, channels, people matching and approvals. | GTM OS |
+
+### Subagents (11)
+
+Claude Code subagents (also installed as Codex custom agents) that run one GTM role on GTM OS. They propose and never approve, quote before they spend, and name the steps only a person may take.
+
+| Agent | What it does | Area | Source |
+|---|---|---|---|
+| [`gtm-operator`](agents/gtm-operator.md) | Chief of staff for the GTM: engine KPIs, the approval queue, spend against caps and agent health in one brief. Observes and suggests (A1). | Agents and ops | [anthropics/claude-cookbooks](https://github.com/anthropics/claude-cookbooks) |
+| [`revops-analyst`](agents/revops-analyst.md) | Revenue, pipeline, funnel and attribution answers from the org's own operations; drafts metric definitions for a person to sign. | Analytics | [wshobson/agents](https://github.com/wshobson/agents), [VoltAgent/awesome-claude-code-subagents](https://github.com/VoltAgent/awesome-claude-code-subagents) |
+| [`deal-reviewer`](agents/deal-reviewer.md) | Deal-by-deal risk review with evidence per flag, buying-committee coverage, and a suggested next step on every deal that needs one. | CRM and RevOps | [HubSpot/hubspot-mcp-plugins](https://github.com/HubSpot/hubspot-mcp-plugins), [HubSpot/agent-cli-skills](https://github.com/HubSpot/agent-cli-skills), [VoltAgent/awesome-claude-code-subagents](https://github.com/VoltAgent/awesome-claude-code-subagents) |
+| [`sales-researcher`](agents/sales-researcher.md) | Parallel account and contact research from everything the org already knows, one structured block with a source on every line. | Outbound and leads | [HubSpot/hubspot-mcp-plugins](https://github.com/HubSpot/hubspot-mcp-plugins), [anthropics/claude-cookbooks](https://github.com/anthropics/claude-cookbooks) |
+| [`content-strategist`](agents/content-strategist.md) | Topic clusters, keyword targets, briefs and a calendar from the org's search data, ICP, brand voice and proof library. | Content | [wshobson/agents](https://github.com/wshobson/agents) |
+| [`seo-refresher`](agents/seo-refresher.md) | Keeps existing pages working: refresh calendar, decay, cannibalization and meta fixes, proposed for approval. | SEO and GEO | [wshobson/agents](https://github.com/wshobson/agents) |
+| [`customer-success-manager`](agents/customer-success-manager.md) | Customer health from evidence, renewals by tier, at-risk accounts and expansion, with tasks and drafts for the account owner. | CRM and RevOps | [VoltAgent/awesome-claude-code-subagents](https://github.com/VoltAgent/awesome-claude-code-subagents), [HubSpot/hubspot-mcp-plugins](https://github.com/HubSpot/hubspot-mcp-plugins) |
+| [`competitive-analyst`](agents/competitive-analyst.md) | Competitors ranked by how often they appear in the org's deals and calls, and battle cards with a source and date on every claim. | Marketing | [VoltAgent/awesome-claude-code-subagents](https://github.com/VoltAgent/awesome-claude-code-subagents) |
+| [`ads-analyst`](agents/ads-analyst.md) | Paid campaigns read against real revenue and CAC targets, pacing explained, and budget changes proposed for a person to approve. | Ads | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) |
+| [`data-steward`](agents/data-steward.md) | Measures and fixes CRM data quality: validate, normalise, backfill, preview every merge and propose it for approval. | CRM and RevOps | [HubSpot/agent-cli-skills](https://github.com/HubSpot/agent-cli-skills) |
+| [`eval-reviewer`](agents/eval-reviewer.md) | Reviews agent and mission runs against fixed safety and quality checks and reports passes, failures and regressions. Read only. | Agents and ops | [anthropics/claude-cookbooks](https://github.com/anthropics/claude-cookbooks) |
 
 <!-- skills-index:end -->
 
