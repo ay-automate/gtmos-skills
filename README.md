@@ -1,17 +1,41 @@
 # GTM OS Skills
 
-**Agent skills and subagents for marketing, SEO and GEO, outbound, leads, ads, CRM and RevOps, for Claude Code, Codex and any agent that reads `SKILL.md`.**
+### Your go-to-market team, in a folder. Install it in one command.
 
-[![Skills](https://img.shields.io/badge/skills-94-0f766e)](#skills-index)
+**107 battle-tested skills and 11 role subagents for marketing, SEO and AI search, cold outbound, lead generation, ads, CRM and RevOps. They work in Claude Code, Codex and any agent that reads `SKILL.md`. Point them at [GTM OS](https://ay-automate.github.io/gtmos-releases/) and they run on your real data, with a person approving everything that reaches a customer or spends a cent.**
+
+[**Website and docs**](https://ay-automate.github.io/gtmos-releases/) · [**Releases**](https://github.com/ay-automate/gtmos-releases/releases) · [**Install the CLI**](https://www.npmjs.com/package/@gtmos/cli) · [**Connect to GTM OS**](docs/connecting-gtmos.md)
+
+[![Skills](https://img.shields.io/badge/skills-107-0f766e)](#skills-index)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin%20marketplace-d97757)](#install)
 [![Subagents](https://img.shields.io/badge/subagents-11-7c3aed)](#subagents)
 [![Codex](https://img.shields.io/badge/Codex-.agents%2Fskills-111827)](#install)
 [![CI](https://github.com/ay-automate/gtmos-skills/actions/workflows/ci.yml/badge.svg)](.github/workflows/ci.yml)
 
-<!-- skills-count -->107<!-- /skills-count --> skills that teach an agent how go-to-market work is done well: cold outbound that gets replies, SEO audits with a fix queue, AI-search visibility, ICP scoring, pipeline reviews, forecasts, attribution, lifecycle email and more.
+## Stop prompting. Start running a GTM motion.
 
-Each skill works on its own. An agent that loads one follows a tested method and asks for the inputs it lacks. It never invents a number or a customer quote. Connect [GTM OS](https://ay-automate.github.io/gtmos-releases/) and the same skill runs on your real data: your ICP, your brand voice, your proof library, your CRM, with every send, publish and budget change waiting for a person to approve it.
+Most AI marketing output is fast, generic and unchecked. Nobody can say where the stat came from, whether the lead was worth emailing, or who signed off on the send.
+
+These skills fix that. Each one teaches an agent how the work is done well: cold outbound that earns replies, SEO audits that end in a fix queue, AI-search visibility, ICP scoring, pipeline reviews, forecasts, attribution, lifecycle email and more. An agent that loads a skill follows a tested method and asks for the inputs it lacks. It never invents a number or a customer quote.
+
+<!-- skills-count -->107<!-- /skills-count --> skills. <!-- agents-count -->11<!-- /agents-count --> subagents. Free, MIT-licensed, and ready in under a minute.
+
+## What you get
+
+- **Specific, not "personalized but generic".** Copy is built from your proof library and your customers' own words, and every claim is traced to a source you can check.
+- **Scoring that learns.** With GTM OS, ICP scores adjust to what actually worked: replies, meetings and closes.
+- **A human on every risky step.** Sends, publishes and budget changes are proposed, and a different person approves them. Agents never approve their own work.
+- **Your stack, not a new one.** Works with your CRM, ads, search and email tools through GTM OS connectors.
+- **Honest numbers.** Small samples are called small. A missing input becomes a marked placeholder, never a guess.
+
+## GTM OS: where the skills run on real data
+
+On their own, the skills are a playbook. Connected to [GTM OS](https://ay-automate.github.io/gtmos-releases/), they become a working system: your ICP, brand voice, proof library and CRM, 30 engines for the jobs a GTM team does every week, and an approval kernel that keeps humans in charge.
+
+- **Website, docs and guides:** [ay-automate.github.io/gtmos-releases](https://ay-automate.github.io/gtmos-releases/)
+- **Releases and images:** [github.com/ay-automate/gtmos-releases](https://github.com/ay-automate/gtmos-releases/releases)
+- **CLI:** `npm install -g @gtmos/cli`, then `gtm init`
 
 ## Why these skills
 
