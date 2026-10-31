@@ -1,6 +1,6 @@
 {
   "name": "gtmos-skills",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "repository": "https://github.com/ay-automate/gtmos-skills",
   "skills": 107,
   "agents": 11,
@@ -172,8 +172,8 @@
     },
     {
       "path": "skills/GTMOS-RULES.md",
-      "sha256": "69df97875eb076be604d3ce3245e5b94e0179237e9fafaa9c2f02ba0816ac3f0",
-      "bytes": 4359
+      "sha256": "4936e3e99b02496d4894fafddfbc2bd592fe016938162e2d282c3f4472176be2",
+      "bytes": 5842
     },
     {
       "path": "skills/ads/SKILL.md",
@@ -187,8 +187,8 @@
     },
     {
       "path": "skills/composio/SKILL.md",
-      "sha256": "b2d2f33b833d1bbd4887f50a529701b46933925d627228d40048ce2ab7fa21b5",
-      "bytes": 16939
+      "sha256": "495c705436f27b54d520dd725e1238eccb702ae9346dc6bfdd873f8d5c9c552f",
+      "bytes": 16950
     },
     {
       "path": "skills/ga4/SKILL.md",
@@ -197,13 +197,13 @@
     },
     {
       "path": "skills/gmail/SKILL.md",
-      "sha256": "266a85dba2eff5013497df9cdfad3358f0596f55e60bf1cef46bc2666cea2f35",
-      "bytes": 4720
+      "sha256": "75145a9837f528f87f8db54fb2b572ad89b546536d94988b680855118f74d709",
+      "bytes": 4772
     },
     {
       "path": "skills/google-calendar/SKILL.md",
-      "sha256": "577bf127c013a47d7514bd145e34192f685f82caeda2830f8ecca02efe924f61",
-      "bytes": 4452
+      "sha256": "2c4c690568d0ddfd3a498ce4aded5e673c363e688028e310d27f0cf0f9476352",
+      "bytes": 4493
     },
     {
       "path": "skills/gsc/SKILL.md",
@@ -627,8 +627,8 @@
     },
     {
       "path": "skills/gtmos-engine-catalog/SKILL.md",
-      "sha256": "a1124fe3df6af8d3ae1d90d3a15bc4835d96575d9ccd8b2b9d2947e12e2bfaf4",
-      "bytes": 20057
+      "sha256": "aeef9fcf3887d05f99c53430daf556eeb6764f2a667ccd2fdd102ceb4f16aefa",
+      "bytes": 22772
     },
     {
       "path": "skills/gtmos-leads-buying-committee/SKILL.md",
@@ -817,8 +817,8 @@
     },
     {
       "path": "skills/gtmos-looot/SKILL.md",
-      "sha256": "08191df80512c953b66602d1c4bf3de91a99e3f6c0ee61e7cc63d0f0da7e3316",
-      "bytes": 15177
+      "sha256": "fc130a2d0201b5937eb908dc467432d2ee60634b8fcbfd45c29be8660ba04b00",
+      "bytes": 15452
     },
     {
       "path": "skills/gtmos-marketing-cro/SKILL.md",
@@ -967,8 +967,8 @@
     },
     {
       "path": "skills/gtmos-onboarding/SKILL.md",
-      "sha256": "6c03d057ab98eb34e3c8d637c11453e2deed91c7e2f8ec71a989647b307f8fe4",
-      "bytes": 39649
+      "sha256": "8274a45b0bdf56536ec73bac058c7d3d784bbba1413043ff64b1c38e9630a1c7",
+      "bytes": 49939
     },
     {
       "path": "skills/gtmos-ops-marketing-loops/SKILL.md",
@@ -1777,8 +1777,8 @@
     },
     {
       "path": "skills/gtmos-setup/SKILL.md",
-      "sha256": "6154e5dcf2310c7747ba140178546efd0c26c0559283d426de1dd0e20a8a7f5d",
-      "bytes": 21044
+      "sha256": "5a9c63bbbbe7e30f63d9ee62ba44521e5aa79f48d8133db138d89ab0cfb5a6f5",
+      "bytes": 22588
     },
     {
       "path": "skills/gtmos-signals-account-digest/SKILL.md",
@@ -1787,13 +1787,13 @@
     },
     {
       "path": "skills/gtmos-signals-funding/SKILL.md",
-      "sha256": "b8bf18e1752cf3cdbfd472a9a3c063df96ba4b3989e53481b7e15126eb18f403",
-      "bytes": 7156
+      "sha256": "f800556388c665f7d101830af90ce2560215fb36b5eccd17db631436725bfdcf",
+      "bytes": 7171
     },
     {
       "path": "skills/gtmos-signals-hiring/SKILL.md",
-      "sha256": "70a506cd715d3560e571f05da7a682e566b3fb7c91e59acdeaf1e56dc5357cbe",
-      "bytes": 7412
+      "sha256": "8393ae1332a9e20e5584bb112ac9158a3cdca5edea702dcb101a2a466212f29c",
+      "bytes": 7426
     },
     {
       "path": "skills/gtmos-signals-job-changes/SKILL.md",
@@ -1802,13 +1802,13 @@
     },
     {
       "path": "skills/gtmos-source-mapping/SKILL.md",
-      "sha256": "a8e938bfb6825702d35c7bdff8afa8245ac364d1d85550f65f144ce9595a9c61",
-      "bytes": 10870
+      "sha256": "2fa121ed91f6d89ee11d8ac69d3cc486d5c128b762658c4a0e3d0c0b1943ea0a",
+      "bytes": 11235
     },
     {
       "path": "skills/hubspot/SKILL.md",
-      "sha256": "c55794c67f2796e5eea5e895895c4d6f1f4ed9e4df6a17c09b6f0d76eb2ab207",
-      "bytes": 4528
+      "sha256": "a9ef0cfe1da197a30127560af613237f12cbb2137b3fbd26561d413756d8343f",
+      "bytes": 4608
     },
     {
       "path": "skills/looot-ai-search-visibility/SKILL.md",
@@ -1942,13 +1942,13 @@
     },
     {
       "path": "skills/resend/SKILL.md",
-      "sha256": "3bcf69af21ed17e5401c072119442132a4cebec43b8487b40e64a36ccffd1792",
-      "bytes": 4276
+      "sha256": "3f9a2664110208c5d6480daa2ca43f9525e48ec0a58c3eeee6cc827f4f3c8b28",
+      "bytes": 4308
     },
     {
       "path": "skills/salesforce/SKILL.md",
-      "sha256": "6ea7ab4d059edff4be90ac46ef8deff2d5e847d72a6c757b10ec98f06d5c1244",
-      "bytes": 4510
+      "sha256": "3b410aece5acd6851bff736b67b8d2a03420233957bf642b30da38f4f9580285",
+      "bytes": 4565
     },
     {
       "path": "skills/slack/SKILL.md",
@@ -1957,8 +1957,8 @@
     },
     {
       "path": "skills/unipile/SKILL.md",
-      "sha256": "e70d5a1731eab44aade50856778ada1674d513591cf67878b35a8c7b9ef91776",
-      "bytes": 5405
+      "sha256": "ff70a3457204ca540ec5a9131050099a055613876c71a811046bf9398492ea07",
+      "bytes": 5397
     },
     {
       "path": "skills/webform/SKILL.md",

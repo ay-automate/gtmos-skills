@@ -2,6 +2,15 @@
 
 All notable changes to this repository. Versions follow [Semantic Versioning](https://semver.org/); each release is a git tag with `manifest.json` attached.
 
+## 0.4.0 (2026-10-31)
+
+Skills for GTM OS 0.2.6: say why on proposals, probe before you call, no operation names that the registry does not have.
+
+- Justification. `GTMOS-RULES.md` rule 11, `gtmos-onboarding` (rule 11), `gtmos-source-mapping`, `gtmos-engine-catalog` and `docs/connecting-gtmos.md` explain the optional `justification` on `gtm_act`: optional in GTM OS 0.2.6, required for agent proposals at tier T2 and above from 0.2.7 (`GTMOS_JUSTIFICATION_ENFORCE`), at least 10 characters, and what a good reason looks like.
+- Step 0 probe. `gtmos-setup` and `gtmos-onboarding` start with `harness.status` and `gtm_describe`: compare the hash, skip a part and say why when an operation is missing, never invent one. The `/setup-gtmos` command and the Codex path (read the skill from `.codex/skills`) say the same. Rule 5 of `GTMOS-RULES.md` carries the probe for every skill.
+- 0.2.6 operations. `gtmos-onboarding` and `gtmos-engine-catalog` cover `funnel.*`, `board.evaluate`, `board.target.*`, `recommendation.*` (accept, dismiss and start_mission are people only), `import.review.*`, `identity_dq.dq_policy.*`, `identity_dq.steward_plan` and `steward_bundle`, `motion.*` (decide, change and checkpoint are people only) and `risk.tier_readiness`, with the definitions behind them (`definition.funnel`, `revenue_target`, `recommendation_rules`, `data_quality_policy`). Rule 9 of `GTMOS-RULES.md` lists the new people-only operations.
+- Ghost operation names removed. The connector skills (`hubspot`, `salesforce`, `gmail`, `resend`, `unipile`, `google-calendar`) no longer present connector capability keys as operations; they point at `crm.sync` and `outreach.send_message`. `composio`, `gtmos-engine-catalog` and `gtmos-source-mapping` no longer name job kinds and spec fields as operations. `gtmos-looot` says its capability keys go to `capability.quote` and `capability.acquire`. `gtmos-signals-funding` and `gtmos-signals-hiring` call `signals.funding` and `signals.hiring` looot jobs.
+
 ## 0.3.0 (2026-10-24)
 
 11 subagents, the first in this repository, next to the 107 skills.

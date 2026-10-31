@@ -17,7 +17,7 @@ Capabilities and operation names are listed below as they appear in the connecto
 coverage map. Discover the live input and output schema with `gtm describe` before invocation;
 the registry for the current organization is authoritative if it differs from this static guide.
 
-- Declares `crm.read_accounts` and canonical `gtm.account` mapping.
+- Declares an account-read capability (run by `crm.sync`) and the canonical `gtm.account` mapping.
 - Reads use the SOQL REST API; writeback is part of the connector (a governed, approval-gated write).
 - The coverage map calls live certification dependent on a Salesforce sandbox.
 
@@ -34,7 +34,7 @@ through its documented operator workflow.
 
 ## Canonical data
 
-- Reads Salesforce account data with the `crm.read_accounts` capability.
+- Reads Salesforce account data with the connector's account-read capability, run by `crm.sync`.
 - Maps supported results to `gtm.account`.
 - Other Salesforce objects are outside the declared mapping unless the live operation registry says otherwise.
 

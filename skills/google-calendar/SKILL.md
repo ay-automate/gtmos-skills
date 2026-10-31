@@ -17,7 +17,7 @@ Capabilities and operation names are listed below as they appear in the connecto
 coverage map. Discover the live input and output schema with `gtm describe` before invocation;
 the registry for the current organization is authoritative if it differs from this static guide.
 
-- `crm.read_calendar_events` and `crm.autolog_calendar`.
+- Calendar reads and meeting auto-logging are connector capabilities (no operation of their own).
 - Auto-logged meetings become `gtm.activity` with kind `meeting` and are associated only when a known contact matches.
 
 ## Connect it

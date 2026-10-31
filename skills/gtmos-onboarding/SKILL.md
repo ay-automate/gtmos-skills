@@ -10,6 +10,15 @@ user sees in the console (Setup), and the other way round. Before this skill, th
 connected to an instance (`.claude/gtmos-instance.json` has an `apiUrl`, `/mcp` shows the gtmos
 server). If not, run the `gtmos-setup` skill first.
 
+## Step 0 -- probe the instance first
+
+Before the first screen, and again at the start of a new session:
+
+1. Call `harness.status` with `gtm_query {"name":"harness.status"}`. Compare `operationsHash` with `referenceOpsHash` in `.claude/gtmos-instance.json`, and `expectedSkillsTag` with the skills tag you were installed from. A difference means the instance changed since `gtm init`: tell the user and suggest `gtm init --refresh`.
+2. Call `gtm_describe` with no argument for the catalog of this instance, and again with a `name` for every operation a screen needs, just before you use it.
+3. If the instance does not know an operation, skip that part of the screen and say why in the same reply ("this instance has no `<operation>`"). Add an Open item. Never call a different operation in its place and never invent one.
+4. If `harness.status` itself is unknown, the instance is older than GTM OS 0.2.6: carry on with the catalog from `gtm_describe` alone.
+
 ## Rules (all of them, every time)
 
 1. **Read the schema before every call.** `gtm_describe {"name":"<operation>"}` returns the exact input
@@ -52,6 +61,7 @@ server). If not, run the `gtmos-setup` skill first.
    Record it as an Open item in `.claude/memory/setup-status.md`.
 10. **Only what exists.** Use the operations listed below; if `gtm_describe` does not know one, see
    "On an older instance".
+11. **Say why.** A `gtm_act` that proposes an effect takes an optional `justification` (the MCP argument of `gtm_act`; over REST the `x-gtmos-justification` header): why now, in your own words, for the person who approves. In GTM OS 0.2.6 it is optional. An agent proposal at tier T2 or above without one is still recorded, and the approver sees "No reason given by the agent". From GTM OS 0.2.7 (`GTMOS_JUSTIFICATION_ENFORCE` on by default) it is required for agent proposals at T2 or above: at least 10 characters that are not spaces, or the call is refused with VALIDATION_FAILED and nothing is written. Always send one now. A good reason names the evidence and the effect: "14 of 22 closed-won accounts are in DE, so this saves the ICP card with country DE". A bad one repeats the operation name or says "as requested". It is a statement, not a proof: never write a reason you cannot back with a number or a source. A person may leave it out. At tier T3 and above a named person other than you approves, whatever the reason says.
 
 ## The six screens
 
@@ -79,6 +89,7 @@ Operations for every screen:
 | `asks.create` | you may call it (`gtm_act`) | Turn a value nobody gave you into a numbered open ask with an owner, instead of guessing it. |
 | `asks.answer` | you may call it (`gtm_act`) | Record an answer -- an agent answers only asks it owns; for any other ask, relay the answer to its owner (they answer it, or a member relays it in the console). |
 | `runtime.list_approvals` | read (`gtm_query`) | What is waiting for a human approver (your proposals included). |
+| `harness.status` | read (`gtm_query`) | Step 0 probe: the operation count and hash of this instance, the skills tag it expects and the first-win path. Compare `operationsHash` with `referenceOpsHash` in `.claude/gtmos-instance.json`; a difference means the instance changed since `gtm init` (run `gtm init --refresh`). No secret, no org data. |
 
 ## Screen 1 -- Welcome (company, motion)
 
@@ -135,6 +146,12 @@ Operations for every screen:
    `grantors` = the emails the user names) and hand the user the numbered list it returns to forward.
 6. `completeStep` `connections` (missing sources stay as numbered open asks; that is fine).
 
+Imports (GTM OS 0.2.6): a file import goes through a review gate. `import.review.list` shows the batches and
+each row's gate result; rows the gate blocked are held back from the CRM. You may fix or skip a row with
+`import.review.decide` and show the user the reasons. You never override the gate: that needs a reason of
+10 or more characters from the person, and a legal block (suppression, consent, do-not-contact) cannot be
+overridden at all.
+
 | Operation | Access | Use |
 |---|---|---|
 | `onboarding.signal_coverage` | read (`gtm_query`) | Real coverage per category (CRM, analytics, ads, calls, warehouse, outbound), the stack tools not connected yet, and per category the catalog: every connector we read, how it connects, where its data lands, the operations that pull it, what it still needs. |
@@ -149,6 +166,8 @@ Operations for every screen:
 | `outbound_rails.list` | read (`gtm_query`) | The Smartlead senders and Instantly / lemlist campaigns a sending lane can bind, and why a campaign cannot carry an approved message (owner / admin). |
 | `outbound_rails.sync_replies` | you may call it (`gtm_act`) | Pull now: replies from Smartlead, Instantly and lemlist into conversation memory (they stop the sequence). Owner / admin, or an agent key they scoped. |
 | `onboarding.request_access` | you may call it (`gtm_act`) | One numbered open ask per missing grant (what, who grants it, lead time); returns the list to forward. |
+| `import.review.list` | read (`gtm_query`) | The import batches with staged rows, or one batch's rows with each row's gate result and reasons. Rows the gate blocked are held back from the CRM until someone decides. |
+| `import.review.decide` | you may call it (`gtm_act`) | Fix or skip one staged import row. Do not override the gate yourself: an override needs a reason of 10 or more characters from the person, and legal blocks (suppression, consent denied or withdrawn, do-not-contact) cannot be overridden at all. |
 
 ## Screen 3 -- Your definitions
 
@@ -189,6 +208,14 @@ Operations for every screen:
    cards when the build applies it: show it before the build.
 7. Definitions you publish land in `dev`; prod needs signing + promotion (Screen 6).
 8. `completeStep` `definitions`.
+
+Newer definitions (GTM OS 0.2.6), only when the user asks for them and Step 0 showed the instance has them:
+a data-quality policy (`identity_dq.dq_policy.get`, then `identity_dq.dq_policy.propose`), a funnel
+(`funnel.list`, `funnel.evaluate`), a revenue target (`board.target.get`, `board.target.propose`) and
+the recommendation rules (`recommendation.rules.get`, `recommendation.rules.propose`). Each is a
+definition a person signs. Read before you propose. Quote the coverage block with every funnel rate and
+say "unavailable" where `board.evaluate` does. A data steward bundle (`identity_dq.steward_plan`, then
+`identity_dq.steward_bundle`) is shown as a plan first; a different person approves it.
 
 The cards of this screen and who can approve them:
 
@@ -231,6 +258,17 @@ The cards of this screen and who can approve them:
 | `voice.customer_language.mine` | you may call it (`gtm_act`) | Find the customers' own words (pains, outcomes, objections, triggers) in transcripts, classified replies and won-deal notes; each phrase keeps its source. They wait for a human to approve. |
 | `voice.customer_language.approve` | **human only**: agent keys are refused | Approving customer phrases: a person reviews them in Settings > Proof library > Customer language. |
 | `onboarding.blueprint_adaptations` | read (`gtm_query`) | What the chosen blueprint takes from the approved cards (ICP, pilot, stages, customer types, suppression, trust caps) before it is applied. |
+| `identity_dq.dq_policy.get` | read (`gtm_query`) | The data-quality policy in force (definition.data_quality_policy): required fields, validity rules, the staleness window. The import gate reads it. |
+| `identity_dq.dq_policy.propose` | you may call it (`gtm_act`) | Propose a new data-quality policy version from what the user confirmed. A person signs it; nothing is live until then. |
+| `identity_dq.steward_plan` | read (`gtm_query`) | Plan one data steward bundle (duplicate merges and value fixes) with the evidence and the count, before anyone is asked to approve. |
+| `identity_dq.steward_bundle` | proposes (`gtm_act`); a different human approves | Propose that bundle for a person to approve. Show the plan first; the approval says what runs. |
+| `funnel.list` | read (`gtm_query`) | The org's funnels (definition.funnel) with their stages and status. |
+| `funnel.evaluate` | read (`gtm_query`) | The cohort funnel: per stage entered, converted, rate, sample and median days, with an honest coverage block. Quote the coverage block with every rate. |
+| `board.target.get` | read (`gtm_query`) | The revenue target that applies (the signed definition.revenue_target in prod), the dev draft and the spec an editor starts from. |
+| `board.target.propose` | you may call it (`gtm_act`) | Propose a revenue target version from the closed-won figures the user gave. A person signs it. Never invent a period or an amount. |
+| `board.evaluate` | read (`gtm_query`) | The board: weighted pipeline, conversion, win rate, coverage against the target, slip rate. A number that cannot be computed honestly says unavailable; repeat that, never fill it in. |
+| `recommendation.rules.get` | read (`gtm_query`) | The interpretation rules the recommendation loop applies (the signed ones, else the shipped ones) and the vocabulary a rule may use. |
+| `recommendation.rules.propose` | you may call it (`gtm_act`) | Propose a new definition.recommendation_rules version: thresholds, minimum samples and one allowed action per rule. A person signs it. |
 
 ## Screen 4 -- Rules and who approves what (rules, team)
 
@@ -262,6 +300,10 @@ The cards of this screen and who can approve them:
 | `trust` (Dry mode and guardrails) | `policy.set_dry_mode`, `policy.guardrails.set` | **a human approves it in the console** (its target is human-only): you prepare the draft, they click Approve |
 | `autonomy` (Autonomy per engine) | `policy.engine_modes.set`, `policy.set_autonomy_scope` | **a human approves it in the console** (its target is human-only): you prepare the draft, they click Approve |
 
+Before the user decides who approves what, owners and admins can read `risk.tier_readiness`: it lists the
+operations that would start needing a named approver when the stricter risk tiers turn on (default on from
+GTM OS 0.2.7).
+
 | Operation | Access | Use |
 |---|---|---|
 | `policy.get_dry_mode` | read (`gtm_query`) | Whether the org is in dry mode. |
@@ -277,6 +319,7 @@ The cards of this screen and who can approve them:
 | `roles.upsert` | **human only**: agent keys are refused | Create or edit a role profile: owner / admin, human only. |
 | `roles.assign` | **human only**: agent keys are refused | Give a member a role profile: owner / admin, human only. |
 | `onboarding.seats.set` | you may call it (`gtm_act`) | Save the seats (operator, ops lead, exec, deputy); the role-profile binding it runs is human-only and comes back in roles.errors for an agent. |
+| `risk.tier_readiness` | read (`gtm_query`) | Owner or admin. Which operations would start needing approval when the stricter risk-tier flag turns on (default on from 0.2.7), and the org's T3 limits. Read it before the user decides who approves what. |
 
 ## Screen 5 -- The build
 
@@ -347,8 +390,29 @@ The build steps, in run order:
 4. `completeStep` `plan`, then `launch`. Then summarise: what is live, what waits for whom
    (approval ids, ask numbers), and the Open items.
 
+The motion and the recommendation loop (GTM OS 0.2.6, check Step 0 first). `motion.assess` ranks the
+motions on real counts; `motion.decide` and `motion.change` are the person's, so show the ranking and let
+them record it. After launch, `recommendation.generate` reads the funnel and proposes at most one
+recommendation per finding; `recommendation.accept`, `recommendation.dismiss` and
+`recommendation.start_mission` are the owner's (agent keys are refused). After an accept you may call
+`recommendation.act` (a different person approves it) and, later, `recommendation.measure`.
+`motion.checkpoint` (the +30, +60 and +90 day readings) is the person's too: bring the real numbers.
+
 | Operation | Access | Use |
 |---|---|---|
+| `motion.assess` | read (`gtm_query`) | Rank the GTM motions on the org's real counts and the seven intake answers: fit, blocking gaps, why not. Never answer an intake question for the user. |
+| `motion.get` | read (`gtm_query`) | The motion in force: the decision and its reason, the history and the +30, +60 and +90 day checkpoints. |
+| `motion.decide` | **human only**: agent keys are refused | Record the motion the person chose and why. A person's decision, append-only. |
+| `motion.change` | **human only**: agent keys are refused | Change the motion with a reason; the new blueprint is proposed and a different person approves it. |
+| `motion.checkpoint` | **human only**: agent keys are refused | Record a +30, +60 or +90 day checkpoint: what was expected against what was observed. A person records it; agent keys are refused. |
+| `recommendation.list` | read (`gtm_query`) | The recommendations from the funnel, newest first, with evidence, proposed action, tier, owner, state and outcome. |
+| `recommendation.get` | read (`gtm_query`) | One recommendation with its approval and measured outcome. |
+| `recommendation.generate` | you may call it (`gtm_act`) | Read the funnel, apply the rules and create at most one recommendation per finding. It only proposes; nothing runs. |
+| `recommendation.accept` | **human only**: agent keys are refused | The owner says yes to a recommendation. Nothing runs yet. Agent keys are refused. |
+| `recommendation.dismiss` | **human only**: agent keys are refused | Dismiss a recommendation with a reason. Agent keys are refused. |
+| `recommendation.start_mission` | **human only**: agent keys are refused | Start a bounded mission from an accepted low-risk recommendation. Agent keys are refused; nothing runs until a person approves the mission plan. |
+| `recommendation.act` | proposes (`gtm_act`); a different human approves | Act on an accepted recommendation: its operation is proposed at its own tier and a different person approves. |
+| `recommendation.measure` | you may call it (`gtm_act`) | Read the same funnel again over the same cohorts and write before and after into the recommendation's outcome. |
 | `plays.catalog` | read (`gtm_query`) | The plays the plan can use (refs catalog:<key>, org:<key>, request:<id>). |
 | `onboarding.plan.set` | you may call it (`gtm_act`) | Shape the 90-day plan: add plays from plays.catalog to a lane, remove, defer with a reason, bring back, reorder, pin a lane, set your own hours, ask Studio for a new play (request). Capacity comes from the Welcome hours; what does not fit is deferred with the reason. Publishes nothing. |
 | `studio.request` | you may call it (`gtm_act`) | Request a new play the catalog does not have (onboarding.plan.set request does the same and puts its review in the plan). |
@@ -386,6 +450,12 @@ screen and the button, and record it as an Open item.
 | `proof.propose_activation` | Prepare the draft proof (proof.extract_from_document / proof.update) and tell the user to propose activation in Settings > Proof library; a different person approves it. |
 | `voice.customer_language.approve` | Mine the phrases (voice.customer_language.mine) and tell the user to review them in Settings > Proof library > Customer language. |
 | `onboarding.launch` | Read onboarding.launch.preview and tell the user exactly what Launch will sign, promote and turn live; they click Launch in Setup > First motion. |
+| `motion.decide` | Run motion.assess and show the ranking with its gaps; the person decides in the console and gives the reason. Never record a motion for them. |
+| `motion.checkpoint` | Read motion.get for the checkpoint dates and bring the real numbers (funnel.evaluate, board.evaluate); the person records what they expected against what they observed in the console. |
+| `motion.change` | Show motion.get and the checkpoints; the person changes the motion in the console with a reason. |
+| `recommendation.accept` | Show the recommendation with its evidence (recommendation.get); the owner accepts it in the console. |
+| `recommendation.dismiss` | Say what you would dismiss and why; the owner dismisses it in the console. |
+| `recommendation.start_mission` | Tell the owner the recommendation is eligible once accepted; they start the mission in the console and a different person approves its plan. |
 
 ## Open asks
 

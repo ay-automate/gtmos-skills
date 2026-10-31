@@ -46,7 +46,7 @@ Rule for every engine: verify live with its own check AND `gtm_query instance.re
 - **Defaults:** half-life 30 days; >= 60 hot, >= 30 warm.
 - **Knobs:** half-life, hot/warm thresholds, which signal kinds count.
 - **Verify live:** `signals.ingest_intent` then `signals.surge_report` returns real accounts.
-- **Scan on demand:** `gtm_act signals.scan_now {maxCostUsd?, accountIds?}` (owner/admin) runs the daily looot signal scan now -- the same `score.signal_scan` job, capped per run at min(maxCostUsd, `signals.scan.perRunCapUsd`, $1); one scan in flight per org (a second call returns the running job); refused in Dry Mode (`status: dry_mode`). Read the outcome with `gtm_query signals.scan_status` (last runs: status ok / budget_stopped / skipped, signals created, spend vs cap; in-flight job; last failure).
+- **Scan on demand:** `gtm_act signals.scan_now {maxCostUsd?, accountIds?}` (owner/admin) runs the daily looot signal scan now -- the same daily scan job, capped per run at min(maxCostUsd, `signals.scan.perRunCapUsd`, $1); one scan in flight per org (a second call returns the running job); refused in Dry Mode (`status: dry_mode`). Read the outcome with `gtm_query signals.scan_status` (last runs: status ok / budget_stopped / skipped, signals created, spend vs cap; in-flight job; last failure).
 - **Gotchas:** never `docker exec` into the worker to trigger a scan -- use `signals.scan_now`.
 
 ## Outreach -- `stdlib/engine.outreach`
@@ -93,6 +93,19 @@ Rule for every engine: verify live with its own check AND `gtm_query instance.re
 - **Research agent:** `research.request`, `research.queue`, `research.settings.get/set`.
 - **Search index (vector search):** `gtm_query search.index_status` -- per type records / indexed / with vector / pending, the embedding model in use, or "no embedding provider" (search is then full-text only: add an OpenAI or Gemini key). `gtm_act search.reindex_now {types?}` (owner/admin) runs the daily reindex job now (one in flight per org) -- e.g. after adding an embedding key or a big import. Never `docker exec` to reindex.
 - **CRM of record (via Composio):** `crm.settings.get` / `crm.settings.set {crmOfRecord}` (hubspot, salesforce, pipedrive, attio, zoho), `crm.sync`, `crm.sync_status`, `crm.update_record` (E), `crm.undo_update_record`. See the `composio` skill.
+
+## Funnel, board, recommendations, imports and motion (GTM OS 0.2.6)
+
+Check `harness.status` and `gtm_describe` first: an instance older than 0.2.6 does not have these.
+Skip what is missing, say why, never invent an operation.
+
+- **Funnel:** the org's signed `definition.funnel` is read by `funnel.evaluate` (per stage entered, converted, rate, sample, median days, with a coverage block you quote with every rate). `funnel.list` shows the funnels; `funnel.accounts` lists the companies behind one cell.
+- **Board and revenue target:** `board.evaluate` (weighted pipeline, conversion, win rate, coverage against the target, slip rate; a number that cannot be computed honestly says unavailable). The target is `definition.revenue_target`: read it with `board.target.get`, propose a version with `board.target.propose`; a person signs it.
+- **Recommendation loop:** `recommendation.generate` reads the funnel and applies the signed `definition.recommendation_rules` (`recommendation.rules.get`, `recommendation.rules.propose`), at most one recommendation per finding. `recommendation.list` and `recommendation.get` read them. `recommendation.accept`, `recommendation.dismiss` and `recommendation.start_mission` are for people only: agent keys are refused, so an agent shows the evidence and stops. `recommendation.act` proposes the accepted action (a different person approves); `recommendation.measure` writes before and after.
+- **Imports and data quality:** the import gate reads `definition.data_quality_policy` (`identity_dq.dq_policy.get`, `identity_dq.dq_policy.propose`). `import.review.list` shows held-back rows; `import.review.decide` fixes or skips one, and an override needs a person's reason (legal blocks cannot be overridden). `identity_dq.steward_plan` plans one bundle of merges and fixes; `identity_dq.steward_bundle` proposes it for a person to approve.
+- **Motion:** `motion.assess` ranks the motions on real counts, `motion.get` shows the one in force. `motion.decide`, `motion.change` and `motion.checkpoint` (the +30, +60 and +90 day readings) are for people only.
+- **Risk tiers:** `risk.tier_readiness` (owner or admin) lists which operations would start needing a named approver when the stricter tiers turn on (default on from 0.2.7).
+- **Say why:** a `gtm_act` that proposes takes an optional `justification` (why now, at least 10 characters). Optional in 0.2.6. From 0.2.7 (`GTMOS_JUSTIFICATION_ENFORCE` on by default) it is required for agent proposals at tier T2 and above, and a proposal without it is refused. A good reason names the evidence and the effect, for example "14 of 22 closed-won accounts are in DE, so this saves the ICP card with country DE". Never write one you cannot back.
 
 ## Blueprints (start from the closest, then customise)
 `outbound`, `seo`, `full-gtm`, `b2b-saas-sales-led`, `b2b-saas-plg`, `enterprise-abm`, `agency-services`,

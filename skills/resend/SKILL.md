@@ -17,7 +17,7 @@ Capabilities and operation names are listed below as they appear in the connecto
 coverage map. Discover the live input and output schema with `gtm describe` before invocation;
 the registry for the current organization is authoritative if it differs from this static guide.
 
-- Serves `outreach.send_email`.
+- Serves as the sending backend behind `outreach.send_message`.
 - Uses Resend's email API; without credentials GTM OS uses a fixture send adapter and does not send real email.
 
 ## Connect it

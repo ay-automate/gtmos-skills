@@ -17,7 +17,7 @@ Capabilities and operation names are listed below as they appear in the connecto
 coverage map. Discover the live input and output schema with `gtm describe` before invocation;
 the registry for the current organization is authoritative if it differs from this static guide.
 
-- `crm.read_accounts` reads account/company data.
+- The connector's account-read capability reads account/company data (`crm.sync` runs it).
 - The package declares the `gtm.account` mapping; writeback is part of the connector (a governed, approval-gated write).
 - It is a capability connector, not a promise that arbitrary HubSpot objects are mapped.
 
@@ -34,7 +34,7 @@ through its documented operator workflow.
 
 ## Canonical data
 
-- Reads HubSpot companies/accounts through `crm.read_accounts`.
+- Reads HubSpot companies/accounts through the connector's account-read capability, run by `crm.sync`.
 - Maps canonical output to `gtm.account`.
 - Writeback is connector-specific; verify its current source and live operation schema before proposing a change.
 

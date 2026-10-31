@@ -38,6 +38,10 @@ Data you must BUY (enrichment, emails, intent) is looot's job, not a source mapp
    -> `gtm_act config.apply`. Definitions never go straight into prod. `config.apply` is an
    **approval** a DIFFERENT member releases; validation issues (unknown field, missing custom object,
    bad path, unknown transform) come back before anything is applied.
+   Say why: pass a `justification` (the MCP argument of `gtm_act`, why this mapping and what it
+   brings in, at least 10 characters) on every `gtm_act` of this path that proposes. Optional in GTM OS
+   0.2.6; required for agent proposals at tier T2 and above from 0.2.7. Never write a reason you
+   cannot back with a preview or a count.
 6. **Sign** -- `gtm definition sign definition.source_mapping/<key> --env dev` (human only; an agent
    can never sign). Optionally `gtm promote` it to prod (again an approval).
 7. **Sync** -- `gtm_act source.sync { mappingKey }` enqueues the job (one running per mapping);
@@ -165,7 +169,7 @@ schedule: { kind: manual }
 - A run with `invalid` rows: the target refused them (e.g. a required field missing) -- read
   `source.sync_status` errors, add a `const` or a better path. `unresolved` signals: the contact/company
   is not in GTM OS yet (sync contacts first).
-- `truncated`: raise `source.maxRecords` (max 50,000) or narrow `source.args`.
+- `truncated`: raise `source.maxRecords` (max 50,000) or narrow the `args` of the spec's `source` block.
 
 ## References
 

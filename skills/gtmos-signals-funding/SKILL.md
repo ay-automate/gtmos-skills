@@ -57,7 +57,7 @@ Prices are the cheapest live provider in the public looot catalog on 2026-10-08.
 | 3 | `company.funding` | `domain` | from $0.01 per call |
 | 1 (check mode) | `company.funding` | each `domain` | from $0.01 per call |
 
-`signals.funding` (from $0.108 per call) and `company.funded.search` (from $0.05 per result) return ready-made funding feeds. They cost 10 to 100 times more per company; offer them only when the news route finds too little.
+The looot jobs `signals.funding` (from $0.108 per call) and `company.funded.search` (from $0.05 per result) return ready-made funding feeds. They cost 10 to 100 times more per company; offer them only when the news route finds too little.
 
 Expected total: discover with 5 queries and 30 companies ≈ $0.40. Check mode, 100 domains ≈ $1.
 

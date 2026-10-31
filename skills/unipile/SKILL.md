@@ -17,9 +17,8 @@ Capabilities and operation names are listed below as they appear in the connecto
 coverage map. Discover the live input and output schema with `gtm describe` before invocation;
 the registry for the current organization is authoritative if it differs from this static guide.
 
-- `outreach.linkedin_read_profile`, `outreach.linkedin_read_inbox`, `outreach.linkedin_read_connections`.
-- `outreach.linkedin_send_connection_request` and `outreach.linkedin_send_message`.
-- `outreach.refresh_first_degree_connections` maintains `unipile_first_degree_connection` for suppression.
+- Connector capabilities (no operation of their own): read a profile, read the inbox, read connections, send a connection request, send a message. Sends go through `outreach.send_message` and its approval.
+- A connector job keeps `unipile_first_degree_connection` current for suppression.
 - `outreach.linkedin_seats` (Q) reports the seats of the activated LinkedIn lanes: caps per kind per UTC day and rolling 7 days, warm-up, usage, `noteMaxChars`, whether Unipile is connected and whether an owner accepted LinkedIn's high risk. `outreach.linkedin_webhook_secret` returns the Unipile webhook secret to humans only (owner / admin); agent keys are refused.
 
 ## Connect it

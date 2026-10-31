@@ -30,6 +30,28 @@ Conventions used below:
   error, and the exact fix (console path + button, missing scope, or who must approve). Add it to
   the Open items in `.claude/memory/setup-status.md`; never skip the step silently.
 
+## Step 0 -- Probe what the instance really has
+
+Do this first when an instance already answers: `.claude/gtmos-instance.json` has an `apiUrl`, or the
+gtmos MCP server is connected. (Codex and other agents have no slash command: read this whole skill and
+start here.)
+
+1. Call `gtm_query {"name":"harness.status"}` (no input). It returns the operation count, the
+   `operationsHash`, the skills tag the instance expects and the first-win path. Compare
+   `operationsHash` with `referenceOpsHash` in `.claude/gtmos-instance.json`: a difference means the
+   instance changed since `gtm init`, so run `gtm init --refresh` once the instance is reachable.
+2. Call `gtm_describe` with no argument for the catalog this instance serves, and with a `name` for an
+   operation just before its first use.
+3. If the instance does not know an operation a step names, skip that sub-step and say why in the same
+   reply ("this instance has no `<operation>`"). Add it to the Open items in
+   `.claude/memory/setup-status.md`. Never call another operation in its place and never invent one.
+4. No instance is connected yet, or `harness.status` is unknown (an instance older than GTM OS 0.2.6)?
+   Skip the call, carry on with Step 1, and come back to `gtm_describe` after Step 4, once
+   `gtm doctor` passes.
+5. Any call that proposes an effect (`gtm_act`) takes an optional `justification`: why now, in your own
+   words, at least 10 characters. Optional in GTM OS 0.2.6; required for agent proposals at tier T2 and
+   above from 0.2.7. Send one every time.
+
 ## Step 1 -- Prerequisites and an existing instance
 
 First, if this session was already running when `gtm init` wrote `.claude/` (the user typed

@@ -17,9 +17,9 @@ Capabilities and operation names are listed below as they appear in the connecto
 coverage map. Discover the live input and output schema with `gtm describe` before invocation;
 the registry for the current organization is authoritative if it differs from this static guide.
 
-- `outreach.read_email_replies` and `outreach.ingest_gmail_replies` cover reply retrieval/ingest.
+- Reply retrieval and ingest are connector capabilities (no operation of their own): a connector job pulls replies into GTM OS.
 - Adapter mappings include `gtm.message`, `gtm.contact`, `gtm.account`, `gtm.campaign_member`, `gtm.activity`, and `gtm.signal`.
-- Outbound email uses the registered `outreach.send_email` backend where configured.
+- Outbound email goes through `outreach.send_message` (approval-gated) and the configured sending backend.
 
 ## Connect it
 

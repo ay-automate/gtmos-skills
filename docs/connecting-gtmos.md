@@ -24,6 +24,8 @@ A skill decides it is connected when `gtm_describe` answers (or `gtm describe` r
 5. **No invented data.** Numbers come from an operation result, quoted with the operation that produced it. When a KPI has too little data, say "not enough data yet" and why. Proof, logos, metrics and customer quotes come from the proof library only (`proof.list`). Customer words come from `voice.customer_language.list`. Anything else is labelled as a hypothesis.
 6. **Brand gate before anything leaves.** Run copy through `brand.check_text` before proposing a send or a publish. A violating draft is blocked at send time anyway.
 7. **Spend is real.** Quote before buying data (`capability.quote`, or `estimate: true` on enrichment) and stay inside the org's caps (`policy.guardrails.get`).
+8. **Say why.** A `gtm_act` that proposes takes an optional `justification` (why now, in your own words, at least 10 characters that are not spaces). It is optional in GTM OS 0.2.6. From 0.2.7 it is required for agent proposals at tier T2 and above, and a proposal without it is refused. Name the evidence and the effect; never write a reason you cannot back.
+9. **Probe first.** Start a session with `harness.status`. If the instance does not know an operation a skill names, skip that part, say why and never invent a replacement.
 
 ## Org definitions the skills read
 
@@ -68,6 +70,8 @@ The class follows each name. Treat this as a map; `gtm_describe` is the authorit
 **Money, tracking and reporting.** `money.settings.get` Q, `money.attribution` Q, `money.revenue` Q, `money.reconcile` Q, `tracking.sources` Q, `tracking.activity` Q, `tracking.site.get` Q, `product_analytics.sync` D, `query.engine_kpis` Q, `metric.evaluate` Q, `actions.kpis` Q, `sync.health` Q, `sync.completeness` Q.
 
 **Plays, agents and approvals.** `plays.catalog` Q, `plays.explain` Q, `play.simulate` Q (zero writes, always first), `play.trigger` T, `agent.trigger.list` Q, `agent.run_list` Q, `runtime.list_approvals` Q, `runtime.get_approval` Q, `policy.get_dry_mode` Q, `policy.engine_modes.get` Q, `policy.guardrails.get` Q, `instance.readiness` Q, `channel.deliver` E.
+
+**Funnel, board, recommendations, imports and motion (GTM OS 0.2.6).** `harness.status` Q, `funnel.list` Q, `funnel.evaluate` Q, `funnel.accounts` Q, `board.evaluate` Q, `board.target.get` Q, `board.target.propose` D, `recommendation.list` Q, `recommendation.get` Q, `recommendation.rules.get` Q, `recommendation.rules.propose` D, `recommendation.generate` D, `recommendation.act` D (proposes), `recommendation.measure` D, `import.review.list` Q, `import.review.decide` D, `identity_dq.dq_policy.get` Q, `identity_dq.dq_policy.propose` D, `identity_dq.steward_plan` Q, `identity_dq.steward_bundle` E, `motion.assess` Q, `motion.get` Q, `risk.tier_readiness` Q. Only a person runs `recommendation.accept`, `recommendation.dismiss`, `recommendation.start_mission`, `motion.decide`, `motion.change` and `motion.checkpoint`: agent keys are refused. The definitions behind them are `definition.funnel`, `definition.revenue_target`, `definition.recommendation_rules` and `definition.data_quality_policy`; a person signs each one.
 
 ## When a step needs a human
 

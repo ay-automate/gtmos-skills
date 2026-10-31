@@ -42,6 +42,10 @@ goes through GTM OS. For SDKs, recipes and integrations beyond these skills, see
 
 ## The capabilities GTM OS exposes (the looot connector)
 
+These are capability keys, not operation names. You pass one as the `capability` of `capability.quote`
+(price it) and `capability.acquire` (run it, approval-gated); `capability.list` shows the ones this
+organization can acquire. Never call a capability key as an operation.
+
 | GTM OS capability | looot job it routes to | Typical use |
 |---|---|---|
 | `enrich.company` | `company.enrich` | firmographics from a domain |

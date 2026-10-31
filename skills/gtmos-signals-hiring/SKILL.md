@@ -56,7 +56,7 @@ Prices are the cheapest live provider in the public looot catalog on 2026-10-08.
 | 1 (alt) | `jobs.company` | the company (domain or LinkedIn URL) | from $0.01 per call |
 | 2 (optional) | `web.scrape.markdown` | `url` of a matching posting, to read the full text | from $0.0002 per call |
 
-`signals.hiring` (from $0.108 per call) returns a ready-made hiring signal feed. Use it only when the user asks for a market-wide feed, not to check their own list.
+The looot job `signals.hiring` (from $0.108 per call) returns a ready-made hiring signal feed. Use it only when the user asks for a market-wide feed, not to check their own list.
 
 Expected total for 100 accounts: about $0.05 to $0.10 with `jobs.search`, about $1 with `jobs.company`.
 

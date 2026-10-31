@@ -142,7 +142,7 @@ suppression, claim guardrail, brand safety, caps, quiet hours and the unsubscrib
   pending hand-offs + today + 1 must stay within the caps. The message is `handed_off` until the
   rail reports the send (then `sent`); a reply / unsubscribe / suppression / consent withdrawal /
   erasure withdraws the lead at the rail (INSTANTLY_DELETE_LEAD, LEMLIST_DELETE_UNSUBSCRIBE_LEAD_FROM_CAMPAIGN)
-  and cancels the message. The job is `outbound_rails.handoff_sync` (every 15 min + on those events).
+  and cancels the message. A background job (the rail hand-off sync) does this every 15 min and on those events.
 - Call memory: internal-only calls are skipped unless `transcripts/include_internal_meetings` = true;
   synced transcripts follow `transcripts/default_visibility` (default private). Erased participants
   are cut out; an erased / redacted / archived transcript is never re-created or overwritten.
