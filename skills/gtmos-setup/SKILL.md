@@ -113,9 +113,11 @@ node -e "const n=require('net');for(const p of [3000,3001,3004,5432])n.createSer
 >    has a four-eyes rule: whoever proposes a change can never approve it.
 > 5. Version: "<local tag> (local images, no download)" or "stable" -- show the default.
 > 6. Ports: the defaults above, or the free ones you propose for each busy port.
-> 7. Provider keys: which do you have ready -- a model provider (Anthropic, Gemini or OpenAI;
->    one is required), looot, Resend? "Have them at hand: right after the install you paste them
->    in the console (Connections page), where they are live at once -- no restart."
+> 7. Provider keys: which do you have ready -- the AI model key first (Anthropic or OpenRouter;
+>    OpenAI or Gemini also work), then looot, Resend? "The AI model key is the first setup step:
+>    every recommender, monitor and classifier is an AI agent. Have it at hand: right after the install
+>    you paste it in the console (Setup > AI model, or the Connections page), where it is live at once --
+>    no restart. No model key? Your own agent connected over MCP can do the AI work instead."
 >
 > For **use existing** ask instead: the owner email of that instance, the organization id
 > (console Settings > Developer shows it), and where its `.env` is if it holds
@@ -147,7 +149,7 @@ gtm setup instance --org "<org name>" --email <owner> --approver-email <approver
   half-way, fix what it reports and run the same command again.
 - `<owner env file>` = `instance/.env`; `<org id>` = its `ORGANIZATION_ID` (read only that value:
   `sed -n 's/^ORGANIZATION_ID=//p' instance/.env`).
-- Provider keys (model provider, looot, Resend) go in the console Connections page in step 6 (per
+- Provider keys (the AI model key first, then looot, Resend) go in the console in step 6 (per
   org, live immediately, no restart). Do NOT add them to `instance/.env` after the stack is up: an
   env change only applies when the containers are recreated.
 - Containers recreated (this install restarts the worker; `gtm up`, `gtm upgrade` or
@@ -243,8 +245,15 @@ as Connections (stored per org, live at once, no container restart) -- never by 
 > never repeat the key afterwards:
 > `{"provider":"<provider>","label":"<provider>","secret":"<key>"}`.
 
-1. **Model provider (always required):** `anthropic` and/or `gemini` (or `openai`). At least one
-   must be live.
+1. **AI model (the first setup step, do it before anything else):** every recommender, monitor and
+   classifier in GTM OS is an AI agent, so the model key comes first. Anthropic and OpenRouter are the
+   recommended providers (`anthropic`, `openrouter`); OpenAI (`openai`) and Gemini (`gemini`) are optional.
+   The user connects it in the console AI model screen (Setup > AI model, `<console>/org/<org id>/onboarding?step=model`:
+   paste the key, press Test and save, set the monthly spend cap) or on the Connections page; `model.connect`
+   and `model.budget.set` are the person's, never yours, and you never see or store the key. Read `model.status`
+   afterwards. With no model key, the user's own agent connected over MCP can do the same work:
+   `model.status` then reports `aiAvailable` with reason `agent_only`, and recommendations come from
+   `recommendation.context` and `recommendation.submit`. At least one of the two must be live.
 2. **looot** (`looot`): the only third-party data provider (enrichment, search, intent).
 3. **Resend** (`resend`): email sending when no Gmail / Microsoft 365 mailbox sends.
 

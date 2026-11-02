@@ -63,14 +63,15 @@ Before the first screen, and again at the start of a new session:
    "On an older instance".
 11. **Say why.** A `gtm_act` that proposes an effect takes an optional `justification` (the MCP argument of `gtm_act`; over REST the `x-gtmos-justification` header): why now, in your own words, for the person who approves. In GTM OS 0.2.6 it is optional. An agent proposal at tier T2 or above without one is still recorded, and the approver sees "No reason given by the agent". From GTM OS 0.2.7 (`GTMOS_JUSTIFICATION_ENFORCE` on by default) it is required for agent proposals at T2 or above: at least 10 characters that are not spaces, or the call is refused with VALIDATION_FAILED and nothing is written. Always send one now. A good reason names the evidence and the effect: "14 of 22 closed-won accounts are in DE, so this saves the ICP card with country DE". A bad one repeats the operation name or says "as requested". It is a statement, not a proof: never write a reason you cannot back with a number or a source. A person may leave it out. At tier T3 and above a named person other than you approves, whatever the reason says.
 
-## The six screens
+## The seven screens
 
-1. **Welcome** (screen `welcome`; steps `company`, `motion`)
-2. **Connect your data** (screen `connect`; steps `connections`)
-3. **Your definitions** (screen `definitions`; steps `definitions`)
-4. **Rules and who approves what** (screen `rules`; steps `rules`, `team`)
-5. **The build** (screen `build`; steps `build`)
-6. **First motion and 90 days** (screen `first_motion`; steps `plan`, `launch`)
+1. **AI model** (screen `ai_model`; steps `model`)
+2. **Welcome** (screen `welcome`; steps `company`, `motion`)
+3. **Connect your data** (screen `connect`; steps `connections`)
+4. **Your definitions** (screen `definitions`; steps `definitions`)
+5. **Rules and who approves what** (screen `rules`; steps `rules`, `team`)
+6. **The build** (screen `build`; steps `build`)
+7. **First motion and 90 days** (screen `first_motion`; steps `plan`, `launch`)
 
 Start every session with `gtm_query {"name":"onboarding.get"}`: it starts the session on first read
 and returns `session.currentStep`, `completedSteps`, `version`, the cards and the progress. Resume
@@ -91,7 +92,25 @@ Operations for every screen:
 | `runtime.list_approvals` | read (`gtm_query`) | What is waiting for a human approver (your proposals included). |
 | `harness.status` | read (`gtm_query`) | Step 0 probe: the operation count and hash of this instance, the skills tag it expects and the first-win path. Compare `operationsHash` with `referenceOpsHash` in `.claude/gtmos-instance.json`; a difference means the instance changed since `gtm init` (run `gtm init --refresh`). No secret, no org data. |
 
-## Screen 1 -- Welcome (company, motion)
+## Screen 1 -- AI model (model)
+
+Every recommender, monitor and classifier is an AI agent, so the model key is step one.
+
+| Operation | Access | Use |
+|---|---|---|
+| `model.status` | read (`gtm_query`) | Is an AI available: the model key state, spend against the monthly cap, and whether the user's own agent (your key) was seen in the last 7 days (aiAvailable, reason, externalAgent). Read it before anything else. |
+| `model.connect` | **human only**: agent keys are refused | The user pastes a model key (OpenRouter or Anthropic first; OpenAI / Gemini also work): it is sealed, tested with a structured call, and the default model policy is published. Never ask for the key in chat and never write it to a file: send the user to the AI model step. |
+| `model.budget.set` | **human only**: agent keys are refused | The monthly model spend cap in dollars, or an explicit no-cap answer. The user sets it. |
+
+1. Call `model.status`. `configured` true: say which provider and model, and go on. `aiAvailable` true with
+   reason `agent_only`: you (the user's own agent) are the AI; the user may still add a key so GTM OS generates
+   recommendations itself.
+2. Otherwise tell the user to open the AI model step in the console (`/org/<id>/onboarding?step=model`), pick
+   OpenRouter or Anthropic (or another provider), paste the key and press Test and save. You never see or handle the key.
+3. Ask for the monthly spend cap (a sensible default is 50 dollars) or an explicit "no cap". The user sets it there.
+4. `completeStep` `model` once `model.status` says `configured`.
+
+## Screen 2 -- Welcome (company, motion)
 
 1. Ask the user, in one grouped question: company name, website, industry, team size, markets, deal
    sizes, sales cycles, motions, maturity, the tools in their stack, up to 3 pains, who runs it and
@@ -108,7 +127,7 @@ Operations for every screen:
 4. Read `onboarding.suggest`. Show the engines and blueprints with their `reasons` (and `against`).
    The user picks the engines (`onboarding.update` `{"engines":[...]}`, or `null` = take the
    suggestion) and, optionally, a blueprint (`blueprint.get` shows what it installs). Save the pick
-   with `onboarding.update` `{"blueprint":"<id>"}`: the build (Screen 5) applies it adapted to the
+   with `onboarding.update` `{"blueprint":"<id>"}`: the build (Screen 6) applies it adapted to the
    approved cards. Apply it now (`blueprint.apply`, it proposes: rule 7) only when the user asks, and
    then save `{"seed":{"changeSetId":"...","approvalId":"..."}}` too. Applying the same input again
    while its proposal still waits (and its base versions are current) returns that proposal with
@@ -124,7 +143,7 @@ Operations for every screen:
 | `blueprint.get` | read (`gtm_query`) | One blueprint: what it installs. |
 | `blueprint.apply` | proposes (`gtm_act`); a different human approves | Seed the picked motion; returns a ChangeSet + approval a different human approves. Usually left to the build (Screen 5), which applies it adapted to the approved cards. |
 
-## Screen 2 -- Connect your data (connections)
+## Screen 3 -- Connect your data (connections)
 
 1. Read `onboarding.signal_coverage`: per category, what is connected, real record counts, the most
    accounts one source covers (never a sum), `stackMissing`, and `catalog` (each connector: how it
@@ -169,7 +188,7 @@ overridden at all.
 | `import.review.list` | read (`gtm_query`) | The import batches with staged rows, or one batch's rows with each row's gate result and reasons. Rows the gate blocked are held back from the CRM until someone decides. |
 | `import.review.decide` | you may call it (`gtm_act`) | Fix or skip one staged import row. Do not override the gate yourself: an override needs a reason of 10 or more characters from the person, and legal blocks (suppression, consent denied or withdrawn, do-not-contact) cannot be overridden at all. |
 
-## Screen 3 -- Your definitions
+## Screen 4 -- Your definitions
 
 1. Documents first. `onboarding.get` `docs` is the checklist (ICP notes, stage definitions, pricing,
    brand voice, suppression lists, DPA). A document the user hands you (a file in this workspace):
@@ -206,7 +225,7 @@ overridden at all.
      addresses in the chat.
 6. `onboarding.blueprint_adaptations` shows what the picked blueprint will take from the approved
    cards when the build applies it: show it before the build.
-7. Definitions you publish land in `dev`; prod needs signing + promotion (Screen 6).
+7. Definitions you publish land in `dev`; prod needs signing + promotion (Screen 7).
 8. `completeStep` `definitions`.
 
 Newer definitions (GTM OS 0.2.6), only when the user asks for them and Step 0 showed the instance has them:
@@ -267,10 +286,10 @@ The cards of this screen and who can approve them:
 | `board.target.get` | read (`gtm_query`) | The revenue target that applies (the signed definition.revenue_target in prod), the dev draft and the spec an editor starts from. |
 | `board.target.propose` | you may call it (`gtm_act`) | Propose a revenue target version from the closed-won figures the user gave. A person signs it. Never invent a period or an amount. |
 | `board.evaluate` | read (`gtm_query`) | The board: weighted pipeline, conversion, win rate, coverage against the target, slip rate. A number that cannot be computed honestly says unavailable; repeat that, never fill it in. |
-| `recommendation.rules.get` | read (`gtm_query`) | The interpretation rules the recommendation loop applies (the signed ones, else the shipped ones) and the vocabulary a rule may use. |
+| `recommendation.rules.get` | read (`gtm_query`) | The guidance and hard limits the recommendation agent works within (the signed rules, else the shipped ones) and the vocabulary a rule may use. |
 | `recommendation.rules.propose` | you may call it (`gtm_act`) | Propose a new definition.recommendation_rules version: thresholds, minimum samples and one allowed action per rule. A person signs it. |
 
-## Screen 4 -- Rules and who approves what (rules, team)
+## Screen 5 -- Rules and who approves what (rules, team)
 
 1. The cards of this step (below): show the draft and its evidence; the user approves them in the
    console (their targets are human-only). For `autonomy`, say plainly that outreach never acts within
@@ -321,7 +340,7 @@ GTM OS 0.2.7).
 | `onboarding.seats.set` | you may call it (`gtm_act`) | Save the seats (operator, ops lead, exec, deputy); the role-profile binding it runs is human-only and comes back in roles.errors for an agent. |
 | `risk.tier_readiness` | read (`gtm_query`) | Owner or admin. Which operations would start needing approval when the stricter risk-tier flag turns on (default on from 0.2.7), and the org's T3 limits. Read it before the user decides who approves what. |
 
-## Screen 5 -- The build
+## Screen 6 -- The build
 
 1. `onboarding.engine_readiness`: per picked engine, each requirement met / missing / unknown, with
    the evidence and the remediation. An unknown is reported as unknown, never as met.
@@ -359,6 +378,7 @@ The build steps, in run order:
 | `index` | Reindex search and agent memory | `search.reindex_now` |
 | `readiness` | Snapshot what each engine still waits on | `onboarding.engine_readiness` |
 | `brief` | Regenerate the OS brief (readiness snapshot + your model's cited summary) | `onboarding.brief.refresh` |
+| `insight_agents` | Propose enabling the Insight agents package (the recommendation agent) for your approval | `packages.agents`, `packages.enable` |
 
 | Operation | Access | Use |
 |---|---|---|
@@ -370,7 +390,7 @@ The build steps, in run order:
 | `config.promotion_status` | read (`gtm_query`) | Definitions still in dev (not live) and what must be signed. |
 | `plays.rescore` | you may call it (`gtm_act`) | Rescore the plays once the definitions changed (the build's plays step runs it too). |
 
-## Screen 6 -- First motion and 90 days (plan, launch)
+## Screen 7 -- First motion and 90 days (plan, launch)
 
 1. Read the plan in `onboarding.get` (`plan.phases`, `deferred`, `overCapacity`, sized by the hours a
    week; each item says why it is there, who owns it and what it waits on). The user shapes it with
@@ -392,8 +412,12 @@ The build steps, in run order:
 
 The motion and the recommendation loop (GTM OS 0.2.6, check Step 0 first). `motion.assess` ranks the
 motions on real counts; `motion.decide` and `motion.change` are the person's, so show the ranking and let
-them record it. After launch, `recommendation.generate` reads the funnel and proposes at most one
-recommendation per finding; `recommendation.accept`, `recommendation.dismiss` and
+them record it. After launch, `recommendation.generate` runs the built-in AI agent over the computed KPIs
+and the funnel and stores the recommendations that pass validation (with no model connected it answers
+NOT_CONFIGURED; there is no rule fallback). If the user connected no model key but your own agent is connected
+over MCP, read `recommendation.context`, write the set from it and post it with `recommendation.submit`.
+The recommendation rules are guidance and hard limits for that agent, never a trigger.
+`recommendation.accept`, `recommendation.dismiss` and
 `recommendation.start_mission` are the owner's (agent keys are refused). After an accept you may call
 `recommendation.act` (a different person approves it) and, later, `recommendation.measure`.
 `motion.checkpoint` (the +30, +60 and +90 day readings) is the person's too: bring the real numbers.
@@ -407,7 +431,9 @@ recommendation per finding; `recommendation.accept`, `recommendation.dismiss` an
 | `motion.checkpoint` | **human only**: agent keys are refused | Record a +30, +60 or +90 day checkpoint: what was expected against what was observed. A person records it; agent keys are refused. |
 | `recommendation.list` | read (`gtm_query`) | The recommendations from the funnel, newest first, with evidence, proposed action, tier, owner, state and outcome. |
 | `recommendation.get` | read (`gtm_query`) | One recommendation with its approval and measured outcome. |
-| `recommendation.generate` | you may call it (`gtm_act`) | Read the funnel, apply the rules and create at most one recommendation per finding. It only proposes; nothing runs. |
+| `recommendation.generate` | you may call it (`gtm_act`) | Run the built-in recommendation agent (an AI model) over the organization's computed KPIs, funnel, history and guidance; code validates every recommendation before it is stored. It only proposes; nothing runs. With no model connected it answers NOT_CONFIGURED (there is no rule fallback). Owner or admin only. |
+| `recommendation.context` | read (`gtm_query`) | For your own agent (MCP) when no model key is connected: the layered context the built-in agent reads (profile, KPIs, history, guidance), the allowed operations and the exact answer format. Read it before recommendation.submit. Owner or admin only. |
+| `recommendation.submit` | you may call it (`gtm_act`) | Post a RecommendationSet you wrote from recommendation.context. It is validated and stored exactly like the built-in agent's, and only proposes. Rate limited: one set a minute and a few an hour per organization. |
 | `recommendation.accept` | **human only**: agent keys are refused | The owner says yes to a recommendation. Nothing runs yet. Agent keys are refused. |
 | `recommendation.dismiss` | **human only**: agent keys are refused | Dismiss a recommendation with a reason. Agent keys are refused. |
 | `recommendation.start_mission` | **human only**: agent keys are refused | Start a bounded mission from an accepted low-risk recommendation. Agent keys are refused; nothing runs until a person approves the mission plan. |
@@ -432,6 +458,8 @@ screen and the button, and record it as an Open item.
 
 | Refused for agents | What you do instead |
 |---|---|
+| `model.connect` | Never ask for the model key in chat or write it to a file. Send the user to Setup > AI model (paste, Test and save); read model.status afterwards. |
+| `model.budget.set` | The user sets the monthly model spend cap in Setup > AI model (an agent never raises its own spend limit). |
 | `profile.arrBand` | Never ask for it, never store it. Tell the user to set it in Setup > Welcome themselves (or leave it empty: it stays private). |
 | `composio.connect` | Connecting a new app is an OAuth sign-in: give the user the console link (Connections > Composio > Connect), then run composio.sync_connections when they say done. |
 | `money.settings.set` | Prepare the money card (edit it to what the user confirmed); the user approves it in Setup > Your definitions. |

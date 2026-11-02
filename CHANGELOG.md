@@ -2,6 +2,13 @@
 
 All notable changes to this repository. Versions follow [Semantic Versioning](https://semver.org/); each release is a git tag with `manifest.json` attached.
 
+## 0.5.0 (2026-11-02)
+
+Skills for GTM OS 0.2.6, AI-native: the AI model comes first and recommendations are written by an AI agent.
+
+- AI model first. `gtmos-setup` and `gtmos-onboarding` now start with the AI model (setup Screen 1, step `model`): every recommender, monitor and classifier is an AI agent, so the model key is step one. Anthropic and OpenRouter first, OpenAI and Gemini optional. The user connects it in the console AI model screen or the Connections page; `model.connect` and `model.budget.set` are people only, `model.status` reads the state. With no model key, the user's own agent connected over MCP can do the AI work (`aiAvailable` with reason `agent_only`). The later screens are renumbered.
+- Recommendations by the AI agent. `gtmos-onboarding` and `gtmos-engine-catalog` no longer describe rule-triggered recommendations: `recommendation.generate` runs the built-in recommendation agent over the computed KPIs, funnel, history and guidance, code validates the result, and with no model connected it answers NOT_CONFIGURED (no rule fallback). `definition.recommendation_rules` is guidance and hard limits, never a trigger. New rows for `recommendation.context` (read) and `recommendation.submit` (an MCP-connected agent posts a validated set).
+
 ## 0.4.0 (2026-10-31)
 
 Skills for GTM OS 0.2.6: say why on proposals, probe before you call, no operation names that the registry does not have.
