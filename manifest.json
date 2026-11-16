@@ -1,6 +1,6 @@
 {
   "name": "gtmos-skills",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "repository": "https://github.com/ay-automate/gtmos-skills",
   "skills": 107,
   "agents": 11,
@@ -187,8 +187,8 @@
     },
     {
       "path": "skills/composio/SKILL.md",
-      "sha256": "495c705436f27b54d520dd725e1238eccb702ae9346dc6bfdd873f8d5c9c552f",
-      "bytes": 16950
+      "sha256": "31bdb928a2ad783dcfbb7cfd4de010470c277acb7bcbc203f1dba3ee83e5ea71",
+      "bytes": 16614
     },
     {
       "path": "skills/ga4/SKILL.md",
@@ -1777,8 +1777,8 @@
     },
     {
       "path": "skills/gtmos-setup/SKILL.md",
-      "sha256": "3fbb64470581b81022bd328677d3ac78d49f472eee3f823c4ff7755f84def640",
-      "bytes": 23639
+      "sha256": "0b75fba39670091abca29bc3908a1f5fa0710a78e7014884f6a1fb81c0d9c33b",
+      "bytes": 24146
     },
     {
       "path": "skills/gtmos-signals-account-digest/SKILL.md",

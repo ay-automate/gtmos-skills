@@ -1,6 +1,6 @@
 ---
 name: composio
-description: Use when the GTM engineer wants GTM OS to read from or act in THEIR OWN apps -- their CRM (HubSpot, Salesforce, Pipedrive, Attio, Zoho), product analytics (PostHog, Mixpanel, Amplitude), call recorders (Fireflies, Gong, Zoom, Fathom), ad platforms (Google, Meta, LinkedIn, TikTok), outbound rails (Smartlead, Instantly, lemlist), Slack, Notion, support or billing tools -- through Composio. Covers installing and logging in to the Composio CLI (macOS/Linux/Windows), what to automate for this GTM setup, the GTM OS path (Integrations > Connections > Composio -> connect app -> CRM of record -> sync; write-back via the approval-gated crm.update_record), errors and references.
+description: Use when the GTM engineer wants GTM OS to read from or act in THEIR OWN apps -- their CRM (HubSpot, Salesforce, Pipedrive, Attio, Zoho), product analytics (PostHog, Mixpanel, Amplitude), call recorders (Fireflies, Gong, Zoom, Fathom), ad platforms (Google, Meta, LinkedIn, TikTok), outbound rails (Smartlead, Instantly, lemlist), Slack, Notion, support or billing tools -- through Composio. Covers installing and logging in to the Composio CLI (macOS/Linux/Windows), what to automate for this GTM setup, the GTM OS 0.3.0 path (paste one ak_ project key in Integrations > Apps, connect apps from the Apps grid, CRM of record, sync; write-back via the approval-gated crm.update_record), errors and references.
 ---
 
 # Composio in GTM OS
@@ -17,47 +17,40 @@ tool and checking an account -- not a side door for production writes.
 
 ## The GTM OS path (production)
 
-1. **Connect Composio** -- in **Integrations > Connections > Composio** the engineer clicks **Connect
-   Composio** and signs in to their Composio account (OAuth 2.1 + PKCE against Composio Connect:
-   `composio.oauth_start` -> Composio -> `<console>/composio/callback` -> `composio.oauth_callback`;
-   tokens sealed, refreshed automatically; `composio.oauth_disconnect` forgets them). No key to
-   paste. **Advanced** on the same card still takes a key (`composio.set_api_key`, verified live,
-   stored sealed): a Composio Connect key (`ck_...`) or a developer project key (`ak_...`); a
-   `uak_` user key is refused. Precedence when several exist: sign-in > `ck_` > `ak_`; without an
-   org credential the instance `COMPOSIO_API_KEY` is the fallback. `composio.status` shows the
-   `mode` (connect_oauth | connect_key | project).
-2. **Link the apps already connected** -- `composio.sync_connections` (the agent may run
-   it with a key holding `connection.manage`, the Claude Code default) discovers every app connected
-   in the user's Composio account and records it ACTIVE (Search Console, Ahrefs on Composio's instant
-   account, Gmail, Calendar, the CRM, ...); apps no longer connected become INACTIVE. It runs
-   automatically after Connect Composio / a saved key, from `composio.status` when the last sync is
-   older than 5 minutes, and just-in-time when a call needs an app that has no row yet. The card's
-   **Sync connected apps** button does the same. So in Connect mode there is nothing to "adopt" by
-   hand: sync, then `composio.status`.
-3. **Connect a new app** -- only for an app NOT connected anywhere yet: the user connects it in their
-   Composio account (connect.composio.dev) or clicks Connect on the card; then sync again. On the card: search the toolkit (`composio.toolkits`) and click
-   Connect (`composio.connect`): in Connect mode an app already connected in the user's Composio
-   account is verified live and used at once; otherwise Composio's hosted auth URL opens and the card
-   polls until the account is `ACTIVE` (`composio.refresh`). **Use an existing connection**
-   (`composio.accounts_available` -> `composio.adopt`) pins one specific account when there are
-   several -- verified live first; an agent key with `connection.manage` may call both (every adopt is
-   audited with the agent and the human it acts for). A project key (`ak_`) sync only links this
-   org's own accounts; `includeUnowned` (humans only) also links the project's other ACTIVE accounts.
-   Check with `gtm_query composio.status`. If the user hands you a Composio key (`ck_` / `ak_`),
-   you may store it with `composio.set_api_key` (agent key with `connection.manage`; verified live,
-   audited; never echo the key). `composio.connect`, the OAuth sign-in and `composio.disconnect`
-   stay human-only.
-   Pipedrive (and some others: Meta Ads, LinkedIn Ads, Webflow, WordPress.com, Snowflake, ZoomInfo)
-   have no Composio-managed OAuth app -- they need the customer's own OAuth app or API key.
-4. **CRM of record** -- in the card's "CRM of record" section pick the CRM (`crm.settings.set
-   {crmOfRecord}`; one of hubspot, salesforce, pipedrive, attio, zoho; requires an ACTIVE Composio
+1. **Link the Composio account once (a project key)** -- there is no Composio sign-in in GTM OS 0.3.0.
+   Only a **project key that starts with `ak_`** is accepted (get it at platform.composio.dev > your
+   project > Settings > API Keys). A Connect key (`ck_...`) and a `uak_` user key are refused. The
+   owner or admin pastes the key once in **Integrations > Apps** (or the instance sets
+   `COMPOSIO_API_KEY` as a fallback). If the person gives you the key and no working key is linked yet,
+   you may store it with `integrations.setup.link_key` `{"apiKey":"<key>"}` (the older name
+   `composio.set_api_key` still works; it is tested live, sealed and never echoed). Replacing a working
+   key needs a person in the console. Check with `integrations.setup.status` (state `linked` means done;
+   `needs_project_key`, `key_invalid` and `key_missing_permissions` say what to fix) and re-test with
+   `integrations.setup.test`. Pasting the key is the first step, not the whole setup: the person also
+   sets the **callback verifier** (the address shown on the Apps banner, `<console>/integrations/callback`)
+   once in the Composio project settings, and the worker must be running so the app list loads.
+2. **Connect the apps inside GTM OS** -- apps are connected from the **Integrations > Apps** grid, not in
+   the Composio dashboard. Search the list (`integrations.catalog`), click **Connect** on the app and
+   follow it: an OAuth app opens Composio's hosted page and the app's own consent page, an app that takes
+   a key or token asks for the fields in GTM OS. Connecting is a human step (`integrations.connect`
+   cannot be run by an agent). You can see the result with `integrations.status` (read only) and
+   `integrations.accounts.list`. An app can have several accounts: everyone in the org can use an org
+   account, and `integrations.refresh` re-checks one account. Apps that Composio does not manage
+   (Pipedrive and some others: Meta Ads, LinkedIn Ads, Webflow, WordPress.com, Snowflake, ZoomInfo) need
+   the organization's own OAuth app or an API key.
+3. **Old connections** -- connections made by hand in the Composio dashboard are not picked up any more.
+   `composio.sync_connections` now only reports (it is the same as `integrations.status`), and
+   `composio.adopt` and the `composio.oauth_*` operations are retired. If an app shows as not
+   connected, connect it again from the Apps grid. Check with `gtm_query integrations.setup.status`.
+4. **CRM of record** -- in the "CRM of record" section of the CRM settings pick the CRM (`crm.settings.set
+   {crmOfRecord}`; one of hubspot, salesforce, pipedrive, attio, zoho; requires an active connected
    account for it, owner/admin). This seeds the scheduled sync (every 6 hours).
 5. **Sync** -- "Sync now" (`crm.sync`; one running sync per org), then `gtm_query crm.sync_status`
    for the last result. Synced companies/contacts/deals land as `gtm.*` records with provenance.
 6. **Write-back** -- updating a record in their CRM is `crm.update_record {recordType, recordId,
    fields}`: an **E-class effect**, proposed, approved by a different human, reversible with
    `crm.undo_update_record {approvalId}`. Never write to the CRM any other way.
-7. **Verify live** -- `composio.status` shows the toolkit ACTIVE, `crm.sync_status` a recent
+7. **Verify live** -- `integrations.status` shows the app account active, `crm.sync_status` a recent
    success, and `instance.readiness` the CRM seam live.
 8. **Check completeness** -- `sync.completeness.run` counts every object at the CRM (HubSpot search
    total, Salesforce COUNT(), Pipedrive deals summary; else the last complete read) and flags what is
@@ -68,13 +61,13 @@ tool and checking an account -- not a side door for production writes.
 Any OTHER app (Close, Typeform, Stripe, ...) lands in the ontology through a signed source
 mapping -- see `gtmos-source-mapping` (card: a connected app > Map to ontology).
 
-**Composio Connect vs your own MCP servers.** Composio Connect is itself an MCP server (GTM OS
-speaks to it with the same shared MCP client). For any OTHER MCP server -- an internal tool, a
-vendor's MCP endpoint -- do not route it through Composio: add it per org in Integrations > Connections >
-**MCP servers** (`mcp_servers.*`, see the `mcp` skill) and bind its tools as `mcp:<server>:<tool>`.
+**Composio vs your own MCP servers.** For an MCP server that is not an app in the Apps grid -- an
+internal tool, a vendor's MCP endpoint -- do not route it through Composio: add it per org in
+Integrations > Connections > **MCP servers** (`mcp_servers.*`, see the `mcp` skill) and bind its
+tools as `mcp:<server>:<tool>`.
 
-Disconnect an app with `composio.disconnect` (console card; in Connect mode the user's own Composio
-connection is never deleted). Write tools are gated; reads are not.
+Disconnect an app account with `integrations.disconnect` (humans only; it deletes the connection at
+Composio first). Write tools are gated; reads are not.
 
 **SEO & GEO through Composio**: Google Search Console connected through Composio satisfies the GSC
 requirement (`instance.readiness` connector.gsc "via composio"; doctor: "Search Console: connected
@@ -109,8 +102,8 @@ Lead with these, matched to what the engineer runs -- recommend, with the reason
 
 Every connector below feeds data INTO GTM OS (never a status badge only). The setup wizard's
 Connect screen lists them per category (`onboarding.signal_coverage` -> categories[].catalog: where
-the data lands, the op that pulls it, what it still needs). Connect the toolkit in Composio, run
-`composio.sync_connections`, then the op:
+the data lands, the op that pulls it, what it still needs). Connect the app in Integrations > Apps, check it
+with `integrations.status`, then run the op:
 
 | Category | Toolkit | Lands in | Op (6-hourly job once run) | Also needs |
 |---|---|---|---|---|
@@ -198,20 +191,22 @@ Composio through GTM OS, and if installed it must not be used to bypass the GTM 
 
 ## Errors and recovery
 
-- **401 on the key** (`composio.set_api_key` refuses): wrong or revoked key -- use Connect
-  Composio instead, or a fresh `ck_` (connect.composio.dev) / `ak_` (platform.composio.dev >
-  project > Settings > API Keys) key. A `uak_` user key never works for app calls.
-- **Sign-in expired** (status "Sign-in expired", AUTH_EXPIRED "Reconnect Composio"): the refresh
-  failed -- click Reconnect Composio on the card.
-- **Account not ACTIVE** (`INITIATED`, `EXPIRED`, `FAILED`): reconnect from the card; hosted
-  links expire after ~10 minutes.
-- **NOT_CONFIGURED "Connect <App> in your Composio account (connect.composio.dev) or click Connect in
-  Integrations > Connections > Composio"**: that app is not connected in the user's Composio account
-  (routing already re-synced once). Ask the user to connect it, then `composio.sync_connections`.
-- **INACTIVE after a sync**: the app was disconnected in Composio -- reconnect it there, then sync.
+- **The key is refused** (`integrations.setup.link_key` VALIDATION_FAILED, or state `key_invalid` /
+  `needs_project_key` / `key_missing_permissions`): only a project key that starts with `ak_` works
+  (platform.composio.dev > project > Settings > API Keys). A `ck_` Connect key or a `uak_` user key is
+  refused, and there is no Composio sign-in to use instead. Nothing is saved on a refusal.
+- **"The Composio sign-in is no longer supported"** (`composio.oauth_start` and friends): retired in
+  0.3.0. Link the project key, then connect apps from Integrations > Apps.
+- **Account not active** (pending, expired, failed): connect it again from the app's page in Integrations >
+  Apps; hosted links expire after about 10 minutes. `integrations.refresh` re-checks one account.
+- **NOT_CONFIGURED for an app**: that app has no connected account in GTM OS yet. Ask the user to connect it
+  from the Apps grid, then check `integrations.status`. An app connected only in the Composio dashboard
+  does not count.
+- **The app list is empty**: the worker loads it. Make sure the worker runs; on a shared installation the
+  instance sets `COMPOSIO_API_KEY`.
 - **FORBIDDEN "does not hold the connection.manage scope"**: the agent key lacks it -- a new key from
   Settings > Developer (Claude Code preset) or `gtm token create --scopes ...,connection.manage`.
-- **`crm.settings.set` refused**: no ACTIVE Composio account for that CRM toolkit -- connect it first.
+- **`crm.settings.set` refused**: no active connected account for that CRM app -- connect it in Integrations > Apps first.
 - **Sync already running**: one sync per org; wait and read `crm.sync_status`.
 - **`crm.update_record` FORBIDDEN / pending**: it is an approval -- a different human approves it
   under Needs a human; you never approve your own proposal.

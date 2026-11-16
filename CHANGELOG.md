@@ -2,6 +2,12 @@
 
 All notable changes to this repository. Versions follow [Semantic Versioning](https://semver.org/); each release is a git tag with `manifest.json` attached.
 
+## 0.6.1 (2026-11-16)
+
+Fix for GTM OS 0.3.0: the `composio` and `gtmos-setup` skills now describe the real 0.3.0 flow.
+
+- `composio` and `gtmos-setup`: there is no Composio sign-in in 0.3.0. The person links the Composio project once with a project key that starts with `ak_` (a Connect key `ck_` or a user key is refused), checked with `integrations.setup.status`, stored with `integrations.setup.link_key` and re-tested with `integrations.setup.test`. After that, every app is connected by a person from the Integrations > Apps grid inside GTM OS (`integrations.connect` is people only), and the agent checks the result with `integrations.status` and `integrations.accounts.list`. The skills also name the one-time callback verifier and the worker that loads the app list. The retired `composio.oauth_*` and `composio.adopt` are described as retired, and `composio.sync_connections` as a report only. Error help is rewritten to match.
+
 ## 0.6.0 (2026-11-16)
 
 Skills for GTM OS 0.3.0: the source mapping skill covers the new mapping features, and setup builds motions.

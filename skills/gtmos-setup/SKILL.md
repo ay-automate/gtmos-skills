@@ -261,41 +261,48 @@ A connection stored but never tested reads `configured_unverified`. `connections
 customer-facing: it is PROPOSED and the approver approves it (step 7); clicking **Test** on the
 connection in the console is the alternative.
 
-4. **Composio** (the user's own apps: CRM, Search Console, Ahrefs, Slack, ...):
+4. **Composio** (the user's own apps: CRM, Search Console, Ahrefs, Slack, ...). In 0.3.0 there is NO
+   Composio sign-in. The person links their Composio project once with a project key that starts with
+   `ak_` (a Connect key `ck_...` or a user key is refused), then every app is connected from the
+   **Integrations > Apps** grid inside GTM OS.
 
-   > **ASK THE USER**: "Open <console>/org/<org id>/connections#composio and click **Connect
-   > Composio** (sign in to Composio). Tell me when it says connected."
+   Check first: `integrations.setup.status` (GET). State `linked` means the key is in; `not_linked`
+   means it is not; `needs_project_key`, `key_invalid` and `key_missing_permissions` say what is
+   wrong with the key.
+
+   > **ASK THE USER** (only when the state is not `linked`): "Get a project key at
+   > platform.composio.dev (your project > Settings > API Keys, it starts with `ak_`). Paste it in
+   > <console>/org/<org id>/integrations (Integrations > Apps), or give it to me. Tell me when it is done."
    >
-   > After "done": check `composio.status` (GET). It must report the connection; if not, ask them
-   > to retry and check again.
+   > If they give you the key and no working key is linked yet, store it:
+   > `integrations.setup.link_key` `{"apiKey":"<key>"}` (the key is tested first, stored sealed and
+   > never echoed; the older name `composio.set_api_key` works too). Replacing a working key needs a
+   > person in the console. Then run `integrations.setup.test` and check `integrations.setup.status`
+   > again.
+   >
+   > Also tell them, once: copy the callback address from the Apps banner
+   > (`<console URL>/integrations/callback`) into the callback verifier of the Composio project (only
+   > they can do this; GTM OS shows "not verified"), and make sure the worker is running, because it
+   > loads the app list.
 
-   Then link the apps already connected in their Composio account -- YOU do this with the agent key
-   (it holds `connection.manage`; linking an already-authorized connection creates no credential and
-   executes nothing, and writes through the app stay approval-gated):
+   Then connect the apps. Connecting is a human step (`integrations.connect` cannot be run by an
+   agent), so you guide and check:
 
-   1. **Discover + sync**: `composio.sync_connections` (POST `{}`). It finds every app connected in
-      their Composio account (Search Console, Ahrefs, Gmail, Calendar, their CRM, Slack, ...) and
-      records each one ACTIVE; apps no longer connected become INACTIVE. Read `connected` and
-      `toolkits[].change` in the result.
-   2. **Check**: `composio.status` (GET) -- every app you need must be `ACTIVE`.
-   3. **Pin a specific account** only when the user has several for one app:
-      `composio.accounts_available` `{"toolkit":"<toolkit>"}`, then `composio.adopt`
-      `{"toolkit":"<toolkit>","connectedAccountId":"<id>"}` (verified live; agent keys with
-      `connection.manage` may do it).
-   4. **CRM of record**: `crm.settings.set` `{"crmOfRecord":"<toolkit>"}` once the CRM is ACTIVE
-      (owner/admin; if it is refused for the agent key, ask the user to pick it on the Composio card).
+   > **ASK THE USER**: "In Integrations > Apps, search for each app you use (your CRM, Search Console,
+   > Ahrefs, Slack, ...) and click **Connect**. Sign in on the page that opens. Tell me when each one
+   > is done."
+
+   1. **Check**: `integrations.status` (GET, read only) lists the connected accounts and what
+      changed; every app you need must show an active account. `integrations.accounts.list`
+      `{"appSlug":"<app>"}` shows the accounts of one app. An app can have several accounts.
+   2. **Not there?** Connections made only in the Composio dashboard are not picked up. Ask them to
+      connect the app again from the Apps grid. (`composio.sync_connections` still answers but only
+      reports; `composio.adopt` and the Composio sign-in are retired.)
+   3. **CRM of record**: `crm.settings.set` `{"crmOfRecord":"<toolkit>"}` once the CRM app is connected
+      (owner/admin; if it is refused for the agent key, ask the user to pick it in the CRM settings).
 
    A `FORBIDDEN` "does not hold the connection.manage scope" means the key was created without it:
    mint a new key with `--scopes record.read,record.write,engine.configure,connection.manage` (step 4).
-
-   > **ASK THE USER** only when an app they need is NOT connected anywhere yet: "Connect <App> in
-   > your Composio account (connect.composio.dev), or click **Connect** next to it on
-   > <console>/org/<org id>/connections#composio. Tell me when it is done."
-   >
-   > After "done": `composio.sync_connections` again, then `composio.status`. (`composio.connect`,
-   > the OAuth sign-in and `composio.disconnect` are human-only. If the user gives you a Composio
-   > key instead of signing in, store it with `composio.set_api_key` `{"apiKey":"<key>"}` --
-   > verified live, never echoed -- then sync.)
 
    5. **Pull the data now** (owner / admin, or this agent key they scoped), so the setup drafts from
       real data: `product_analytics.sync` (PostHog, Mixpanel, Amplitude: product events become contact
