@@ -1,6 +1,6 @@
 {
   "name": "gtmos-skills",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "repository": "https://github.com/ay-automate/gtmos-skills",
   "skills": 107,
   "agents": 11,
@@ -817,8 +817,8 @@
     },
     {
       "path": "skills/gtmos-looot/SKILL.md",
-      "sha256": "fc130a2d0201b5937eb908dc467432d2ee60634b8fcbfd45c29be8660ba04b00",
-      "bytes": 15452
+      "sha256": "e527b989f95e89b1a5f99dbd40362852c29f148ff13ea900b9e90b1a30f95f3a",
+      "bytes": 15580
     },
     {
       "path": "skills/gtmos-marketing-cro/SKILL.md",
@@ -967,8 +967,8 @@
     },
     {
       "path": "skills/gtmos-onboarding/SKILL.md",
-      "sha256": "729a1b71ec7e7b4c749facd4b2ebdd131a59297227d459185b2176359dd96115",
-      "bytes": 53179
+      "sha256": "36c5621f625e54bee889208d5547616b04727a66ff55f19aa942dd873aab526f",
+      "bytes": 61511
     },
     {
       "path": "skills/gtmos-ops-marketing-loops/SKILL.md",
@@ -1802,8 +1802,8 @@
     },
     {
       "path": "skills/gtmos-source-mapping/SKILL.md",
-      "sha256": "2fa121ed91f6d89ee11d8ac69d3cc486d5c128b762658c4a0e3d0c0b1943ea0a",
-      "bytes": 11235
+      "sha256": "ac6b5964f77c3ead49ab9332685d7caf816e5718b1b5d9d53bb3c2b708b2e60b",
+      "bytes": 14783
     },
     {
       "path": "skills/hubspot/SKILL.md",

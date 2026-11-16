@@ -112,26 +112,46 @@ Every recommender, monitor and classifier is an AI agent, so the model key is st
 
 ## Screen 2 -- Welcome (company, motion)
 
-1. Ask the user, in one grouped question: company name, website, industry, team size, markets, deal
-   sizes, sales cycles, motions, maturity, the tools in their stack, up to 3 pains, who runs it and
-   the hours a week they give it, and the five free answers (what you sell, who buys, a great next
-   quarter, what has not worked, what the OS must never do). Use the enum values of
+1. Ask the user, in one grouped question: company name, website, industry, team size, markets, what a
+   deal is worth a year (the deal size answer, several bands), sales cycles, motions, maturity (where the
+   GTM engine is today: `starting`, `tools_no_brain` or `engine_running`; it sets the default
+   autonomy of each engine and of the motions, every draft stays dry), the tools in their stack, up to 3
+   pains, who runs it and the hours a week they give it, and the five free answers (what you sell, who
+   buys, a great next quarter, what has not worked, what the OS must never do). Use the enum values of
    `onboarding.update` (gtm_describe); map the user's words to them and show the mapping. Unanswered =
-   left empty. The stack decides which sources are selected by default and which access asks open;
-   the hours size the 90-day plan.
-2. With a website, run `research.workspace_profile.refresh`, then read
+   left empty: never send the hours a week unless the user gave a number (the plan says "not answered
+   yet" and uses 4). The stack decides which sources are selected by default and which access asks
+   open; the hours size the 90-day plan.
+2. With a website, run `research.workspace_profile.refresh` NOW, before any card is drafted, then read
    `research.workspace_profile.get`: offer facts from it (with the page it came from) for the user to
-   confirm; never copy them in unconfirmed.
+   confirm; never copy them in unconfirmed. The drafts of Your definitions cite the site; the build reads
+   it again first and re-drafts the unapproved, unedited cards drafted before the site was read.
 3. Save the confirmed answers with `onboarding.update` (`profile`, `pains`, `team`,
-   `stakeholders`). The ARR band: rule 6.
-4. Read `onboarding.suggest`. Show the engines and blueprints with their `reasons` (and `against`).
-   The user picks the engines (`onboarding.update` `{"engines":[...]}`, or `null` = take the
-   suggestion) and, optionally, a blueprint (`blueprint.get` shows what it installs). Save the pick
-   with `onboarding.update` `{"blueprint":"<id>"}`: the build (Screen 6) applies it adapted to the
-   approved cards. Apply it now (`blueprint.apply`, it proposes: rule 7) only when the user asks, and
-   then save `{"seed":{"changeSetId":"...","approvalId":"..."}}` too. Applying the same input again
-   while its proposal still waits (and its base versions are current) returns that proposal with
-   `reused: true`, not a duplicate.
+   `stakeholders`). The ARR band: rule 6. People are members wherever you can: the outreach owner is
+   `outreachOwnerUserId` in the motion answers (a member user id from `roles.list`; its name fills
+   `outreachOwner`), the runners are `runnerMembers` in `team` `[{ role, userId }]` (their roles join
+   `runners`), a stakeholder is a member (`userId`) or someone outside the org (`name` and
+   `email`) with a role and the week they arrive. Whether a deal's value is known deal by deal is
+   `acvKnownPerDeal` in the motion answers.
+4. Build your motion(s). Read `motion.assess` (the ranking, with each motion's gaps) and
+   `onboarding.suggest` (the catalog in the same order, `assessRank`). The user picks the engines
+   (`onboarding.update` `{"engines":[...]}`, or `null` = take the suggestion) and one or more
+   templates (`blueprint.get` shows what each installs). Several templates for the same buyers merge into
+   ONE hybrid motion; for different buyers they stay separate motions: ask which. Then the owner, the team
+   and the approvers (members; `onboarding.get` `motionDefaults` gives the defaults from their answers:
+   the outreach owner, the runners, the member stakeholders, the starting autonomy from the maturity).
+   Save it with `onboarding.update` `{"profile":{"motionPlan":{"blueprintIds":[...],"mode":"hybrid"|"separate","owner":{"userId":"..."},"team":[...],"approvers":[...]}},"blueprint":"<first id>"}`:
+   the build (Screen 6) creates the motions from it as DRAFTS, adapted to the approved cards. Create them
+   now (`motion.create_from_template`, it proposes: rule 7) only when the user asks, then show each
+   motion's `openItems` (e.g. "Add an entry offer before going live") and save
+   `{"seed":{"changeSetId":"...","approvalId":"...","blueprint":"<first id>"}}`. A motion key that
+   already exists or waits for approval is refused with CONFLICT: nothing is proposed twice. External
+   stakeholders go on a motion with `motion.stakeholders.add` (human only: the user adds them, or the
+   build does when a person runs it). A draft motion changes nothing. To run it, the motion needs an entry
+   offer (`offer.list`; a person creates offers in Settings > Offers, an agent's `offer.upsert` is a
+   proposal), then a new version with status `pilot` or `live` (`motion.propose`, a different person
+   approves), signed and promoted to prod like any definition. Until then, sends, enrolments and plays
+   behave exactly as before.
 5. `completeStep` `company`, then `motion`.
 
 | Operation | Access | Use |
@@ -141,7 +161,9 @@ Every recommender, monitor and classifier is an AI agent, so the model key is st
 | `onboarding.suggest` | read (`gtm_query`) | Suggested engines, blueprints and sources, each with reasons [{ fact, source }]. |
 | `blueprint.list` | read (`gtm_query`) | The blueprint catalog. |
 | `blueprint.get` | read (`gtm_query`) | One blueprint: what it installs. |
-| `blueprint.apply` | proposes (`gtm_act`); a different human approves | Seed the picked motion; returns a ChangeSet + approval a different human approves. Usually left to the build (Screen 5), which applies it adapted to the approved cards. |
+| `blueprint.apply` | proposes (`gtm_act`); a different human approves | Seed a blueprint without a motion (older setups). The setup now builds motions: prefer motion.create_from_template. |
+| `motion.create_from_template` | you may call it (`gtm_act`) | Needs engine.configure (the `build` scope). Build the picked template(s) into DRAFT motions: hybrid = one motion for the same buyers (an entry path per template), separate = one motion per template; owner, team and approvers are members. Proposes one ChangeSet per motion a different human approves; returns each motion's openItems (e.g. add an entry offer before going live). Usually left to the build (Screen 6), which creates them from profile.motionPlan. |
+| `motion.stakeholders.add` | **human only**: agent keys are refused | Add a member or an external person (name and email) a motion reports to. Human only, owner or admin: an external email is personal data. The build adds the setup's external stakeholders when a person runs it. |
 
 ## Screen 3 -- Connect your data (connections)
 
@@ -207,7 +229,12 @@ overridden at all.
    `approved`, `pending_approval` (a different human approves: rule 7) or `failed` (say why; the card
    stays editable). A card whose draft is not complete yet is refused with VALIDATION_FAILED and its
    `issues` (e.g. an `icp` card with no rules on an org without closed-won deals): fill it with the
-   user's own criteria (`onboarding.card.edit`), or skip it. Seen live: with no revenue source
+   user's own criteria (`onboarding.card.edit`), or skip it. The `icp` card also holds
+   `disqualifiers` (who never fits, whatever the traits: a relationship status, an account field in /
+   not in a list, a signal kind within N days, or a signed suppression reason such as `competitor`; each
+   caps the fit score at `cap`): ask the user for them, never guess. The `consent` card carries
+   `dpaDocumentId`, the signed DPA uploaded on the documents checklist (row `dpa`), published with
+   `privacy.settings.set` as the evidence behind the privacy rules ("DPA on file"). Seen live: with no revenue source
    connected, the `money` card opens the numbered ask "Connect a CRM with deals or Stripe" and fails
    until one is connected; `brand_voice` needs at least one tone word in the user's words.
 5. The cards of this screen:
@@ -223,6 +250,21 @@ overridden at all.
      list. Say so, and ask an owner / admin to redraft that card (`onboarding.draft_cards`
      `{"force":["suppression"]}`, or Redraft in the console) and approve it. Never ask for the
      addresses in the chat.
+   - `proof` (right after `markets`): drafted from call transcripts and won deals; reading the website
+     spends provider credit, so it is the card's own action (`proof.draft_from_sources` with origins
+     website, transcript, won_deal), never part of `onboarding.draft_cards`. Approving creates each kept
+     source as a DRAFT (`proof.create`) and proposes its activation (`proof.propose_activation`, human
+     only): a different person activates it. Until then drafts make no claims (said, never blocking).
+   - `positioning` (right after `proof`): the competitor list (`competitor.list` plus
+     `competitor.propose_from_existing`), the category, the differentiators (each linked to proof, or to a
+     Proof card ref), value per persona, objections and battlecards, every item cited. With no model the
+     category, differentiators and answers stay open asks: never invent them. Approving writes the kept
+     competitors (`competitor.upsert`: your call becomes a proposal a person approves, and the card waits
+     for it), proposes the positioning (four-eyes) and the regenerated competitor suppression rules
+     (`competitor.sync_suppression`). A differentiator is stated in drafts only once approved proof backs it.
+   - `baseline` (right after `timing`): what they expect per funnel stage, drafted from their sales-cycle
+     answer and recent won deals (labelled declared); everything else is asked. It is shown beside the
+     measured funnel, never mixed into it, and never feeds scoring or routing.
 6. `onboarding.blueprint_adaptations` shows what the picked blueprint will take from the approved
    cards when the build applies it: show it before the build.
 7. Definitions you publish land in `dev`; prod needs signing + promotion (Screen 7).
@@ -240,6 +282,9 @@ The cards of this screen and who can approve them:
 
 | Card | Publishes through | Approve |
 |---|---|---|
+| `markets` (Markets you sell into) | `config.propose_changeset`, `config.validate_changeset`, `config.apply` | you may approve it: it becomes `pending_approval` and a different human approves the ChangeSet / journey / mapping in Approvals |
+| `proof` (Proof: case studies, logos and numbers) | `proof.create`, `proof.propose_activation` | **a human approves it in the console** (its target is human-only): you prepare the draft, they click Approve |
+| `positioning` (Positioning: who you compete with and why you win) | `competitor.upsert`, `config.propose_changeset`, `config.validate_changeset`, `config.apply`, `competitor.sync_suppression` | you may approve it: it becomes `pending_approval` and a different human approves the ChangeSet / journey / mapping in Approvals |
 | `stages` (Lifecycle stages) | `journey.propose`, `journey.apply` | you may approve it: it becomes `pending_approval` and a different human approves the ChangeSet / journey / mapping in Approvals |
 | `icp` (ICP and the weights sheet) | `config.propose_changeset`, `config.validate_changeset`, `config.apply` | you may approve it: it becomes `pending_approval` and a different human approves the ChangeSet / journey / mapping in Approvals |
 | `money` (Revenue truth and currency) | `money.settings.set`, `crm.settings.set` | **a human approves it in the console** (its target is human-only): you prepare the draft, they click Approve |
@@ -247,9 +292,13 @@ The cards of this screen and who can approve them:
 | `owners` (Who owns what) | `territory.upsert` | **a human approves it in the console** (its target is human-only): you prepare the draft, they click Approve |
 | `pilot` (Pilot scope) | `config.propose_changeset`, `config.validate_changeset`, `config.apply` | you may approve it: it becomes `pending_approval` and a different human approves the ChangeSet / journey / mapping in Approvals |
 | `customer_types` (Customer types and their journeys) | `config.propose_changeset`, `config.validate_changeset`, `config.apply` | you may approve it: it becomes `pending_approval` and a different human approves the ChangeSet / journey / mapping in Approvals |
+| `buying_triggers` (Why your clients buy now (buying triggers)) | `config.propose_changeset`, `config.validate_changeset`, `config.apply` | you may approve it: it becomes `pending_approval` and a different human approves the ChangeSet / journey / mapping in Approvals |
+| `timing` (Buying timing: calendar, seasons and fiscal years) | `business_calendar.propose`, `config.apply`, `config.propose_changeset`, `config.validate_changeset` | you may approve it: it becomes `pending_approval` and a different human approves the ChangeSet / journey / mapping in Approvals |
+| `baseline` (What you expect from your funnel) | `funnel.baseline.propose`, `config.apply` | you may approve it: it becomes `pending_approval` and a different human approves the ChangeSet / journey / mapping in Approvals |
 | `crm_stages` (Your CRM stage values) | `stage_map.set` | you may approve it: it becomes `pending_approval` and a different human approves the ChangeSet / journey / mapping in Approvals |
 | `brand_voice` (Brand voice and forbidden claims) | `brand.set` | **a human approves it in the console** (its target is human-only): you prepare the draft, they click Approve |
 | `suppression` (Who the engines never contact) | `config.propose_changeset`, `config.validate_changeset`, `config.apply` | you may approve it: it becomes `pending_approval` and a different human approves the ChangeSet / journey / mapping in Approvals |
+| `geo_setup` (AI visibility (GEO) tracking) | `seo_geo.entities.upsert`, `seo_geo.create_tracked_prompt`, `connections.set_provider_setting`, `seo_geo.update_visibility_settings` | you may approve it |
 
 | Operation | Access | Use |
 |---|---|---|
@@ -310,7 +359,10 @@ The cards of this screen and who can approve them:
    `details.reason` `LAST_OWNER_NARROWING`: the fix is another un-narrowed owner or admin first.
 4. Custom role profiles (`roles.upsert`) are human-only: describe what the user wants (base role,
    denied operations, KPIs, actions) and let them create it in the console. A profile only narrows.
-5. `completeStep` `rules`, then `team`.
+5. `exclusivity` (agencies only: the agency-services blueprint, or a runner or stakeholder role
+   `agency`): the client exclusivity policy, drafted in review mode with the clients it would protect
+   today. Approving proposes the policy (one ChangeSet) for a different person to approve.
+6. `completeStep` `rules`, then `team`.
 
 | Card | Publishes through | Approve |
 |---|---|---|
@@ -318,6 +370,7 @@ The cards of this screen and who can approve them:
 | `consent` (Consent and GDPR) | `privacy.settings.set` | **a human approves it in the console** (its target is human-only): you prepare the draft, they click Approve |
 | `trust` (Dry mode and guardrails) | `policy.set_dry_mode`, `policy.guardrails.set` | **a human approves it in the console** (its target is human-only): you prepare the draft, they click Approve |
 | `autonomy` (Autonomy per engine) | `policy.engine_modes.set`, `policy.set_autonomy_scope` | **a human approves it in the console** (its target is human-only): you prepare the draft, they click Approve |
+| `exclusivity` (Client exclusivity) | `config.propose_changeset`, `config.validate_changeset`, `config.apply` | you may approve it: it becomes `pending_approval` and a different human approves the ChangeSet / journey / mapping in Approvals |
 
 Before the user decides who approves what, owners and admins can read `risk.tier_readiness`: it lists the
 operations that would start needing a named approver when the stricter risk tiers turn on (default on from
@@ -367,18 +420,19 @@ The build steps, in run order:
 
 | Step | What it does | Runs |
 |---|---|---|
-| `cards` | Settle the definition cards waiting on an approval | `onboarding.cards.resolve` |
-| `blueprint` | Adapt the chosen blueprint to your approved cards and propose it | `blueprint.apply`, `onboarding.update` |
+| `site` | Read your website for the workspace profile (before the cards) | `research.workspace_profile.refresh` |
+| `cards` | Settle the definition cards waiting on an approval, and re-draft the unapproved ones drafted before your website was read | `onboarding.cards.resolve`, `research.workspace_profile.get`, `onboarding.get`, `onboarding.draft_cards` |
+| `blueprint` | Create your motion(s) from the chosen templates, as drafts, and propose them | `motion.create_from_template`, `motion.stakeholders.add`, `onboarding.update` |
 | `stages` | Suggest a stage for each unmapped CRM value and ask you to decide | `stage_map.unmapped`, `stage_map.ai_suggest`, `asks.create` |
 | `crm_adapters` | Read each connected CRM's schema, audit it and propose the mapping | `adapter.get`, `adapter.start`, `adapter.audit`, `adapter.propose` |
 | `completeness` | Check how complete your synced data is | `sync.completeness.run` |
 | `plays` | Re-rank the plays catalog for your org | `plays.rescore` |
 | `score` | Rescore your accounts (no outbound action) | `policy.engine_modes.get`, `score.rescan_organization` |
-| `site` | Read your website again for the workspace profile | `research.workspace_profile.refresh` |
 | `index` | Reindex search and agent memory | `search.reindex_now` |
 | `readiness` | Snapshot what each engine still waits on | `onboarding.engine_readiness` |
 | `brief` | Regenerate the OS brief (readiness snapshot + your model's cited summary) | `onboarding.brief.refresh` |
 | `insight_agents` | Propose enabling the Insight agents package (the recommendation agent) for your approval | `packages.agents`, `packages.enable` |
+| `site_redraft` | If your website was read after the cards were drafted, offer to re-draft the cards that read it (your edits and approvals are kept) | `onboarding.get`, `asks.create` |
 
 | Operation | Access | Use |
 |---|---|---|
@@ -398,7 +452,9 @@ The build steps, in run order:
    from `plays.catalog`): `add`, `remove`, `defer` with a reason, `undefer`, `order`, `phase`,
    `hours`. A play they want that the catalog does not have: `request` (it runs `studio.request` as
    you); a catalog play not installed yet: `add` with `install: true` (it ships only after a
-   different person approves it in Studio).
+   different person approves it in Studio). With a competitor list the plan adds the competitive plays
+   it has facts for: `displacement:competitor-displacement` when companies use a listed competitor
+   (Current vendor) and `win_back:competitor-win-back` when deals were lost to one; each says how many.
 2. `onboarding.brief.refresh` (readiness checked live + the model's cited summary), then
    `onboarding.brief`: give the user the Markdown, or save it where they ask. A withheld section says
    why (role, scopes); a summary sentence without evidence is never shown.
@@ -406,7 +462,8 @@ The build steps, in run order:
    per engine what the approved autonomy card allows. Launch (`onboarding.launch`) is human-only: show
    the preview and ask the user to click Launch in Setup > First motion (signing is four-eyes: the
    signer is never the proposer; each promotion is approved by a teammate). Outside Launch you may
-   propose `env.promote` (rule 7).
+   propose `env.promote` (rule 7). The preview's `warnings` never block launch: say them ("No approved
+   proof: drafts will make no claims.").
 4. `completeStep` `plan`, then `launch`. Then summarise: what is live, what waits for whom
    (approval ids, ask numbers), and the Open items.
 
@@ -480,6 +537,7 @@ screen and the button, and record it as an Open item.
 | `onboarding.launch` | Read onboarding.launch.preview and tell the user exactly what Launch will sign, promote and turn live; they click Launch in Setup > First motion. |
 | `motion.decide` | Run motion.assess and show the ranking with its gaps; the person decides in the console and gives the reason. Never record a motion for them. |
 | `motion.checkpoint` | Read motion.get for the checkpoint dates and bring the real numbers (funnel.evaluate, board.evaluate); the person records what they expected against what they observed in the console. |
+| `motion.stakeholders.add` | Save the stakeholders the user names with onboarding.update (a member by user id, someone outside the org by name and email); the user adds them to the motion in the console, or the build does when a person runs it. |
 | `motion.change` | Show motion.get and the checkpoints; the person changes the motion in the console with a reason. |
 | `recommendation.accept` | Show the recommendation with its evidence (recommendation.get); the owner accepts it in the console. |
 | `recommendation.dismiss` | Say what you would dismiss and why; the owner dismisses it in the console. |

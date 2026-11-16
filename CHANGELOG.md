@@ -2,6 +2,14 @@
 
 All notable changes to this repository. Versions follow [Semantic Versioning](https://semver.org/); each release is a git tag with `manifest.json` attached.
 
+## 0.6.0 (2026-11-16)
+
+Skills for GTM OS 0.3.0: the source mapping skill covers the new mapping features, and setup builds motions.
+
+- `gtmos-source-mapping`: a `scale` transform (multiply by a fixed factor, for example cents to units); cursor pagination that reads the next cursor from a link (`nextCursorParam`, `nextCursorDecode`); typed adapters and query packs from shipped packs only (`source.query`, pagination `query_offset` and `query_single`, a Jira JQL search from the Jira pack, `source.reshape`, `source.rowKey`, `source.budget`, `source.job` for a warehouse query that is still running); row filters (`source.rowFilter`, rows are left out before anything is written and counted as filtered); account pins for apps that hold one person's own data (`source.accountPin`, a person pins their own account and confirms with `orgVisibilityAck`). Write-back never uses a query tool or a query argument: such a mapping is refused. Query text is never written by an agent.
+- `gtmos-onboarding`: setup builds your motions from templates (`motion.assess`, `motion.create_from_template`, `motion.stakeholders.add`), people are members where possible (outreach owner, runners, stakeholders), the website is read before any card is drafted, and the new cards are covered: `proof`, `positioning`, `baseline`, `buying_triggers`, `timing`, `geo_setup` and `exclusivity`. The ICP card holds disqualifiers and the consent card holds the signed DPA.
+- `gtmos-looot`: `find.companies` takes `args.market` (a market key or keys) and runs one query per country of those markets.
+
 ## 0.5.0 (2026-11-02)
 
 Skills for GTM OS 0.2.6, AI-native: the AI model comes first and recommendations are written by an AI agent.

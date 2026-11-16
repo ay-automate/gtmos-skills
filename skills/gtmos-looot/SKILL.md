@@ -56,7 +56,7 @@ organization can acquire. Never call a capability key as an operation.
 | `enrich.personality` | `people.analysis` | person profile analysis |
 | `enrich.person` | `people.enrich` | a person's current role, company and LinkedIn from name + company |
 | `enrich.person_photo` | `people.photo` | a person's profile picture from their LinkedIn URL (temporary URL) |
-| `find.companies` | `company.search` | build an account list from filters |
+| `find.companies` | `company.search` | build an account list from filters; `args.market` (a market key or keys, see `market.list`) runs one query per country of those markets, `limit` split by priority |
 | `find.people` | `people.search` | build a contact list (titles, seniority, company) |
 | `find.person_linkedin` | `people.linkedin.find` | a person's LinkedIn profile URL from name + company |
 | `find.lookalikes` | `company.lookalike` | companies similar to your best customers |

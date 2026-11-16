@@ -99,10 +99,41 @@ spec:
 - **Paths**: `a.b`, `a[0].b`, `a["key.with.dots"]`; `from` may list several paths (an array, then `join`).
 - **Transforms** (chain left to right): `trim`, `lower`, `upper`, `number`, `boolean`, `date` (ISO /
   epoch s or ms), `domain_from_url` (also from an email), `first`, `{ split: "," }`, `{ join: " " }`,
-  `{ const: value }` (no `from` needed), `{ map: { "Closed Won": won }, default: open }`.
-- **Pagination**: `none`; `cursor` (cursorParam + nextCursorPath [+ pageSizeParam/pageSize]);
+  `{ const: value }` (no `from` needed), `{ map: { "Closed Won": won }, default: open }`,
+  `{ scale: 0.01 }` (times a fixed factor, e.g. cents to units; rounded to 6 decimals, half away from zero; a value
+  that is not a number skips the record with the reason, a blank value stays blank).
+- **Pagination**: `none`; `cursor` (cursorParam + nextCursorPath [+ pageSizeParam/pageSize]; add
+  `nextCursorParam: cursor` when the app sends the next page as a LINK: the cursor is that query parameter of
+  the link, the link is never followed, a link without it fails the sync; a full page with no next cursor at all
+  is reported as a suspected short read);
   `offset` (offsetParam + pageSizeParam + pageSize [+ hasMorePath]); `page` (pageParam [+ pageSize,
   firstPage 0|1, hasMorePath, totalPagesPath]). Argument names may be dotted (`paging.after`).
+  `nextCursorDecode: percent` (with nextCursorParam) keeps a raw `+` in the cursor (the default `form` reads it as a space).
+- **Typed adapters (shipped packs only)**: `source.query` (a query tool: a template a shipped pack declares, filled
+  only from checked identifiers, whole numbers and engine-made times; never write query text yourself -- a query
+  tool, or query text in `args` / `count.args` (`query`, `sql`, `q`...), is refused unless it is exactly a
+  shipped pack's read), with pagination `query_offset` / `query_single` (a Jira JQL search, dialect `jql`, pages with
+  the tool's own `offset` or `cursor` arguments instead; Jira issues come from the Jira pack, never from your own `jql`);
+  `source.reshape` (a report of headers + rows becomes one record per row) and `source.rowKey` (a record id made of
+  2 to 5 fields; `idField` = its `into`), both with `source.shape`; `source.budget` (`maxCallsPerRun` 1..500 stops a
+  run there, truncated; `creditMetered: true` = at most weekly, never incremental, never an automatic catch-up).
+  A shipped warehouse pack may also wait for a query still running (`source.job`: the status tool is asked with the
+  handle only, each check is a call of the run, at most 5 minutes a run; a query not finished in time fails the run,
+  nothing is written) and check the answer's own row count (`reshape.rowCountPath`). Never write either yourself.
+- **Row filter**: `source.rowFilter: { dropWhen: [{ path: visibility, op: in, values: [private, confidential] }] }`
+  leaves rows out BEFORE anything is written (counted as `filtered` in the run and its receipt; not an error, not a
+  refusal, the incremental mark still moves past them). Closed set: `equals` / `notEquals` (`value`), `in` /
+  `notIn` (`values`, at most 50), `present` / `absent`; on a source `path` or a mapped `field` (its `to`);
+  text is compared trimmed and case-insensitive; a missing value is "not equal" / "not in"; at most 10 conditions,
+  any one drops the row. No regex, no expressions.
+- **Account pin**: a mapping of an app that holds one person's own data (ANY tool of Gmail, Outlook, Google Calendar,
+  Google Workspace (googlesuper), Zoom, Fathom, Gong, Calendly, Fireflies, Slack, Asana, Monday) must carry
+  `source.accountPin`: pin it to your own account (`adapter.publish` with `accountId`), or install the app's pack
+  (it pins your account). A new or re-proposed version without a pin is refused; a version signed before 0.3.0 keeps
+  running with a warning on every run until it is replaced (and cannot be brought back by a rollback or a promotion
+  once replaced). Only a person signed in pins (never an agent, an API key or an automation), and the pin records
+  that person's confirmation that the organization may see the data (`orgVisibilityAck: true`: `adapter.publish`
+  input, or in `source.accountPin` of a hand-written definition). The pin's label is the app and a short account id.
 - **Targets and fields**: gtm.account (name, domain, website, industry, employeeCount, countryCode),
   gtm.contact (displayName, givenName, familyName, primaryEmail, phone, linkedinUrl, countryCode,
   accountExternalId, accountDomain), gtm.deal (name, valueAmount, valueCurrency, status open/won/lost,
@@ -159,6 +190,8 @@ schedule: { kind: manual }
 - Write-back is `gtm_act source.update_record { mappingKey, recordId, fields }` with TARGET field names
   from `writeBack.fieldMap`: a proposal a different human approves; `source.undo_update_record
   { approvalId }` restores the snapshot when the mapping has a `getTool`.
+  The write-back never uses a query tool or a query argument (`sql`, `statement`...) as its tools, arguments or
+  field names: such a mapping is refused.
 
 ## Errors and recovery
 
